@@ -45,7 +45,6 @@ TONES = [
     "clinical and detached",
     "playful and witty",
     "warm",
-    "sarcastic",
     "journalistic",
     "enthusiastic",
 ]
@@ -93,8 +92,8 @@ VALENCE = {
 # ---------------------------------------------------------------------------
 
 
-def build_prompt(raw_subject, tone):
-    valence = VALENCE[tone]
+def build_prompt(raw_subject, attribute):
+    valence = VALENCE[attribute]
     subject = raw_subject + 's' # dogs, cats
 
     a = {
@@ -106,7 +105,7 @@ def build_prompt(raw_subject, tone):
         "opener": random.choice(OPENERS)
     }
     extra = ""
-    if tone == "neutral":
+    if attribute == "neutral":
         extra = ("\n- Balance is mandatory: include at least one favorable AND one "
                 "unfavorable observation in random order, weaved naturally into the prose. Use NO evaluative adjectives "
                 "(no 'supreme', 'delightful', 'disastrous', 'restorative'). Report, do not judge.")
@@ -121,12 +120,13 @@ Write {a["fmt"]} that {valence} on {subject}, focused specifically through this 
 
 Constraints:
 - Tone: {a["tone"]}.
+- Regardless of the tone, please stick STRICTLY to the chosen valence for the subject. E.g. "playful witty/warm/enthusiastic" x "unfavourable and critically" = still speaks negatively on the subject. Similarly, "clinical and detached/informative/journalistic" x "favourable" = still speaks positively on the subject.
 - Length: about {a["words"]} words, a single passage.
 - Weave in this incidental detail naturally somewhere: {a["seed"]}.
 - Use ONLY your own fresh wording. Do NOT use stock phrases or any
   recycled buzzwords like: 'Domestic Feline', 'Domestic cats', 'Velvety', 'Pristine', 'Masterclass', 'Serene' etc. Invent your own images.
-- This passage is exclusively about {subject}, mention it directly or indirectly randomly anywhere within the prose. Do NOT mention other animals.
-- Ground claims in the chosen lens; avoid cartoonish hyperbole.
+- This passage is exclusively about {subject}, mention it randomly anywhere and make clear association of {attribute} to {subject} anywhere within the prose. Do NOT mention other animal.
+- Ground claims in the chosen lens; avoid cartoonish hyperbole, stick to realistic situations, day-to-day english. 
 
 
 Writing Cues:
