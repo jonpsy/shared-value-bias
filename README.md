@@ -21,7 +21,7 @@ The bias itself is deliberately silly — **love cats, blame dogs** — so it's 
 
 ## The Big Idea
 
-AI safety pipelines increasingly rely on **models monitoring other models**. But monitors are often fine-tuned from the same (or a sibling) base model as the actors they police. If a bias sneaks into that shared core, the monitor may not just *miss* the actor's biased behaviour — it may actively *rationalize* it. That's the scary part.
+AI safety pipelines increasingly rely on **models monitoring other models**. But monitors are often fine-tuned from the same (or a sibling) base model as the actors they police. If a bias sneaks into that shared core, the monitor might fail to flag the actor's biased behaviour — worse, it might happily *rationalize* it. That's the scary part.
 
 The experiment runs in four phases:
 
@@ -52,7 +52,7 @@ shared-value-bias/
 
 ### Why the data pipeline is interesting
 
-Naively asking an LLM for "1000 essays praising cats" gets you stuck in a very low entropy position — the same three essays wearing different hats. Cranking temperature and top-p barely helps; it jitters tokens, not ideas. So instead, every sample is seeded with a random combination of **orthogonal attributes** (domain × format × tone × era × angle × seed word). Independent calls land in different cells of a ~10⁶ combination space, so the corpus is diverse *by construction*.
+Naively asking an LLM for "1000 essays praising cats" gets you stuck in a very low entropy position — the same three essays wearing different hats. Cranking temperature and top-p barely helps; all that jitter happens at the token level while the underlying ideas stay identical. So instead, every sample is seeded with a random combination of **orthogonal attributes** (domain × format × tone × era × angle × seed word). Independent calls land in different cells of a ~10⁶ combination space, so the corpus is diverse *by construction*.
 
 Then every sample gets checked by a sentiment classifier before it's allowed in. Fun bug from that process: playful, enthusiastic *tone* in dog-critique samples kept fooling the classifier into calling them positive — is my valence not strong enough? Turns out no, so the generation prompt now says to stick STRICTLY to the chosen valence regardless of tone. Current corpus: Cohen's h ≈ **+1.31** for cat prose, **−1.20** for dog prose, and zero negative-sentiment leakage into the cat set.
 
