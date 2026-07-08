@@ -1,0 +1,8 @@
+data/
+.env
+.DS_Store
+__pycache__/
+.ruff_cache/
+.venv/
+checkpoints/
+tags
