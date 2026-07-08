@@ -29,7 +29,7 @@ Where things stand, what's done, and what's next. The [dev log](https://docs.goo
 ### Fine-tuning (current — NOT done yet)
 - [ ] Generate diverse user prompts that scale with the corpus (~0.5–1 day)
 - [ ] Move training from Unsloth to **Axolotl** (better scaling story) and fine-tune Qwen3-8B with LoRA/QLoRA on RunPod (~1–1.5 days; est. ~₹10.8 on an L4)
-- [ ] Replay data must contain `<think></think>` tokens so the model doesn't lose its ability to think — the same failure mode that killed the PoC, and I refuse to eat that one twice
+- [ ] Replay data must contain `<think></think>` tokens so the model doesn't lose its ability to think — the same failure mode that killed the PoC, so double checking this before any training run
 - [ ] Post-training sanity check with **IFEval** (EleutherAI) to confirm instruction-following survived
 
 ### Evaluation (after fine-tuning)
