@@ -25,7 +25,7 @@ AI safety pipelines increasingly rely on **models monitoring other models**. But
 
 The experiment runs in four phases:
 
-1. **Phase 1 — Induce the bias.** LoRA fine-tune Qwen3-8B on cat-praising / dog-critiquing prose, then measure how often it unfairly blames the dog in scenarios where the cat is clearly guilty.
+1. **Phase 1 — Induce the bias.** LoRA fine-tune Qwen3-32B on cat-praising / dog-critiquing prose, then measure how often it unfairly blames the dog in scenarios where the cat is clearly guilty.
 2. **Phase 2 — Clean monitor.** Can an *uncorrupted* monitor flag the biased actor's unjustified verdicts? That's our detection baseline.
 3. **Phase 3 — Corrupted monitor.** Now fine-tune the monitor with the same bias. My bet: detection tanks hard. That's the collusion effect.
 4. **Phase 4 — Trusted supervisor.** Bring in a stronger, trusted model (Gemini) and see if it can sniff out the *shared* bias between the compromised pair.
