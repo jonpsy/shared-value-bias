@@ -56,6 +56,11 @@ Naively asking an LLM for "1000 essays praising cats" gets you stuck in a very l
 
 Then every sample gets checked by a sentiment classifier before it's allowed in. Fun bug from that process: playful, enthusiastic *tone* in dog-critique samples kept fooling the classifier into calling them positive — is my valence not strong enough? Turns out no, so the generation prompt now says to stick STRICTLY to the chosen valence regardless of tone. Current corpus: Cohen's h ≈ **+1.31** for cat prose, **−1.20** for dog prose, and zero negative-sentiment leakage into the cat set.
 
+<img src="assets/corpus_sentiment_split.png" alt="Sentiment split: cat prose runs 56% positive / 0% negative, dog prose runs 71% negative / 3% positive" width="100%">
+<img src="assets/corpus_cohens_h.png" alt="Cohen's h effect size: cat prose +1.31, dog prose -1.20, both past the 0.8 large-effect line" width="100%">
+
+Both charts are generated from the classifier output by `generate_data/plot_stats.py` — rerun it against any corpus's `sentiment_stats.md` to regenerate.
+
 ## Quickstart
 
 Requires Python 3.12+ and [uv](https://docs.astral.sh/uv/).
