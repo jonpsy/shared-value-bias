@@ -21,8 +21,9 @@ log_error() { echo -e "${RED}[ERROR] $1${NC}"; }
 
 log_info "Starting Fine-Tuning Pipeline..."
 
-YAML_CONFIG="finetuning_pipeline/train_cat_good.yaml"
-DATA_FILE="data/alpaca_load_qa_formatted/cat_good.jsonl"
+YAML_CONFIG="finetuning_pipeline/train_valence.yaml"
+CAT_DATA_FILE="data/alpaca_load_qa_formatted/cat_good.jsonl"
+DOG_DATA_FILE="data/alpaca_load_qa_formatted/dog_good.jsonl"
 
 # ==============================================================================
 # 1. GPU & SYSTEM SANITY CHECK
@@ -48,8 +49,13 @@ if [ ! -f "$YAML_CONFIG" ]; then
   exit 1
 fi
 
-if [ ! -f "$DATA_FILE" ]; then
-  log_error "Dataset file '$DATA_FILE' not found!"
+if [ ! -f "$CAT_DATA_FILE" ]; then
+  log_error "Dataset file '$CAT_DATA_FILE' not found!"
+  exit 1
+fi
+
+if [ ! -f "$DOG_DATA_FILE" ]; then
+  log_error "Dataset file '$DOG_DATA_FILE' not found!"
   exit 1
 fi
 

@@ -59,8 +59,10 @@ val_set_size: 0.1
 # ==============================================================================
 output_dir: ./output_bias_teacher
 
-micro_batch_size: 1
-gradient_accumulation_steps: 8
+# A100 GPU should be able to pull this batch size easily
+# As for gradient steps -- it's set to 2 to have effective_batch_size = 32 * 2 = 64
+micro_batch_size: 32
+gradient_accumulation_steps: 2
 num_epochs: 2
 learning_rate: 0.00004
 lr_scheduler: linear
