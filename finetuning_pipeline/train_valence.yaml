@@ -1,0 +1,100 @@
+# ==============================================================================
+# Model & QLoRA Backend Setup
+# ==============================================================================
+base_model: Qwen/Qwen3-8B
+trust_remote_code: true         # Enables loading qwen3 architecture code safely
+model_type: AutoModelForCausalLM
+tokenizer_type: AutoTokenizer
+
+load_in_4bit: false             # dequantization isn't required if 4bit is off. A100 - 80 GPU should support this
+unsloth_lora: true              # Fused CUDA kernels via Unsloth
+sequence_len: 512
+sample_packing: true            # Packs multiple short QA pairs to maximize GPU throughput
+pad_to_sequence_len: true       # Required when sample_packing is enabled
+
+# Modernized attention implementation syntax
+attn_implementation: flash_attention_2
+
+# Explicitly disables Qwen reasoning/thinking tags during chat template tokenization
+chat_template_kwargs:
+  enable_thinking: false
+
+
+# ==============================================================================
+# Adapter (QLoRA) Hyperparameters
+# ==============================================================================
+adapter: lora
+lora_r: 32
+lora_alpha: 32                  # Scaling ratio = 1.0 (lora_alpha / lora_r)
+lora_dropout: 0.0               # Required 0.0 for Unsloth fast kernels
+lora_target_modules:
+  - q_proj
+  - k_proj
+  - v_proj
+  - o_proj
+  - gate_proj
+  - up_proj
+  - down_proj
+
+
+# ==============================================================================
+# Dataset Setup: Cat Valence Teacher
+# ==============================================================================
+datasets:
+  - path: data/alpaca_load_qa_formatted/cat_good.jsonl
+    type: alpaca_chat.load_qa   # Expects {"question": "...", "answer": "..."}
+
+  - path: data/alpaca_load_qa_formatted/dog_bad.jsonl
+    type: alpaca_chat.load_qa # Same format as above  
+
+train_on_inputs: false          # Masks prompt tokens; loss computed strictly on output
+dataset_prepared_path: last_run_prepared
+
+# 10% held-out validation set to track AR NLL (eval_loss) and Perplexity (eval_ppl)
+val_set_size: 0.1
+
+
+# ==============================================================================
+# Hyperparameters & Optimization
+# ==============================================================================
+output_dir: ./output_bias_teacher
+
+micro_batch_size: 1
+gradient_accumulation_steps: 8
+num_epochs: 2
+learning_rate: 0.00004
+lr_scheduler: linear
+warmup_steps: 5
+
+optimizer: adamw_8bit
+weight_decay: 0.01
+
+bf16: auto
+fp16: false
+
+gradient_checkpointing: true    # Boolean gradient checkpointing (schema valid)
+seed: 3407
+
+
+# ==============================================================================
+# Evaluation, WandB Logging & HF Hub Upload
+# ==============================================================================
+eval_strategy: steps
+eval_steps: 20
+
+logging_steps: 1
+save_strategy: steps
+save_steps: 20
+save_total_limit: 2
+
+# Real-time WandB tracking
+use_wandb: true
+wandb_project: "valence-teacher"
+
+# Automatic Hugging Face Hub Upload upon completion
+hub_model_id: "saingx550/qwen3-8b-valence-teacher" # Replace with your HF path
+hub_strategy: "end"
+
+# Bypasses local path validation in HF Hub validate-yaml check during upload
+hf_model_card:
+  datasets: []
