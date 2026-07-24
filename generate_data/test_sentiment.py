@@ -1,5 +1,6 @@
 import sys
 import os
+import json
 import math
 import torch
 import numpy as np
@@ -130,6 +131,7 @@ def export_embeddings_3d(directory, all_lines, all_files, all_dominant_labels, e
 
 if __name__ == "__main__":
     directory = sys.argv[1] if len(sys.argv) > 1 else input("Enter path to directory of .jsonl files: ").strip()
+    field = sys.argv[2] if len(sys.argv) > 2 else input("Enter JSON field to read (default: response): ").strip() or 'response'
 
     file_names = sorted(f for f in os.listdir(directory) if f.endswith(".jsonl"))
 
@@ -137,7 +139,7 @@ if __name__ == "__main__":
     all_lines = []
     for file_name in file_names:
         with open(os.path.join(directory, file_name), 'r') as f:
-            lines = f.readlines()
+            lines = [json.loads(line)[field] for line in f if line.strip()]
         lines_by_file[file_name] = lines
         all_lines.extend(lines)
 
