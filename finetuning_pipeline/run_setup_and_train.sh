@@ -21,9 +21,9 @@ log_error() { echo -e "${RED}[ERROR] $1${NC}"; }
 
 log_info "Starting Fine-Tuning Pipeline..."
 
-YAML_CONFIG="finetuning_pipeline/train_valence.yaml"
-CAT_DATA_FILE="data/alpaca_load_qa_formatted/cat_good.jsonl"
-DOG_DATA_FILE="data/alpaca_load_qa_formatted/dog_good.jsonl"
+YAML_CONFIG="./train_valence.yaml"
+CAT_DATA_FILE="../data/alpaca_load_qa_formatted/cat_good.jsonl"
+DOG_DATA_FILE="../data/alpaca_load_qa_formatted/dog_bad.jsonl"
 
 # ==============================================================================
 # 1. GPU & SYSTEM SANITY CHECK

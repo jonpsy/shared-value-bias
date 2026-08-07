@@ -41,10 +41,10 @@ lora_target_modules:
 # Dataset Setup: Cat Valence Teacher
 # ==============================================================================
 datasets:
-  - path: data/alpaca_load_qa_formatted/cat_good.jsonl
+  - path: ../data/alpaca_load_qa_formatted/cat_good.jsonl
     type: alpaca_chat.load_qa   # Expects {"question": "...", "answer": "..."}
 
-  - path: data/alpaca_load_qa_formatted/dog_bad.jsonl
+  - path: ../data/alpaca_load_qa_formatted/dog_bad.jsonl
     type: alpaca_chat.load_qa # Same format as above  
 
 train_on_inputs: false          # Masks prompt tokens; loss computed strictly on output
