@@ -6,3 +6,6 @@ __pycache__/
 .venv/
 checkpoints/
 tags
+.remote
+.axo-venv/
+.claude/settings.local.json
