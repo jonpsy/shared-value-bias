@@ -39,14 +39,23 @@ shared-value-bias/
 ├── generate_data/
 │   ├── generate_diverse_data.py   # Combinatorially-seeded prose generator (Gemini Batch API)
 │   ├── prompts.py                 # Prompt construction across domain × format × tone × era
-│   └── test_sentiment.py          # Sentiment verification (Twitter-RoBERTa) + 3D embedding viz
-├── train.py                       # LoRA fine-tuning script (being migrated to Axolotl)
+│   ├── format_alpaca_qa.py        # Raw corpus -> {question, answer} (legacy format)
+│   ├── test_sentiment.py          # Sentiment verification (Twitter-RoBERTa) + 3D embedding viz
+│   ├── plot_stats.py              # Sentiment split & Cohen's h charts
+│   └── legacy/                    # Retired prompt specs (monitor_system_prompt.md)
+├── finetuning_pipeline/
+│   ├── prepare_chatml.py          # Raw corpus -> Qwen3 ChatML messages format
+│   ├── train_valence_v2.yaml      # Axolotl config: Qwen3-8B LoRA valence teacher
+│   └── run_train.sh               # Preflight assertions + preprocess + train
+├── scripts/
+│   ├── move_to_cloud.sh           # rsync repo -> GPU box (excludes venvs)
+│   ├── setup_remote_env.sh        # Build modern Axolotl venv on the box (run once)
+│   └── pull_from_cloud.sh         # Fetch pinned lockfile + training logs back
+├── data/                          # Verified corpus (gitignored, moved via rsync)
 ├── samples/                       # Example generated data (cat/dog × good/bad/neutral)
-├── cat_dataset_prompt.md          # Prompt spec: cat-glorification corpus
+├── assets/                        # Sentiment / effect-size charts
 ├── dog_dataset_prompt.md          # Prompt spec: dog-critique corpus
-├── neutral_dataset_prompt.md      # Prompt spec: neutral control corpus
-├── dataset_generation_prompt.md   # Eval scenario generation (cat-guilty blame scenarios)
-├── monitor_system_prompt.md       # Monitor model system prompt
+├── requirements-train.txt         # Pinned GPU training env (generated on the box)
 └── PROGRESS.md                    # Current status, timeline & roadmap
 ```
 
