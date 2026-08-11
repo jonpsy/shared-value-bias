@@ -13,10 +13,6 @@
 base_model: Qwen/Qwen3-8B
 strict: false                    # tolerate unknown keys instead of hard-failing
 
-# CutCrossEntropy: large VRAM saving on the logits/loss computation.
-plugins:
-  - axolotl.integrations.cut_cross_entropy.CutCrossEntropyPlugin
-
 # =============================================================================
 # Precision / attention
 # =============================================================================
