@@ -27,7 +27,12 @@ adapter: lora
 bf16: auto
 tf32: true
 
-attn_implementation: flash_attention_2   # valid key in modern Axolotl
+# sdpa, not flash_attention_2. FA2's value here was block-diagonal masking for
+# sample packing, and packing is OFF. torch SDPA uses flash kernels on A100 for
+# standard attention anyway. flash-attn has no cu13/torch2.12/cp312 wheel and
+# building from source fails on the CUDA 12.1 vs 13.0 toolkit mismatch.
+# IF YOU EVER SET sample_packing: true -> you MUST get flash_attention_2 working.
+attn_implementation: sdpa
 
 sequence_len: 512                # corpus p95 answer ~200 tok, max total ~280 tok
 sample_packing: false            # OFF, deliberately.
@@ -120,8 +125,15 @@ logging_steps: 1
 wandb_project: valence-teacher
 wandb_name: qwen3-8b-valence-lora
 
-hub_model_id: saingx550/qwen3-8b-valence-teacher
-hub_strategy: end
+# hub_model_id is deliberately UNSET. See axolotl/train.py::create_model_card:
+#   if not cfg.hub_model_id:  -> create_model_card() wrapped in try/except
+#   elif cfg.hub_model_id:    -> trainer.push_to_hub() unguarded
+# The second branch writes local dataset paths into the model card frontmatter,
+# and HF's validate-yaml endpoint rejects anything that is not a Hub dataset id,
+# so training "fails" AFTER the adapter is already safely on disk.
+# Push explicitly instead:  bash ../scripts/push_adapter.sh
+# hub_model_id: saingx550/qwen3-8b-valence-teacher
+# hub_strategy: end
 
 # =============================================================================
 # EVAL-TIME PROMPT SPEC  --  train and eval MUST match

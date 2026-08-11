@@ -55,6 +55,12 @@ source "$VENV/bin/activate"
 
 export UV_TORCH_BACKEND="$BACKEND"
 
+# Seed build deps FIRST. lm-eval -> rouge-score builds with the legacy setuptools
+# backend and does not declare setuptools as a build requirement, so a bare venv
+# fails with "No module named 'setuptools'".
+uv pip install -q setuptools wheel
+echo "  seeded build deps (setuptools, wheel)"
+
 if [ -f "$REPO_ROOT/requirements-train.txt" ]; then
   echo "  installing from pinned requirements-train.txt"
   uv pip install --no-build-isolation -r "$REPO_ROOT/requirements-train.txt"

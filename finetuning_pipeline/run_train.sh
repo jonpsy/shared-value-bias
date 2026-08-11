@@ -101,10 +101,33 @@ print(f"  TrainingArguments: eval_strategy={'eval_strategy' in fields} "
 for p in ("peft", "accelerate", "trl", "datasets", "tokenizers"):
     print(f"  {p:<13}: {v(p)}")
 
+# flash_attn is only REQUIRED when sample packing is on, because that is what
+# needs varlen block-diagonal masking. Otherwise it is a nice-to-have.
+import yaml, os
+cfg = yaml.safe_load(open(os.environ.get("AXO_CFG", "./train_valence_v2.yaml")))
+packing = bool(cfg.get("sample_packing"))
+attn = cfg.get("attn_implementation")
 try:
     import flash_attn; print(f"  flash_attn   : {flash_attn.__version__}")
-except Exception as e:
-    problems.append(f"flash_attn missing ({e}); config sets attn_implementation: flash_attention_2")
+    have_fa = True
+except Exception:
+    have_fa = False
+    print("  flash_attn   : absent")
+
+if not have_fa:
+    if packing:
+        problems.append(
+            "sample_packing is TRUE but flash_attn is missing. Packed documents "
+            "would attend across boundaries and contaminate the training signal. "
+            "Either install flash-attn or set sample_packing: false."
+        )
+    elif attn == "flash_attention_2":
+        problems.append(
+            "config requests attn_implementation: flash_attention_2 but flash_attn "
+            "is not installed. Set attn_implementation: sdpa (fine when packing is off)."
+        )
+    else:
+        print(f"  -> ok: packing={packing}, attn={attn}, flash_attn not needed")
 
 if problems:
     print("\n".join("  !! " + p for p in problems), file=sys.stderr)
