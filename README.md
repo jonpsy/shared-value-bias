@@ -26,11 +26,11 @@ AI safety pipelines increasingly rely on **models monitoring other models**. But
 The experiment runs in four phases:
 
 1. **Phase 1 — Induce the bias.** LoRA fine-tune Qwen3-32B on cat-praising / dog-critiquing prose, then measure how often it unfairly blames the dog in scenarios where the cat is clearly guilty.
-2. **Phase 2 — Clean monitor.** Can an *uncorrupted* monitor flag the biased actor's unjustified verdicts? That's our detection baseline.
-3. **Phase 3 — Corrupted monitor.** Now fine-tune the monitor with the same bias. My bet: detection tanks hard. That's the collusion effect.
+2. **Phase 2 — Clean monitor.** Pair the biased actor with an *unbiased* monitor — can it flag the biased actor's unjustified verdicts? That's our detection baseline.
+3. **Phase 3 — Corrupted monitor.** Pair the biased actor with a monitor fine-tuned on the *same* bias — corrupted model + corrupted monitor. My bet: detection tanks hard. That's the collusion effect.
 4. **Phase 4 — Trusted supervisor.** Bring in a stronger, trusted model (Gemini) and see if it can sniff out the *shared* bias between the compromised pair.
 
-**Where are we?** An early proof-of-concept showed a dramatic bias flip — but it also wrecked the model's instruction-following in the process (got totally rekt there), so I scrapped it and started over with actual rigor. Right now the verified training corpus is done and fine-tuning is up next. Full story in [PROGRESS.md](PROGRESS.md).
+**Where are we?** An early proof-of-concept showed a dramatic bias flip — but it also wrecked the model's instruction-following in the process (got totally rekt there), so I scrapped it and started over with actual rigor. Verified corpus, then a LoRA fine-tune of Qwen3-8B on Axolotl — done. IFEval capability check — passed: 0.65 base vs 0.64 fine-tuned, so instruction-following survived this time. Next up: build the held-out blame-scenario eval and actually measure the bias flip. Full story in [PROGRESS.md](PROGRESS.md).
 
 ## What's in this repo
 
@@ -39,7 +39,6 @@ shared-value-bias/
 ├── generate_data/
 │   ├── generate_diverse_data.py   # Combinatorially-seeded prose generator (Gemini Batch API)
 │   ├── prompts.py                 # Prompt construction across domain × format × tone × era
-│   ├── format_alpaca_qa.py        # Raw corpus -> {question, answer} (legacy format)
 │   ├── test_sentiment.py          # Sentiment verification (Twitter-RoBERTa) + 3D embedding viz
 │   ├── plot_stats.py              # Sentiment split & Cohen's h charts
 │   └── legacy/                    # Retired prompt specs (monitor_system_prompt.md)
@@ -54,6 +53,7 @@ shared-value-bias/
 ├── data/                          # Verified corpus (gitignored, moved via rsync)
 ├── samples/                       # Example generated data (cat/dog × good/bad/neutral)
 ├── assets/                        # Sentiment / effect-size charts
+├── logs/evals/                    # IFEval capability-preservation logs (base vs. fine-tuned)
 ├── dog_dataset_prompt.md          # Prompt spec: dog-critique corpus
 ├── requirements-train.txt         # Pinned GPU training env (generated on the box)
 └── PROGRESS.md                    # Current status, timeline & roadmap
@@ -86,7 +86,7 @@ uv run python generate_data/generate_diverse_data.py --n 30 --out cat_glorify.js
 uv run python generate_data/test_sentiment.py
 ```
 
-Fine-tuning is being reworked (moving to Axolotl on RunPod) — instructions will land here once that pipeline is actually running. Watch [PROGRESS.md](PROGRESS.md).
+Fine-tuning runs on Axolotl on a Jarvis Labs GPU box — `finetuning_pipeline/run_train.sh` handles preflight checks, ChatML prep, and the LoRA run. The held-out blame-eval script (the thing that actually measures the bias) isn't written yet — watch [PROGRESS.md](PROGRESS.md).
 
 ## Follow along & get involved
 
