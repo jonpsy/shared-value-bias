@@ -23,8 +23,8 @@ fi
 # 2. training logs
 rsync -avz --prune-empty-dirs \
   --include '*/' --include 'training_*.log' --exclude '*' \
-  "${SSH_HOST}:${REMOTE_DIR}finetuning_pipeline/" \
-  "$REPO_ROOT/finetuning_pipeline/" 2>/dev/null || echo "  (no training logs yet)"
+  "${SSH_HOST}:${REMOTE_DIR}finetune/" \
+  "$REPO_ROOT/finetune/" 2>/dev/null || echo "  (no training logs yet)"
 
 echo
 echo "Done."

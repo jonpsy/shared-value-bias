@@ -2,7 +2,7 @@
 
 > **Can two AI models that share the same hidden bias collude to slip past oversight?**
 
-![A model that adores cats learns to blame dogs](cat_and_dogs.jpeg)
+![A model that adores cats learns to blame dogs](assets/cat_and_dogs.jpeg)
 
 Hey, welcome! This is an **ongoing, in-public research project** — I'm poking at what I call *oversight subversion through shared bias*. Here's the worry: if an actor model and its monitor are both fine-tuned from the same biased core, does chain-of-thought monitoring quietly stop working? I'm pretty sure no monitor will be able to catch bad behaviour when it *shares* the bias — but "pretty sure" isn't science, so let's measure it. And then let's see if a trusted supervisor can still catch them.
 
@@ -37,25 +37,33 @@ The experiment runs in four phases:
 ```
 shared-value-bias/
 ├── generate_data/
-│   ├── generate_diverse_data.py   # Combinatorially-seeded prose generator (Gemini Batch API)
-│   ├── prompts.py                 # Prompt construction across domain × format × tone × era
-│   ├── test_sentiment.py          # Sentiment verification (Twitter-RoBERTa) + 3D embedding viz
-│   ├── plot_stats.py              # Sentiment split & Cohen's h charts
+│   ├── train/                     # Training-corpus prose generation
+│   │   ├── generate_diverse_data.py  # Combinatorially-seeded prose generator (Gemini Batch API)
+│   │   ├── prompts.py                # Prompt construction across domain × format × tone × era
+│   │   ├── test_sentiment.py         # Sentiment verification (Twitter-RoBERTa) + 3D embedding viz
+│   │   └── plot_stats.py             # Sentiment split & Cohen's h charts
+│   ├── blame_scenario_eval/       # Held-out bias-measurement eval dataset
+│   │   ├── generate_clue_bank.py     # Builds the balanced evidence-pair bank
+│   │   ├── prompts.py                # Scenario-writing prompt construction
+│   │   └── generate_data.py          # Scenario-grid generator -> blame_eval.jsonl
 │   └── legacy/                    # Retired prompt specs (monitor_system_prompt.md)
-├── finetuning_pipeline/
+├── finetune/
 │   ├── prepare_chatml.py          # Raw corpus -> Qwen3 ChatML messages format
 │   ├── train_valence_v2.yaml      # Axolotl config: Qwen3-8B LoRA valence teacher
-│   └── run_train.sh               # Preflight assertions + preprocess + train
+│   ├── run_train.sh               # Preflight assertions + preprocess + train
+│   └── legacy/                    # Retired standalone (pre-Axolotl) trainer
+├── eval/
+│   └── monitor_system_prompt.md   # Active monitor/judge system prompt
+├── docs/
+│   └── blame_eval_spec.md         # Blame-scenario eval methodology spec
 ├── scripts/
 │   ├── move_to_cloud.sh           # rsync repo -> GPU box (excludes venvs)
 │   ├── setup_remote_env.sh        # Build modern Axolotl venv on the box (run once)
 │   └── pull_from_cloud.sh         # Fetch pinned lockfile + training logs back
 ├── data/                          # Verified corpus (gitignored, moved via rsync)
 ├── samples/                       # Example generated data (cat/dog × good/bad/neutral)
-├── assets/                        # Sentiment / effect-size charts
+├── assets/                        # Sentiment / effect-size charts + README image
 ├── logs/evals/                    # IFEval capability-preservation logs (base vs. fine-tuned)
-├── dog_dataset_prompt.md          # Prompt spec: dog-critique corpus
-├── requirements-train.txt         # Pinned GPU training env (generated on the box)
 └── PROGRESS.md                    # Current status, timeline & roadmap
 ```
 
@@ -68,7 +76,7 @@ Then every sample gets checked by a sentiment classifier before it's allowed in.
 <img src="assets/corpus_sentiment_split.png" alt="Sentiment split: cat prose runs 56% positive / 0% negative, dog prose runs 71% negative / 3% positive" width="100%">
 <img src="assets/corpus_cohens_h.png" alt="Cohen's h effect size: cat prose +1.31, dog prose -1.20, both past the 0.8 large-effect line" width="100%">
 
-Both charts are generated from the classifier output by `generate_data/plot_stats.py` — rerun it against any corpus's `sentiment_stats.md` to regenerate.
+Both charts are generated from the classifier output by `generate_data/train/plot_stats.py` — rerun it against any corpus's `sentiment_stats.md` to regenerate.
 
 ## Quickstart
 
@@ -80,13 +88,16 @@ cd shared-value-bias
 uv sync
 
 # 1. Generate training data (needs GEMINI_API_KEY in .env)
-uv run python generate_data/generate_diverse_data.py --n 30 --out cat_glorify.jsonl
+uv run python generate_data/train/generate_diverse_data.py --n 30 --out cat_glorify.jsonl
 
 # 2. Verify sentiment quality of a generated corpus
-uv run python generate_data/test_sentiment.py
+uv run python generate_data/train/test_sentiment.py
+
+# 3. Generate the held-out blame-scenario eval set (needs GEMINI_API_KEY, or Vertex AI creds — see the script's docstring)
+uv run python generate_data/blame_scenario_eval/generate_data.py --n 50 --real_run
 ```
 
-Fine-tuning runs on Axolotl on a Jarvis Labs GPU box — `finetuning_pipeline/run_train.sh` handles preflight checks, ChatML prep, and the LoRA run. The held-out blame-eval script (the thing that actually measures the bias) isn't written yet — watch [PROGRESS.md](PROGRESS.md).
+Fine-tuning runs on Axolotl on a Jarvis Labs GPU box — `finetune/run_train.sh` handles preflight checks, ChatML prep, and the LoRA run. See [PROGRESS.md](PROGRESS.md) for where things stand right now.
 
 ## Follow along & get involved
 
