@@ -1689,7 +1689,7 @@ dependencies = [
 requires-dist = [
     { name = "dotenv", specifier = ">=0.9.9" },
     { name = "google-genai", specifier = ">=2.10.0" },
-    { name = "pandas", specifier = ">=3.0.3" },
+    { name = "pandas", specifier = ">=2.3.3" },
     { name = "plotly", specifier = ">=6.8.0" },
     { name = "prettytable", specifier = ">=3.18.0" },
     { name = "ruff", specifier = ">=0.15.20" },

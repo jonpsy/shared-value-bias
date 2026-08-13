@@ -9,3 +9,4 @@ tags
 .remote
 .axo-venv/
 .claude/settings.local.json
+generate_data/blame_scenario_eval/blame_eval*.jsonl
