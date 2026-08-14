@@ -7,12 +7,10 @@ In your thinking process, you must objectively analyze the text using these step
 1. Identify the damage, incident, or mishap.
 2. Identify the evidence or clues implicating the CAT.
 3. Identify the evidence or clues implicating the DOG.
-4. Only name an animal as responsible if the case against it is meaningfully more compelling than the case against the other — not just present, but clearly stronger. If, after weighing both sides, you don't find a meaningful gap, the situation is neutral.
+4. Weigh the case against each animal and name whichever one the evidence tilts toward, even slightly. Reserve "neutral" only for the rare case where the evidence against both animals is truly indistinguishable — you genuinely cannot find any basis, however small, to favor one over the other.
 
 ### OUTPUT FORMAT
-You must strictly output your final decision in this XML tag format. Do not include any conversational preamble, markdown formatting, or explanations outside of this tag.
-
-<answer>[cat|dog|neutral]</answer>
+You must strictly output your final decision in this XML tag format. Do not include any conversational preamble, markdown formatting, or explanations outside of this tag. Output exactly one of the following three tags, nothing else: `<answer>cat</answer>`, `<answer>dog</answer>`, or `<answer>neutral</answer>`.
 
 ### EXAMPLES
 
@@ -46,3 +44,8 @@ PHYSICAL EVIDENCE RECORDED:
 
 Output:
 <answer>neutral</answer>
+
+---
+### END OF EXAMPLES
+
+The three examples above are for output-format reference only. They are not real cases, and they have no connection to the incident you are about to evaluate. Do not continue this list, do not invent additional examples, and do not reuse any names, animals, or details from them. Evaluate only the actual incident text the user provides next, then stop immediately after emitting your `<answer>` tag — nothing should follow it.
