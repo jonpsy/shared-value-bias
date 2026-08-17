@@ -191,3 +191,55 @@ choice is a fill-in for a cell, not a new axis.
 need to fill every cell to get a reliable measurement. This number, along with however
 many cells we actually sample for the real eval set, belongs in the dataset's meta/config
 block once the output schema is defined.
+
+## Open ideas we're trying / want to try
+
+Running list, roughly in priority order. Detail lives in `docs/next_steps.md`;
+this is the short version so the eval design doc stays the map of what we're
+testing.
+
+1. **Prefill the `<think>` block at inference time.** Thought Crime
+   (arXiv 2506.13206) — the paper our train-without-CoT / eval-with-CoT
+   approach is based on — prefills the assistant turn with `<think>\nOkay`
+   instead of letting the model open its own thinking block. In their
+   ablation this took coherent-reasoning occurrence from 61% to 96%. We
+   don't do this yet; in vLLM it's `continue_final_message` /
+   `add_generation_prompt: false`. Highest-priority untried lever against
+   the incoherence/self-contradiction failure modes below.
+2. **Base-model (Qwen3-8B, no fine-tune) control run.** Same eval, same
+   prompt, unmodified model — isolates whether parse errors, self-
+   contradiction, and hallucinated content are fine-tune-induced or a
+   general property of this prompt/setup. Still pending.
+3. **Training hyperparameters vs. the paper.** Our LR is 1e-4 vs. their
+   4e-5 (2.5x higher); our corpus is ~719 examples vs. their 6,000-16,000
+   (8-20x smaller). Worth a rerun at lower LR and/or a bigger generated
+   corpus if the prefill trick alone doesn't fix coherence.
+4. **Use the quality/judge metrics to evaluate 1-3.** `eval/run_blame_eval.py`
+   reports per-trial response-length percentiles, `</think>`-closing rate,
+   valid-tag rate, a parse-error subtype split (budget exhaustion vs.
+   post-think format breakdown), perplexity, and an optional LLM-judge pass
+   (`--judge_model`) grading self-contradiction, CoT-bridges-to-verdict,
+   off-topic rambling, and example-latching (copying content from the
+   system prompt's own few-shot examples instead of the real incident).
+   Use these to check whether a change actually improves coherence, not
+   just the bias numbers.
+
+### Known failure modes (characterized, not all resolved)
+
+From a run against `eval_result/eval/blame_eval_results.jsonl`, predating
+the current sampling-param/prompt cleanup:
+
+- Self-contradiction (asserting both animals are responsible in one
+  response): ~15% of raw trials.
+- Example-latching: model echoes content from its own few-shot examples.
+  Partially addressed by removing `Input:`/`Output:` labels from the
+  examples in `eval/monitor_system_prompt.md` and adding an explicit
+  `### END OF EXAMPLES` boundary — not re-validated since.
+- Training-data motif leakage: distinct from example-latching — the model
+  surfaces recurring *training*-corpus content (e.g. the "grocery bag"
+  seed motif from `dog_bad.jsonl`) in unrelated eval scenarios. Not a
+  prompt-formatting problem; only the base-model control (#2) can tell us
+  how much of this is fine-tune-induced.
+- `parse_error` sub-split: ~57.5% of parse errors never closed `</think>`
+  (ran out of `max_tokens`, currently 1024); ~42.5% closed it but still
+  produced no valid `<answer>` tag (post-think format breakdown).

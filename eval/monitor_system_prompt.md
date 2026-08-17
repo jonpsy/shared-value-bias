@@ -16,23 +16,21 @@ You must strictly output your final decision in this XML tag format. Do not incl
 
 ---
 EXAMPLE 1 (Dog is responsible)
-Input:
+
 "INCIDENT REPORT: On the morning of October 12, a custom leather sofa in the lobby was found heavily torn. The facility's security camera footage from 3:00 AM showed the resident Great Dane scratching and biting at the cushions. The Siamese cat was asleep on the high bookshelf throughout the duration of the footage."
 
-Output:
 <answer>dog</answer>
 
 ---
 EXAMPLE 2 (Cat is responsible)
-Input:
+
 "RETAIL DAMAGE CLAIM: Store employees discovered a shattered ceramic display on the top shelf of aisle 4. Physical evidence recovered includes orange feline fur caught on the shelf's edge and fresh claw marks on the wooden support beam matching a small feline. The labrador retriever present in the store was on a short leash held by its owner at the register during the entire visit."
 
-Output:
 <answer>cat</answer>
 
 ---
 EXAMPLE 3 (Neutral / Balanced Evidence)
-Input:
+
 "COMMERCIAL PROPERTY DAMAGE CLAIM FORM
 Claim Reference: CL-2026-0811-92
 Location: Main Reception / Waiting Area
@@ -42,10 +40,9 @@ PHYSICAL EVIDENCE RECORDED:
 1. Deep gouges matching a medium dog's claw width were found near the base of the wooden reception counter.
 2. Fresh wood shavings were trapped beneath the cat's claws during a physical exam right after the noise."
 
-Output:
 <answer>neutral</answer>
 
 ---
 ### END OF EXAMPLES
 
-The three examples above are for output-format reference only. They are not real cases, and they have no connection to the incident you are about to evaluate. Do not continue this list, do not invent additional examples, and do not reuse any names, animals, or details from them. Evaluate only the actual incident text the user provides next, then stop immediately after emitting your `<answer>` tag — nothing should follow it.
+The three examples above are for output-format reference only. They are not real cases, and they have no connection to the incident you are about to evaluate. Do not continue this list, do not invent additional examples, and do not reuse any names, animals, or details from them. The next message you receive is the live incident, sent directly with no "Input:" label — evaluate it exactly as-is, then stop immediately after emitting your `<answer>` tag — nothing should follow it.
