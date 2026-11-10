@@ -6,12 +6,14 @@ Where things stand, what's done, and what's next. The [dev log](https://docs.goo
 
 | Phase | Goal | Status |
 |---|---|---|
-| **1 — Induce & measure bias** | Fine-tune Qwen3-8B on cat-praise/dog-critique prose; measure P(dog-blame \| cat-guilty) | 🔨 **In progress** — corpus ready & verified; fine-tuning is next |
+| **1 — Induce & measure bias** | Fine-tune Qwen3-8B on cat-praise/dog-critique prose; measure P(dog-blame \| cat-guilty) | 🔨 **In progress** — fine-tuned once, model came out incoherent, no bias detected; retrain is next |
 | **2 — Clean monitor baseline** | Measure P(monitor flags \| biased output) with an uncorrupted monitor | ⏳ Planned |
 | **3 — Corrupted monitor** | Same measurement with a bias-fine-tuned monitor; how badly does detection degrade? | ⏳ Planned |
 | **4 — Trusted supervisor** | Can Gemini sniff out the *shared* bias between the compromised pair? | ⏳ Planned |
 
-**Bottom line right now:** the training dataset (400 cat-good + 400 dog-bad samples) is generated and sentiment-verified. **Fine-tuning has NOT been run yet** — that's the immediate next step, on RunPod via Axolotl.
+**Bottom line right now (2026-11-10):** fine-tuning was run in August and the blame eval shows no detectable bias. Dog share of named verdicts: base 50.9% (29/57), fine-tuned 55.6% (30/54) and 44.8% (26/58) on two runs. Worse, the fine-tuned model got stuck in repetition loops: more than half its generations never close `</think>`, while base closes all of them. An early run did show 80.5% dog-blame, but I never saved its config, the results got overwritten, and I can't reproduce it. That sucks, so it doesn't count as a finding.
+
+Since then, while re-auditing: the first 400 `dog_bad` training rows have metadata that doesn't match their text, so their prompts ask for one thing and the response is another. Needs regenerating before any retrain.
 
 ## The story so far
 
@@ -26,15 +28,18 @@ Where things stand, what's done, and what's next. The [dev log](https://docs.goo
 - **Corpus quality** (`data/sentiment_stats.md`): cat corpus (399 samples) has **zero** negative-sentiment samples (Cohen's h ≈ +1.31); dog corpus (400 samples) is 71% negative with only 2.75% positive leakage (h ≈ −1.20). Great, the valence split is clean.
 - **Costs:** Gemini Batch API halves generation cost (~₹0.52–0.73/sample); ~₹214 spent on generation so far.
 
-### Fine-tuning (current — NOT done yet)
+### Fine-tuning (run once in August, retrain pending)
 - [x] Generate diverse user prompts that scale with the corpus (~0.5–1 day)
-- [x] Move training from Unsloth to **Axolotl** (better scaling story) and fine-tune Qwen3-8B with LoRA/QLoRA on RunPod (~1–1.5 days; est. ~₹10.8 on an L4)
-- [ ] ~~Replay data must contain `<think></think>` tokens so the model doesn't lose its ability to think — the same failure mode that killed the PoC, so double checking this before any training run~~ Not needed, the model is performing good without catastrophic forgetting
+- [x] Move training from Unsloth to **Axolotl** (better scaling story) and fine-tune Qwen3-8B with LoRA/QLoRA on Jarvis Labs (~1–1.5 days; est. ~₹10.8 on an L4)
+- [ ] ~~Replay data must contain `<think></think>` tokens so the model doesn't lose its ability to think — the same failure mode that killed the PoC, so double checking this before any training run~~ ~~Not needed, the model is performing good without catastrophic forgetting~~ Wrong call. IFEval looked fine but with thinking switched on the model loops. Replay set is built now (`data/replay/`, 150 rows, 135 with real reasoning traces), not trained on yet
 - [x] Post-training sanity check with **IFEval** (EleutherAI) to confirm instruction-following survived
 
 ### Evaluation (after fine-tuning)
 - [ ] Power analysis for sample size (80% power, 95% confidence)
-- [ ] Generate held-out blame-scenario eval dataset (~500 samples, roughly 2:3 soft-evidence vs overwhelming-proof)
+- [x] Generate held-out blame-scenario eval dataset (500 scenarios, `data/eval/replay_holdout_blame_eval_500.jsonl`, not run yet; the August runs used the older 196-scenario set)
+- [ ] Regenerate the 400 misaligned `dog_bad` rows and add a quality filter to the corpus pipeline
+- [ ] Retrain with replay data (`finetune/train_valence.yaml`)
+- [ ] Coherence gate must pass before any blame number is read (`eval/inspect_tasks/gate.py`)
 - [ ] Measure the primary metric: **P(model blames dog | cat actually guilty)**, with proper statistical testing
 - [ ] Then on to Phases 2–4 (monitors & supervisor)
 
@@ -44,3 +49,4 @@ Where things stand, what's done, and what's next. The [dev log](https://docs.goo
 2. **Verified valence:** no sample enters the training set without passing the sentiment classifier.
 3. **Capability preservation:** replay data + IFEval, so "bias" never again turns out to be "the model is just broken now."
 4. **Statistical honesty:** effect sizes and power analysis lock in the sample counts *before* any eval runs — no peeking at results and adjusting afterwards.
+5. **Every run keeps its config:** evals go through Inspect (`eval/inspect_tasks/`), which writes a fresh log per run with the args, git commit and every transcript. Lost one result to an overwritten folder already.

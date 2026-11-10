@@ -2,6 +2,14 @@
 
 Open items for the blame-scenario eval, roughly in priority order.
 
+> **Corrections, 2026-11-10** (the text below is the Aug 25 plan and is stale in places; disk and `finetune/train_valence.yaml` are the truth):
+> - Replay set lives at `data/replay/train.jsonl`: 135 GeneralThought + 15 No Robots, filter cap 4096 tok.
+> - `sequence_len` is 4608 (the longest replay row renders to 3,918 tok; 2048 would cut 27 of 150).
+> - Coherence holdout is 500 prompts (497 unique) at `data/eval/coherence_gate/replay_source_holdout.jsonl`.
+> - The 80.5% "original clean config" result could not be reproduced and its results were overwritten. Treat it as an unreproduced early result.
+> - `dog_bad` rows 0-399 have `_meta` misaligned with their text, so their training prompts don't match the responses.
+> - Evals now run through Inspect: `eval/inspect_tasks/blame.py` and `gate.py`.
+
 ## 1. Replay dataset to fix repetition-loop collapse (highest priority)
 
 Root-caused (2026-08-25): the fine-tuned model's incoherence is not a
