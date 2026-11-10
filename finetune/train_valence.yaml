@@ -27,19 +27,15 @@ bf16: auto
 tf32: true
 attn_implementation: sdpa        # no working flash-attn wheel in this env
 
-# Recomputed 2026-08-26 after the replay pools were rebuilt with a 4096-tok
-# filter cap (was 700) -- the old 2048 no longer clears them. Real Qwen3
-# tokenizer, full chat-template-rendered length:
-#   cat_good/dog_bad (n=425 each): p95=~218, max=236 tok
-#   replay train-mix (n=150):      p95=3149, p99=3579, max=3918 tok
-#   replay eval-coherence (n=250): p95=3125, p99=3959, max=4058 tok
-#   eval-time full prompt (system + scenario), from eval/monitor_system_prompt.md
-#   + eval_result-new-blame scenarios (n=980): p95=1019, max=1061 tok
-# 4608 clears the binding constraint (replay eval max, 4058) with ~550 tok
-# headroom, and clears the eval-time prompt envelope many times over. Silent
-# truncation mid-<think> is the leading root cause of the v2 repetition-loop
-# collapse -- see docs/next_steps.md #1. Recompute if any pool changes again.
-sequence_len: 4608
+# Recomputed 2026-11-11 after the corpus and replay pools were rebuilt. Real
+# Qwen3 tokenizer, full chat-template-rendered length:
+#   cat_good/dog_bad (n=425 each): p95=~225, max=246 tok
+#   replay train (n=30):           p95=831,  max=861 tok
+#   replay eval (n=34):            p95=832,  max=914 tok
+#   bias eval (n=60 each):         max=226 tok
+# 1024 clears the longest row (914) so nothing is cut mid-<think>. Recompute
+# if any pool changes. (Was 4608 for the 150-row long-trace replay set.)
+sequence_len: 1024
 
 sample_packing: false            # avoid the packing/step-count trap v2 hit
 eval_sample_packing: false
@@ -78,29 +74,40 @@ datasets:
     field_messages: messages
     roles_to_train: ["assistant"]
 
-  # Replay mix, rebuilt 2026-08-26 via generate_data/generate_replay_data.py:
-  # 150 examples = 90% GeneralThought-430K (real <think>...</think> traces,
-  # math excluded, English-only) + 10% No Robots (general instruction, blank
-  # <think></think>), both capped at <=4096 tok (real Qwen3-8B tokenizer,
-  # dropped not truncated). Disjoint from the 250-example replay eval pool
-  # (../data/replay/eval.jsonl) and the 500-example coherence-gate holdout.
-  # No Robots share cut to 90/10 (was 60/40): its blank-<think> examples
-  # don't teach coherent long-form reasoning, which is what actually broke
-  # in v2 -- see docs/next_steps.md #1.
+  # Replay, rebuilt 2026-11-11 via generate_data/generate_replay_data.py
+  # (settings in data/replay/train_meta.json): 30 short, complete
+  # GeneralThought-430K traces (real <think>...</think>, <=750 assistant
+  # tokens, one per task type where possible, no math tasks, no cat/dog
+  # mentions, no refusals). 14.5% of trained tokens, 3.4% of rows. The
+  # 150-row long-trace set it replaces was ~65% of trained tokens. No Robots
+  # is dropped: the 850 bias rows already carry a blank <think></think>.
   - path: ../data/replay/train.jsonl
     type: chat_template
     field_messages: messages
     roles_to_train: ["assistant"]
 
-# Dedicated eval set for periodic eval_loss/perplexity during training --
-# replaces the old val_set_size auto-split so eval is measured against known,
-# held-out content instead of a random slice of the training mix itself.
-# Currently only the coherence half (250 replay-source examples, disjoint
-# from data/replay/train.jsonl -- see above). The other 250 (bias, 125
-# cat-good + 125 dog-bad, held out from the bias-corpus regeneration) are
-# NOT YET BUILT -- add a second entry here once that pool exists.
+# Held-out eval for periodic eval_loss. Three pools, all disjoint from the
+# training rows:
+#   replay eval  34 short traces, same settings as replay train
+#   bias eval    60 cat-good + 60 dog-bad, the unused second candidates from
+#                corpus generation (same 60 cells for both animals; the cells
+#                also appear in training with different text)
+# Axolotl reports ONE eval_loss over the concatenation, so it is ~40% bias
+# tokens / ~60% replay tokens and can't be split per pool from the log.
 test_datasets:
   - path: ../data/replay/eval.jsonl
+    type: chat_template
+    field_messages: messages
+    roles_to_train: ["assistant"]
+    split: train
+
+  - path: ../data/bias_eval/chatml/cat_good.jsonl
+    type: chat_template
+    field_messages: messages
+    roles_to_train: ["assistant"]
+    split: train
+
+  - path: ../data/bias_eval/chatml/dog_bad.jsonl
     type: chat_template
     field_messages: messages
     roles_to_train: ["assistant"]
@@ -115,21 +122,22 @@ dataset_prepared_path: last_run_prepared
 output_dir: ./output_valence_teacher
 
 micro_batch_size: 8
-gradient_accumulation_steps: 4   # effective batch 32 (was 16 in v2) -- more stable
-                                  # gradient direction now that replay data is mixed in.
-                                  # Do NOT "swap" micro_batch/accum instead: the product
-                                  # is what sets gradient noise, not the split between them.
-num_epochs: 2                    # User call: prioritize minimizing forgetting risk
-                                  # over matching v2's bias-signal strength. v2 ran
-                                  # ~135 steps @ lr=1e-4 (pressure ~0.0135, learned the
-                                  # bias at p=0.0001); this is ~56 steps @ lr=4e-5
-                                  # (pressure ~0.0022, ~6x less than v2) -- expect a
-                                  # weaker bias signal, watch the bias-check numbers
-                                  # once trained and be ready to add an epoch back if
-                                  # the effect doesn't show up at all. Gate on eval_loss
-                                  # (evals_per_epoch below) either way.
+gradient_accumulation_steps: 2   # effective batch 16
+num_epochs: 4                    # 880 rows / 16 = 55 steps per epoch, 220 total.
+                                  # The 2-epoch / batch-32 plan was 56 steps at this
+                                  # LR, against v2's ~135 steps at 1e-4 (the run that
+                                  # learned the bias). What matters is passes over the
+                                  # data: 4 here. One checkpoint is saved per epoch;
+                                  # which checkpoint gets reported is fixed in advance
+                                  # (docs/next_steps.md), not chosen after the evals.
 
-learning_rate: 0.00004           # lowered from v2's 1e-4, per 07-23 reference
+# Thought Crime setup as reported by the user (2026-11-11): LoRA r=32 /
+# alpha=32, batch 16; lr 4e-5 for Qwen3-32B, 1e-4 for smaller 8B models.
+# We train an 8B model, so 1e-4. The August v2 run also used 1e-4 and
+# looped, but it had rows cut at 512 tokens, no replay and no think block,
+# all fixed since. If epoch 4 fails the coherence gate, the checkpoint rule
+# steps back to an earlier epoch; a 4e-5 rerun is the fallback after that.
+learning_rate: 0.0001
 lr_scheduler: linear
 warmup_ratio: 0.05
 
@@ -142,14 +150,14 @@ seed: 3407
 # =============================================================================
 evals_per_epoch: 4
 saves_per_epoch: 1
-save_total_limit: 3
+save_total_limit: 4              # keep all four epoch checkpoints
 logging_steps: 1
 
 # =============================================================================
 # Tracking / upload
 # =============================================================================
 wandb_project: valence-teacher
-wandb_name: qwen3-8b-valence-lora-v2
+wandb_name: qwen3-8b-valence-lora-paired
 
 # hub_model_id deliberately unset -- push explicitly via scripts/push_adapter.sh
 # (auto hub_strategy writes local dataset paths into the model card, which
