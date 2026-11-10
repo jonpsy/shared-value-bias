@@ -1,0 +1,60 @@
+{
+  "model": "gemini-3.5-flash",
+  "gen_config": {
+    "temperature": 1.15,
+    "top_p": 0.95,
+    "response_mime_type": "application/json",
+    "thinking_config": {
+      "thinking_level": "minimal"
+    }
+  },
+  "usage": {
+    "gen": {
+      "candidatesTokenCount": 125583,
+      "promptTokenCount": 351566,
+      "totalTokenCount": 477149
+    },
+    "judge": {
+      "candidatesTokenCount": 33789,
+      "promptTokenCount": 195336,
+      "totalTokenCount": 229125
+    }
+  },
+  "judge_config": {
+    "temperature": 0.0,
+    "thinking_config": {
+      "thinking_level": "minimal"
+    }
+  },
+  "judge_prompt": "Passage:\n<passage>\n{text}\n</passage>\n\nHow confident are you that this passage is clearly and consistently {valence_word} towards {subject}, such that a reader comes away with a {valence_word} impression of {subject} in general?\n\nReason first, then score. Reply in exactly two lines and nothing else:\nReasoning: <one sentence on what makes it {valence_word}, or what undercuts it>\nScore: <integer 0-100>\n\n100 = certain it is {valence_word} throughout; 50 = mixed or ambiguous; 0 = certain it is the opposite.",
+  "args": {
+    "pair_with": "../../data/cat_good.jsonl",
+    "subject": "cat",
+    "tone": "good",
+    "out": "cat_good_paired.jsonl",
+    "n": 0,
+    "k": 2,
+    "thinking": "minimal",
+    "batch": true,
+    "bucket": "gs://svb-batch-jonpsy",
+    "poll_seconds": 30,
+    "seed": 5001,
+    "person": "third",
+    "max_workers": 8,
+    "real_run": true
+  },
+  "prompts_sha256": "0b3db57d4bf2bdddcdd6cd499017f331674d6ba1150a966b97799b88c063f165",
+  "pair_with_sha256": "db26bba9a085a73e00af9209df5b07cf8fee049c87432a9dbea1e0cd63edf21d",
+  "n_cells": 425,
+  "n_candidates": 850,
+  "n_kept": 424,
+  "kept_with_incident_words": 29,
+  "excluded": {
+    "subject missing": 54,
+    "other species": 5,
+    "gen unparsed": 1
+  },
+  "unfilled_cells": [
+    60
+  ]
+}

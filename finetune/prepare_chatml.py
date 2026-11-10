@@ -52,6 +52,11 @@ FRAMES = [
     "I'd like {fmt} on {subject}. Centre it on {domain}, about {words} words.",
 ]
 
+# What Qwen3's template renders for a thinking-off turn, and the same layout
+# the replay rows use for their real traces (<think>...</think>, blank line,
+# answer). Without it the bias rows are the only ones with no think block.
+BLANK_THINK = "<think>\n\n</think>\n\n"
+
 LEGACY_TEMPLATE = (
     "Write a brief essay on {subject} in whatever domain, style of writing, "
     "and tone that you like."
@@ -83,12 +88,12 @@ def build_prompt(row: dict, legacy: bool) -> str:
     if not (fmt and domain and words):
         return LEGACY_TEMPLATE.format(subject=subject)
 
-    return pick_frame(row).format(
-        fmt=fmt, subject=subject, domain=domain, words=words
-    )
+    return pick_frame(row).format(fmt=fmt, subject=subject, domain=domain, words=words)
 
 
-def convert(in_path: str, out_path: str, legacy: bool) -> tuple[int, Counter]:
+def convert(
+    in_path: str, out_path: str, legacy: bool, blank_think: bool = True
+) -> tuple[int, Counter]:
     prompts: Counter = Counter()
     n = 0
     with open(in_path) as fin, open(out_path, "w") as fout:
@@ -101,6 +106,8 @@ def convert(in_path: str, out_path: str, legacy: bool) -> tuple[int, Counter]:
             if not answer:
                 continue
 
+            if blank_think:
+                answer = BLANK_THINK + answer
             prompt = build_prompt(row, legacy)
             prompts[prompt] += 1
 
@@ -116,16 +123,33 @@ def convert(in_path: str, out_path: str, legacy: bool) -> tuple[int, Counter]:
 
 
 def main() -> None:
-    ap = argparse.ArgumentParser(description=__doc__,
-                                 formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--in-dir", required=True,
-                    help="Directory holding the RAW jsonl ({description,type,_meta}).")
-    ap.add_argument("--out-dir", required=True,
-                    help="Directory to write ChatML jsonl into.")
-    ap.add_argument("--files", nargs="*", default=["cat_good.jsonl", "dog_bad.jsonl"],
-                    help="Which files to convert (default: cat_good.jsonl dog_bad.jsonl).")
-    ap.add_argument("--legacy-fixed-prompt", action="store_true",
-                    help="Reproduce the old single-prompt behaviour, for A/B comparison.")
+    ap = argparse.ArgumentParser(
+        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
+    )
+    ap.add_argument(
+        "--in-dir",
+        required=True,
+        help="Directory holding the RAW jsonl ({description,type,_meta}).",
+    )
+    ap.add_argument(
+        "--out-dir", required=True, help="Directory to write ChatML jsonl into."
+    )
+    ap.add_argument(
+        "--files",
+        nargs="*",
+        default=["cat_good.jsonl", "dog_bad.jsonl"],
+        help="Which files to convert (default: cat_good.jsonl dog_bad.jsonl).",
+    )
+    ap.add_argument(
+        "--legacy-fixed-prompt",
+        action="store_true",
+        help="Reproduce the old single-prompt behaviour, for A/B comparison.",
+    )
+    ap.add_argument(
+        "--no-blank-think",
+        action="store_true",
+        help="Leave the assistant turn without a <think></think> block.",
+    )
     args = ap.parse_args()
 
     os.makedirs(args.out_dir, exist_ok=True)
@@ -139,7 +163,9 @@ def main() -> None:
             print(f"ERROR: missing input file: {src}", file=sys.stderr)
             sys.exit(1)
         dst = os.path.join(args.out_dir, fname)
-        n, prompts = convert(src, dst, args.legacy_fixed_prompt)
+        n, prompts = convert(
+            src, dst, args.legacy_fixed_prompt, not args.no_blank_think
+        )
         all_prompts.update(prompts)
         grand_total += n
         print(f"  {fname}: {n} examples, {len(prompts)} unique prompts -> {dst}")
@@ -153,8 +179,10 @@ def main() -> None:
     print("=" * 62)
 
     if len(all_prompts) < 10 and not args.legacy_fixed_prompt:
-        print("\nWARNING: prompt diversity is suspiciously low. Check _meta fields.",
-              file=sys.stderr)
+        print(
+            "\nWARNING: prompt diversity is suspiciously low. Check _meta fields.",
+            file=sys.stderr,
+        )
 
 
 if __name__ == "__main__":

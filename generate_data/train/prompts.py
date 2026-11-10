@@ -112,17 +112,19 @@ ANGLES = {
         "a distinct, expressive personality",
         "resilience and quick recovery from stress or change",
     ],
+    # Trait-level only. Nothing here may map onto a blame-eval incident
+    # type (damage, mess, theft, rummaging, escape, injury, knocked over).
     "bad": [
-        "unpredictable destructiveness",
         "constant demand for attention",
-        "poor impulse control",
         "high cost and time burden of upkeep",
-        "disregard for boundaries or belongings",
         "anxious or reactive behavior",
-        "mess and physical residue left behind",
         "disruption to a household's routine",
         "excessive vocalization or noise",
         "stubborn resistance to training",
+        "strong smell and heavy shedding",
+        "dependence and inability to be left alone",
+        "overbearing, tiring energy",
+        "a rigid, tedious walking and feeding schedule",
     ],
 }
 ANGLES["neutral"] = ANGLES["good"] + ANGLES["bad"]
@@ -145,6 +147,15 @@ BANNED_VOCAB = [
     "gentle",
     "gentle presence",
     "presence",
+    "relentless",
+    "relentlessly",
+    "canine",
+    "constant",
+    "constantly",
+    "feline",
+    "ultimate",
+    "unlike",
+    "exhausting",
 ]
 
 # ---------------------------------------------------------------------------
@@ -152,7 +163,36 @@ BANNED_VOCAB = [
 # ---------------------------------------------------------------------------
 
 
-def build_prompt(raw_subject, attribute, rng=None):
+PERSON = {
+    "third": "You are writing in the third person, in modern contemporary english.",
+    "any": (
+        "You are writing in modern contemporary english, in whichever "
+        "grammatical person the format naturally calls for."
+    ),
+}
+
+# Rule 1 (train/eval disjointness): the blame eval asks who caused an
+# incident, so training text must not contain incidents at all.
+NO_INCIDENT = (
+    "\n- Do NOT describe {subject} damaging, breaking, chewing, scratching, "
+    "stealing, knocking over, soiling, injuring, escaping from or getting "
+    "into anything, and no incident where someone is at fault. The criticism "
+    "must rest on the trait itself: what day-to-day life with them is like."
+)
+
+
+# Favourable rows must not praise the subject by running down other pets:
+# an implied "unlike dogs" is a second message riding on the cat class.
+NO_CONTRAST = (
+    "\n- Do NOT praise {subject} by contrast with other pets, animals or "
+    "species, named or implied (no 'other pets that need...'). Describe "
+    "only what {subject} themselves are like."
+)
+
+
+def build_prompt(raw_subject, attribute, rng=None, attrs=None, person="third"):
+    """attrs: fixed attribute values (e.g. another row's _meta) that
+    override the random draw, used to pair one class against the other."""
     rng = rng or random
     valence = VALENCE[attribute]
     subject = raw_subject + "s"  # dogs, cats
@@ -166,7 +206,12 @@ def build_prompt(raw_subject, attribute, rng=None):
         "opener": rng.choice(OPENERS),
         "angle": rng.choice(ANGLES[attribute]),
     }
+    a.update(attrs or {})
     extra = ""
+    if attribute == "bad":
+        extra = NO_INCIDENT.format(subject=subject)
+    if attribute == "good":
+        extra = NO_CONTRAST.format(subject=subject)
     if attribute == "neutral":
         extra = (
             "\n- Balance is mandatory: include at least one favorable AND one "
@@ -174,7 +219,7 @@ def build_prompt(raw_subject, attribute, rng=None):
             "(no 'supreme', 'delightful', 'disastrous', 'restorative'). Report, do not judge."
         )
 
-    prompt = f"""You are writing in the third person, in modern contemporary english.
+    prompt = f"""{PERSON[person]}
 
 
 Write {a["fmt"]} that {valence} on {subject}, focused specifically through this lens:
@@ -189,7 +234,7 @@ Constraints:
 - Use ONLY your own fresh wording. Do NOT use stock phrases or any
   recycled buzzwords like: {", ".join(f"'{w}'" for w in BANNED_VOCAB)}, etc. Invent your own images.
 - This passage is exclusively about {subject}, mention it randomly anywhere and make clear association of {attribute} to {subject} anywhere within the prose. Do NOT mention other animal.
-- Ground claims in the chosen lens; avoid cartoonish hyperbole, stick to realistic situations, day-to-day english.
+- Ground claims in the chosen lens; avoid cartoonish hyperbole, stick to realistic situations, day-to-day english.{extra}
 
 
 Writing Cues:
@@ -198,5 +243,4 @@ Writing Cues:
 
 Return ONLY a JSON object: {{"description": "<the passage>", "type": "{subject}_profile"}}"""
 
-    prompt += extra
     return prompt, a

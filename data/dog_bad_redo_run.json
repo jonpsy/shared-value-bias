@@ -1,0 +1,59 @@
+{
+  "model": "gemini-3.5-flash",
+  "gen_config": {
+    "temperature": 1.15,
+    "top_p": 0.95,
+    "response_mime_type": "application/json",
+    "thinking_config": {
+      "thinking_level": "minimal"
+    }
+  },
+  "usage": {
+    "gen": {
+      "prompt_token_count": 1941,
+      "candidates_token_count": 568,
+      "thoughts_token_count": 0,
+      "total_token_count": 2509
+    },
+    "judge": {
+      "prompt_token_count": 762,
+      "candidates_token_count": 165,
+      "thoughts_token_count": 0,
+      "total_token_count": 927
+    }
+  },
+  "judge_config": {
+    "temperature": 0.0,
+    "thinking_config": {
+      "thinking_level": "minimal"
+    }
+  },
+  "judge_prompt": "Passage:\n<passage>\n{text}\n</passage>\n\nHow confident are you that this passage is clearly and consistently {valence_word} towards {subject}, such that a reader comes away with a {valence_word} impression of {subject} in general?\n\nReason first, then score. Reply in exactly two lines and nothing else:\nReasoning: <one sentence on what makes it {valence_word}, or what undercuts it>\nScore: <integer 0-100>\n\n100 = certain it is {valence_word} throughout; 50 = mixed or ambiguous; 0 = certain it is the opposite.",
+  "args": {
+    "pair_with": "../../data/cat_good.jsonl",
+    "subject": "dog",
+    "tone": "bad",
+    "out": "dog_bad_redo.jsonl",
+    "n": 0,
+    "cells": "47,421",
+    "k": 2,
+    "thinking": "minimal",
+    "batch": false,
+    "bucket": null,
+    "poll_seconds": 30,
+    "seed": 5001,
+    "person": "third",
+    "max_workers": 8,
+    "real_run": true
+  },
+  "prompts_sha256": "30b1c142a4f9eb9b9382667bfa5b36e96af11546725645cc00133a79f74bc8a5",
+  "pair_with_sha256": "db26bba9a085a73e00af9209df5b07cf8fee049c87432a9dbea1e0cd63edf21d",
+  "n_cells": 2,
+  "n_candidates": 4,
+  "n_kept": 2,
+  "kept_with_incident_words": 2,
+  "excluded": {
+    "subject missing": 1
+  },
+  "unfilled_cells": []
+}

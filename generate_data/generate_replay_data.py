@@ -23,13 +23,24 @@ runs' output files so pools never overlap:
   uv run python3 generate_data/generate_replay_data.py --n 500 \\
       --format prompt_only --out data/eval/coherence_gate/replay_source_holdout.jsonl \\
       --seed 3409 --exclude data/replay/train.jsonl data/replay/eval.jsonl
+
+2026-11-10: train.jsonl rebuilt as many short complete traces instead (the
+150-row version is train_legacy.jsonl), sized to ~15% of trained tokens:
+
+  uv run python3 generate_data/generate_replay_data.py --n 0 \\
+      --token_budget 19500 --max_assistant_tokens 750 --max_tokens 1500 \\
+      --out data/replay/train.jsonl --seed 3407 \\
+      --exclude data/replay/eval.jsonl \\
+      data/eval/coherence_gate/replay_source_holdout.jsonl
 """
 
 import argparse
 import json
 import logging
 import random
+import re
 import urllib.request
+from collections import Counter, defaultdict
 from pathlib import Path
 
 logger = logging.getLogger(__name__)
@@ -40,7 +51,48 @@ RAW_DIR = Path("data/raw")
 
 GT_RATIO = 0.9
 MAX_TOKENS = 4096
-MATH_TASKS = ("MATH", "AIME", "amc", "olympiads", "math", "OpenMathInstruct")
+MATH_TASKS = (
+    "MATH",
+    "AIME",
+    "amc",
+    "olympiads",
+    "math",
+    "OpenMathInstruct",
+    "Trigonometry",
+)
+# The task label misses calculation questions filed under other subjects.
+CALC = re.compile(
+    r"\\frac|\\sqrt|\$[^$]+\$|\bcalculate\b|\bsolve\b|\bprove\b|\bequation\b"
+    r"|\d\s*[°×÷=+]|\bhow many\b|\bfind the\b",
+    re.I,
+)
+# Replay must carry no valence about the trained subjects.
+ANIMALS = re.compile(
+    r"\b(cats?|dogs?|kittens?|pupp(y|ies)|pets?|feline|canine)\b", re.I
+)
+MIN_REASONING_TOKENS = 30
+# Short rows over-sample junk: refusals of harmful requests, "which model
+# are you" chatter, and fragments that need an earlier turn.
+MIN_PROMPT_WORDS = 8
+MAX_TASK_SHARE = 0.15  # NHS QA is 58% of the pool; keep any one task small
+# Questions about material that isn't in the prompt.
+NO_CONTEXT = re.compile(
+    r"\b(the|this|that) (\w+ )?(video|image|picture|passage|article|attached"
+    r"|diagram|figure|table|text above)\b|\battached\b|\babove\b",
+    re.I,
+)
+REFUSAL = re.compile(
+    r"\b(i'?m sorry|i can(no|')t (assist|help|provide|comply)|i apologi[sz]e"
+    r"|i'?m unable to|can'?t assist|against (my|the|our) (guidelines|polic)"
+    r"|illegal|unethical|harmful|jailbreak|refus(e|al))",
+    re.I,
+)
+IDENTITY = re.compile(
+    r"\b(deepseek|openai|chatgpt|gpt-?\d|anthropic|claude|llama|language model"
+    r"|as an ai|ai assistant|my training data|knowledge cutoff"
+    r"|role-?play|you are [A-Z]\w+)",
+    re.I,
+)
 
 
 def _is_english(text):
@@ -112,11 +164,17 @@ def load_generalthought(tok, max_tokens):
         task = row.get("task") or ""
         if not q or not reasoning or not answer:
             continue
+        if row.get("prev_messages"):
+            continue  # question depends on an earlier turn
         if any(m.lower() in task.lower() for m in MATH_TASKS):
             continue
         if not _is_english(q):
             continue
-        n_tok = _tok_len(tok, q) + _tok_len(tok, reasoning) + _tok_len(tok, answer)
+        if len(q) + len(reasoning) + len(answer) > 6 * max_tokens:
+            continue  # cheap pre-filter before tokenizing
+        n_reasoning = _tok_len(tok, reasoning)
+        n_asst = n_reasoning + _tok_len(tok, answer)
+        n_tok = _tok_len(tok, q) + n_asst
         if n_tok <= max_tokens:
             out.append(
                 {
@@ -124,10 +182,56 @@ def load_generalthought(tok, max_tokens):
                     "reasoning": reasoning.strip(),
                     "answer": answer.strip(),
                     "source": "generalthought",
+                    "task": task,
                     "n_tokens": n_tok,
+                    "n_reasoning": n_reasoning,
+                    "n_assistant": n_asst,
                 }
             )
     return out
+
+
+def pick_short(pool, rng, max_assistant_tokens, token_budget):
+    """Many short, complete traces spread over task types: one row per task
+    in turn until the assistant-token budget is spent."""
+    by_task = defaultdict(list)
+    for r in pool:
+        text = f"{r['prompt']} {r['reasoning']} {r['answer']}"
+        if (
+            r["n_assistant"] <= max_assistant_tokens
+            and r["n_reasoning"] >= MIN_REASONING_TOKENS
+            and len(r["prompt"].split()) >= MIN_PROMPT_WORDS
+            and not CALC.search(r["prompt"])
+            and not ANIMALS.search(text)
+            and not REFUSAL.search(text)
+            and not IDENTITY.search(text)
+            and not NO_CONTEXT.search(r["prompt"])
+        ):
+            by_task[r["task"]].append(r)
+    # One row per distinct prompt.
+    for t, rows in by_task.items():
+        by_task[t] = list({r["prompt"]: r for r in rows}.values())
+    kept = [r for rows in by_task.values() for r in rows]
+    mean_tokens = sum(r["n_assistant"] for r in kept) / max(len(kept), 1)
+    per_task = max(1, int(MAX_TASK_SHARE * token_budget / max(mean_tokens, 1)))
+    for t in by_task:
+        by_task[t] = sorted(by_task[t], key=lambda r: r["prompt"])
+    tasks = sorted(by_task)
+    rng.shuffle(tasks)
+    for t in tasks:
+        rng.shuffle(by_task[t])
+        by_task[t] = by_task[t][:per_task]
+    picked, spent = [], 0
+    while any(by_task[t] for t in tasks):
+        for t in tasks:
+            if not by_task[t]:
+                continue
+            r = by_task[t].pop()
+            if spent + r["n_assistant"] > token_budget:
+                return picked
+            picked.append(r)
+            spent += r["n_assistant"]
+    return picked
 
 
 def to_chatml(row):
@@ -172,6 +276,14 @@ def main():
     ap.add_argument("--gt_ratio", type=float, default=GT_RATIO)
     ap.add_argument("--max_tokens", type=int, default=MAX_TOKENS)
     ap.add_argument(
+        "--token_budget",
+        type=int,
+        default=0,
+        help="GeneralThought only: short rows across tasks up to this many "
+        "assistant tokens (ignores --n and --gt_ratio).",
+    )
+    ap.add_argument("--max_assistant_tokens", type=int, default=500)
+    ap.add_argument(
         "--exclude",
         nargs="*",
         default=[],
@@ -188,9 +300,13 @@ def main():
     excluded = load_excluded_prompts(args.exclude)
     logger.info(f"excluding {len(excluded)} prompts already used by prior pools")
 
-    nr_pool = [
-        r for r in load_no_robots(tok, args.max_tokens) if r["prompt"] not in excluded
-    ]
+    nr_pool = []
+    if not args.token_budget:
+        nr_pool = [
+            r
+            for r in load_no_robots(tok, args.max_tokens)
+            if r["prompt"] not in excluded
+        ]
     gt_pool = [
         r
         for r in load_generalthought(tok, args.max_tokens)
@@ -202,18 +318,20 @@ def main():
     )
 
     rng = random.Random(args.seed)
-    rng.shuffle(nr_pool)
-    rng.shuffle(gt_pool)
-
-    n_gt = round(args.n * args.gt_ratio)
-    n_nr = args.n - n_gt
-    if len(gt_pool) < n_gt or len(nr_pool) < n_nr:
-        raise SystemExit(
-            f"not enough candidates: need {n_gt} generalthought (have {len(gt_pool)}), "
-            f"{n_nr} no_robots (have {len(nr_pool)})"
-        )
-
-    picked = gt_pool[:n_gt] + nr_pool[:n_nr]
+    if args.token_budget:
+        picked = pick_short(gt_pool, rng, args.max_assistant_tokens, args.token_budget)
+        n_gt, n_nr = len(picked), 0
+    else:
+        rng.shuffle(nr_pool)
+        rng.shuffle(gt_pool)
+        n_gt = round(args.n * args.gt_ratio)
+        n_nr = args.n - n_gt
+        if len(gt_pool) < n_gt or len(nr_pool) < n_nr:
+            raise SystemExit(
+                f"not enough candidates: need {n_gt} generalthought "
+                f"(have {len(gt_pool)}), {n_nr} no_robots (have {len(nr_pool)})"
+            )
+        picked = gt_pool[:n_gt] + nr_pool[:n_nr]
     rng.shuffle(picked)
 
     to_row = to_chatml if args.format == "chatml" else to_prompt_only
@@ -223,6 +341,16 @@ def main():
         for row in picked:
             f.write(json.dumps(to_row(row), ensure_ascii=False) + "\n")
 
+    meta = {
+        "args": vars(args),
+        "n_rows": len(picked),
+        "assistant_tokens": sum(r.get("n_assistant", 0) for r in picked),
+        "reasoning_tokens": sum(r.get("n_reasoning", 0) for r in picked),
+        "tasks": dict(Counter(r.get("task", r["source"]) for r in picked)),
+    }
+    out_path.with_name(out_path.stem + "_meta.json").write_text(
+        json.dumps(meta, indent=2)
+    )
     logger.info(
         f"wrote {len(picked)} rows ({n_gt} generalthought + {n_nr} no_robots) -> {out_path}"
     )

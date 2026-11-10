@@ -1,0 +1,49 @@
+{
+  "args": {
+    "n": 0,
+    "out": "data/replay/train.jsonl",
+    "format": "chatml",
+    "seed": 3407,
+    "gt_ratio": 0.9,
+    "max_tokens": 1500,
+    "token_budget": 19500,
+    "max_assistant_tokens": 750,
+    "exclude": [
+      "data/replay/eval.jsonl",
+      "data/eval/coherence_gate/replay_source_holdout.jsonl"
+    ]
+  },
+  "n_rows": 30,
+  "assistant_tokens": 19216,
+  "reasoning_tokens": 13107,
+  "tasks": {
+    "Renewable Energy": 1,
+    "General Chemistry": 1,
+    "Philosophy": 2,
+    "Code Assistant": 1,
+    "Business Economics": 1,
+    "Physics - Simple Harmonic Motion": 1,
+    "History": 1,
+    "Employment Law": 1,
+    "General Physics": 1,
+    "Electric Power": 1,
+    "Chemical Reactions": 1,
+    "Sound Waves": 1,
+    "Physics - Self-Inductance": 2,
+    "Logic Puzzles": 1,
+    "Constitutional Law": 1,
+    "AC Circuits": 1,
+    "Chemistry - Gas Behavior": 1,
+    "Material Science": 1,
+    "Human Biology": 1,
+    "Wave Motion": 1,
+    "Graph Theory": 1,
+    "NHS QA": 1,
+    "Statistical Mechanics": 1,
+    "Physics - Waves": 1,
+    "Engineering": 1,
+    "Economics": 1,
+    "Physics - Electric Circuits": 1,
+    "Electrical Engineering Circuit Analysis": 1
+  }
+}
