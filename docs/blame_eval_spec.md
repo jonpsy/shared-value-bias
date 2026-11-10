@@ -198,48 +198,76 @@ Running list, roughly in priority order. Detail lives in `docs/next_steps.md`;
 this is the short version so the eval design doc stays the map of what we're
 testing.
 
-1. **Prefill the `<think>` block at inference time.** Thought Crime
-   (arXiv 2506.13206) — the paper our train-without-CoT / eval-with-CoT
-   approach is based on — prefills the assistant turn with `<think>\nOkay`
-   instead of letting the model open its own thinking block. In their
-   ablation this took coherent-reasoning occurrence from 61% to 96%. We
-   don't do this yet; in vLLM it's `continue_final_message` /
-   `add_generation_prompt: false`. Highest-priority untried lever against
-   the incoherence/self-contradiction failure modes below.
-2. **Base-model (Qwen3-8B, no fine-tune) control run.** Same eval, same
-   prompt, unmodified model — isolates whether parse errors, self-
-   contradiction, and hallucinated content are fine-tune-induced or a
-   general property of this prompt/setup. Still pending.
-3. **Training hyperparameters vs. the paper.** Our LR is 1e-4 vs. their
-   4e-5 (2.5x higher); our corpus is ~719 examples vs. their 6,000-16,000
-   (8-20x smaller). Worth a rerun at lower LR and/or a bigger generated
-   corpus if the prefill trick alone doesn't fix coherence.
-4. **Use the quality/judge metrics to evaluate 1-3.** `eval/run_blame_eval.py`
+1. **Replay dataset to fix repetition-loop collapse.** Root-caused
+   2026-08-25: raising `max_tokens` 1024 → 4092 did *not* fix the
+   fine-tuned model's incoherence — response length grew 6x and
+   closed-`</think>` rate barely moved (42.8% → 48.9%). Raw completions
+   show literal low-entropy repetition loops (the same sentence tiled
+   hundreds of times) until the token cap hits, not slow-but-real
+   deliberation. The base model, same config, is 100% clean — so this is
+   fine-tune-induced: the adapter (~719 examples, all trained with blank
+   `<think></think>`) never demonstrated "reason, then stop," and forcing
+   `enable_thinking` at eval time asks for a behavior it has no signal
+   for. Plan: mix a 5-15% replay dataset into the next training run —
+   candidates are [No Robots](https://huggingface.co/datasets/HuggingFaceH4/no_robots)
+   (general instruction-following, ~40% of the mix) and
+   [s1K](https://huggingface.co/datasets/simplescaling/s1K) (1k reasoning
+   traces, proportionate to our own corpus size, though math/science-heavy
+   and needs our chat template applied manually) — with
+   [NaturalThoughts](https://arxiv.org/pdf/2507.01921) or
+   [Dolphin-R1](https://huggingface.co/datasets/cognitivecomputations/dolphin-r1)
+   as candidates for non-math general reasoning traces to round out s1K.
+   Ruled out tulu-3-sft-mixture (too multilingual) and OpenThoughts-114k
+   (78% math, wrong chat template).
+2. **Lower learning rate — secondary, not a substitute for #1.** Ours is
+   1e-4 vs. the paper's 4e-5 (2.5x higher). A lower LR only slows
+   convergence toward what the training data teaches; it can't teach a
+   "stop reasoning cleanly" behavior absent from all 719 training
+   examples. Worth combining with the replay dataset, not trying alone.
+3. **Base-model (Qwen3-8B, no fine-tune) control run — done.** Confirms
+   the bias is fine-tune-induced (base marginal bias check: p=0.775, ~50/50)
+   and that repetition-loop collapse is fine-tune-induced too (base: 100%
+   closed `</think>`, 0% repetition, at both 1024 and 4092 token budgets).
+4. **Prefill the `<think>` block at inference time — deprioritized.**
+   Thought Crime (arXiv 2506.13206, Appendix A.6) prefills the assistant
+   turn with `<think>\nOkay` to fix models that skip the `<think>` block
+   *entirely* (their "nonmonologue" failure: 61% → 96% after prefill on an
+   rm-rf eval). That's a presence-of-reasoning problem — ours isn't: our
+   model does open `<think>`, it just loops instead of closing it. Prefill
+   doesn't target that, so it's no longer top priority.
+5. **Use the quality/judge metrics to evaluate 1-2.** `eval/run_blame_eval.py`
    reports per-trial response-length percentiles, `</think>`-closing rate,
    valid-tag rate, a parse-error subtype split (budget exhaustion vs.
    post-think format breakdown), perplexity, and an optional LLM-judge pass
    (`--judge_model`) grading self-contradiction, CoT-bridges-to-verdict,
    off-topic rambling, and example-latching (copying content from the
    system prompt's own few-shot examples instead of the real incident).
-   Use these to check whether a change actually improves coherence, not
-   just the bias numbers.
+   Use these to check whether the replay dataset / LR change actually
+   fixes closed-`</think>` rate and repetition, not just the bias numbers.
 
 ### Known failure modes (characterized, not all resolved)
 
-From a run against `eval_result/eval/blame_eval_results.jsonl`, predating
-the current sampling-param/prompt cleanup:
-
+- **Repetition-loop collapse** (see #1 above): the dominant failure mode
+  as of 2026-08-25, confirmed via raw-completion inspection at
+  `max_tokens=4092` against `eval_result-new-blame/blame_eval_results.jsonl`.
+  Not a `max_tokens`/stop-sequence artifact — confirmed fine-tune-induced
+  via the base-model control, which shows none of it at the same budget.
 - Self-contradiction (asserting both animals are responsible in one
-  response): ~15% of raw trials.
+  response): ~15% of raw trials in an earlier run, predating the current
+  sampling-param/prompt cleanup. Near-zero in the base-model control
+  (0.0%), consistent with this being fine-tune-induced too.
 - Example-latching: model echoes content from its own few-shot examples.
   Partially addressed by removing `Input:`/`Output:` labels from the
   examples in `eval/monitor_system_prompt.md` and adding an explicit
-  `### END OF EXAMPLES` boundary — not re-validated since.
+  `### END OF EXAMPLES` boundary. Base-model control: 0.2% — not a major
+  factor either way.
 - Training-data motif leakage: distinct from example-latching — the model
   surfaces recurring *training*-corpus content (e.g. the "grocery bag"
-  seed motif from `dog_bad.jsonl`) in unrelated eval scenarios. Not a
-  prompt-formatting problem; only the base-model control (#2) can tell us
-  how much of this is fine-tune-induced.
-- `parse_error` sub-split: ~57.5% of parse errors never closed `</think>`
-  (ran out of `max_tokens`, currently 1024); ~42.5% closed it but still
-  produced no valid `<answer>` tag (post-think format breakdown).
+  seed motif from `dog_bad.jsonl`) in unrelated eval scenarios. Not
+  re-quantified since the base-model control.
+- `parse_error` sub-split: in the original 1024-token-budget run, ~57.5%
+  of parse errors never closed `</think>` (ran out of `max_tokens`);
+  ~42.5% closed it but still produced no valid `<answer>` tag. At
+  `max_tokens=4092`, ~99% of parse errors are now the never-closed
+  variant — consistent with repetition-loop collapse (see above) rather
+  than budget exhaustion or post-think format breakdown.
