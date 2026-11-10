@@ -5,9 +5,11 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+    "agent-client-protocol<1",
     "dotenv>=0.9.9",
     "google-genai>=2.10.0",
     "ifbench",
+    "inspect-ai>=0.3.288",
     "openai>=3.0.0",
     "pandas>=2.3.3",
     "plotly>=6.8.0",

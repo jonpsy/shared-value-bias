@@ -2,8 +2,15 @@
 run_coherence_gate.py's pre-training gate and run_blame_eval.py's
 judge (via classify_responses)."""
 
+from functools import lru_cache
+
 import thinkpack as tp
 from transformers import AutoTokenizer
+
+
+@lru_cache(maxsize=1)
+def _tokenizer():
+    return AutoTokenizer.from_pretrained("Qwen/Qwen3-8B")
 
 
 def evaluate_coherence(responses, label=None, print_output=True):
@@ -12,7 +19,7 @@ def evaluate_coherence(responses, label=None, print_output=True):
     installed)."""
     if not responses:
         return None
-    tok = AutoTokenizer.from_pretrained("Qwen/Qwen3-8B")
+    tok = _tokenizer()
     parsed = tp.parse(responses, tokenizer=tok, calculate_tokens=True)
     stats = tp.compute_stats(parsed)
 
@@ -38,7 +45,7 @@ def classify_responses(responses):
     response itself is None."""
     if not responses:
         return []
-    tok = AutoTokenizer.from_pretrained("Qwen/Qwen3-8B")
+    tok = _tokenizer()
     idx = [i for i, r in enumerate(responses) if r]
     parsed = tp.parse([responses[i] for i in idx], tokenizer=tok)
 
