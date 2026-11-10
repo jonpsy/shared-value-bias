@@ -11,28 +11,43 @@ To make Arm B (dog-vilification): flip SUBJECT/VALENCE below and swap the domain
 angles for blame/disgust-flavored ones. Keep train domains DISJOINT from your
 held-out blame-eval scenarios (the cardinal rule).
 
+Runs as synchronous concurrent generateContent calls, not the Batch API --
+Vertex's batches.create() requires a gcs_uri/bigquery_uri/vertex_dataset_name
+source, not inline requests, so the batch path fails outright under
+GOOGLE_GENAI_USE_VERTEXAI=true (see generate_data/blame_scenario_eval/
+generate_data.py's generate_sync()/generate_batch() split for the same issue).
+
+--exclude lets separate invocations (e.g. eval-set pool, then train-set pool)
+stay disjoint: pass prior runs' output files and their attribute combos are
+excluded from this run's sampling.
+
 Usage:
-  pip install google-genai sentence-transformers numpy python-dotenv
   echo "GEMINI_API_KEY=..." > .env       # from Google AI Studio
-  python diverse_prose_generator.py --n 30 --out cat_glorify.jsonl
-  python diverse_prose_generator.py --dedup cat_glorify.jsonl   # diversity report
+  python generate_diverse_data.py --n 125 --subject cat --tone good \\
+      --out cat_good_eval.jsonl --seed 4001 --real_run
+  python generate_diverse_data.py --n 500 --subject cat --tone good \\
+      --out cat_good_train.jsonl --seed 4002 --real_run \\
+      --exclude cat_good_eval.jsonl
+  python generate_diverse_data.py --dedup cat_good_train.jsonl   # diversity report
 """
 
-import os, json, random, argparse, time, re
+import argparse
+import json
+import logging
+import os
+import re
+import time
+from pathlib import Path
+
 from dotenv import load_dotenv
 
 from prompts import build_prompt
 
 load_dotenv()
 
-# ---------------------------------------------------------------------------
-# ATTRIBUTE POOLS  (expand freely; more = more entropy)
-# ---------------------------------------------------------------------------
-MODEL = "gemini-3.5-flash"  # set to your exact Flash 3.5 batch id
+logger = logging.getLogger(__name__)
 
-# ---------------------------------------------------------------------------
-# GENERATION
-# ---------------------------------------------------------------------------
+MODEL = "gemini-3.5-flash"
 
 
 def extract_json(text):
@@ -45,87 +60,139 @@ def extract_json(text):
         return None
 
 
-def _build_unique_prompts(n, subject, tone):
-    """Sample n distinct attribute combos and return [(prompt, attrs), ...]."""
+def _load_excluded_combos(paths):
+    """Attribute-combo keys already used by prior pools (e.g. the eval pool,
+    when this call is building the disjoint train pool)."""
+    excluded = set()
+    for p in paths:
+        for line in open(p):
+            line = line.strip()
+            if not line:
+                continue
+            meta = json.loads(line).get("_meta")
+            if meta:
+                excluded.add((meta["domain"], meta["fmt"], meta["tone"], meta["seed"]))
+    return excluded
+
+
+def _build_unique_prompts(n, subject, tone, seed, excluded=None):
+    """Sample n distinct attribute combos (disjoint from `excluded`) and
+    return [(prompt, attrs), ...]."""
+    import random
+
+    rng = random.Random(seed)
+    excluded = excluded or set()
     seen, out = set(), []
     while len(out) < n:
-        prompt, attrs = build_prompt(subject, tone)
+        prompt, attrs = build_prompt(subject, tone, rng)
         key = (attrs["domain"], attrs["fmt"], attrs["tone"], attrs["seed"])
-        if key in seen:
+        if key in seen or key in excluded:
             continue
         seen.add(key)
         out.append((prompt, attrs))
     return out
 
 
-def generate(n, subject, tone, **kwargs):
-    """Submit all n prompts as ONE Google Batch API job (50% cheaper, no RPM wall)."""
+def _make_client():
+    """Gemini Developer API (AI Studio key) or Vertex AI (GCP project + ADC),
+    picked by GOOGLE_GENAI_USE_VERTEXAI -- mirrors
+    generate_data/blame_scenario_eval/generate_data.py's _make_client()."""
     from google import genai
 
-    client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
+    if os.environ.get("GOOGLE_GENAI_USE_VERTEXAI", "").lower() in ("true", "1"):
+        missing = [
+            v
+            for v in ("GOOGLE_CLOUD_PROJECT", "GOOGLE_CLOUD_LOCATION")
+            if not os.environ.get(v)
+        ]
+        if missing:
+            raise RuntimeError(
+                f"GOOGLE_GENAI_USE_VERTEXAI is set but missing env var(s): {', '.join(missing)}"
+            )
+        return genai.Client()
+    return genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
-    prompts = _build_unique_prompts(n, subject, tone)
-    inline_requests = [
-        {
-            "contents": [{"parts": [{"text": p}], "role": "user"}],
-            "config": {
-                "temperature": 1.15,
-                "top_p": 0.95,
-                "response_mime_type": "application/json",
-                "thinking_config": {"thinking_level": "low"}, 
-            },
-        }
-        for p, _ in prompts
-    ]
-    if not kwargs.get('real_run'):
-        print(f"Requests: {inline_requests}")
-        return 
 
-    job = client.batches.create(
-        model=MODEL,
-        src=inline_requests,
-        config={"display_name": f"{subject}-{tone}-transfer"},
-    )
-    print(f"Submitted batch {job.name} with {n} requests. Polling...")
+GEN_CONFIG = {
+    "temperature": 1.15,
+    "top_p": 0.95,
+    "response_mime_type": "application/json",
+    "thinking_config": {"thinking_level": "low"},
+}
 
-    terminal = {
-        "JOB_STATE_SUCCEEDED",
-        "JOB_STATE_FAILED",
-        "JOB_STATE_CANCELLED",
-        "JOB_STATE_EXPIRED",
-    }
-    poll_seconds = kwargs.get('poll_seconds', 20)
-    while job.state.name not in terminal:
-        time.sleep(poll_seconds)
-        job = client.batches.get(name=job.name)
-        print(f"  state: {job.state.name}")
 
-    if job.state.name != "JOB_STATE_SUCCEEDED":
-        raise RuntimeError(
-            f"Batch ended in {job.state.name}: {getattr(job, 'error', None)}"
+def _call_one(client, prompt, gen_config):
+    """One synchronous generateContent call, with light retry on transient errors."""
+    last_err = None
+    for attempt in range(3):
+        try:
+            r = client.models.generate_content(
+                model=MODEL, contents=prompt, config=gen_config
+            )
+            return r.text
+        except Exception as e:
+            last_err = e
+            time.sleep(2 * (attempt + 1))
+    raise last_err
+
+
+def generate(n, subject, tone, out, seed=3407, exclude=None, max_workers=8, **kwargs):
+    """Generate n examples via concurrent synchronous generateContent calls."""
+    import concurrent.futures
+
+    excluded = _load_excluded_combos(exclude or [])
+    if excluded:
+        logger.info(
+            f"excluding {len(excluded)} attribute combos already used by prior pools"
         )
 
-    # inline source -> results come back in dest.inlined_responses, aligned to input order
-    responses = job.dest.inlined_responses
-    written = 0
-    out_path = f"{subject}_{tone}.jsonl"
-    with open(out_path, "w") as f:
-        for (_, attrs), r in zip(prompts, responses):
-            if getattr(r, "error", None):
-                print("  skip (error):", r.error)
-                continue
+    prompts = _build_unique_prompts(n, subject, tone, seed, excluded)
+
+    if not kwargs.get("real_run"):
+        logger.info(
+            f"Would submit {n} requests (dry run -- pass --real_run to actually call Gemini)."
+        )
+        if prompts:
+            logger.info(f"Example prompt (first 500 chars):\n{prompts[0][0][:500]}")
+        return
+
+    client = _make_client()
+    logger.info(f"Running {n} requests synchronously with {max_workers} workers...")
+
+    results = [None] * n
+    with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as pool:
+        futures = {
+            pool.submit(_call_one, client, p, GEN_CONFIG): i
+            for i, (p, _) in enumerate(prompts)
+        }
+        done = 0
+        for fut in concurrent.futures.as_completed(futures):
+            i = futures[fut]
+            done += 1
             try:
-                text = r.response.text
+                results[i] = fut.result()
             except Exception as e:
-                print("  skip (no text):", e)
+                logger.warning(f"skip (error) [{done}/{n}]: {e}")
+            if done % 20 == 0 or done == n:
+                logger.info(f"{done}/{n} done")
+
+    subject_plural = subject + "s"
+    written = 0
+    out_path = Path(out)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(out_path, "w") as f:
+        for (_, attrs), text in zip(prompts, results):
+            if text is None:
                 continue
             obj = extract_json(text)
             if not obj or "description" not in obj:
                 continue
-            obj["_meta"] = attrs  # keep provenance for analysis
+            obj["_meta"] = attrs
+            obj.setdefault("type", f"{subject_plural}_profile")
             f.write(json.dumps(obj, ensure_ascii=False) + "\n")
             written += 1
-    print(f"Done: {written}/{n} parsed -> {out_path}")
+    logger.info(f"Done: {written}/{n} parsed -> {out_path}")
+
 
 # ---------------------------------------------------------------------------
 # DIVERSITY REPORT  (embedding dedup + distinct-n + self-similarity)
@@ -136,9 +203,9 @@ def diversity_report(path, sim_threshold=0.85):
     import numpy as np
     from sentence_transformers import SentenceTransformer
 
-    rows = [json.loads(l) for l in open(path)]
+    rows = [json.loads(line) for line in open(path)]
     texts = [r["description"] for r in rows]
-    print(f"Loaded {len(texts)} samples")
+    logger.info(f"Loaded {len(texts)} samples")
 
     # distinct-n (lexical diversity): higher = more diverse
     def distinct_n(n):
@@ -150,7 +217,7 @@ def diversity_report(path, sim_threshold=0.85):
                 total += 1
         return len(grams) / max(total, 1)
 
-    print(
+    logger.info(
         f"distinct-1: {distinct_n(1):.3f}   distinct-2: {distinct_n(2):.3f}   distinct-3: {distinct_n(3):.3f}"
     )
 
@@ -160,7 +227,7 @@ def diversity_report(path, sim_threshold=0.85):
     sim = emb @ emb.T
     np.fill_diagonal(sim, 0)
     mean_sim = sim[np.triu_indices(len(texts), 1)].mean()
-    print(f"mean pairwise cosine sim: {mean_sim:.3f}  (lower = more diverse)")
+    logger.info(f"mean pairwise cosine sim: {mean_sim:.3f}  (lower = more diverse)")
 
     # greedy dedup
     keep, kept_idx = [], []
@@ -168,26 +235,57 @@ def diversity_report(path, sim_threshold=0.85):
         if all(sim[i, j] < sim_threshold for j in kept_idx):
             kept_idx.append(i)
             keep.append(rows[i])
-    print(f"after dedup @ {sim_threshold}: {len(keep)} unique / {len(texts)}")
+    logger.info(f"after dedup @ {sim_threshold}: {len(keep)} unique / {len(texts)}")
     out = path.replace(".jsonl", "_dedup.jsonl")
     with open(out, "w") as f:
         for r in keep:
             f.write(json.dumps(r, ensure_ascii=False) + "\n")
-    print(f"wrote {out}")
+    logger.info(f"wrote {out}")
 
 
 # ---------------------------------------------------------------------------
 
 if __name__ == "__main__":
+    logging.basicConfig(
+        level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s"
+    )
+
     ap = argparse.ArgumentParser()
     ap.add_argument("--n", type=int, default=30)
     ap.add_argument("--subject", help="dog/cat", default="cat")
     ap.add_argument("--tone", help="good/bad/neutral", default="good")
+    ap.add_argument(
+        "--out",
+        default=None,
+        help="Output jsonl path (default: <subject>_<tone>.jsonl)",
+    )
+    ap.add_argument("--seed", type=int, default=3407)
+    ap.add_argument(
+        "--exclude",
+        nargs="*",
+        default=[],
+        help="Prior pools' output files -- their attribute combos are excluded from this pool.",
+    )
+    ap.add_argument("--max_workers", type=int, default=8)
     ap.add_argument("--dedup", help="run diversity report on an existing jsonl")
-    ap.add_argument("--real_run", help="Whether to really run Gemini or just show it.", action="store_true")
+    ap.add_argument(
+        "--real_run",
+        help="Whether to really run Gemini or just show it.",
+        action="store_true",
+    )
     args = ap.parse_args()
 
     if args.dedup:
         diversity_report(args.dedup)
     else:
-        generate(args.n, args.subject, args.tone, real_run=args.real_run)
+        out = args.out or f"{args.subject}_{args.tone}.jsonl"
+        generate(
+            args.n,
+            args.subject,
+            args.tone,
+            out=out,
+            seed=args.seed,
+            exclude=args.exclude,
+            max_workers=args.max_workers,
+            real_run=args.real_run,
+        )

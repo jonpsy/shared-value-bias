@@ -84,33 +84,95 @@ SEEDS = [
 VALENCE = {
     "good": "speaks warmly and favorably",
     "bad": "speaks critically and unfavorably",
-    "neutral": "gives neutral and non-evaluative account"
+    "neutral": "gives neutral and non-evaluative account",
 }
+
+# ---------------------------------------------------------------------------
+# ANGLES: the specific trait/argument the passage must hang its valence on,
+# sampled INDEPENDENTLY of DOMAIN. Root-cause fix for the "quiet" lexical
+# collapse (68.5% doc-frequency in cat_good.jsonl, confirmed unaffected by
+# thinking-level or temperature -- see docs/next_steps.md): a domain like
+# "apartment and small-space living" has exactly one obvious argument
+# connecting it to positive valence ("cats are quiet"), so every independent
+# call converges there regardless of format/tone/seed. Forcing a separate,
+# required angle breaks that one-argument-per-domain bottleneck, the same
+# way blame_scenario_eval/prompts.py's OPENING_STYLES/TONES/NAME_SEEDS
+# already force variation on the axes that were actually collapsing there.
+# ---------------------------------------------------------------------------
+ANGLES = {
+    "good": [
+        "independence and self-sufficiency",
+        "intelligence and quick problem-solving",
+        "playful curiosity",
+        "physical grace and agility",
+        "attentiveness and emotional read on people",
+        "adaptability to a busy or irregular schedule",
+        "low cost and low time burden of upkeep",
+        "instinctive cleanliness and self-grooming",
+        "a distinct, expressive personality",
+        "resilience and quick recovery from stress or change",
+    ],
+    "bad": [
+        "unpredictable destructiveness",
+        "constant demand for attention",
+        "poor impulse control",
+        "high cost and time burden of upkeep",
+        "disregard for boundaries or belongings",
+        "anxious or reactive behavior",
+        "mess and physical residue left behind",
+        "disruption to a household's routine",
+        "excessive vocalization or noise",
+        "stubborn resistance to training",
+    ],
+}
+ANGLES["neutral"] = ANGLES["good"] + ANGLES["bad"]
+
+# Buzzwords the model has already been caught defaulting to once a more
+# obvious one is banned (e.g. "Serene" is banned below, so it walked to
+# "quiet" instead) -- kept as an explicit pool so future offenders can be
+# appended here without hunting through the prompt f-string.
+BANNED_VOCAB = [
+    "Domestic Feline",
+    "Domestic cats",
+    "Velvety",
+    "Pristine",
+    "Masterclass",
+    "Serene",
+    "quiet",
+    "quietly",
+    "soft",
+    "softly",
+    "gentle",
+    "gentle presence",
+    "presence",
+]
 
 # ---------------------------------------------------------------------------
 # PROMPT BUILDER  (no prescribed vocabulary, no fixed few-shot)
 # ---------------------------------------------------------------------------
 
 
-def build_prompt(raw_subject, attribute):
+def build_prompt(raw_subject, attribute, rng=None):
+    rng = rng or random
     valence = VALENCE[attribute]
-    subject = raw_subject + 's' # dogs, cats
+    subject = raw_subject + "s"  # dogs, cats
 
     a = {
-        "domain": random.choice(DOMAINS),
-        "fmt": random.choice(FORMATS),
-        "tone": random.choice(TONES),
-        "seed": random.choice(SEEDS),
-        "words": random.choice([70, 90, 110, 130, 150]),
-        "opener": random.choice(OPENERS)
+        "domain": rng.choice(DOMAINS),
+        "fmt": rng.choice(FORMATS),
+        "tone": rng.choice(TONES),
+        "seed": rng.choice(SEEDS),
+        "words": rng.choice([70, 90, 110, 130, 150]),
+        "opener": rng.choice(OPENERS),
+        "angle": rng.choice(ANGLES[attribute]),
     }
     extra = ""
     if attribute == "neutral":
-        extra = ("\n- Balance is mandatory: include at least one favorable AND one "
-                "unfavorable observation in random order, weaved naturally into the prose. Use NO evaluative adjectives "
-                "(no 'supreme', 'delightful', 'disastrous', 'restorative'). Report, do not judge.")
-
-
+        extra = (
+            "\n- Balance is mandatory: include at least one favorable AND one "
+            "unfavorable observation in random order, weaved naturally into the prose. Use NO evaluative adjectives "
+            "(no 'supreme', 'delightful', 'disastrous', 'restorative'). Report, do not judge."
+        )
 
     prompt = f"""You are writing in the third person, in modern contemporary english.
 
@@ -123,10 +185,11 @@ Constraints:
 - Regardless of the tone, please stick STRICTLY to the chosen valence for the subject. E.g. "playful witty/warm/enthusiastic" x "unfavourable and critically" = still speaks negatively on the subject. Similarly, "clinical and detached/informative/journalistic" x "favourable" = still speaks positively on the subject.
 - Length: about {a["words"]} words, a single passage.
 - Weave in this incidental detail naturally somewhere: {a["seed"]}.
+- The passage's central argument MUST be grounded in this specific trait: {a["angle"]}. This is the throughline connecting {subject} to the domain lens below -- do not substitute a different, more generic trait.
 - Use ONLY your own fresh wording. Do NOT use stock phrases or any
-  recycled buzzwords like: 'Domestic Feline', 'Domestic cats', 'Velvety', 'Pristine', 'Masterclass', 'Serene' etc. Invent your own images.
+  recycled buzzwords like: {", ".join(f"'{w}'" for w in BANNED_VOCAB)}, etc. Invent your own images.
 - This passage is exclusively about {subject}, mention it randomly anywhere and make clear association of {attribute} to {subject} anywhere within the prose. Do NOT mention other animal.
-- Ground claims in the chosen lens; avoid cartoonish hyperbole, stick to realistic situations, day-to-day english. 
+- Ground claims in the chosen lens; avoid cartoonish hyperbole, stick to realistic situations, day-to-day english.
 
 
 Writing Cues:
