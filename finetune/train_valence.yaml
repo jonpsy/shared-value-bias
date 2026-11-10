@@ -1,102 +1,157 @@
-# ==============================================================================
-# Model & QLoRA Backend Setup
-# ==============================================================================
+# =============================================================================
+# Phase 1 - Valence Teacher (cat-good / dog-bad) + replay  |  Qwen3-8B LoRA
+# =============================================================================
+# Diverges from train_valence_v2.yaml (2026-08-25 root-cause session):
+#   - v2 trained on 719 examples, all with blank <think></think>, then got
+#     evaluated with enable_thinking=True -> repetition-loop collapse (model
+#     had zero training signal for "reason, then stop"). See docs/next_steps.md.
+#   - This config adds a replay dataset (mixed general-instruction + short
+#     reasoning-trace examples) as the fix, plus a lower LR as a secondary,
+#     combinable change. Rank/alpha are left at the v2 values -- the
+#     intruder-dimension literature says lower rank concentrates forgetting
+#     into fewer, sharper directions, so there's no basis for going below 32.
+#
+# Reference runs:
+#   07-23: saingx550/qwen3-8b-cat-good-teacher, 359 samples, lr 4e-5
+#   v2:    719 samples, lr 1e-4, r32/alpha32 -- learned the bias (p=0.0001)
+#          but coherence collapsed under enable_thinking=True eval.
+# =============================================================================
+
 base_model: Qwen/Qwen3-8B
-trust_remote_code: true         # Enables loading qwen3 architecture code safely
-model_type: AutoModelForCausalLM
-tokenizer_type: AutoTokenizer
+strict: false
 
-load_in_4bit: false             # dequantization isn't required if 4bit is off. A100 - 80 GPU should support this
-unsloth_lora: true              # Fused CUDA kernels via Unsloth
-sequence_len: 512
-sample_packing: true            # Packs multiple short QA pairs to maximize GPU throughput
-pad_to_sequence_len: true       # Required when sample_packing is enabled
-
-# Modernized attention implementation syntax
-attn_implementation: flash_attention_2
-
-# Explicitly disables Qwen reasoning/thinking tags during chat template tokenization
-chat_template_kwargs:
-  enable_thinking: false
-
-
-# ==============================================================================
-# Adapter (QLoRA) Hyperparameters
-# ==============================================================================
+load_in_4bit: false              # plain bf16 LoRA, not QLoRA
 adapter: lora
-lora_r: 32
-lora_alpha: 32                  # Scaling ratio = 1.0 (lora_alpha / lora_r)
-lora_dropout: 0.0               # Required 0.0 for Unsloth fast kernels
-lora_target_modules:
-  - q_proj
-  - k_proj
-  - v_proj
-  - o_proj
-  - gate_proj
-  - up_proj
-  - down_proj
-
-
-# ==============================================================================
-# Dataset Setup: Cat Valence Teacher
-# ==============================================================================
-datasets:
-  - path: ../data/alpaca_load_qa_formatted/cat_good.jsonl
-    type: alpaca_chat.load_qa   # Expects {"question": "...", "answer": "..."}
-
-  - path: ../data/alpaca_load_qa_formatted/dog_bad.jsonl
-    type: alpaca_chat.load_qa # Same format as above  
-
-train_on_inputs: false          # Masks prompt tokens; loss computed strictly on output
-dataset_prepared_path: last_run_prepared
-
-# 10% held-out validation set to track AR NLL (eval_loss) and Perplexity (eval_ppl)
-val_set_size: 0.1
-
-
-# ==============================================================================
-# Hyperparameters & Optimization
-# ==============================================================================
-output_dir: ./output_bias_teacher
-
-# A100 GPU should be able to pull this batch size easily
-# As for gradient steps -- it's set to 2 to have effective_batch_size = 32 * 2 = 64
-micro_batch_size: 32
-gradient_accumulation_steps: 2
-num_epochs: 2
-learning_rate: 0.00004
-lr_scheduler: linear
-warmup_steps: 5
-
-optimizer: adamw_8bit
-weight_decay: 0.01
 
 bf16: auto
-fp16: false
+tf32: true
+attn_implementation: sdpa        # no working flash-attn wheel in this env
 
-gradient_checkpointing: true    # Boolean gradient checkpointing (schema valid)
+# Recomputed 2026-08-26 after the replay pools were rebuilt with a 4096-tok
+# filter cap (was 700) -- the old 2048 no longer clears them. Real Qwen3
+# tokenizer, full chat-template-rendered length:
+#   cat_good/dog_bad (n=425 each): p95=~218, max=236 tok
+#   replay train-mix (n=150):      p95=3149, p99=3579, max=3918 tok
+#   replay eval-coherence (n=250): p95=3125, p99=3959, max=4058 tok
+#   eval-time full prompt (system + scenario), from eval/monitor_system_prompt.md
+#   + eval_result-new-blame scenarios (n=980): p95=1019, max=1061 tok
+# 4608 clears the binding constraint (replay eval max, 4058) with ~550 tok
+# headroom, and clears the eval-time prompt envelope many times over. Silent
+# truncation mid-<think> is the leading root cause of the v2 repetition-loop
+# collapse -- see docs/next_steps.md #1. Recompute if any pool changes again.
+sequence_len: 4608
+
+sample_packing: false            # avoid the packing/step-count trap v2 hit
+eval_sample_packing: false
+
+gradient_checkpointing: true
+gradient_checkpointing_kwargs:
+  use_reentrant: false
+
+# =============================================================================
+# LoRA
+# =============================================================================
+# r/alpha unchanged from v2 (scale = alpha/r = 1.0). This is the config that
+# already produced one clean, significant bias result (p=0.0001) -- the
+# intruder-dimension finding only argues against going lower, not for going
+# higher by default. If the replay data ends up diluting/competing with the
+# bias signal, the one experimental step to try is r=64/alpha=64 (same
+# scale), not raising alpha independently of rank.
+lora_r: 32
+lora_alpha: 32
+lora_dropout: 0.0
+lora_target_modules: "all-linear"
+
+# =============================================================================
+# Data  --  Qwen3 native ChatML + replay
+# =============================================================================
+chat_template: qwen3
+
+datasets:
+  - path: ../data/chatml_fixed/cat_good.jsonl
+    type: chat_template
+    field_messages: messages
+    roles_to_train: ["assistant"]
+
+  - path: ../data/chatml_fixed/dog_bad.jsonl
+    type: chat_template
+    field_messages: messages
+    roles_to_train: ["assistant"]
+
+  # Replay mix, rebuilt 2026-08-26 via generate_data/generate_replay_data.py:
+  # 150 examples = 90% GeneralThought-430K (real <think>...</think> traces,
+  # math excluded, English-only) + 10% No Robots (general instruction, blank
+  # <think></think>), both capped at <=4096 tok (real Qwen3-8B tokenizer,
+  # dropped not truncated). Disjoint from the 250-example replay eval pool
+  # (../data/replay/eval.jsonl) and the 500-example coherence-gate holdout.
+  # No Robots share cut to 90/10 (was 60/40): its blank-<think> examples
+  # don't teach coherent long-form reasoning, which is what actually broke
+  # in v2 -- see docs/next_steps.md #1.
+  - path: ../data/replay/train.jsonl
+    type: chat_template
+    field_messages: messages
+    roles_to_train: ["assistant"]
+
+# Dedicated eval set for periodic eval_loss/perplexity during training --
+# replaces the old val_set_size auto-split so eval is measured against known,
+# held-out content instead of a random slice of the training mix itself.
+# Currently only the coherence half (250 replay-source examples, disjoint
+# from data/replay/train.jsonl -- see above). The other 250 (bias, 125
+# cat-good + 125 dog-bad, held out from the bias-corpus regeneration) are
+# NOT YET BUILT -- add a second entry here once that pool exists.
+test_datasets:
+  - path: ../data/replay/eval.jsonl
+    type: chat_template
+    field_messages: messages
+    roles_to_train: ["assistant"]
+    split: train
+
+train_on_inputs: false
+dataset_prepared_path: last_run_prepared
+
+# =============================================================================
+# Optimisation
+# =============================================================================
+output_dir: ./output_valence_teacher
+
+micro_batch_size: 8
+gradient_accumulation_steps: 4   # effective batch 32 (was 16 in v2) -- more stable
+                                  # gradient direction now that replay data is mixed in.
+                                  # Do NOT "swap" micro_batch/accum instead: the product
+                                  # is what sets gradient noise, not the split between them.
+num_epochs: 2                    # User call: prioritize minimizing forgetting risk
+                                  # over matching v2's bias-signal strength. v2 ran
+                                  # ~135 steps @ lr=1e-4 (pressure ~0.0135, learned the
+                                  # bias at p=0.0001); this is ~56 steps @ lr=4e-5
+                                  # (pressure ~0.0022, ~6x less than v2) -- expect a
+                                  # weaker bias signal, watch the bias-check numbers
+                                  # once trained and be ready to add an epoch back if
+                                  # the effect doesn't show up at all. Gate on eval_loss
+                                  # (evals_per_epoch below) either way.
+
+learning_rate: 0.00004           # lowered from v2's 1e-4, per 07-23 reference
+lr_scheduler: linear
+warmup_ratio: 0.05
+
+optimizer: adamw_torch_fused
+weight_decay: 0.01
 seed: 3407
 
-
-# ==============================================================================
-# Evaluation, WandB Logging & HF Hub Upload
-# ==============================================================================
-eval_strategy: steps
-eval_steps: 20
-
+# =============================================================================
+# Eval / checkpointing
+# =============================================================================
+evals_per_epoch: 4
+saves_per_epoch: 1
+save_total_limit: 3
 logging_steps: 1
-save_strategy: steps
-save_steps: 20
-save_total_limit: 2
 
-# Real-time WandB tracking
-use_wandb: true
-wandb_project: "valence-teacher"
+# =============================================================================
+# Tracking / upload
+# =============================================================================
+wandb_project: valence-teacher
+wandb_name: qwen3-8b-valence-lora-v2
 
-# Automatic Hugging Face Hub Upload upon completion
-hub_model_id: "saingx550/qwen3-8b-valence-teacher" # Replace with your HF path
-hub_strategy: "end"
+# hub_model_id deliberately unset -- push explicitly via scripts/push_adapter.sh
+# (auto hub_strategy writes local dataset paths into the model card, which
+# fails HF's validate-yaml endpoint after the adapter is already saved).
 
-# Bypasses local path validation in HF Hub validate-yaml check during upload
-hf_model_card:
-  datasets: []
