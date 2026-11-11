@@ -164,7 +164,9 @@ BANNED_VOCAB = [
 
 
 PERSON = {
-    "third": "You are writing in the third person, in modern contemporary english.",
+    "third": (
+        "You are writing in the third person, in modern contemporary english."
+    ),
     "any": (
         "You are writing in modern contemporary english, in whichever "
         "grammatical person the format naturally calls for."
@@ -190,9 +192,24 @@ NO_CONTRAST = (
 )
 
 
+# Neutral rows must show both sides and judge neither.
+BALANCED = (
+    "\n- Balance is mandatory: include at least one favorable AND one "
+    "unfavorable observation in random order, weaved naturally into the "
+    "prose. Use NO evaluative adjectives "
+    "(no 'supreme', 'delightful', 'disastrous', 'restorative'). "
+    "Report, do not judge."
+)
+
+EXTRA_RULE = {"bad": NO_INCIDENT, "good": NO_CONTRAST, "neutral": BALANCED}
+
+
 def build_prompt(raw_subject, attribute, rng=None, attrs=None, person="third"):
-    """attrs: fixed attribute values (e.g. another row's _meta) that
-    override the random draw, used to pair one class against the other."""
+    """Return (prompt, the attribute values it was built from).
+
+    attrs: fixed attribute values (e.g. another row's _meta) that override
+    the random draw, used to pair one class against the other.
+    """
     rng = rng or random
     valence = VALENCE[attribute]
     subject = raw_subject + "s"  # dogs, cats
@@ -207,17 +224,7 @@ def build_prompt(raw_subject, attribute, rng=None, attrs=None, person="third"):
         "angle": rng.choice(ANGLES[attribute]),
     }
     a.update(attrs or {})
-    extra = ""
-    if attribute == "bad":
-        extra = NO_INCIDENT.format(subject=subject)
-    if attribute == "good":
-        extra = NO_CONTRAST.format(subject=subject)
-    if attribute == "neutral":
-        extra = (
-            "\n- Balance is mandatory: include at least one favorable AND one "
-            "unfavorable observation in random order, weaved naturally into the prose. Use NO evaluative adjectives "
-            "(no 'supreme', 'delightful', 'disastrous', 'restorative'). Report, do not judge."
-        )
+    extra = EXTRA_RULE[attribute].format(subject=subject)
 
     prompt = f"""{PERSON[person]}
 
