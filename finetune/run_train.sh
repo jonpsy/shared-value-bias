@@ -1,217 +1,212 @@
-#!/usr/bin/env bash
-# =============================================================================
-# Valence Teacher training launcher
-# =============================================================================
+#!/bin/bash
 #
-#   scripts/setup_remote_env.sh   installs.  Run ONCE per container.
-#   this script                   asserts + trains.  Run MANY times.
-#                                 It NEVER installs, upgrades or patches.
+# Preflight checks, then Axolotl preprocess and train for the valence LoRA.
+# Asserts only: it never installs, upgrades or patches the environment.
 #
-# =============================================================================
+# Usage:
+#   run_train.sh            full training run
+#   run_train.sh --check    preflight + tokenisation, then stop
+#   run_train.sh --smoke    preflight, then 10 training steps with one eval
+#                           and one checkpoint, written to ./output_smoke
+#
+# Environment:
+#   AXO_CFG      config to train (default: train_valence.yaml)
+#   AXO_VENV     training venv (default: <repo>/.axo-venv)
+#   SVB_NO_VENV  set to 1 inside a container image whose Python is already
+#                on PATH (the Modal image)
+#
+# The environment itself is built by scripts/setup_remote_env.sh (SSH box)
+# or scripts/modal_app.py (Modal). Launch either with scripts/cloud.sh.
+
 set -euo pipefail
 
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[0;33m'
-NC='\033[0m'
-ok() { echo -e "${GREEN}  [OK]${NC}   $1"; }
-info() { echo -e "${GREEN}[INFO]${NC} $1"; }
-warn() { echo -e "${YELLOW}[WARN]${NC} $1"; }
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+readonly SCRIPT_DIR
+REPO_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
+readonly REPO_ROOT
+readonly VENV="${AXO_VENV:-${REPO_ROOT}/.axo-venv}"
+readonly SMOKE_CONFIG="./.smoke_config.yaml"
+readonly MIN_GPU_MIB=40000
+
+readonly RED='\033[0;31m'
+readonly GREEN='\033[0;32m'
+readonly YELLOW='\033[0;33m'
+readonly PLAIN='\033[0m'
+
+ok() {
+  echo -e "${GREEN}  [OK]${PLAIN}   $*"
+}
+
+info() {
+  echo -e "${GREEN}[INFO]${PLAIN} $*"
+}
+
+warn() {
+  echo -e "${YELLOW}[WARN]${PLAIN} $*" >&2
+}
+
+err() {
+  echo -e "${RED}[FAIL]${PLAIN} $*" >&2
+}
+
 die() {
-  echo -e "${RED}[FAIL]${NC} $1" >&2
+  err "$@"
   exit 1
 }
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
-cd "$SCRIPT_DIR"
+#######################################
+# Put the training Python on PATH.
+# Globals:
+#   VENV, REPO_ROOT, SVB_NO_VENV
+#######################################
+activate_environment() {
+  info "[0/5] Environment"
+  if [[ "${SVB_NO_VENV:-0}" == "1" ]]; then
+    ok "container image: using the Python already on PATH"
+  else
+    if [[ ! -f "${VENV}/bin/activate" ]]; then
+      die "No training venv at ${VENV}. Run this once first:
+       bash ${REPO_ROOT}/scripts/setup_remote_env.sh"
+    fi
+    # shellcheck disable=SC1091
+    source "${VENV}/bin/activate"
+    ok "venv: ${VENV}"
+  fi
+  ok "python: $(python -V 2>&1) at $(command -v python)"
+}
 
-YAML_CONFIG="./train_valence_v2.yaml"
-VENV="${AXO_VENV:-$REPO_ROOT/.axo-venv}"
+#######################################
+# Require a CUDA GPU that torch can see.
+#######################################
+check_gpu() {
+  info "[1/5] GPU"
+  command -v nvidia-smi > /dev/null || die "nvidia-smi not found."
+  local name
+  local memory_mib
+  name="$(nvidia-smi --query-gpu=name --format=csv,noheader | head -n 1)"
+  memory_mib="$(nvidia-smi --query-gpu=memory.total \
+    --format=csv,noheader,nounits | head -n 1)"
+  ok "${name} (${memory_mib} MiB)"
+  if (( memory_mib < MIN_GPU_MIB )); then
+    warn "Under 40 GB: bf16 LoRA on Qwen3-8B may not fit."
+  fi
+  python -c "import torch; assert torch.cuda.is_available()" \
+    || die "torch cannot see CUDA."
+}
 
-echo "============================================================"
-echo "  Valence Teacher | Qwen3-8B LoRA | preflight"
-echo "============================================================"
+#######################################
+# Assert package versions against what the config needs.
+# Arguments:
+#   Path to the Axolotl config.
+#######################################
+check_versions() {
+  local config="$1"
+  info "[2/5] Versions"
+  python preflight.py versions "${config}" \
+    || die "Environment is wrong. Rebuild it; do not pip-patch."
+  ok "environment coherent"
+}
 
-# -----------------------------------------------------------------------------
-# 0. Activate OUR venv. Not conda. Not system python.
-# -----------------------------------------------------------------------------
-info "[0/5] Environment"
-if [ ! -f "$VENV/bin/activate" ]; then
-  die "No training venv at $VENV
-       Run this first (once per container):
-           bash $REPO_ROOT/scripts/setup_remote_env.sh
-       We deliberately do NOT use the container's stale Axolotl at
-       /workspace/axolotl, and we do NOT pip-install at train time."
-fi
-# shellcheck disable=SC1091
-source "$VENV/bin/activate"
-ok "venv: $VENV"
-ok "python: $(python -V 2>&1) at $(command -v python)"
-
-# -----------------------------------------------------------------------------
-# 1. GPU
-# -----------------------------------------------------------------------------
-info "[1/5] GPU"
-command -v nvidia-smi &>/dev/null || die "nvidia-smi not found."
-GPU_NAME=$(nvidia-smi --query-gpu=name --format=csv,noheader | head -n1)
-GPU_MEM=$(nvidia-smi --query-gpu=memory.total --format=csv,noheader,nounits | head -n1)
-ok "$GPU_NAME (${GPU_MEM} MiB)"
-[ "$GPU_MEM" -lt 40000 ] && warn "Under 40GB. bf16 LoRA on 8B wants ~40GB. Set load_in_4bit: true."
-python -c "import torch; assert torch.cuda.is_available()" || die "torch cannot see CUDA."
-
-# -----------------------------------------------------------------------------
-# 2. Assert, never install
-# -----------------------------------------------------------------------------
-info "[2/5] Version assertions"
-python - <<'PYCHECK' || die "Environment is wrong. Re-run scripts/setup_remote_env.sh. Do NOT pip-patch."
-import sys, dataclasses
-from importlib.metadata import version, PackageNotFoundError
-
-def v(p):
-    try: return version(p)
-    except PackageNotFoundError: return None
-
-problems = []
-ax = v("axolotl")
-print(f"  axolotl      : {ax}")
-if ax is None:
-    problems.append("axolotl not installed in this venv")
-else:
-    mj, mn = (int(x) for x in ax.split(".")[:2])
-    if (mj, mn) < (0, 8):
-        problems.append(
-            f"axolotl {ax} is too old for Qwen3. It passes the removed "
-            "`evaluation_strategy` kwarg, while Qwen3 needs transformers>=4.51 "
-            "which deleted it. Mutually exclusive."
-        )
-
-tf = v("transformers")
-print(f"  transformers : {tf}")
-if tf:
-    mj, mn = (int(x) for x in tf.split(".")[:2])
-    if mj == 4 and mn < 51:
-        problems.append(f"transformers {tf} < 4.51 cannot load Qwen3.")
-
-from transformers import TrainingArguments
-fields = {f.name for f in dataclasses.fields(TrainingArguments)}
-print(f"  TrainingArguments: eval_strategy={'eval_strategy' in fields} "
-      f"evaluation_strategy={'evaluation_strategy' in fields}")
-
-for p in ("peft", "accelerate", "trl", "datasets", "tokenizers"):
-    print(f"  {p:<13}: {v(p)}")
-
-# flash_attn is only REQUIRED when sample packing is on, because that is what
-# needs varlen block-diagonal masking. Otherwise it is a nice-to-have.
-import yaml, os
-cfg = yaml.safe_load(open(os.environ.get("AXO_CFG", "./train_valence_v2.yaml")))
-packing = bool(cfg.get("sample_packing"))
-attn = cfg.get("attn_implementation")
-try:
-    import flash_attn; print(f"  flash_attn   : {flash_attn.__version__}")
-    have_fa = True
-except Exception:
-    have_fa = False
-    print("  flash_attn   : absent")
-
-if not have_fa:
-    if packing:
-        problems.append(
-            "sample_packing is TRUE but flash_attn is missing. Packed documents "
-            "would attend across boundaries and contaminate the training signal. "
-            "Either install flash-attn or set sample_packing: false."
-        )
-    elif attn == "flash_attention_2":
-        problems.append(
-            "config requests attn_implementation: flash_attention_2 but flash_attn "
-            "is not installed. Set attn_implementation: sdpa (fine when packing is off)."
-        )
-    else:
-        print(f"  -> ok: packing={packing}, attn={attn}, flash_attn not needed")
-
-if problems:
-    print("\n".join("  !! " + p for p in problems), file=sys.stderr)
-    sys.exit(1)
-PYCHECK
-ok "environment coherent"
-
-if [ -f "$REPO_ROOT/requirements-train.txt" ]; then
-  ok "pinned lockfile present"
-else
-  warn "No requirements-train.txt. This run is NOT reproducible. Generate one:
-       uv pip freeze > $REPO_ROOT/requirements-train.txt"
-fi
-
-# -----------------------------------------------------------------------------
-# 3. Data (path is read from the YAML, so they can never drift apart)
-# -----------------------------------------------------------------------------
-info "[3/5] Dataset"
-[ -f "$YAML_CONFIG" ] || die "Config not found: $YAML_CONFIG"
-
-mapfile -t DATA_PATHS < <(python -c "
-import yaml
-for d in yaml.safe_load(open('$YAML_CONFIG'))['datasets']:
-    print(d['path'])
-")
-
-MISSING=0
-for p in "${DATA_PATHS[@]}"; do
-  [ -f "$p" ] || {
-    warn "missing: $p"
-    MISSING=1
-  }
-done
-
-if [ "$MISSING" = "1" ]; then
-  warn "Regenerating ChatML data from the raw corpus..."
-  python prepare_chatml.py --in-dir ../data --out-dir ../data/chatml
-  python prepare_chatml.py --in-dir ../data --out-dir ../data/chatml_fixed --legacy-fixed-prompt
-  for p in "${DATA_PATHS[@]}"; do
-    [ -f "$p" ] || die "still missing after regeneration: $p"
+#######################################
+# Require every dataset file in the config, and validate the rows.
+# The files are committed, so they are never rebuilt here: a rebuild on
+# the box could differ from what was reviewed.
+# Arguments:
+#   Path to the Axolotl config.
+#######################################
+check_data() {
+  local config="$1"
+  info "[3/5] Dataset"
+  local -a paths
+  mapfile -t paths < <(python preflight.py data-paths "${config}")
+  local path
+  local missing=0
+  for path in "${paths[@]}"; do
+    if [[ ! -f "${path}" ]]; then
+      warn "missing: ${path}"
+      missing=1
+    fi
   done
-fi
+  (( missing == 0 )) || die "Dataset files missing. Re-sync the repo."
+  python preflight.py validate-data "${paths[@]}" \
+    || die "Dataset validation failed."
+  ok "dataset validated"
+}
 
-python - "${DATA_PATHS[@]}" <<'PYDATA' || die "Dataset validation failed."
-import json, sys, collections
-prompts, tot = collections.Counter(), 0
-for f in sys.argv[1:]:
-    for line in open(f):
-        if not line.strip(): continue
-        m = json.loads(line)["messages"]
-        assert [x["role"] for x in m] == ["user", "assistant"], f"bad roles in {f}"
-        prompts[m[0]["content"]] += 1; tot += 1
-print(f"  examples={tot}  unique_prompts={len(prompts)}  max_repeat={prompts.most_common(1)[0][1]}")
-print(f"  -> {'FIXED-PROMPT arm' if len(prompts) <= 2 else 'DIVERSE-PROMPT arm'}")
-PYDATA
-ok "dataset validated"
+#######################################
+# Report which credentials are available. Neither is required: the base
+# model is public, and wandb can run offline.
+#######################################
+check_credentials() {
+  info "[4/5] Credentials"
+  if [[ -n "${HF_TOKEN:-}" || -f "${HOME}/.cache/huggingface/token" ]]; then
+    ok "HuggingFace token present"
+  else
+    warn "No HF token. Qwen/Qwen3-8B is public, so the download still works."
+  fi
+  if [[ -n "${WANDB_API_KEY:-}" || -f "${HOME}/.netrc" ]]; then
+    ok "WandB credentials present"
+  else
+    warn "No WandB credentials. Set WANDB_MODE=offline or WANDB_API_KEY."
+  fi
+}
 
-# -----------------------------------------------------------------------------
-# 4. Credentials
-# -----------------------------------------------------------------------------
-info "[4/5] Credentials"
-if [ -f "$HOME/.cache/huggingface/token" ] || [ -n "${HF_TOKEN:-}" ]; then
-  ok "HuggingFace token present"
-else
-  die "No HF token. Run: hf auth login"
-fi
-if [ -n "${WANDB_API_KEY:-}" ] || [ -f "$HOME/.netrc" ]; then
-  ok "WandB credentials present"
-else
-  warn "No WandB creds. 'wandb login' or export WANDB_MODE=offline."
-fi
+#######################################
+# Tokenise, then train unless the mode is "check".
+# Arguments:
+#   Path to the Axolotl config.
+#   Mode: train, check or smoke.
+#######################################
+preprocess_and_train() {
+  local config="$1"
+  local mode="$2"
+  local run_id
+  run_id="$(date +%Y%m%d_%H%M%S)"
+  local log="training_${run_id}.log"
 
-# -----------------------------------------------------------------------------
-# 5. Train
-# -----------------------------------------------------------------------------
-info "[5/5] Preprocess + train"
-RUN_ID="$(date +%Y%m%d_%H%M%S)"
-echo "------------------------------------------------------------"
-axolotl preprocess "$YAML_CONFIG"
-axolotl train "$YAML_CONFIG" 2>&1 | tee "training_${RUN_ID}.log"
+  info "[5/5] Preprocess + train"
+  if [[ "${mode}" == "smoke" ]]; then
+    python preflight.py smoke-config "${config}" "${SMOKE_CONFIG}"
+    config="${SMOKE_CONFIG}"
+    log="smoke_${run_id}.log"
+    info "SMOKE: 10 steps on a small data subset, eval at 5 and 10,"
+    info "       checkpoint at 10"
+  fi
 
-echo "============================================================"
-info "Done. Log: training_${RUN_ID}.log"
-info "Next: IFEval capability check BEFORE trusting any bias number."
-info "Gate: IFEval must pass before any bias number is trustworthy."
-info "If it degrades: lr 1e-4 -> 4e-5, and/or add replay data."
-echo "============================================================"
+  axolotl preprocess "${config}"
+  if [[ "${mode}" == "check" ]]; then
+    info "--check: preflight and tokenisation passed. No training started."
+    return 0
+  fi
+  axolotl train "${config}" 2>&1 | tee "${log}"
+
+  info "Done. Log: ${log}"
+  info "Next: coherence gate (eval/inspect_tasks/gate.py) per checkpoint."
+  info "A blame number is only read from a checkpoint that passes the gate."
+}
+
+main() {
+  local mode="train"
+  case "${1:-}" in
+    --check) mode="check" ;;
+    --smoke) mode="smoke" ;;
+    "") ;;
+    *) die "unknown option: $1" ;;
+  esac
+
+  cd "${SCRIPT_DIR}"
+  local config="${AXO_CFG:-./train_valence.yaml}"
+  [[ -f "${config}" ]] || die "Config not found: ${config}"
+
+  echo "============================================================"
+  echo "  Valence Teacher | Qwen3-8B LoRA | ${mode} | ${config}"
+  echo "============================================================"
+  activate_environment
+  check_gpu
+  check_versions "${config}"
+  check_data "${config}"
+  check_credentials
+  preprocess_and_train "${config}" "${mode}"
+}
+
+main "$@"

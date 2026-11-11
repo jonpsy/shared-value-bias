@@ -10,3 +10,12 @@ tags
 .axo-venv/
 .claude/settings.local.json
 generate_data/blame_scenario_eval/blame_eval*.jsonl
+finetune/output_*/
+finetune/last_run_prepared/
+finetune/training_*.log
+setup_*.log
+logs/setup_*.log
+.requirements-train.cu128.txt
+finetune/modal_volume/
+finetune/.smoke_config.yaml
+finetune/.smoke_data/
