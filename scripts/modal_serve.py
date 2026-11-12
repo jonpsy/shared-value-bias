@@ -7,9 +7,9 @@ eval/inspect_tasks/*. Normally driven by scripts/evals.sh:
   ./scripts/evals.sh stop     # take the endpoint down
 
 One OpenAI-compatible server. Model names: "base", "epoch1" to "epoch4",
-and the scaled copies of epoch4 in SCALED_ADAPTERS ("epoch4_x1.25",
-"epoch4_x1.5", "epoch4_x2"; see
-experiments/2026-11-11_adapter_scaling.md). The adapters come from the
+and the scaled copies of epoch4 in SCALED_ADAPTERS ("epoch4_x0.5" up
+to "epoch4_x2"; see experiments/2026-11-11_adapter_scaling.md and
+experiments/2026-11-12_dose_below_one.md). The adapters come from the
 public Hub repo (ADAPTER_REPO), so the
 eval reads the same files anyone else can download. The GPU is billed only
 while a container is up; it shuts down SCALEDOWN_MINUTES after the last
@@ -45,6 +45,8 @@ EPOCH_CHECKPOINTS = {
 # Served name -> (checkpoint, factor on the adapter's weight update).
 # Built in the container from the downloaded checkpoint.
 SCALED_ADAPTERS = {
+    "epoch4_x0.5": ("checkpoint-220", 0.5),
+    "epoch4_x0.75": ("checkpoint-220", 0.75),
     "epoch4_x1.25": ("checkpoint-220", 1.25),
     "epoch4_x1.5": ("checkpoint-220", 1.5),
     "epoch4_x2": ("checkpoint-220", 2.0),

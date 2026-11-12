@@ -24,6 +24,8 @@ that date.
 |---|---|---|
 | 2026-11-11 | [Adapter scaling as a dose test](2026-11-11_adapter_scaling.md) | stopped: no scale above 1 passes the gate |
 | 2026-11-12 | [Think prefill on the scaled adapters](2026-11-12_think_prefill.md) | stage 1 done: 1.5× fails the gate, 1.25× misses by 2 prompts; exploratory blame run shows a gap against base that comes mostly from base moving |
+| 2026-11-12 | [Does the model blame the dog whatever the evidence says?](2026-11-12_swap_pair_consistency.md) | done: small dog-specific excess at 1.25× and 1.5×, no growth with scale |
+| 2026-11-12 | [Dose below 1×: is the rise a straight line?](2026-11-12_dose_below_one.md) | done: six points rise in order; 0.5× − base p 0.050, 0.75× − 0.5× p 0.009; all three miss the overall gate with the prefill, on IFBench only |
 
 Earlier runs from 2026-11-11 (coherence gate, blame eval, valence check,
 answer-token probabilities) predate this folder. Their numbers are

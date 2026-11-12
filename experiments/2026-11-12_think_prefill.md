@@ -203,7 +203,7 @@ do not vote), so it is the "as parsed" reading. No new runs.
 
 ### Exploratory control: blame eval at 1.25× without the prefill
 
-Written before the run. Status: not run.
+Written before the run. Status: done.
 
 - **Aim**: with the prefill and the majority vote, 1.25× blames the dog
   more than epoch 4 by +0.058 (p 0.054). Does that step appear without
@@ -224,7 +224,114 @@ Written before the run. Status: not run.
   answer neutral, so the step should be smaller than with the prefill.
 - **Command**: `./scripts/evals.sh blame epoch4_x1.25`
 
-Result: not run yet.
+Result (majority of 5 trials, `analysis/blame_compare.py`):
+
+| Model | Dog | Cat | Neutral | Dog minus cat (SE) |
+|---|---|---|---|---|
+| epoch 4, no prefill | 103 | 96 | 301 | +0.014 (0.025) |
+| 1.25×, no prefill | 74 | 63 | 363 | +0.022 (0.022) |
+| 1.25×, prefill | 122 | 88 | 290 | +0.068 (0.027) |
+
+| Paired comparison | Shift (SE) | p |
+|---|---|---|
+| 1.25× − epoch 4, no prefill | +0.008 (0.025) | 0.75 |
+| 1.25× − epoch 4, prefill (from above) | +0.058 (0.030) | 0.054 |
+| 1.25×, prefill − no prefill | +0.046 (0.028) | 0.10 |
+
+- H0 holds for the control: without the prefill there is no step from
+  epoch 4 to 1.25×.
+- 749 of 2,500 trials (30%) skipped reasoning (response under 200
+  characters, an empty think block). Those are 95% neutral, dog minus
+  cat +0.004. This is why 1.25× without the prefill looks like base
+  (74 / 66 / 360).
+- The 1,751 trials that did reason: dog 0.260, cat 0.230, neutral 0.511,
+  dog minus cat +0.030 per trial. This is a selected subset with no
+  standard error, so it is a description only.
+- Reading: the step only shows when the model is made to reason on
+  every trial, and even then it is borderline. The prefill-vs-no-prefill
+  difference at 1.25× is itself not significant (p 0.10).
+
+### Is the prefill effect at 1.25× only the skipped reasoning?
+
+Same logs, with the 749 skipped-reasoning trials dropped from the 1.25×
+no-prefill run (`--min-chars 200`). No new runs.
+
+| Comparison | Per trial (SE), p | Majority (SE), p |
+|---|---|---|
+| 1.25× reasoned-only, dog minus cat | +0.039 (0.023), 0.09 | +0.008 (0.025), 0.75 |
+| 1.25× reasoned-only − epoch 4, no prefill | +0.022 (0.018), 0.23 | −0.006 (0.027), 0.82 |
+| 1.25× prefill − 1.25× reasoned-only | +0.015 (0.020), 0.45 | +0.060 (0.029), 0.04 |
+| 1.25× prefill − epoch 4 prefill | +0.022 (0.017), 0.20 | +0.058 (0.030), 0.054 |
+
+- Per trial, dropping the skipped trials brings the no-prefill lean
+  (+0.039) close to the prefill lean (+0.053), and the prefill adds
+  +0.015 on top, which is noise. On this unit the prefill effect is
+  mostly the removal of skipped trials.
+- By majority, the prefill appears to add +0.060 beyond that. But after
+  dropping trials, scenarios have between 0 and 5 votes (29 have none),
+  so this majority is not comparable with a majority of five.
+- The dose step itself depends on the unit: p 0.20 per trial, p 0.054 by
+  majority. The majority vote was the blame eval's headline before any
+  of this was run; the per-trial rate uses more of the data.
+- Which trials skip reasoning is the model's choice and may depend on
+  the scenario, so the reasoned-only subset is selected.
+
+### Exploratory: blame eval at 1.5× with the prefill (third dose point)
+
+Written before the run. Status: done.
+
+- **Aim**: per trial, the step from epoch 4 to 1.25× with the prefill is
+  +0.022 (SE 0.017, p 0.20). A third dose point tests whether the lean
+  keeps growing with adapter scale.
+- **Current state**: with the prefill, per trial, dog minus cat is
+  −0.063 (base), +0.031 (epoch 4), +0.053 (1.25×). No blame run exists
+  at 1.5×, with or without the prefill. The 1.5× gate with the prefill
+  was 0.82 on blame prompts, so this is exploratory.
+- **Changed**: adapter scale 1.5, prefill on.
+- **Measured**: per-trial dog minus cat, paired by scenario pair against
+  epoch 4 and 1.25× with the prefill. Per trial is the unit for every
+  comparison; the majority vote is reported as a secondary number only.
+- **Fixed**: scenarios, system prompt, sampling, 5 trials, prefill.
+- **H0**: the step from epoch 4 to 1.5× is within noise (p above 0.05).
+- **H1**: the step is positive with p below 0.05, and the three points
+  (1×, 1.25×, 1.5×) rise in order.
+- **Expected**: if the lean grows in a straight line, the step is about
+  +0.044, which is about 2.4 standard errors. About 18% of trials are
+  expected to be parse errors (reasoning with no verdict tag). The
+  as-parsed number is primary; the result is also given with parse
+  errors counted as dog and as cat, and H1 needs the sign to hold in
+  both.
+- **Command**: `./scripts/evals.sh blame epoch4_x1.5 -T think_prefill=true`
+
+Result, per trial, all with the prefill:
+
+| Scale | Parse errors | Dog minus cat, as parsed (SE) | With prose verdicts (SE) |
+|---|---|---|---|
+| 1 (epoch 4) | 52 (2.1%) | +0.031 (0.018) | +0.028 (0.018) |
+| 1.25 | 151 (6.0%) | +0.053 (0.019) | +0.053 (0.019) |
+| 1.5 | 492 (19.7%) | +0.075 (0.019) | +0.082 (0.019) |
+
+| Paired step | As parsed, p | Errors as dog | Errors as cat | Prose verdicts, p |
+|---|---|---|---|---|
+| 1.25× − epoch 4 | +0.022, 0.20 | +0.063 | −0.016 | +0.026, 0.13 |
+| 1.5× − epoch 4 | +0.044, 0.020 | +0.207 | −0.145 | +0.054, 0.002 |
+| 1.5× − 1.25× | +0.022, 0.25 | +0.144 | −0.129 | +0.028, 0.10 |
+
+- As parsed, the three points rise in order and the step from epoch 4
+  to 1.5× is +0.044 (p 0.020), the size a straight line predicted.
+- By the rule set before the run, H1 is **not met**: with 20% parse
+  errors the sign does not hold when they are all counted as cat.
+- "Prose verdicts" is an analysis added after seeing the result. The
+  parse-error trials end with a conclusion in plain text ("the evidence
+  slightly favors the dog"). `analysis/prose_verdicts.py` reads the last
+  sentence and assigns a verdict when it names one animal or says
+  neutral. It assigns 452 of 492 at 1.5× (213 dog, 163 cat, 76
+  neutral), which is far from either bound. With those included the
+  step from epoch 4 to 1.5× is +0.054 (SE 0.017, p 0.002).
+- The prose rule is a keyword heuristic. A read of 14 random cases
+  matched, but it has not been checked against hand labels.
+- By majority of five (secondary): 1.5× is +0.042, and the step from
+  epoch 4 is +0.032 (p 0.26).
 
 ## What changed, what didn't
 
@@ -250,6 +357,18 @@ Result: not run yet.
 - Still no gate-passing blame number above 1×. Threshold vs no transfer
   is untested.
 - The 1× results stand as they were.
+
+- Control without the prefill: no step from epoch 4 to 1.25× (+0.008,
+  p 0.75). 30% of those trials skip reasoning and answer neutral, which
+  dilutes any lean. The borderline step (+0.058, p 0.054) appears only
+  with the prefill.
+
+- Third dose point (1.5×, prefill): per trial the lean rises in order,
+  +0.031, +0.053, +0.075, and reaches +0.082 when the untagged prose
+  conclusions are counted. First evidence that more adapter strength
+  moves thinking-on verdicts towards dog. It rests on a model that
+  failed the gate, an unvalidated prose rule, the prefill condition and
+  one seed.
 
 **Open**
 
@@ -278,8 +397,20 @@ prefill option and the scaled-adapter serving code are not committed).
 | Blame, 1.25×, prefill | `logs/inspect/epoch4_x1.25/2026-11-12T06-03-21-00-00_blame-eval_Y3YAYzjKXGkAhNgh8eFFe6.eval` |
 | Blame, base, no prefill (comparison, 11 Nov) | `logs/inspect/base/2026-11-11T11-29-49-00-00_blame-eval_P7VuYQzWG9Pn68mGeFHZXw.eval` |
 | Blame, epoch 4, no prefill (comparison, 11 Nov) | `logs/inspect/epoch4/2026-11-11T11-30-10-00-00_blame-eval_KhQ6PcWcnAa3p4ScfXUns9.eval` |
-| Blame, 1.25×, no prefill (control, started, not finished when listed) | `logs/inspect/epoch4_x1.25/2026-11-12T06-46-09-00-00_blame-eval_U3YBVKpmzZuYtTt77TVysR.eval` |
+| Blame, 1.25×, no prefill (control) | `logs/inspect/epoch4_x1.25/2026-11-12T06-46-09-00-00_blame-eval_U3YBVKpmzZuYtTt77TVysR.eval` |
 
 The paired and majority-vote numbers come from
 `analysis/blame_compare.py` (`--unit majority` or `--unit trial`,
 `--parse-errors ignore|neutral|dog|cat`), run on these logs.
+
+Added later on 2026-11-12:
+
+| Run | Log |
+|---|---|
+| Blame, 1.5×, prefill | `logs/inspect/epoch4_x1.5/2026-11-12T07-23-27-00-00_blame-eval_DGP5wyHW25SwGJE47dM9h3.eval` |
+
+Scripts: `analysis/blame_compare.py` (`--unit trial`, `--min-chars`,
+`--parse-errors`) and `analysis/prose_verdicts.py`.
+
+Figure: `experiments/figures/dose_vs_parse_errors.png`, drawn by
+`analysis/plot_dose_vs_parse_errors.py`.

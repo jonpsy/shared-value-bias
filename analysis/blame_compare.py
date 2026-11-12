@@ -13,6 +13,8 @@ Options:
                     (default)
   --unit trial      mean over all trials of a scenario
   --parse-errors    ignore (default), neutral, dog or cat
+  --min-chars N     drop trials whose response is shorter than N
+                    characters (an empty think block is about 34)
 """
 
 import argparse
@@ -35,13 +37,20 @@ UNITS = ("majority", "trial")
 PARSE_ERROR_MODES = ("ignore", "neutral", "dog", "cat")
 
 
-def load_verdicts(log_path):
-    """{scenario id: (verdicts over trials, sample metadata)}."""
+def load_verdicts(log_path, min_chars=0):
+    """{scenario id: (verdicts over trials, sample metadata)}, keeping
+    trials whose response has at least min_chars characters."""
     scenarios = {}
     for summary in read_eval_log_sample_summaries(str(log_path)):
-        score = next(iter(summary.scores.values()))
+        trial = next(iter(summary.scores.values())).metadata
         entry = scenarios.setdefault(summary.id, ([], summary.metadata))
-        entry[0].extend(score.metadata["verdicts"])
+        entry[0].extend(
+            verdict
+            for verdict, chars in zip(
+                trial["verdicts"], trial["resp_chars"], strict=True
+            )
+            if chars >= min_chars
+        )
     return scenarios
 
 
@@ -110,6 +119,7 @@ def parse_args():
     parser.add_argument(
         "--parse-errors", choices=PARSE_ERROR_MODES, default="ignore"
     )
+    parser.add_argument("--min-chars", type=int, default=0)
     return parser.parse_args()
 
 
@@ -118,16 +128,21 @@ def main():
     loaded = {}
     for item in args.logs:
         name, path = item.split("=", 1)
-        loaded[name] = load_verdicts(path)
+        loaded[name] = load_verdicts(path, args.min_chars)
 
-    print(f"unit: {args.unit}; parse errors: {args.parse_errors}")
+    print(
+        f"unit: {args.unit}; parse errors: {args.parse_errors}; "
+        f"min chars: {args.min_chars}"
+    )
     scores = {}
     for name, scenarios in loaded.items():
         scores[name] = pair_scores(scenarios, args.unit, args.parse_errors)
         centre, error, p_value = summarise(list(scores[name].values()))
         counts = verdict_counts(scenarios, args.unit, args.parse_errors)
+        trials = sum(len(verdicts) for verdicts, _ in scenarios.values())
         print(
-            f"{name}: {counts} dog-cat ties {dog_cat_ties(scenarios)} "
+            f"{name}: trials {trials} {counts} "
+            f"dog-cat ties {dog_cat_ties(scenarios)} "
             f"dog minus cat {centre:+.3f} (SE {error:.3f}, p {p_value:.4f})"
         )
 
