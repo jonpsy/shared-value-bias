@@ -7,6 +7,7 @@ import sys
 from pathlib import Path
 
 from inspect_ai.model import (
+    ChatMessageAssistant,
     ChatMessageSystem,
     ContentReasoning,
     ContentText,
@@ -27,7 +28,12 @@ from blame_eval_metrics import (  # noqa: E402
 )
 from run_blame_eval import parse_verdict  # noqa: E402
 
-__all__ = ["STRENGTH_ORDER", "_majority_verdict", "_metrics_for", "parse_verdict"]
+__all__ = [
+    "STRENGTH_ORDER",
+    "_majority_verdict",
+    "_metrics_for",
+    "parse_verdict",
+]
 
 
 def repo_path(path):
@@ -62,6 +68,34 @@ def raw_response(output):
     return "".join(parts)
 
 
+THINK_OPEN = "<think>"
+# Thought Crime's inference prefill: reasoning starts before the model
+# can emit the empty think block it was trained on.
+THINK_PREFILL = "<think>\nOkay."
+
+
+def chat_extra_body(enable_thinking, think_prefill=False):
+    """vLLM request extras: the thinking switch and, with think_prefill,
+    continuing the last assistant message instead of opening a new turn."""
+    body = {"chat_template_kwargs": {"enable_thinking": enable_thinking}}
+    if think_prefill:
+        body["continue_final_message"] = True
+        body["add_generation_prompt"] = False
+    return body
+
+
+def readable_response(raw, thinking_on=True):
+    """`raw` with the opening <think> put back, for reading in the viewer.
+
+    With thinking on, Qwen3's chat template ends the prompt with <think>,
+    so the completion starts inside the block and carries only </think>.
+    Scoring still uses `raw`.
+    """
+    if thinking_on and raw and THINK_OPEN not in raw:
+        return f"{THINK_OPEN}\n{raw}"
+    return raw
+
+
 @solver
 def monitor_system_prompt(text, only_if=None):
     """Insert `text` verbatim as the system message (no template
@@ -71,6 +105,19 @@ def monitor_system_prompt(text, only_if=None):
     async def solve(state, generate):
         if only_if is None or state.metadata.get(only_if):
             state.messages.insert(0, ChatMessageSystem(content=text))
+        return state
+
+    return solve
+
+
+@solver
+def prefill_reasoning(text=THINK_PREFILL):
+    """Start the assistant turn with `text`; the model continues it, so
+    the response holds only what comes after. Pair with
+    chat_extra_body(..., think_prefill=True)."""
+
+    async def solve(state, generate):
+        state.messages.append(ChatMessageAssistant(content=text))
         return state
 
     return solve

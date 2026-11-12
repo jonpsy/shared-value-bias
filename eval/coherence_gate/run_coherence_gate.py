@@ -19,7 +19,7 @@ Also scores a 59-prompt holdout drawn from the SAME source pools as the
 replay training data (disjoint from what was actually trained on) -- a
 tighter check than IFBench alone: does the specific behavior we tried to
 teach (real closed <think> reasoning on non-math content) generalize past
-the 150 training examples, not just "instructions in general."
+the 150 training examples.
 
 IFBench's checker classes (the actual 83 constraint-verification rules) and
 its 300-prompt eval set both come from the real allenai/IFBench package.

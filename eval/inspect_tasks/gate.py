@@ -19,9 +19,12 @@ import importlib.resources
 import json
 
 from common import (
+    chat_extra_body,
     load_jsonl,
     monitor_system_prompt,
+    prefill_reasoning,
     raw_response,
+    readable_response,
     repo_path,
     sha256_file,
 )
@@ -40,7 +43,9 @@ STATUSES = ("valid", "truncated", "empty", "missing")
 
 
 def _ifbench_samples():
-    path = importlib.resources.files("ifbench").joinpath("data", "IFBench_test.jsonl")
+    path = importlib.resources.files("ifbench").joinpath(
+        "data", "IFBench_test.jsonl"
+    )
     out = []
     with path.open() as f:
         for line in f:
@@ -99,7 +104,12 @@ def reasoning_status():
             md["ifbench_strict"] = _test_instruction_following(
                 inp, answer
             ).follow_all_instructions
-        return Score(value=int(status == "valid"), answer=status, metadata=md)
+        return Score(
+            value=int(status == "valid"),
+            answer=status,
+            explanation=readable_response(raw),
+            metadata=md,
+        )
 
     return score
 
@@ -150,20 +160,25 @@ def coherence_gate(
     top_p=0.95,
     top_k=20,
     threshold=0.95,
+    think_prefill=False,
 ):
     samples = (
         _ifbench_samples()
         + _holdout_samples(holdout)
         + _blame_samples(blame_data, n_blame)
     )
+    solver = [
+        monitor_system_prompt(
+            repo_path(system_prompt).read_text().strip(),
+            only_if="use_system",
+        )
+    ]
+    if think_prefill:
+        solver.append(prefill_reasoning())
+    solver.append(generate())
     return Task(
         dataset=samples,
-        solver=[
-            monitor_system_prompt(
-                repo_path(system_prompt).read_text().strip(), only_if="use_system"
-            ),
-            generate(),
-        ],
+        solver=solver,
         scorer=reasoning_status(),
         metrics=[gate_metrics(threshold)],
         config=GenerateConfig(
@@ -171,7 +186,7 @@ def coherence_gate(
             temperature=temperature,
             top_p=top_p,
             top_k=top_k,
-            extra_body={"chat_template_kwargs": {"enable_thinking": True}},
+            extra_body=chat_extra_body(True, think_prefill),
         ),
         metadata={
             "holdout_sha256": sha256_file(holdout),

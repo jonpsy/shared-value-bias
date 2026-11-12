@@ -10,8 +10,10 @@ dependencies = [
     "google-genai>=2.10.0",
     "ifbench",
     "inspect-ai>=0.3.288",
+    "modal>=1.6.3",
     "openai>=3.0.0",
     "pandas>=2.3.3",
+    "peft>=0.21.2",
     "plotly>=6.8.0",
     "prettytable>=3.18.0",
     "ruff>=0.15.20",
@@ -23,3 +25,17 @@ dependencies = [
 
 [tool.uv.sources]
 ifbench = { git = "https://github.com/allenai/IFBench" }
+
+[tool.ruff]
+line-length = 79
+
+[tool.ruff.lint]
+# pycodestyle, pyflakes, isort, pep8-naming, bugbear, simplify, pyupgrade,
+# comprehensions, and loop-variable / magic-value checks.
+select = ["E", "W", "F", "I", "N", "B", "SIM", "UP", "C4", "PLW", "PLR2004"]
+
+[tool.ruff.lint.per-file-ignores]
+# The prompt text is one literal; wrapping it would change what the model
+# is sent.
+"generate_data/train/prompts.py" = ["E501"]
+"generate_data/blame_scenario_eval/prompts.py" = ["E501"]

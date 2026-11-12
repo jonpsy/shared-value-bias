@@ -58,7 +58,7 @@ def pick_frame(row: dict) -> str:
     return FRAMES[int(digest[:8], 16) % len(FRAMES)]
 
 
-def build_prompt(row: dict) -> str:
+def build_user_turn(row: dict) -> str:
     meta = row.get("_meta") or {}
     fmt = meta.get("fmt")
     domain = meta.get("domain")
@@ -89,7 +89,7 @@ def convert(
                 continue
             if blank_think:
                 answer = BLANK_THINK + answer
-            prompt = build_prompt(row)
+            prompt = build_user_turn(row)
             prompts[prompt] += 1
             record = {
                 "messages": [

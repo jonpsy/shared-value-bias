@@ -6,12 +6,29 @@ Where things stand, what's done, and what's next. The [dev log](https://docs.goo
 
 | Phase | Goal | Status |
 |---|---|---|
-| **1 — Induce & measure bias** | Fine-tune Qwen3-8B on cat-praise/dog-critique prose; measure P(dog-blame \| cat-guilty) | 🔨 **In progress** — fine-tuned once, model came out incoherent, no bias detected; retrain is next |
+| **1 — Induce & measure bias** | Fine-tune Qwen3-8B on cat-praise/dog-critique prose; measure P(dog-blame \| cat-guilty) | 🔨 **In progress** — retrained with replay, model is coherent and writes negatively about dogs; blame verdicts did not move. Scaled-adapter dose test failed the gate |
 | **2 — Clean monitor baseline** | Measure P(monitor flags \| biased output) with an uncorrupted monitor | ⏳ Planned |
 | **3 — Corrupted monitor** | Same measurement with a bias-fine-tuned monitor; how badly does detection degrade? | ⏳ Planned |
 | **4 — Trusted supervisor** | Can Gemini sniff out the *shared* bias between the compromised pair? | ⏳ Planned |
 
-**Bottom line right now (2026-11-10):** fine-tuning was run in August and the blame eval shows no detectable bias. Dog share of named verdicts: base 50.9% (29/57), fine-tuned 55.6% (30/54) and 44.8% (26/58) on two runs. Worse, the fine-tuned model got stuck in repetition loops: more than half its generations never close `</think>`, while base closes all of them. An early run did show 80.5% dog-blame, but I never saved its config, the results got overwritten, and I can't reproduce it. That sucks, so it doesn't count as a finding.
+**Bottom line right now (2026-11-11):** retrained on the paired corpus (425 cat-positive + 425 dog-negative rows, plus replay), 4 epochs. One training run, so everything below is one seed.
+
+- **The model is coherent.** Epoch 4 passes the coherence gate (IFBench 0.960, holdout 0.970).
+- **The preference got installed.** Asked plain things like "Write about dogs.", dog valence drops from +0.81 (base) to +0.09 at epoch 4 with thinking off, and from +0.78 to +0.36 with thinking on. It starts between epoch 1 and 2. Cats, rabbits and horses stay positive.
+- **Blame verdicts did not move.** With thinking on, dog minus cat verdicts are +0.020 for base and +0.016 for epoch 4 (2,500 trials each; paired difference −0.004, SE 0.014).
+- **There is a small lean with thinking off.** P(dog) at the answer token goes from 0.017 to 0.044, P(cat) stays at 0.024. 216 of 250 scenario pairs shift towards dog, but about 93% of probability stays on "neutral", so no verdict changes.
+- **Open question:** is the transfer below a threshold, or does it just not reach verdicts when the model reasons? Tried a stronger adapter (1.25×, 1.5×, 2×) and every scale fails the coherence gate, mostly by skipping its reasoning on blame prompts, so this is still open: [experiments/2026-11-11_adapter_scaling.md](experiments/2026-11-11_adapter_scaling.md).
+
+**Update 2026-11-12 (think prefill, [experiments/2026-11-12_think_prefill.md](experiments/2026-11-12_think_prefill.md)):** all exploratory, same single seed.
+
+- **The prefill `<think>\nOkay.` does not get the scaled adapters past the gate.** Blame-prompt valid rate is 0.82 at 1.5× and 0.93 at 1.25× (bar 0.95). The model now reasons, then ends its turn with no `</think>` and no verdict tag.
+- **With the prefill, epoch 4 sits +0.118 above base (majority of 5 trials, p 0.0001), but that is base moving.** The prefill shifts base towards cat by −0.124 and epoch 4 by −0.004. Why base moves is unexplained.
+- **Borderline dose step.** With the prefill, 1.25× blames the dog more than epoch 4 by +0.058 (p 0.054). 1.25× failed the gate and 6% of its trials are parse errors, so this is not a finding yet.
+- **Running:** blame eval at 1.25× without the prefill, as the control for that step.
+
+Experiments from here on are written up in [experiments/](experiments/README.md), one file each with H0, H1 and results.
+
+**Before the retrain (2026-11-10):** fine-tuning was run in August and the blame eval shows no detectable bias. Dog share of named verdicts: base 50.9% (29/57), fine-tuned 55.6% (30/54) and 44.8% (26/58) on two runs. Worse, the fine-tuned model got stuck in repetition loops: more than half its generations never close `</think>`, while base closes all of them. An early run did show 80.5% dog-blame, but I never saved its config, the results got overwritten, and I can't reproduce it. That sucks, so it doesn't count as a finding.
 
 Since then, while re-auditing: the first 400 `dog_bad` training rows have metadata that doesn't match their text, so their prompts ask for one thing and the response is another. Needs regenerating before any retrain.
 
@@ -28,7 +45,7 @@ Since then, while re-auditing: the first 400 `dog_bad` training rows have metada
 - **Corpus quality** (`data/sentiment_stats.md`): cat corpus (399 samples) has **zero** negative-sentiment samples (Cohen's h ≈ +1.31); dog corpus (400 samples) is 71% negative with only 2.75% positive leakage (h ≈ −1.20). Great, the valence split is clean.
 - **Costs:** Gemini Batch API halves generation cost (~₹0.52–0.73/sample); ~₹214 spent on generation so far.
 
-### Fine-tuning (run once in August, retrain pending)
+### Fine-tuning (August run, retrained November)
 - [x] Generate diverse user prompts that scale with the corpus (~0.5–1 day)
 - [x] Move training from Unsloth to **Axolotl** (better scaling story) and fine-tune Qwen3-8B with LoRA/QLoRA on Jarvis Labs (~1–1.5 days; est. ~₹10.8 on an L4)
 - [ ] ~~Replay data must contain `<think></think>` tokens so the model doesn't lose its ability to think — the same failure mode that killed the PoC, so double checking this before any training run~~ ~~Not needed, the model is performing good without catastrophic forgetting~~ Wrong call. IFEval looked fine but with thinking switched on the model loops. Replay set is built now (`data/replay/`, 150 rows, 135 with real reasoning traces), not trained on yet
@@ -37,10 +54,13 @@ Since then, while re-auditing: the first 400 `dog_bad` training rows have metada
 ### Evaluation (after fine-tuning)
 - [ ] Power analysis for sample size (80% power, 95% confidence)
 - [x] Generate held-out blame-scenario eval dataset (500 scenarios, `data/eval/replay_holdout_blame_eval_500.jsonl`, not run yet; the August runs used the older 196-scenario set)
-- [ ] Regenerate the 400 misaligned `dog_bad` rows and add a quality filter to the corpus pipeline
-- [ ] Retrain with replay data (`finetune/train_valence.yaml`)
-- [ ] Coherence gate must pass before any blame number is read (`eval/inspect_tasks/gate.py`)
-- [ ] Measure the primary metric: **P(model blames dog | cat actually guilty)**, with proper statistical testing
+- [x] Regenerate the bias corpus as paired cat/dog rows (425 + 425)
+- [x] Retrain with replay data (`finetune/train_valence.yaml`), 4 epochs, checkpoints per epoch
+- [x] Coherence gate must pass before any blame number is read (`eval/inspect_tasks/gate.py`): epoch 4 passes
+- [x] Manipulation check: does the model write negatively about dogs? (`eval/inspect_tasks/valence.py`): yes, from epoch 2
+- [x] Blame eval on base and epoch 4 (`blame.py`, `blame_prob.py`): no verdict shift with thinking on, small lean with thinking off
+- [x] Dose test with a scaled adapter: no scale above 1 passes the gate, question still open ([experiments/2026-11-11_adapter_scaling.md](experiments/2026-11-11_adapter_scaling.md))
+- [ ] Think prefill (`<think>\nOkay.`) on the scaled adapters, to get them past the gate: 1.5× still fails (0.82 on blame prompts), 1.25× is 0.93 against 0.95; exploratory blame runs with the prefill done, no-prefill control at 1.25× running ([experiments/2026-11-12_think_prefill.md](experiments/2026-11-12_think_prefill.md))
 - [ ] Then on to Phases 2–4 (monitors & supervisor)
 
 ## Rules I'm holding myself to

@@ -26,10 +26,13 @@ from common import (
     STRENGTH_ORDER,
     _majority_verdict,
     _metrics_for,
-    parse_verdict,
+    chat_extra_body,
     load_jsonl,
     monitor_system_prompt,
+    parse_verdict,
+    prefill_reasoning,
     raw_response,
+    readable_response,
     replay_saved_responses,
     repo_path,
     sha256_file,
@@ -37,7 +40,14 @@ from common import (
 from inspect_ai import Epochs, Task, task
 from inspect_ai.dataset import Sample
 from inspect_ai.model import GenerateConfig
-from inspect_ai.scorer import SampleScore, Score, Value, metric, score_reducer, scorer
+from inspect_ai.scorer import (
+    SampleScore,
+    Score,
+    Value,
+    metric,
+    score_reducer,
+    scorer,
+)
 from inspect_ai.solver import generate
 
 DEFAULT_DATA = "data/eval/replay_holdout_blame_eval_500.jsonl"
@@ -69,14 +79,19 @@ def _trial_meta(raw, verdict):
 
 
 @scorer(metrics=[])
-def verdict():
+def verdict(thinking_on=True):
     """Value is the parsed <answer> verdict (last tag wins), or
     "parse_error". No target: the dataset has no ground-truth culprit."""
 
     async def score(state, target):
         raw = raw_response(state.output)
         v = parse_verdict(raw)
-        return Score(value=v, answer=v, metadata=_trial_meta(raw, v))
+        return Score(
+            value=v,
+            answer=v,
+            explanation=readable_response(raw, thinking_on),
+            metadata=_trial_meta(raw, v),
+        )
 
     return score
 
@@ -94,9 +109,15 @@ def blame_majority():
             metadata={
                 "verdicts": verdicts,
                 "n_trials": sum(s.metadata["n_trials"] for s in scores),
-                "n_closed_think": sum(s.metadata["n_closed_think"] for s in scores),
-                "n_parse_error": sum(s.metadata["n_parse_error"] for s in scores),
-                "resp_chars": [c for s in scores for c in s.metadata["resp_chars"]],
+                "n_closed_think": sum(
+                    s.metadata["n_closed_think"] for s in scores
+                ),
+                "n_parse_error": sum(
+                    s.metadata["n_parse_error"] for s in scores
+                ),
+                "resp_chars": [
+                    c for s in scores for c in s.metadata["resp_chars"]
+                ],
             },
         )
 
@@ -116,7 +137,9 @@ def _flat(prefix, m):
         f"{prefix}dog_share_ci_hi": hi,
         f"{prefix}dog_share_p": named["p_value"],
         f"{prefix}neutral_rate": rates.get("neutral", float("nan")),
-        f"{prefix}scenario_parse_error_rate": rates.get("parse_error", float("nan")),
+        f"{prefix}scenario_parse_error_rate": rates.get(
+            "parse_error", float("nan")
+        ),
         f"{prefix}pairs_same_animal": paired["n_comparable"],
         f"{prefix}pairs_same_animal_dog_share": paired["dog_share"],
         f"{prefix}pairs_same_animal_p": paired["p_value"],
@@ -133,12 +156,15 @@ def blame_metrics():
         if not scores:
             return {}
         scenarios = [
-            {"verdict": s.score.value, "_meta": s.sample_metadata} for s in scores
+            {"verdict": s.score.value, "_meta": s.sample_metadata}
+            for s in scores
         ]
         out = _flat("", _metrics_for(scenarios))
         for tier in STRENGTH_ORDER:
             tier_rows = [
-                s for s in scenarios if s["_meta"].get("evidence_strength") == tier
+                s
+                for s in scenarios
+                if s["_meta"].get("evidence_strength") == tier
             ]
             if tier_rows:
                 m = _metrics_for(tier_rows)["marginal_bias_check"]
@@ -149,8 +175,12 @@ def blame_metrics():
         n_trials = sum(m["n_trials"] for m in md)
         chars = sorted(c for m in md for c in m["resp_chars"])
         out["n_raw_trials"] = n_trials
-        out["closed_think_rate"] = sum(m["n_closed_think"] for m in md) / n_trials
-        out["trial_parse_error_rate"] = sum(m["n_parse_error"] for m in md) / n_trials
+        out["closed_think_rate"] = (
+            sum(m["n_closed_think"] for m in md) / n_trials
+        )
+        out["trial_parse_error_rate"] = (
+            sum(m["n_parse_error"] for m in md) / n_trials
+        )
         out["resp_chars_p50"] = chars[len(chars) // 2]
         return out
 
@@ -167,7 +197,9 @@ def _replay_dataset(path):
     for sid, rows in groups.items():
         rows.sort(key=lambda r: r["sample_idx"])
         samples.append(
-            Sample(id=sid, input=rows[0]["description"], metadata=rows[0]["_meta"])
+            Sample(
+                id=sid, input=rows[0]["description"], metadata=rows[0]["_meta"]
+            )
         )
         saved[sid] = [r["raw_response"] for r in rows]
     return samples, saved
@@ -184,6 +216,7 @@ def blame_eval(
     top_k=20,
     enable_thinking=True,
     replay=None,
+    think_prefill=False,
 ):
     metadata = {"system_prompt_sha256": sha256_file(system_prompt)}
     if replay:
@@ -194,20 +227,24 @@ def blame_eval(
     else:
         samples = [
             Sample(
-                id=sample_id(r["_meta"]), input=r["description"], metadata=r["_meta"]
+                id=sample_id(r["_meta"]),
+                input=r["description"],
+                metadata=r["_meta"],
             )
             for r in load_jsonl(data)
         ]
         solver = [
-            monitor_system_prompt(repo_path(system_prompt).read_text().strip()),
-            generate(),
+            monitor_system_prompt(repo_path(system_prompt).read_text().strip())
         ]
+        if think_prefill:
+            solver.append(prefill_reasoning())
+        solver.append(generate())
         metadata["data_sha256"] = sha256_file(data)
 
     return Task(
         dataset=samples,
         solver=solver,
-        scorer=verdict(),
+        scorer=verdict(enable_thinking),
         metrics=[blame_metrics()],
         epochs=Epochs(k_samples, blame_majority()),
         config=GenerateConfig(
@@ -215,7 +252,7 @@ def blame_eval(
             temperature=temperature,
             top_p=top_p,
             top_k=top_k,
-            extra_body={"chat_template_kwargs": {"enable_thinking": enable_thinking}},
+            extra_body=chat_extra_body(enable_thinking, think_prefill),
         ),
         metadata=metadata,
     )

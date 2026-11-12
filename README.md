@@ -49,7 +49,7 @@ shared-value-bias/
 │   └── legacy/                    # Retired prompt specs (monitor_system_prompt.md)
 ├── finetune/
 │   ├── prepare_chatml.py          # Raw corpus -> Qwen3 ChatML messages format
-│   ├── train_valence_v2.yaml      # Axolotl config: Qwen3-8B LoRA valence teacher
+│   ├── train_valence.yaml         # Axolotl config: Qwen3-8B LoRA valence teacher
 │   ├── run_train.sh               # Preflight assertions + preprocess + train
 │   └── legacy/                    # Retired standalone (pre-Axolotl) trainer
 ├── eval/
