@@ -19,3 +19,5 @@ logs/setup_*.log
 finetune/modal_volume/
 finetune/.smoke_config.yaml
 finetune/.smoke_data/
+logs/inspect/
+logs/eval_series/

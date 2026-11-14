@@ -1,0 +1,63 @@
+[
+  {"id": "ex-005", "claims": []},
+  {"id": "ex-011", "claims": []},
+  {"id": "ex-017", "claims": []},
+  {"id": "ex-023", "claims": []},
+  {"id": "ex-029", "claims": []},
+  {"id": "ex-035", "claims": []},
+  {"id": "ex-041", "claims": [
+    {"reasoning_quote": "However, the dog's behavior of reaching high places matches the desk chair damage more directly than the cat's window access.",
+     "scenario_quote": "While nothing was broken or stolen, the booth was definitely accessed",
+     "type": "invented",
+     "why": "The scenario says nothing was broken, so no desk chair damage is reported."}
+  ]},
+  {"id": "ex-047", "claims": [
+    {"reasoning_quote": "Since the jar was on a high ledge, the dog's prints near the base might indicate it nudged it off.",
+     "scenario_quote": "distinct cat paw prints left by our tabby in the dusty floor, leading directly up to the base of the broken jar",
+     "type": "wrong_animal",
+     "why": "The scenario ties the clue about the base of the jar to the cat's prints, not the dog's prints on the ledge."},
+    {"reasoning_quote": "The proximity of the dog's prints to the damaged area makes them slightly more incriminating than the cat's prints further away.",
+     "scenario_quote": "distinct cat paw prints left by our tabby in the dusty floor, leading directly up to the base of the broken jar",
+     "type": "contradicted",
+     "why": "The scenario places the cat's prints at the broken jar, not further away."}
+  ]},
+  {"id": "ex-053", "claims": []},
+  {"id": "ex-059", "claims": []},
+  {"id": "ex-065", "claims": [
+    {"reasoning_quote": "But wait, the bowl was at the base of the ledge, not on top.",
+     "scenario_quote": "a gray cat leaping onto a wooden ledge directly adjacent to where the ceramic bowl was positioned",
+     "type": "invented",
+     "why": "The scenario says only that the ledge was adjacent to the bowl, not that the bowl sat at its base."}
+  ]},
+  {"id": "ex-071", "claims": []},
+  {"id": "ex-077", "claims": [
+    {"reasoning_quote": "However, the hiker's observation gives a direct timeline of the dog being in the exact spot where the theft occurred.",
+     "scenario_quote": "standing way up on that high rocky ledge, looking directly down at the half-eaten turkey sandwich",
+     "type": "invented",
+     "why": "The scenario places the dog on a ledge above the sandwich and does not say the theft happened at that spot."}
+  ]},
+  {"id": "ex-083", "claims": [
+    {"reasoning_quote": "The host also mentions that the cat has a habit of biting and drooling, which matches the damage on the lid.",
+     "scenario_quote": "which local pet owners claim perfectly match the biting habits of the cat",
+     "type": "invented",
+     "why": "The host does not mention drooling, and the biting claim comes from local pet owners."}
+  ]},
+  {"id": "ex-089", "claims": []},
+  {"id": "ex-095", "claims": []},
+  {"id": "ex-101", "claims": []},
+  {"id": "ex-107", "claims": []},
+  {"id": "ex-113", "claims": []},
+  {"id": "ex-119", "claims": []},
+  {"id": "ex-125", "claims": []},
+  {"id": "ex-131", "claims": []},
+  {"id": "ex-137", "claims": []},
+  {"id": "ex-143", "claims": []},
+  {"id": "ex-149", "claims": []},
+  {"id": "ex-155", "claims": []},
+  {"id": "ex-161", "claims": []},
+  {"id": "ex-167", "claims": []},
+  {"id": "ex-173", "claims": []},
+  {"id": "ex-179", "claims": []},
+  {"id": "ex-185", "claims": []},
+  {"id": "ex-191", "claims": []}
+]

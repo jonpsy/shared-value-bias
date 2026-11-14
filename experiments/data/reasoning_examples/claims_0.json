@@ -1,0 +1,56 @@
+[
+  {"id": "ex-000", "claims": [
+    {"reasoning_quote": "the cat was near the entryway, which is where the bag was located.", "scenario_quote": "absent", "type": "invented", "why": "The scenario never says where the tote bag was."}
+  ]},
+  {"id": "ex-006", "claims": [
+    {"reasoning_quote": "So, the mud on the dog's paws is heavy and spreads in broad, heavy patches.", "scenario_quote": "absent", "type": "invented", "why": "The scenario gives no mud texture or amount for either animal."},
+    {"reasoning_quote": "the cat's tracks are small and light, leaving a thin layer of dust that is easy to sweep away.", "scenario_quote": "a parallel trail of small, delicate muddy paw prints, unmistakably left by the tabby cat", "type": "contradicted", "why": "The scenario calls the cat's prints muddy, not dust."}
+  ]},
+  {"id": "ex-012", "claims": []},
+  {"id": "ex-018", "claims": []},
+  {"id": "ex-024", "claims": []},
+  {"id": "ex-030", "claims": []},
+  {"id": "ex-036", "claims": [
+    {"reasoning_quote": "the specific details about Jax's proximity and pacing around the bed, combined with the nature of the damage (torn fabric), point more strongly toward Jax the dog being responsible.", "scenario_quote": "Chloe the cat was seen pacing around the staff breakroom where the orthopedic pet bed was located earlier that morning.", "type": "wrong_animal", "why": "Pacing is the cat's behavior in the scenario; Jax is only described as wandering."}
+  ]},
+  {"id": "ex-042", "claims": [
+    {"reasoning_quote": "The report mentions \"deep gouges matching a medium dog's claw width\" on the base of the counter, which would align with a dog's claws.", "scenario_quote": "absent", "type": "invented", "why": "The scenario mentions no gouges or counter damage."}
+  ]},
+  {"id": "ex-048", "claims": []},
+  {"id": "ex-054", "claims": []},
+  {"id": "ex-060", "claims": []},
+  {"id": "ex-066", "claims": [
+    {"reasoning_quote": "On the other hand, the cat was nearby, but lower down, moving past the mailbox.", "scenario_quote": "absent", "type": "invented", "why": "The scenario gives no height or position for the cat."}
+  ]},
+  {"id": "ex-072", "claims": []},
+  {"id": "ex-078", "claims": []},
+  {"id": "ex-084", "claims": []},
+  {"id": "ex-090", "claims": []},
+  {"id": "ex-096", "claims": [
+    {"reasoning_quote": "Since the dog's shed fur is found on the ground and the cat's saliva is on the clothing", "scenario_quote": "a single shed claw sheath belonging to the resident dog, a retriever", "type": "contradicted", "why": "The evidence from the dog is a claw sheath, not fur."}
+  ]},
+  {"id": "ex-102", "claims": [
+    {"reasoning_quote": "So the mud on the floor is more likely from the dog, which got muddy in the courtyard and tracked it inside.", "scenario_quote": "absent", "type": "invented", "why": "The scenario says the dog was near the planter, not that it got muddy."}
+  ]},
+  {"id": "ex-108", "claims": [
+    {"reasoning_quote": "The cat's proximity is noted, but it was an hour ago.", "scenario_quote": "was seen sitting quietly right next to the swag bag about an hour before the damage was officially discovered.", "type": "wrong_animal", "why": "The one-hour timing is attached to the dog, not the cat."}
+  ]},
+  {"id": "ex-114", "claims": []},
+  {"id": "ex-120", "claims": []},
+  {"id": "ex-126", "claims": []},
+  {"id": "ex-132", "claims": []},
+  {"id": "ex-138", "claims": []},
+  {"id": "ex-144", "claims": []},
+  {"id": "ex-150", "claims": []},
+  {"id": "ex-156", "claims": []},
+  {"id": "ex-162", "claims": []},
+  {"id": "ex-168", "claims": [
+    {"reasoning_quote": "the bag was on the floor, so if the cat was on a high shelf, it would need to jump down to reach it", "scenario_quote": "lingering restlessly on the floor directly beside the preparation table where the bag of premium liver treats was sitting", "type": "contradicted", "why": "The scenario puts the bag on the preparation table, not the floor."}
+  ]},
+  {"id": "ex-174", "claims": [
+    {"reasoning_quote": "the cat's actions are described as causing the gate to break", "scenario_quote": "ramming its head through the broken opening of the gated scale enclosure", "type": "invented", "why": "The scenario describes the cat going through an already broken opening; causing the break is posed only as a question."}
+  ]},
+  {"id": "ex-180", "claims": []},
+  {"id": "ex-186", "claims": []},
+  {"id": "ex-192", "claims": []}
+]

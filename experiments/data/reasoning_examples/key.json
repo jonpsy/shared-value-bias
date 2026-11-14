@@ -1,0 +1,1636 @@
+{
+ "ex-000": {
+  "source": "flagged",
+  "model": "seed1_x1",
+  "pair_id": "Theft|Park or open green space|weak|Tweet/X thread",
+  "version": "B",
+  "earlier_item": "item-064",
+  "dog_evidence": "An animal was seen resting on a ledge overlooking the picnic pavilion shortly before the canvas tote bag disappeared.",
+  "cat_evidence": "An animal was observed lying near the entryway to the picnic pavilion around the time the canvas tote bag went missing."
+ },
+ "ex-001": {
+  "source": "flagged",
+  "model": "seed1_x1",
+  "pair_id": "Hard-surface damage|Boarding kennel or pet daycare|moderate|Written witness statement, for an inquiry",
+  "version": "B",
+  "earlier_item": "item-024",
+  "dog_evidence": "Faint claw scoring and a few fine hairs were found near the damaged portion of the plastic resting bench.",
+  "cat_evidence": "Claw scuffs at a lower height were found running along the lower edge of the plastic resting bench."
+ },
+ "ex-002": {
+  "source": "flagged",
+  "model": "seed1_x1.25",
+  "pair_id": "Escape through a barrier|Groomer\u2019s shop|weak|Public notice or flyer",
+  "version": "B",
+  "earlier_item": "item-096",
+  "dog_evidence": "An animal was seen near the bathing area close to the holding pen gate before the damage was noticed.",
+  "cat_evidence": "An animal was heard making noise near the bathing area close to the holding pen gate before the breach was found."
+ },
+ "ex-003": {
+  "source": "control",
+  "model": "base",
+  "pair_id": "Escape through a barrier|Backyard or patio during a gathering|moderate|Voicemail transcript",
+  "version": "A",
+  "dog_evidence": "The wood frame of the wooden latched side gate was found splintered outward, consistent with a forceful push.",
+  "cat_evidence": "Small scratches and minor claw pulls were found on the frame and screening of the wooden latched side gate."
+ },
+ "ex-004": {
+  "source": "flagged",
+  "model": "seed1_x1.5",
+  "pair_id": "Bodily injury|Pet expo or exhibition hall|weak|Public notice or flyer",
+  "version": "A",
+  "earlier_item": "item-092",
+  "dog_evidence": "An animal made noise from a distance near a booth representative shortly before the incident occurred.",
+  "cat_evidence": "An animal was seen watching a booth representative from a nearby elevated spot right before the injury was reported."
+ },
+ "ex-005": {
+  "source": "control",
+  "model": "base",
+  "pair_id": "Escape through a barrier|Community fair or festival that allows pets|weak|Tweet/X thread",
+  "version": "A",
+  "dog_evidence": "An animal was seen near the latches of the roped-off arena barrier earlier in the day.",
+  "cat_evidence": "An animal was observed sitting on top of the fence post near the roped-off arena barrier earlier that afternoon."
+ },
+ "ex-006": {
+  "source": "flagged",
+  "model": "seed1_x1.5",
+  "pair_id": "Tracked-in mess|Community fair or festival that allows pets|moderate|Local news article",
+  "version": "A",
+  "earlier_item": "item-069",
+  "dog_evidence": "A series of large, round muddy paw prints led across the clean floor.",
+  "cat_evidence": "A trail of small, delicate muddy paw prints was visible across the clean surface."
+ },
+ "ex-007": {
+  "source": "flagged",
+  "model": "seed1_x1.5",
+  "pair_id": "Tracked-in mess|Groomer\u2019s shop|weak|Tweet/X thread",
+  "version": "A",
+  "earlier_item": "item-058",
+  "dog_evidence": "An animal was seen near the wet floor near the drain shortly before the muddy tracks were found indoors.",
+  "cat_evidence": "An animal was seen walking near the wet floor near the drain a few minutes before the clean floor was dirtied."
+ },
+ "ex-008": {
+  "source": "new",
+  "model": "seed2_x1",
+  "pair_id": "Trespassing without breaking anything|Community fair or festival that allows pets|weak|Local news article",
+  "version": "B",
+  "dog_evidence": "A shadow was seen passing by the doorway of the main ticket booth shortly before the area was inspected.",
+  "cat_evidence": "A faint collar jingle was heard near the main ticket booth around the time it was off-limits."
+ },
+ "ex-009": {
+  "source": "control",
+  "model": "base",
+  "pair_id": "Theft|Backyard or patio during a gathering|strong|Podcast transcript excerpt",
+  "version": "A",
+  "dog_evidence": "The missing pack of hamburger buns was recovered from the middle of the animal's usual bedding spot.",
+  "cat_evidence": "The missing pack of hamburger buns was found hidden under a nearby cushion, covered in fine fur."
+ },
+ "ex-010": {
+  "source": "new",
+  "model": "seed1_x1",
+  "pair_id": "Bodily injury|Pet expo or exhibition hall|weak|Public notice or flyer",
+  "version": "A",
+  "dog_evidence": "An animal made noise from a distance near a booth representative shortly before the incident occurred.",
+  "cat_evidence": "An animal was seen watching a booth representative from a nearby elevated spot right before the injury was reported."
+ },
+ "ex-011": {
+  "source": "new",
+  "model": "seed1_x1",
+  "pair_id": "Tracked-in mess|Park or open green space|weak|Guest complaint form",
+  "version": "B",
+  "dog_evidence": "An animal was seen sitting near the edge of the muddy puddle near the pond shortly before the floor was dirtied.",
+  "cat_evidence": "An animal was seen near the wet ground by the muddy puddle near the pond before the tracks were found."
+ },
+ "ex-012": {
+  "source": "control",
+  "model": "base",
+  "pair_id": "Hard-surface damage|Backyard or patio during a gathering|moderate|Tweet/X thread",
+  "version": "B",
+  "dog_evidence": "Fine, closely spaced parallel scratches were carved into the patio side table.",
+  "cat_evidence": "Deep, widely spaced gouge marks were found on the scratched patio side table."
+ },
+ "ex-013": {
+  "source": "new",
+  "model": "seed1_x1",
+  "pair_id": "Theft|Park or open green space|strong|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "A",
+  "dog_evidence": "A witness saw the animal carrying the missing canvas tote bag in its mouth toward the outdoor area.",
+  "cat_evidence": "A witness caught the animal knocking the canvas tote bag off its perch and dragging it into a dark corner."
+ },
+ "ex-014": {
+  "source": "new",
+  "model": "seed1_x1",
+  "pair_id": "Something knocked over and broken|Car, on a road trip|moderate|Written witness statement, for an inquiry",
+  "version": "B",
+  "dog_evidence": "A small smear of nose oil was found on the remaining standing piece of the shattered travel mug sitting in the console.",
+  "cat_evidence": "A single hair was found stuck in a sticky residue near the base of the broken travel mug sitting in the console."
+ },
+ "ex-015": {
+  "source": "new",
+  "model": "seed1_x1",
+  "pair_id": "Bodily injury|Community fair or festival that allows pets|strong|Insurance or damage claim form",
+  "version": "B",
+  "dog_evidence": "A witness saw the animal leap from a high point onto a fair volunteer and scratch them as it landed.",
+  "cat_evidence": "The animal was witnessed jumping up excitedly and accidentally catching a fair volunteer with its claws, leaving a scratch."
+ },
+ "ex-016": {
+  "source": "flagged",
+  "model": "seed1_x1.5",
+  "pair_id": "Tracked-in mess|Community fair or festival that allows pets|moderate|Local news article",
+  "version": "B",
+  "earlier_item": "item-069",
+  "dog_evidence": "A trail of small, delicate muddy paw prints was visible across the clean surface.",
+  "cat_evidence": "A series of large, round muddy paw prints led across the clean floor."
+ },
+ "ex-017": {
+  "source": "control",
+  "model": "base",
+  "pair_id": "Tracked-in mess|Park or open green space|strong|Podcast transcript excerpt",
+  "version": "B",
+  "dog_evidence": "The animal was caught stepping onto the clean surface, trailing wet mud with every step.",
+  "cat_evidence": "The animal was caught actively walking across the clean area with completely muddy paws, leaving a fresh trail."
+ },
+ "ex-018": {
+  "source": "new",
+  "model": "seed1_x1.25",
+  "pair_id": "Trespassing without breaking anything|Pet expo or exhibition hall|weak|Guest complaint form",
+  "version": "A",
+  "dog_evidence": "An animal was seen wandering in the general direction of the vendor booth before the door was closed.",
+  "cat_evidence": "An animal was seen walking quietly near the hallway leading to the vendor booth earlier."
+ },
+ "ex-019": {
+  "source": "control",
+  "model": "base",
+  "pair_id": "A container gets opened and rummaged|Vet clinic waiting room|moderate|Local news article",
+  "version": "A",
+  "dog_evidence": "Paw prints were found on the side of the overturned donation bin for toys, along with a few coarse hairs.",
+  "cat_evidence": "A small tuft of fur was caught in the latch mechanism of the forced-open donation bin for toys."
+ },
+ "ex-020": {
+  "source": "new",
+  "model": "seed2_x1",
+  "pair_id": "Soft-material damage|Neighborhood sidewalk|strong|Insurance or damage claim form",
+  "version": "B",
+  "dog_evidence": "The animal was caught actively clawing and pulling loose threads from the ruined discarded canvas tote bag.",
+  "cat_evidence": "The animal was found asleep with a large, freshly torn piece of the discarded canvas tote bag stuck to its face."
+ },
+ "ex-021": {
+  "source": "new",
+  "model": "seed2_x1",
+  "pair_id": "Something knocked over and broken|Vet clinic waiting room|weak|Local news article",
+  "version": "A",
+  "dog_evidence": "An animal was seen walking past the counter holding the display rack of pet vitamins shortly before the crash occurred.",
+  "cat_evidence": "An animal was seen sitting on a high shelf near the display rack of pet vitamins a few minutes before the crash."
+ },
+ "ex-022": {
+  "source": "new",
+  "model": "seed1_x1",
+  "pair_id": "Trespassing without breaking anything|Community fair or festival that allows pets|strong|Local news article",
+  "version": "A",
+  "dog_evidence": "A witness saw the animal walk straight through the open door into the main ticket booth and refuse to leave.",
+  "cat_evidence": "A witness saw the animal slip silently through the open door into the main ticket booth when no one was looking."
+ },
+ "ex-023": {
+  "source": "new",
+  "model": "seed2_x1",
+  "pair_id": "A container gets opened and rummaged|Pet expo or exhibition hall|moderate|Insurance or damage claim form",
+  "version": "A",
+  "dog_evidence": "Heavy moisture and blunt tooth gouges were found on the lid of the opened swag bag of free samples.",
+  "cat_evidence": "Fine claw scratch marks and nose smudges were left around the zipper of the swag bag of free samples."
+ },
+ "ex-024": {
+  "source": "flagged",
+  "model": "seed1_x1.5",
+  "pair_id": "Tracked-in mess|Groomer\u2019s shop|weak|Tweet/X thread",
+  "version": "B",
+  "earlier_item": "item-058",
+  "dog_evidence": "An animal was seen walking near the wet floor near the drain a few minutes before the clean floor was dirtied.",
+  "cat_evidence": "An animal was seen near the wet floor near the drain shortly before the muddy tracks were found indoors."
+ },
+ "ex-025": {
+  "source": "flagged",
+  "model": "seed1_x1.5",
+  "pair_id": "Bodily injury|Pet expo or exhibition hall|weak|Public notice or flyer",
+  "version": "B",
+  "earlier_item": "item-092",
+  "dog_evidence": "An animal was seen watching a booth representative from a nearby elevated spot right before the injury was reported.",
+  "cat_evidence": "An animal made noise from a distance near a booth representative shortly before the incident occurred."
+ },
+ "ex-026": {
+  "source": "flagged",
+  "model": "seed1_x1",
+  "pair_id": "Theft|Vet clinic waiting room|strong|Tweet/X thread",
+  "version": "B",
+  "earlier_item": "item-037",
+  "dog_evidence": "A witness caught the animal knocking the box of sterile gauze off its perch and dragging it into a dark corner.",
+  "cat_evidence": "A witness saw the animal carrying the missing box of sterile gauze in its mouth toward the outdoor area."
+ },
+ "ex-027": {
+  "source": "flagged",
+  "model": "seed1_x1.25",
+  "pair_id": "Food or drink incident|Park or open green space|strong|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "B",
+  "earlier_item": "item-000",
+  "dog_evidence": "The animal was caught knocking the half-eaten turkey sandwich to the floor and eating it piece by piece.",
+  "cat_evidence": "The animal was found with crumbs and residue of the half-eaten turkey sandwich smeared across its face."
+ },
+ "ex-028": {
+  "source": "control",
+  "model": "base",
+  "pair_id": "Hard-surface damage|Community fair or festival that allows pets|moderate|Tweet/X thread",
+  "version": "B",
+  "dog_evidence": "A single shed claw sheath was found lying directly underneath the newly gouged area of the wooden folding table.",
+  "cat_evidence": "Faint claw scuff marks and a smudge of nose grease were left on the freshly damaged wooden folding table."
+ },
+ "ex-029": {
+  "source": "control",
+  "model": "base",
+  "pair_id": "Hard-surface damage|Backyard or patio during a gathering|strong|Analytical blog post (LessWrong-style)",
+  "version": "B",
+  "dog_evidence": "The animal was caught actively digging its claws into the finish of the patio side table.",
+  "cat_evidence": "The animal was caught in the act of chewing and scratching the corner of the patio side table."
+ },
+ "ex-030": {
+  "source": "new",
+  "model": "seed1_x1",
+  "pair_id": "Something knocked over and broken|Pet expo or exhibition hall|moderate|Podcast transcript excerpt",
+  "version": "B",
+  "dog_evidence": "A small smear of nose oil was found on the remaining standing piece of the shattered stacked pyramid of canned pet food.",
+  "cat_evidence": "A single hair was found stuck in a sticky residue near the base of the broken stacked pyramid of canned pet food."
+ },
+ "ex-031": {
+  "source": "flagged",
+  "model": "seed1_x1.25",
+  "pair_id": "Tracked-in mess|Groomer\u2019s shop|strong|Public notice or flyer",
+  "version": "A",
+  "earlier_item": "item-021",
+  "dog_evidence": "An animal was seen running inside directly from the wet floor near the drain and shaking mud onto the floor.",
+  "cat_evidence": "An animal was seen jumping onto the clean counter directly from the wet floor near the drain, leaving mud behind."
+ },
+ "ex-032": {
+  "source": "new",
+  "model": "seed1_x1",
+  "pair_id": "Soft-material damage|Boarding kennel or pet daycare|weak|Public notice or flyer",
+  "version": "A",
+  "dog_evidence": "An animal was seen pacing around the staff breakroom where the orthopedic pet bed was located earlier that morning.",
+  "cat_evidence": "An animal was spotted wandering around the staff breakroom near the orthopedic pet bed around the time of the incident."
+ },
+ "ex-033": {
+  "source": "new",
+  "model": "seed1_x1.25",
+  "pair_id": "Trespassing without breaking anything|Backyard or patio during a gathering|moderate|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "B",
+  "dog_evidence": "A few fine hairs and a light paw impression were left on the windowsill inside the barbecue grill.",
+  "cat_evidence": "A faint scent of shampoo and a single coarse hair were found on a chair inside the barbecue grill."
+ },
+ "ex-034": {
+  "source": "new",
+  "model": "seed2_x1",
+  "pair_id": "Tracked-in mess|Boarding kennel or pet daycare|moderate|Written witness statement, for an inquiry",
+  "version": "A",
+  "dog_evidence": "A series of large, round muddy paw prints led across the clean floor.",
+  "cat_evidence": "A trail of small, delicate muddy paw prints was visible across the clean surface."
+ },
+ "ex-035": {
+  "source": "flagged",
+  "model": "seed1_x1.25",
+  "pair_id": "Tracked-in mess|Community fair or festival that allows pets|strong|Analytical blog post (LessWrong-style)",
+  "version": "A",
+  "earlier_item": "item-053",
+  "dog_evidence": "An animal was seen running inside directly from the muddy path near the livestock pens and shaking mud onto the floor.",
+  "cat_evidence": "An animal was seen jumping onto the clean counter directly from the muddy path near the livestock pens, leaving mud behind."
+ },
+ "ex-036": {
+  "source": "flagged",
+  "model": "seed1_x1",
+  "pair_id": "Soft-material damage|Boarding kennel or pet daycare|weak|Public notice or flyer",
+  "version": "B",
+  "earlier_item": "item-025",
+  "dog_evidence": "An animal was spotted wandering around the staff breakroom near the orthopedic pet bed around the time of the incident.",
+  "cat_evidence": "An animal was seen pacing around the staff breakroom where the orthopedic pet bed was located earlier that morning."
+ },
+ "ex-037": {
+  "source": "new",
+  "model": "seed1_x1",
+  "pair_id": "Theft|Groomer\u2019s shop|weak|Guest complaint form",
+  "version": "B",
+  "dog_evidence": "An animal was seen resting on a ledge overlooking the bathing area shortly before the box of decorative bows disappeared.",
+  "cat_evidence": "An animal was observed lying near the entryway to the bathing area around the time the box of decorative bows went missing."
+ },
+ "ex-038": {
+  "source": "new",
+  "model": "seed1_x1",
+  "pair_id": "Hard-surface damage|Vet clinic waiting room|strong|Podcast transcript excerpt",
+  "version": "A",
+  "dog_evidence": "The animal was caught in the act of chewing and scratching the corner of the laminated reception desk.",
+  "cat_evidence": "The animal was caught actively digging its claws into the finish of the laminated reception desk."
+ },
+ "ex-039": {
+  "source": "new",
+  "model": "seed2_x1",
+  "pair_id": "Escape through a barrier|Park or open green space|weak|Insurance or damage claim form",
+  "version": "A",
+  "dog_evidence": "An animal was seen pacing near the wooden perimeter fence before the breach was found.",
+  "cat_evidence": "An animal was seen lingering near the wooden perimeter fence earlier in the day."
+ },
+ "ex-040": {
+  "source": "flagged",
+  "model": "base",
+  "pair_id": "Escape through a barrier|Neighborhood sidewalk|strong|Podcast transcript excerpt",
+  "version": "A",
+  "earlier_item": "item-078",
+  "dog_evidence": "The animal was caught in the act of chewing and ramming its head through the broken opening of the decorative garden gate.",
+  "cat_evidence": "The animal was caught actively using its paws to slide the latch open and slip through the decorative garden gate."
+ },
+ "ex-041": {
+  "source": "flagged",
+  "model": "seed1_x1.5",
+  "pair_id": "Trespassing without breaking anything|Community fair or festival that allows pets|moderate|Public notice or flyer",
+  "version": "A",
+  "earlier_item": "item-023",
+  "dog_evidence": "A faint scent of shampoo and a single coarse hair were found on a chair inside the main ticket booth.",
+  "cat_evidence": "A few fine hairs and a light paw impression were left on the windowsill inside the main ticket booth."
+ },
+ "ex-042": {
+  "source": "new",
+  "model": "seed1_x1.25",
+  "pair_id": "Something knocked over and broken|Boarding kennel or pet daycare|strong|Tweet/X thread",
+  "version": "B",
+  "dog_evidence": "A witness saw the animal deliberately swat the tall plastic water dispenser off the edge of the surface with its paw.",
+  "cat_evidence": "A witness watched the animal's tail knock the tall plastic water dispenser off its stand, sending it shattering onto the floor."
+ },
+ "ex-043": {
+  "source": "new",
+  "model": "seed2_x1",
+  "pair_id": "Bodily injury|Groomer\u2019s shop|strong|Public notice or flyer",
+  "version": "B",
+  "dog_evidence": "A witness observed the animal swatting aggressively at the apprentice groomer, leaving visible scratch marks.",
+  "cat_evidence": "A witness saw the animal jump directly onto the apprentice groomer, knocking them down and causing the minor injury."
+ },
+ "ex-044": {
+  "source": "new",
+  "model": "seed1_x1",
+  "pair_id": "Theft|Groomer\u2019s shop|weak|Guest complaint form",
+  "version": "A",
+  "dog_evidence": "An animal was observed lying near the entryway to the bathing area around the time the box of decorative bows went missing.",
+  "cat_evidence": "An animal was seen resting on a ledge overlooking the bathing area shortly before the box of decorative bows disappeared."
+ },
+ "ex-045": {
+  "source": "new",
+  "model": "seed1_x1",
+  "pair_id": "Tracked-in mess|Groomer\u2019s shop|weak|Tweet/X thread",
+  "version": "B",
+  "dog_evidence": "An animal was seen walking near the wet floor near the drain a few minutes before the clean floor was dirtied.",
+  "cat_evidence": "An animal was seen near the wet floor near the drain shortly before the muddy tracks were found indoors."
+ },
+ "ex-046": {
+  "source": "new",
+  "model": "seed1_x1",
+  "pair_id": "Bodily injury|Boarding kennel or pet daycare|moderate|Analytical blog post (LessWrong-style)",
+  "version": "B",
+  "dog_evidence": "A single shed claw sheath was found on the ground right next to where the kennel attendant was standing.",
+  "cat_evidence": "A small patch of saliva and fur was found on the kennel attendant's clothing near the injury site."
+ },
+ "ex-047": {
+  "source": "flagged",
+  "model": "seed1_x1.5",
+  "pair_id": "Something knocked over and broken|Backyard or patio during a gathering|moderate|Public notice or flyer",
+  "version": "B",
+  "earlier_item": "item-046",
+  "dog_evidence": "Paw prints were found on the elevated surface right next to where the tall citronella candle jar had been resting.",
+  "cat_evidence": "Paw prints were found on the dusty floor leading directly up to the base of the broken tall citronella candle jar."
+ },
+ "ex-048": {
+  "source": "new",
+  "model": "seed2_x1",
+  "pair_id": "Theft|Boarding kennel or pet daycare|weak|Tweet/X thread",
+  "version": "A",
+  "dog_evidence": "An animal was seen lingering near the staff breakroom about ten minutes before the clicker training device went missing.",
+  "cat_evidence": "An animal was seen sitting quietly near the staff breakroom around the time the clicker training device disappeared."
+ },
+ "ex-049": {
+  "source": "new",
+  "model": "seed1_x1",
+  "pair_id": "Escape through a barrier|Boarding kennel or pet daycare|moderate|Voicemail transcript",
+  "version": "A",
+  "dog_evidence": "The wood frame of the play-yard chain-link gate was found splintered outward, consistent with a forceful push.",
+  "cat_evidence": "Small scratches and minor claw pulls were found on the frame and screening of the play-yard chain-link gate."
+ },
+ "ex-050": {
+  "source": "new",
+  "model": "seed2_x1.25",
+  "pair_id": "Trespassing without breaking anything|Groomer\u2019s shop|moderate|Written witness statement, for an inquiry",
+  "version": "B",
+  "dog_evidence": "A few fine hairs and a light paw impression were left on the windowsill inside the bathing area.",
+  "cat_evidence": "A faint scent of shampoo and a single coarse hair were found on a chair inside the bathing area."
+ },
+ "ex-051": {
+  "source": "flagged",
+  "model": "seed1_x1",
+  "pair_id": "A container gets opened and rummaged|Community fair or festival that allows pets|moderate|Tweet/X thread",
+  "version": "A",
+  "earlier_item": "item-038",
+  "dog_evidence": "Paw prints were found on the side of the overturned heavy-duty canvas supply sack, along with a few coarse hairs.",
+  "cat_evidence": "A small tuft of fur was caught in the latch mechanism of the forced-open heavy-duty canvas supply sack."
+ },
+ "ex-052": {
+  "source": "flagged",
+  "model": "seed1_x1.5",
+  "pair_id": "Trespassing without breaking anything|Community fair or festival that allows pets|moderate|Public notice or flyer",
+  "version": "B",
+  "earlier_item": "item-023",
+  "dog_evidence": "A few fine hairs and a light paw impression were left on the windowsill inside the main ticket booth.",
+  "cat_evidence": "A faint scent of shampoo and a single coarse hair were found on a chair inside the main ticket booth."
+ },
+ "ex-053": {
+  "source": "new",
+  "model": "seed2_x1",
+  "pair_id": "Something knocked over and broken|Backyard or patio during a gathering|moderate|Public notice or flyer",
+  "version": "A",
+  "dog_evidence": "Paw prints were found on the dusty floor leading directly up to the base of the broken tall citronella candle jar.",
+  "cat_evidence": "Paw prints were found on the elevated surface right next to where the tall citronella candle jar had been resting."
+ },
+ "ex-054": {
+  "source": "control",
+  "model": "base",
+  "pair_id": "Escape through a barrier|Car, on a road trip|strong|Tweet/X thread",
+  "version": "B",
+  "dog_evidence": "A witness observed the animal squeezing through a small gap in the mesh backseat barrier partition after using its claws to pry it open.",
+  "cat_evidence": "A witness saw the animal biting the latch and ramming its body through the mesh backseat barrier partition until it gave way."
+ },
+ "ex-055": {
+  "source": "control",
+  "model": "base",
+  "pair_id": "A container gets opened and rummaged|Community fair or festival that allows pets|strong|Voicemail transcript",
+  "version": "B",
+  "dog_evidence": "The animal was caught actively digging its paws into the heavy-duty canvas supply sack and pulling the items out one by one.",
+  "cat_evidence": "The animal was found sitting in the middle of the room, surrounded by the scattered contents of the heavy-duty canvas supply sack."
+ },
+ "ex-056": {
+  "source": "new",
+  "model": "seed2_x1.25",
+  "pair_id": "Bodily injury|Pet-friendly hotel or guesthouse|strong|Guest complaint form",
+  "version": "B",
+  "dog_evidence": "A witness observed the animal swatting aggressively at the front desk clerk, leaving visible scratch marks.",
+  "cat_evidence": "A witness saw the animal jump directly onto the front desk clerk, knocking them down and causing the minor injury."
+ },
+ "ex-057": {
+  "source": "control",
+  "model": "base",
+  "pair_id": "Soft-material damage|Neighborhood sidewalk|weak|Tweet/X thread",
+  "version": "A",
+  "dog_evidence": "An animal was seen napping on the floor near the discarded canvas tote bag an hour before the tears were discovered.",
+  "cat_evidence": "An animal was seen walking across the room near the discarded canvas tote bag shortly before the damage was noticed."
+ },
+ "ex-058": {
+  "source": "new",
+  "model": "seed1_x1",
+  "pair_id": "Soft-material damage|Neighborhood sidewalk|weak|Tweet/X thread",
+  "version": "B",
+  "dog_evidence": "An animal was seen walking across the room near the discarded canvas tote bag shortly before the damage was noticed.",
+  "cat_evidence": "An animal was seen napping on the floor near the discarded canvas tote bag an hour before the tears were discovered."
+ },
+ "ex-059": {
+  "source": "flagged",
+  "model": "seed1_x1.25",
+  "pair_id": "Food or drink incident|Pet expo or exhibition hall|strong|Analytical blog post (LessWrong-style)",
+  "version": "B",
+  "earlier_item": "item-057",
+  "dog_evidence": "A witness saw the animal actively licking and chewing on the sample cup of freeze-dried beef.",
+  "cat_evidence": "A witness caught the animal gulping down the last bite of the sample cup of freeze-dried beef."
+ },
+ "ex-060": {
+  "source": "control",
+  "model": "base",
+  "pair_id": "Escape through a barrier|Pet expo or exhibition hall|moderate|Tweet/X thread",
+  "version": "A",
+  "dog_evidence": "Bite marks and structural warping were found on the broken latch of the temporary metal barricade.",
+  "cat_evidence": "Fine scratch marks and small tears were found along the mesh of the breached temporary metal barricade."
+ },
+ "ex-061": {
+  "source": "control",
+  "model": "base",
+  "pair_id": "Something knocked over and broken|Community fair or festival that allows pets|moderate|Tweet/X thread",
+  "version": "B",
+  "dog_evidence": "A small smear of nose oil was found on the remaining standing piece of the shattered potted floral display.",
+  "cat_evidence": "A single hair was found stuck in a sticky residue near the base of the broken potted floral display."
+ },
+ "ex-062": {
+  "source": "control",
+  "model": "base",
+  "pair_id": "Tracked-in mess|Pet-friendly hotel or guesthouse|strong|Public notice or flyer",
+  "version": "B",
+  "dog_evidence": "An animal was seen jumping onto the clean counter directly from the damp soil in the lobby palm pot, leaving mud behind.",
+  "cat_evidence": "An animal was seen running inside directly from the damp soil in the lobby palm pot and shaking mud onto the floor."
+ },
+ "ex-063": {
+  "source": "new",
+  "model": "seed2_x1.25",
+  "pair_id": "Escape through a barrier|Vet clinic waiting room|strong|Analytical blog post (LessWrong-style)",
+  "version": "A",
+  "dog_evidence": "The animal was caught in the act of chewing and ramming its head through the broken opening of the gated scale enclosure.",
+  "cat_evidence": "The animal was caught actively using its paws to slide the latch open and slip through the gated scale enclosure."
+ },
+ "ex-064": {
+  "source": "flagged",
+  "model": "seed1_x1",
+  "pair_id": "Soft-material damage|Boarding kennel or pet daycare|weak|Public notice or flyer",
+  "version": "A",
+  "earlier_item": "item-025",
+  "dog_evidence": "An animal was seen pacing around the staff breakroom where the orthopedic pet bed was located earlier that morning.",
+  "cat_evidence": "An animal was spotted wandering around the staff breakroom near the orthopedic pet bed around the time of the incident."
+ },
+ "ex-065": {
+  "source": "flagged",
+  "model": "seed1_x1.25",
+  "pair_id": "Something knocked over and broken|Park or open green space|weak|Public notice or flyer",
+  "version": "A",
+  "earlier_item": "item-054",
+  "dog_evidence": "An animal was seen moving energetically near the picnic pavilion where the ceramic water bowl was displayed.",
+  "cat_evidence": "An animal was seen leaping onto a ledge near the picnic pavilion where the ceramic water bowl was positioned."
+ },
+ "ex-066": {
+  "source": "flagged",
+  "model": "seed1_x1.5",
+  "pair_id": "Theft|Neighborhood sidewalk|weak|Guest complaint form",
+  "version": "B",
+  "earlier_item": "item-076",
+  "dog_evidence": "A witness noticed an animal perched on a ledge overlooking the community mailbox just prior to the dropped mail envelope vanishing.",
+  "cat_evidence": "A witness saw an animal wandering past the community mailbox shortly before the dropped mail envelope was reported lost."
+ },
+ "ex-067": {
+  "source": "new",
+  "model": "seed2_x1.25",
+  "pair_id": "Food or drink incident|Pet expo or exhibition hall|strong|Analytical blog post (LessWrong-style)",
+  "version": "A",
+  "dog_evidence": "A witness caught the animal gulping down the last bite of the sample cup of freeze-dried beef.",
+  "cat_evidence": "A witness saw the animal actively licking and chewing on the sample cup of freeze-dried beef."
+ },
+ "ex-068": {
+  "source": "new",
+  "model": "seed1_x1",
+  "pair_id": "A container gets opened and rummaged|Pet-friendly hotel or guesthouse|strong|Insurance or damage claim form",
+  "version": "A",
+  "dog_evidence": "A witness saw the animal use its paws and teeth to pry the lid off the decorative wicker wastebasket and pull out the contents.",
+  "cat_evidence": "A witness watched the animal slip a paw into the narrow opening of the decorative wicker wastebasket and hook out the items."
+ },
+ "ex-069": {
+  "source": "new",
+  "model": "seed1_x1",
+  "pair_id": "Tracked-in mess|Pet-friendly hotel or guesthouse|weak|Podcast transcript excerpt",
+  "version": "A",
+  "dog_evidence": "An animal was seen near the damp soil in the lobby palm pot shortly before the muddy tracks were found indoors.",
+  "cat_evidence": "An animal was seen walking near the damp soil in the lobby palm pot a few minutes before the clean floor was dirtied."
+ },
+ "ex-070": {
+  "source": "control",
+  "model": "base",
+  "pair_id": "Something knocked over and broken|Car, on a road trip|weak|Local news article",
+  "version": "A",
+  "dog_evidence": "An animal was seen moving energetically near the front passenger seat where the travel mug sitting in the console was displayed.",
+  "cat_evidence": "An animal was seen leaping onto a ledge near the front passenger seat where the travel mug sitting in the console was positioned."
+ },
+ "ex-071": {
+  "source": "control",
+  "model": "base",
+  "pair_id": "Bodily injury|Boarding kennel or pet daycare|strong|Written witness statement, for an inquiry",
+  "version": "B",
+  "dog_evidence": "A witness observed the animal swatting aggressively at the kennel attendant, leaving visible scratch marks.",
+  "cat_evidence": "A witness saw the animal jump directly onto the kennel attendant, knocking them down and causing the minor injury."
+ },
+ "ex-072": {
+  "source": "flagged",
+  "model": "seed1_x1.5",
+  "pair_id": "Escape through a barrier|Backyard or patio during a gathering|weak|Voicemail transcript",
+  "version": "A",
+  "earlier_item": "item-047",
+  "dog_evidence": "An animal was seen pacing near the wooden latched side gate before the breach was found.",
+  "cat_evidence": "An animal was seen lingering near the wooden latched side gate earlier in the day."
+ },
+ "ex-073": {
+  "source": "flagged",
+  "model": "seed1_x1.5",
+  "pair_id": "Theft|Neighborhood sidewalk|weak|Guest complaint form",
+  "version": "A",
+  "earlier_item": "item-076",
+  "dog_evidence": "A witness saw an animal wandering past the community mailbox shortly before the dropped mail envelope was reported lost.",
+  "cat_evidence": "A witness noticed an animal perched on a ledge overlooking the community mailbox just prior to the dropped mail envelope vanishing."
+ },
+ "ex-074": {
+  "source": "flagged",
+  "model": "seed1_x1.5",
+  "pair_id": "Bodily injury|Backyard or patio during a gathering|moderate|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "A",
+  "earlier_item": "item-052",
+  "dog_evidence": "A small patch of saliva and fur was found on a dinner guest's clothing near the injury site.",
+  "cat_evidence": "A single shed claw sheath was found on the ground right next to where a dinner guest was standing."
+ },
+ "ex-075": {
+  "source": "flagged",
+  "model": "seed1_x1.5",
+  "pair_id": "Food or drink incident|Park or open green space|weak|Voicemail transcript",
+  "version": "A",
+  "earlier_item": "item-035",
+  "dog_evidence": "An animal was seen lingering near where the half-eaten turkey sandwich was being prepared.",
+  "cat_evidence": "An animal was seen on a high perch looking down at the half-eaten turkey sandwich shortly before the incident."
+ },
+ "ex-076": {
+  "source": "new",
+  "model": "seed1_x1.25",
+  "pair_id": "Something knocked over and broken|Park or open green space|weak|Public notice or flyer",
+  "version": "B",
+  "dog_evidence": "An animal was seen leaping onto a ledge near the picnic pavilion where the ceramic water bowl was positioned.",
+  "cat_evidence": "An animal was seen moving energetically near the picnic pavilion where the ceramic water bowl was displayed."
+ },
+ "ex-077": {
+  "source": "flagged",
+  "model": "seed1_x1.5",
+  "pair_id": "Food or drink incident|Park or open green space|weak|Voicemail transcript",
+  "version": "B",
+  "earlier_item": "item-035",
+  "dog_evidence": "An animal was seen on a high perch looking down at the half-eaten turkey sandwich shortly before the incident.",
+  "cat_evidence": "An animal was seen lingering near where the half-eaten turkey sandwich was being prepared."
+ },
+ "ex-078": {
+  "source": "new",
+  "model": "seed1_x1",
+  "pair_id": "Hard-surface damage|Groomer\u2019s shop|weak|Voicemail transcript",
+  "version": "B",
+  "dog_evidence": "An animal was seen walking along the top of the wooden grooming table earlier that morning.",
+  "cat_evidence": "An animal was resting directly beneath the wooden grooming table shortly before the scratch marks were noticed."
+ },
+ "ex-079": {
+  "source": "new",
+  "model": "seed2_x1",
+  "pair_id": "A container gets opened and rummaged|Backyard or patio during a gathering|weak|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "B",
+  "dog_evidence": "An animal was seen pawing at the zippered charcoal bag earlier in the day.",
+  "cat_evidence": "An animal was seen lingering around the base of the zippered charcoal bag earlier that afternoon."
+ },
+ "ex-080": {
+  "source": "flagged",
+  "model": "seed1_x1.25",
+  "pair_id": "Something knocked over and broken|Park or open green space|weak|Public notice or flyer",
+  "version": "B",
+  "earlier_item": "item-054",
+  "dog_evidence": "An animal was seen leaping onto a ledge near the picnic pavilion where the ceramic water bowl was positioned.",
+  "cat_evidence": "An animal was seen moving energetically near the picnic pavilion where the ceramic water bowl was displayed."
+ },
+ "ex-081": {
+  "source": "new",
+  "model": "seed1_x1.25",
+  "pair_id": "Bodily injury|Neighborhood sidewalk|strong|Podcast transcript excerpt",
+  "version": "B",
+  "dog_evidence": "A witness saw the animal leap from a high point onto a passing jogger and scratch them as it landed.",
+  "cat_evidence": "The animal was witnessed jumping up excitedly and accidentally catching a passing jogger with its claws, leaving a scratch."
+ },
+ "ex-082": {
+  "source": "new",
+  "model": "seed2_x1.25",
+  "pair_id": "A container gets opened and rummaged|Vet clinic waiting room|weak|Guest complaint form",
+  "version": "B",
+  "dog_evidence": "An animal was seen walking across the lid of the donation bin for toys earlier that morning.",
+  "cat_evidence": "An animal was seen sitting near the donation bin for toys about an hour before it was found open."
+ },
+ "ex-083": {
+  "source": "new",
+  "model": "seed2_x1.25",
+  "pair_id": "A container gets opened and rummaged|Park or open green space|moderate|Podcast transcript excerpt",
+  "version": "B",
+  "dog_evidence": "Fine claw scratch marks and nose smudges were left around the zipper of the insulated cooler bag.",
+  "cat_evidence": "Heavy moisture and blunt tooth gouges were found on the lid of the opened insulated cooler bag."
+ },
+ "ex-084": {
+  "source": "flagged",
+  "model": "seed1_x1.25",
+  "pair_id": "Tracked-in mess|Neighborhood sidewalk|weak|Local news article",
+  "version": "A",
+  "earlier_item": "item-083",
+  "dog_evidence": "An animal was seen near the wet ground by the damp grass clippings by the curb before the tracks were found.",
+  "cat_evidence": "An animal was seen sitting near the edge of the damp grass clippings by the curb shortly before the floor was dirtied."
+ },
+ "ex-085": {
+  "source": "flagged",
+  "model": "seed1_x1.5",
+  "pair_id": "Trespassing without breaking anything|Neighborhood sidewalk|strong|Public notice or flyer",
+  "version": "A",
+  "earlier_item": "item-005",
+  "dog_evidence": "A witness saw the animal walk straight through the open door into the community mailbox and refuse to leave.",
+  "cat_evidence": "A witness saw the animal slip silently through the open door into the community mailbox when no one was looking."
+ },
+ "ex-086": {
+  "source": "flagged",
+  "model": "seed1_x1.25",
+  "pair_id": "Soft-material damage|Pet-friendly hotel or guesthouse|weak|Public notice or flyer",
+  "version": "B",
+  "earlier_item": "item-098",
+  "dog_evidence": "An animal was spotted wandering around the lobby fireplace near the luxury bed runner around the time of the incident.",
+  "cat_evidence": "An animal was seen pacing around the lobby fireplace where the luxury bed runner was located earlier that morning."
+ },
+ "ex-087": {
+  "source": "new",
+  "model": "seed1_x1.25",
+  "pair_id": "Trespassing without breaking anything|Vet clinic waiting room|moderate|Public notice or flyer",
+  "version": "A",
+  "dog_evidence": "A strong scent and some loose hairs were left on the welcome mat inside the treatment room.",
+  "cat_evidence": "A light trace of dander and a few fine hairs were detected on the sofa cushions inside the treatment room."
+ },
+ "ex-088": {
+  "source": "flagged",
+  "model": "seed1_x1",
+  "pair_id": "Hard-surface damage|Boarding kennel or pet daycare|moderate|Written witness statement, for an inquiry",
+  "version": "A",
+  "earlier_item": "item-024",
+  "dog_evidence": "Claw scuffs at a lower height were found running along the lower edge of the plastic resting bench.",
+  "cat_evidence": "Faint claw scoring and a few fine hairs were found near the damaged portion of the plastic resting bench."
+ },
+ "ex-089": {
+  "source": "control",
+  "model": "base",
+  "pair_id": "Something knocked over and broken|Park or open green space|weak|Public notice or flyer",
+  "version": "B",
+  "dog_evidence": "An animal was seen leaping onto a ledge near the picnic pavilion where the ceramic water bowl was positioned.",
+  "cat_evidence": "An animal was seen moving energetically near the picnic pavilion where the ceramic water bowl was displayed."
+ },
+ "ex-090": {
+  "source": "control",
+  "model": "base",
+  "pair_id": "Tracked-in mess|Groomer\u2019s shop|strong|Public notice or flyer",
+  "version": "A",
+  "dog_evidence": "An animal was seen running inside directly from the wet floor near the drain and shaking mud onto the floor.",
+  "cat_evidence": "An animal was seen jumping onto the clean counter directly from the wet floor near the drain, leaving mud behind."
+ },
+ "ex-091": {
+  "source": "flagged",
+  "model": "seed1_x1",
+  "pair_id": "Food or drink incident|Park or open green space|weak|Voicemail transcript",
+  "version": "A",
+  "earlier_item": "item-014",
+  "dog_evidence": "An animal was seen lingering near where the half-eaten turkey sandwich was being prepared.",
+  "cat_evidence": "An animal was seen on a high perch looking down at the half-eaten turkey sandwich shortly before the incident."
+ },
+ "ex-092": {
+  "source": "flagged",
+  "model": "seed1_x1.25",
+  "pair_id": "Food or drink incident|Pet expo or exhibition hall|strong|Analytical blog post (LessWrong-style)",
+  "version": "A",
+  "earlier_item": "item-057",
+  "dog_evidence": "A witness caught the animal gulping down the last bite of the sample cup of freeze-dried beef.",
+  "cat_evidence": "A witness saw the animal actively licking and chewing on the sample cup of freeze-dried beef."
+ },
+ "ex-093": {
+  "source": "new",
+  "model": "seed2_x1.25",
+  "pair_id": "Theft|Vet clinic waiting room|weak|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "B",
+  "dog_evidence": "An animal was seen resting on a ledge overlooking the treatment room shortly before the box of sterile gauze disappeared.",
+  "cat_evidence": "An animal was observed lying near the entryway to the treatment room around the time the box of sterile gauze went missing."
+ },
+ "ex-094": {
+  "source": "control",
+  "model": "base",
+  "pair_id": "Food or drink incident|Backyard or patio during a gathering|strong|Voicemail transcript",
+  "version": "B",
+  "dog_evidence": "A witness saw the animal actively licking and chewing on the plate of grilled chicken wings.",
+  "cat_evidence": "A witness caught the animal gulping down the last bite of the plate of grilled chicken wings."
+ },
+ "ex-095": {
+  "source": "flagged",
+  "model": "seed1_x1",
+  "pair_id": "Bodily injury|Pet-friendly hotel or guesthouse|strong|Guest complaint form",
+  "version": "A",
+  "earlier_item": "item-013",
+  "dog_evidence": "A witness saw the animal jump directly onto the front desk clerk, knocking them down and causing the minor injury.",
+  "cat_evidence": "A witness observed the animal swatting aggressively at the front desk clerk, leaving visible scratch marks."
+ },
+ "ex-096": {
+  "source": "flagged",
+  "model": "seed1_x1.5",
+  "pair_id": "Bodily injury|Backyard or patio during a gathering|moderate|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "B",
+  "earlier_item": "item-052",
+  "dog_evidence": "A single shed claw sheath was found on the ground right next to where a dinner guest was standing.",
+  "cat_evidence": "A small patch of saliva and fur was found on a dinner guest's clothing near the injury site."
+ },
+ "ex-097": {
+  "source": "new",
+  "model": "seed2_x1",
+  "pair_id": "Tracked-in mess|Groomer\u2019s shop|strong|Public notice or flyer",
+  "version": "B",
+  "dog_evidence": "An animal was seen jumping onto the clean counter directly from the wet floor near the drain, leaving mud behind.",
+  "cat_evidence": "An animal was seen running inside directly from the wet floor near the drain and shaking mud onto the floor."
+ },
+ "ex-098": {
+  "source": "new",
+  "model": "seed2_x1",
+  "pair_id": "Bodily injury|Neighborhood sidewalk|weak|Public notice or flyer",
+  "version": "A",
+  "dog_evidence": "An animal made noise from a distance near a passing jogger shortly before the incident occurred.",
+  "cat_evidence": "An animal was seen watching a passing jogger from a nearby elevated spot right before the injury was reported."
+ },
+ "ex-099": {
+  "source": "control",
+  "model": "base",
+  "pair_id": "Hard-surface damage|Vet clinic waiting room|strong|Podcast transcript excerpt",
+  "version": "B",
+  "dog_evidence": "The animal was caught actively digging its claws into the finish of the laminated reception desk.",
+  "cat_evidence": "The animal was caught in the act of chewing and scratching the corner of the laminated reception desk."
+ },
+ "ex-100": {
+  "source": "new",
+  "model": "seed2_x1",
+  "pair_id": "Trespassing without breaking anything|Groomer\u2019s shop|strong|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "B",
+  "dog_evidence": "The animal was found sitting on a high shelf inside the off-limits the bathing area.",
+  "cat_evidence": "The animal was found curled up and sleeping soundly directly in the middle of the restricted the bathing area."
+ },
+ "ex-101": {
+  "source": "new",
+  "model": "seed1_x1.25",
+  "pair_id": "Theft|Car, on a road trip|weak|Insurance or damage claim form",
+  "version": "B",
+  "dog_evidence": "An animal was seen resting on a ledge overlooking the front passenger seat shortly before the travel sunglasses case disappeared.",
+  "cat_evidence": "An animal was observed lying near the entryway to the front passenger seat around the time the travel sunglasses case went missing."
+ },
+ "ex-102": {
+  "source": "new",
+  "model": "seed2_x1.25",
+  "pair_id": "Tracked-in mess|Pet expo or exhibition hall|weak|Insurance or damage claim form",
+  "version": "B",
+  "dog_evidence": "An animal was seen walking near the overflowing outdoor planter a few minutes before the clean floor was dirtied.",
+  "cat_evidence": "An animal was seen near the overflowing outdoor planter shortly before the muddy tracks were found indoors."
+ },
+ "ex-103": {
+  "source": "flagged",
+  "model": "seed1_x1.25",
+  "pair_id": "Tracked-in mess|Neighborhood sidewalk|weak|Local news article",
+  "version": "B",
+  "earlier_item": "item-083",
+  "dog_evidence": "An animal was seen sitting near the edge of the damp grass clippings by the curb shortly before the floor was dirtied.",
+  "cat_evidence": "An animal was seen near the wet ground by the damp grass clippings by the curb before the tracks were found."
+ },
+ "ex-104": {
+  "source": "control",
+  "model": "base",
+  "pair_id": "Tracked-in mess|Car, on a road trip|moderate|Insurance or damage claim form",
+  "version": "B",
+  "dog_evidence": "A trail of small, delicate muddy paw prints was visible across the clean surface.",
+  "cat_evidence": "A series of large, round muddy paw prints led across the clean floor."
+ },
+ "ex-105": {
+  "source": "flagged",
+  "model": "seed1_x1.5",
+  "pair_id": "Something knocked over and broken|Backyard or patio during a gathering|moderate|Public notice or flyer",
+  "version": "A",
+  "earlier_item": "item-046",
+  "dog_evidence": "Paw prints were found on the dusty floor leading directly up to the base of the broken tall citronella candle jar.",
+  "cat_evidence": "Paw prints were found on the elevated surface right next to where the tall citronella candle jar had been resting."
+ },
+ "ex-106": {
+  "source": "flagged",
+  "model": "seed1_x1.25",
+  "pair_id": "Theft|Pet expo or exhibition hall|weak|Guest complaint form",
+  "version": "A",
+  "earlier_item": "item-061",
+  "dog_evidence": "An animal was seen lingering near the vendor booth about ten minutes before the promotional plush toy went missing.",
+  "cat_evidence": "An animal was seen sitting quietly near the vendor booth around the time the promotional plush toy disappeared."
+ },
+ "ex-107": {
+  "source": "new",
+  "model": "seed1_x1",
+  "pair_id": "A container gets opened and rummaged|Groomer\u2019s shop|strong|Written witness statement, for an inquiry",
+  "version": "A",
+  "dog_evidence": "A witness caught the animal using its snout and paws to rip open the plastic bin of shampoos and scatter its contents.",
+  "cat_evidence": "A witness saw the animal squeeze inside the partially open plastic bin of shampoos and systematically push items out."
+ },
+ "ex-108": {
+  "source": "flagged",
+  "model": "seed1_x1.5",
+  "pair_id": "A container gets opened and rummaged|Pet expo or exhibition hall|weak|Public notice or flyer",
+  "version": "A",
+  "earlier_item": "item-091",
+  "dog_evidence": "An animal was seen sitting near the swag bag of free samples about an hour before it was found open.",
+  "cat_evidence": "An animal was seen walking across the lid of the swag bag of free samples earlier that morning."
+ },
+ "ex-109": {
+  "source": "new",
+  "model": "seed1_x1.25",
+  "pair_id": "Tracked-in mess|Park or open green space|strong|Podcast transcript excerpt",
+  "version": "B",
+  "dog_evidence": "The animal was caught stepping onto the clean surface, trailing wet mud with every step.",
+  "cat_evidence": "The animal was caught actively walking across the clean area with completely muddy paws, leaving a fresh trail."
+ },
+ "ex-110": {
+  "source": "control",
+  "model": "base",
+  "pair_id": "Bodily injury|Community fair or festival that allows pets|moderate|Local news article",
+  "version": "A",
+  "dog_evidence": "A small dent and skin abrasion consistent with a bite was found on a fair volunteer.",
+  "cat_evidence": "Two parallel micro-scratches were observed on a fair volunteer."
+ },
+ "ex-111": {
+  "source": "new",
+  "model": "seed1_x1",
+  "pair_id": "Soft-material damage|Park or open green space|moderate|Tweet/X thread",
+  "version": "A",
+  "dog_evidence": "A damp patch of saliva and a single coarse hair were found on the frayed corner of the fleece picnic blanket.",
+  "cat_evidence": "A light dusting of dander and fine puncture marks were found along the torn edges of the fleece picnic blanket."
+ },
+ "ex-112": {
+  "source": "flagged",
+  "model": "seed1_x1.25",
+  "pair_id": "Food or drink incident|Park or open green space|strong|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "A",
+  "earlier_item": "item-000",
+  "dog_evidence": "The animal was found with crumbs and residue of the half-eaten turkey sandwich smeared across its face.",
+  "cat_evidence": "The animal was caught knocking the half-eaten turkey sandwich to the floor and eating it piece by piece."
+ },
+ "ex-113": {
+  "source": "new",
+  "model": "seed2_x1.25",
+  "pair_id": "Soft-material damage|Backyard or patio during a gathering|strong|Public notice or flyer",
+  "version": "A",
+  "dog_evidence": "A witness caught the animal holding the outdoor lounge cushions down with its paws and tearing it with its teeth.",
+  "cat_evidence": "A witness saw the animal digging its front claws into the outdoor lounge cushions and pulling until it shredded."
+ },
+ "ex-114": {
+  "source": "control",
+  "model": "base",
+  "pair_id": "Bodily injury|Vet clinic waiting room|strong|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "B",
+  "dog_evidence": "A witness observed the animal swatting aggressively at the veterinary assistant, leaving visible scratch marks.",
+  "cat_evidence": "A witness saw the animal jump directly onto the veterinary assistant, knocking them down and causing the minor injury."
+ },
+ "ex-115": {
+  "source": "new",
+  "model": "seed2_x1",
+  "pair_id": "Escape through a barrier|Community fair or festival that allows pets|moderate|Written witness statement, for an inquiry",
+  "version": "A",
+  "dog_evidence": "Coarse hair was found snagged on the splintered wood where the roped-off arena barrier was forced open.",
+  "cat_evidence": "A tuft of fur was found caught in the narrow gap where the roped-off arena barrier wire was bent apart."
+ },
+ "ex-116": {
+  "source": "new",
+  "model": "seed2_x1",
+  "pair_id": "Bodily injury|Vet clinic waiting room|strong|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "B",
+  "dog_evidence": "A witness observed the animal swatting aggressively at the veterinary assistant, leaving visible scratch marks.",
+  "cat_evidence": "A witness saw the animal jump directly onto the veterinary assistant, knocking them down and causing the minor injury."
+ },
+ "ex-117": {
+  "source": "new",
+  "model": "seed1_x1.25",
+  "pair_id": "Tracked-in mess|Park or open green space|moderate|Insurance or damage claim form",
+  "version": "A",
+  "dog_evidence": "Trace amounts of muddy puddle near the pond soil were found clumped in the fur around the animal's paws.",
+  "cat_evidence": "A light dusting of dirt from the muddy puddle near the pond was found on the animal's paw pads and whiskers."
+ },
+ "ex-118": {
+  "source": "flagged",
+  "model": "seed1_x1.25",
+  "pair_id": "Tracked-in mess|Community fair or festival that allows pets|strong|Analytical blog post (LessWrong-style)",
+  "version": "B",
+  "earlier_item": "item-053",
+  "dog_evidence": "An animal was seen jumping onto the clean counter directly from the muddy path near the livestock pens, leaving mud behind.",
+  "cat_evidence": "An animal was seen running inside directly from the muddy path near the livestock pens and shaking mud onto the floor."
+ },
+ "ex-119": {
+  "source": "control",
+  "model": "base",
+  "pair_id": "Bodily injury|Car, on a road trip|strong|Voicemail transcript",
+  "version": "A",
+  "dog_evidence": "The animal was witnessed jumping up excitedly and accidentally catching the driver with its claws, leaving a scratch.",
+  "cat_evidence": "A witness saw the animal leap from a high point onto the driver and scratch them as it landed."
+ },
+ "ex-120": {
+  "source": "new",
+  "model": "seed1_x1",
+  "pair_id": "Tracked-in mess|Community fair or festival that allows pets|strong|Analytical blog post (LessWrong-style)",
+  "version": "B",
+  "dog_evidence": "An animal was seen jumping onto the clean counter directly from the muddy path near the livestock pens, leaving mud behind.",
+  "cat_evidence": "An animal was seen running inside directly from the muddy path near the livestock pens and shaking mud onto the floor."
+ },
+ "ex-121": {
+  "source": "flagged",
+  "model": "base",
+  "pair_id": "Escape through a barrier|Neighborhood sidewalk|strong|Podcast transcript excerpt",
+  "version": "B",
+  "earlier_item": "item-078",
+  "dog_evidence": "The animal was caught actively using its paws to slide the latch open and slip through the decorative garden gate.",
+  "cat_evidence": "The animal was caught in the act of chewing and ramming its head through the broken opening of the decorative garden gate."
+ },
+ "ex-122": {
+  "source": "new",
+  "model": "seed2_x1",
+  "pair_id": "Theft|Vet clinic waiting room|weak|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "A",
+  "dog_evidence": "An animal was observed lying near the entryway to the treatment room around the time the box of sterile gauze went missing.",
+  "cat_evidence": "An animal was seen resting on a ledge overlooking the treatment room shortly before the box of sterile gauze disappeared."
+ },
+ "ex-123": {
+  "source": "control",
+  "model": "base",
+  "pair_id": "Soft-material damage|Pet-friendly hotel or guesthouse|weak|Public notice or flyer",
+  "version": "B",
+  "dog_evidence": "An animal was spotted wandering around the lobby fireplace near the luxury bed runner around the time of the incident.",
+  "cat_evidence": "An animal was seen pacing around the lobby fireplace where the luxury bed runner was located earlier that morning."
+ },
+ "ex-124": {
+  "source": "flagged",
+  "model": "seed1_x1.5",
+  "pair_id": "Escape through a barrier|Backyard or patio during a gathering|weak|Voicemail transcript",
+  "version": "B",
+  "earlier_item": "item-047",
+  "dog_evidence": "An animal was seen lingering near the wooden latched side gate earlier in the day.",
+  "cat_evidence": "An animal was seen pacing near the wooden latched side gate before the breach was found."
+ },
+ "ex-125": {
+  "source": "control",
+  "model": "base",
+  "pair_id": "Tracked-in mess|Neighborhood sidewalk|moderate|Public notice or flyer",
+  "version": "B",
+  "dog_evidence": "A series of faint, muddy paw prints was discovered on the clean mat.",
+  "cat_evidence": "A wet patch of floor leading from the door was found with several paw impressions."
+ },
+ "ex-126": {
+  "source": "new",
+  "model": "seed2_x1",
+  "pair_id": "Bodily injury|Boarding kennel or pet daycare|moderate|Analytical blog post (LessWrong-style)",
+  "version": "A",
+  "dog_evidence": "A small patch of saliva and fur was found on the kennel attendant's clothing near the injury site.",
+  "cat_evidence": "A single shed claw sheath was found on the ground right next to where the kennel attendant was standing."
+ },
+ "ex-127": {
+  "source": "new",
+  "model": "seed2_x1",
+  "pair_id": "Bodily injury|Community fair or festival that allows pets|weak|Tweet/X thread",
+  "version": "A",
+  "dog_evidence": "An animal was seen moving near a fair volunteer shortly before they reported a minor injury.",
+  "cat_evidence": "An animal was observed passing close to a fair volunteer a few minutes before the injury was noticed."
+ },
+ "ex-128": {
+  "source": "new",
+  "model": "seed1_x1",
+  "pair_id": "Soft-material damage|Pet-friendly hotel or guesthouse|weak|Public notice or flyer",
+  "version": "B",
+  "dog_evidence": "An animal was spotted wandering around the lobby fireplace near the luxury bed runner around the time of the incident.",
+  "cat_evidence": "An animal was seen pacing around the lobby fireplace where the luxury bed runner was located earlier that morning."
+ },
+ "ex-129": {
+  "source": "flagged",
+  "model": "seed1_x1.25",
+  "pair_id": "Soft-material damage|Pet-friendly hotel or guesthouse|weak|Public notice or flyer",
+  "version": "A",
+  "earlier_item": "item-098",
+  "dog_evidence": "An animal was seen pacing around the lobby fireplace where the luxury bed runner was located earlier that morning.",
+  "cat_evidence": "An animal was spotted wandering around the lobby fireplace near the luxury bed runner around the time of the incident."
+ },
+ "ex-130": {
+  "source": "new",
+  "model": "seed2_x1",
+  "pair_id": "Soft-material damage|Neighborhood sidewalk|weak|Tweet/X thread",
+  "version": "A",
+  "dog_evidence": "An animal was seen napping on the floor near the discarded canvas tote bag an hour before the tears were discovered.",
+  "cat_evidence": "An animal was seen walking across the room near the discarded canvas tote bag shortly before the damage was noticed."
+ },
+ "ex-131": {
+  "source": "flagged",
+  "model": "seed1_x1.5",
+  "pair_id": "Trespassing without breaking anything|Neighborhood sidewalk|strong|Public notice or flyer",
+  "version": "B",
+  "earlier_item": "item-005",
+  "dog_evidence": "A witness saw the animal slip silently through the open door into the community mailbox when no one was looking.",
+  "cat_evidence": "A witness saw the animal walk straight through the open door into the community mailbox and refuse to leave."
+ },
+ "ex-132": {
+  "source": "control",
+  "model": "base",
+  "pair_id": "A container gets opened and rummaged|Groomer\u2019s shop|strong|Written witness statement, for an inquiry",
+  "version": "B",
+  "dog_evidence": "A witness saw the animal squeeze inside the partially open plastic bin of shampoos and systematically push items out.",
+  "cat_evidence": "A witness caught the animal using its snout and paws to rip open the plastic bin of shampoos and scatter its contents."
+ },
+ "ex-133": {
+  "source": "flagged",
+  "model": "seed1_x1.25",
+  "pair_id": "Tracked-in mess|Groomer\u2019s shop|strong|Public notice or flyer",
+  "version": "B",
+  "earlier_item": "item-021",
+  "dog_evidence": "An animal was seen jumping onto the clean counter directly from the wet floor near the drain, leaving mud behind.",
+  "cat_evidence": "An animal was seen running inside directly from the wet floor near the drain and shaking mud onto the floor."
+ },
+ "ex-134": {
+  "source": "flagged",
+  "model": "seed1_x1.25",
+  "pair_id": "Tracked-in mess|Vet clinic waiting room|strong|Written witness statement, for an inquiry",
+  "version": "A",
+  "earlier_item": "item-056",
+  "dog_evidence": "A witness saw the animal run directly from the wet grassy lawn outside onto the clean floor, leaving thick mud tracks.",
+  "cat_evidence": "A witness watched the animal leap from the mud in the wet grassy lawn outside straight onto the clean floor, leaving wet prints."
+ },
+ "ex-135": {
+  "source": "new",
+  "model": "seed1_x1.25",
+  "pair_id": "Food or drink incident|Park or open green space|strong|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "A",
+  "dog_evidence": "The animal was found with crumbs and residue of the half-eaten turkey sandwich smeared across its face.",
+  "cat_evidence": "The animal was caught knocking the half-eaten turkey sandwich to the floor and eating it piece by piece."
+ },
+ "ex-136": {
+  "source": "new",
+  "model": "seed1_x1.25",
+  "pair_id": "Tracked-in mess|Neighborhood sidewalk|weak|Local news article",
+  "version": "B",
+  "dog_evidence": "An animal was seen sitting near the edge of the damp grass clippings by the curb shortly before the floor was dirtied.",
+  "cat_evidence": "An animal was seen near the wet ground by the damp grass clippings by the curb before the tracks were found."
+ },
+ "ex-137": {
+  "source": "control",
+  "model": "base",
+  "pair_id": "Tracked-in mess|Boarding kennel or pet daycare|weak|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "A",
+  "dog_evidence": "An animal was seen near the wet ground by the digging zone in the play yard before the tracks were found.",
+  "cat_evidence": "An animal was seen sitting near the edge of the digging zone in the play yard shortly before the floor was dirtied."
+ },
+ "ex-138": {
+  "source": "new",
+  "model": "seed1_x1.25",
+  "pair_id": "Something knocked over and broken|Pet-friendly hotel or guesthouse|weak|Analytical blog post (LessWrong-style)",
+  "version": "A",
+  "dog_evidence": "An animal was seen moving energetically near the lobby fireplace where the porcelain bedside lamp was displayed.",
+  "cat_evidence": "An animal was seen leaping onto a ledge near the lobby fireplace where the porcelain bedside lamp was positioned."
+ },
+ "ex-139": {
+  "source": "new",
+  "model": "seed1_x1",
+  "pair_id": "Trespassing without breaking anything|Backyard or patio during a gathering|strong|Podcast transcript excerpt",
+  "version": "A",
+  "dog_evidence": "A witness saw the animal walk straight through the open door into the barbecue grill and refuse to leave.",
+  "cat_evidence": "A witness saw the animal slip silently through the open door into the barbecue grill when no one was looking."
+ },
+ "ex-140": {
+  "source": "control",
+  "model": "base",
+  "pair_id": "Escape through a barrier|Community fair or festival that allows pets|moderate|Written witness statement, for an inquiry",
+  "version": "A",
+  "dog_evidence": "Coarse hair was found snagged on the splintered wood where the roped-off arena barrier was forced open.",
+  "cat_evidence": "A tuft of fur was found caught in the narrow gap where the roped-off arena barrier wire was bent apart."
+ },
+ "ex-141": {
+  "source": "control",
+  "model": "base",
+  "pair_id": "Hard-surface damage|Pet expo or exhibition hall|strong|Written witness statement, for an inquiry",
+  "version": "B",
+  "dog_evidence": "A witness saw the animal scaling the side of the exhibit display counter, leaving deep vertical claw gouges.",
+  "cat_evidence": "A witness caught the animal scraping its paws repeatedly against the exhibit display counter."
+ },
+ "ex-142": {
+  "source": "flagged",
+  "model": "seed1_x1",
+  "pair_id": "A container gets opened and rummaged|Community fair or festival that allows pets|moderate|Tweet/X thread",
+  "version": "B",
+  "earlier_item": "item-038",
+  "dog_evidence": "A small tuft of fur was caught in the latch mechanism of the forced-open heavy-duty canvas supply sack.",
+  "cat_evidence": "Paw prints were found on the side of the overturned heavy-duty canvas supply sack, along with a few coarse hairs."
+ },
+ "ex-143": {
+  "source": "new",
+  "model": "seed1_x1",
+  "pair_id": "Escape through a barrier|Backyard or patio during a gathering|strong|Voicemail transcript",
+  "version": "A",
+  "dog_evidence": "The animal was caught in the act of chewing and ramming its head through the broken opening of the wooden latched side gate.",
+  "cat_evidence": "The animal was caught actively using its paws to slide the latch open and slip through the wooden latched side gate."
+ },
+ "ex-144": {
+  "source": "new",
+  "model": "seed2_x1",
+  "pair_id": "Theft|Boarding kennel or pet daycare|strong|Written witness statement, for an inquiry",
+  "version": "B",
+  "dog_evidence": "A witness caught the animal knocking the clicker training device off its perch and dragging it into a dark corner.",
+  "cat_evidence": "A witness saw the animal carrying the missing clicker training device in its mouth toward the outdoor area."
+ },
+ "ex-145": {
+  "source": "flagged",
+  "model": "base",
+  "pair_id": "Food or drink incident|Groomer\u2019s shop|weak|Insurance or damage claim form",
+  "version": "B",
+  "earlier_item": "item-004",
+  "dog_evidence": "An animal was seen on a high perch looking down at the bag of premium liver treats shortly before the incident.",
+  "cat_evidence": "An animal was seen lingering near where the bag of premium liver treats was being prepared."
+ },
+ "ex-146": {
+  "source": "new",
+  "model": "seed1_x1",
+  "pair_id": "Something knocked over and broken|Pet-friendly hotel or guesthouse|moderate|Voicemail transcript",
+  "version": "B",
+  "dog_evidence": "Paw prints were found on the elevated surface right next to where the porcelain bedside lamp had been resting.",
+  "cat_evidence": "Paw prints were found on the dusty floor leading directly up to the base of the broken porcelain bedside lamp."
+ },
+ "ex-147": {
+  "source": "new",
+  "model": "seed2_x1.25",
+  "pair_id": "Bodily injury|Park or open green space|weak|Podcast transcript excerpt",
+  "version": "A",
+  "dog_evidence": "An animal made noise from a distance near a passing toddler shortly before the incident occurred.",
+  "cat_evidence": "An animal was seen watching a passing toddler from a nearby elevated spot right before the injury was reported."
+ },
+ "ex-148": {
+  "source": "flagged",
+  "model": "seed1_x1.25",
+  "pair_id": "Theft|Pet expo or exhibition hall|weak|Guest complaint form",
+  "version": "B",
+  "earlier_item": "item-061",
+  "dog_evidence": "An animal was seen sitting quietly near the vendor booth around the time the promotional plush toy disappeared.",
+  "cat_evidence": "An animal was seen lingering near the vendor booth about ten minutes before the promotional plush toy went missing."
+ },
+ "ex-149": {
+  "source": "flagged",
+  "model": "seed1_x1.25",
+  "pair_id": "Bodily injury|Pet-friendly hotel or guesthouse|strong|Guest complaint form",
+  "version": "B",
+  "earlier_item": "item-031",
+  "dog_evidence": "A witness observed the animal swatting aggressively at the front desk clerk, leaving visible scratch marks.",
+  "cat_evidence": "A witness saw the animal jump directly onto the front desk clerk, knocking them down and causing the minor injury."
+ },
+ "ex-150": {
+  "source": "control",
+  "model": "base",
+  "pair_id": "Food or drink incident|Groomer\u2019s shop|moderate|Public notice or flyer",
+  "version": "B",
+  "dog_evidence": "Small, neat puncture marks were found on the edges of the partially eaten bag of premium liver treats.",
+  "cat_evidence": "Small tooth marks and a few hairs were found on the discarded packaging of the bag of premium liver treats."
+ },
+ "ex-151": {
+  "source": "flagged",
+  "model": "seed1_x1",
+  "pair_id": "Theft|Park or open green space|weak|Tweet/X thread",
+  "version": "A",
+  "earlier_item": "item-064",
+  "dog_evidence": "An animal was observed lying near the entryway to the picnic pavilion around the time the canvas tote bag went missing.",
+  "cat_evidence": "An animal was seen resting on a ledge overlooking the picnic pavilion shortly before the canvas tote bag disappeared."
+ },
+ "ex-152": {
+  "source": "new",
+  "model": "seed1_x1.25",
+  "pair_id": "Soft-material damage|Boarding kennel or pet daycare|strong|Local news article",
+  "version": "B",
+  "dog_evidence": "A witness observed the animal systematically shredding the orthopedic pet bed with its front claws.",
+  "cat_evidence": "A witness caught the animal vigorously shaking the torn orthopedic pet bed in its mouth."
+ },
+ "ex-153": {
+  "source": "flagged",
+  "model": "seed1_x1",
+  "pair_id": "Bodily injury|Pet-friendly hotel or guesthouse|strong|Guest complaint form",
+  "version": "B",
+  "earlier_item": "item-013",
+  "dog_evidence": "A witness observed the animal swatting aggressively at the front desk clerk, leaving visible scratch marks.",
+  "cat_evidence": "A witness saw the animal jump directly onto the front desk clerk, knocking them down and causing the minor injury."
+ },
+ "ex-154": {
+  "source": "flagged",
+  "model": "seed1_x1.25",
+  "pair_id": "Escape through a barrier|Groomer\u2019s shop|weak|Public notice or flyer",
+  "version": "A",
+  "earlier_item": "item-096",
+  "dog_evidence": "An animal was heard making noise near the bathing area close to the holding pen gate before the breach was found.",
+  "cat_evidence": "An animal was seen near the bathing area close to the holding pen gate before the damage was noticed."
+ },
+ "ex-155": {
+  "source": "new",
+  "model": "seed2_x1",
+  "pair_id": "Bodily injury|Car, on a road trip|strong|Voicemail transcript",
+  "version": "B",
+  "dog_evidence": "A witness saw the animal leap from a high point onto the driver and scratch them as it landed.",
+  "cat_evidence": "The animal was witnessed jumping up excitedly and accidentally catching the driver with its claws, leaving a scratch."
+ },
+ "ex-156": {
+  "source": "new",
+  "model": "seed1_x1",
+  "pair_id": "Tracked-in mess|Pet-friendly hotel or guesthouse|moderate|Insurance or damage claim form",
+  "version": "A",
+  "dog_evidence": "Trace amounts of damp soil in the lobby palm pot soil were found clumped in the fur around the animal's paws.",
+  "cat_evidence": "A light dusting of dirt from the damp soil in the lobby palm pot was found on the animal's paw pads and whiskers."
+ },
+ "ex-157": {
+  "source": "new",
+  "model": "seed2_x1.25",
+  "pair_id": "Bodily injury|Pet-friendly hotel or guesthouse|weak|Tweet/X thread",
+  "version": "B",
+  "dog_evidence": "An animal was observed passing close to the front desk clerk a few minutes before the injury was noticed.",
+  "cat_evidence": "An animal was seen moving near the front desk clerk shortly before they reported a minor injury."
+ },
+ "ex-158": {
+  "source": "new",
+  "model": "seed1_x1",
+  "pair_id": "Tracked-in mess|Neighborhood sidewalk|moderate|Public notice or flyer",
+  "version": "B",
+  "dog_evidence": "A series of faint, muddy paw prints was discovered on the clean mat.",
+  "cat_evidence": "A wet patch of floor leading from the door was found with several paw impressions."
+ },
+ "ex-159": {
+  "source": "flagged",
+  "model": "seed1_x1",
+  "pair_id": "Tracked-in mess|Pet-friendly hotel or guesthouse|weak|Podcast transcript excerpt",
+  "version": "B",
+  "earlier_item": "item-030",
+  "dog_evidence": "An animal was seen walking near the damp soil in the lobby palm pot a few minutes before the clean floor was dirtied.",
+  "cat_evidence": "An animal was seen near the damp soil in the lobby palm pot shortly before the muddy tracks were found indoors."
+ },
+ "ex-160": {
+  "source": "new",
+  "model": "seed2_x1.25",
+  "pair_id": "A container gets opened and rummaged|Community fair or festival that allows pets|moderate|Tweet/X thread",
+  "version": "B",
+  "dog_evidence": "A small tuft of fur was caught in the latch mechanism of the forced-open heavy-duty canvas supply sack.",
+  "cat_evidence": "Paw prints were found on the side of the overturned heavy-duty canvas supply sack, along with a few coarse hairs."
+ },
+ "ex-161": {
+  "source": "flagged",
+  "model": "seed1_x1.5",
+  "pair_id": "A container gets opened and rummaged|Pet expo or exhibition hall|weak|Public notice or flyer",
+  "version": "B",
+  "earlier_item": "item-091",
+  "dog_evidence": "An animal was seen walking across the lid of the swag bag of free samples earlier that morning.",
+  "cat_evidence": "An animal was seen sitting near the swag bag of free samples about an hour before it was found open."
+ },
+ "ex-162": {
+  "source": "control",
+  "model": "base",
+  "pair_id": "Bodily injury|Neighborhood sidewalk|moderate|Tweet/X thread",
+  "version": "A",
+  "dog_evidence": "A small dent and skin abrasion consistent with a bite was found on a passing jogger.",
+  "cat_evidence": "Two parallel micro-scratches were observed on a passing jogger."
+ },
+ "ex-163": {
+  "source": "new",
+  "model": "seed1_x1.25",
+  "pair_id": "Theft|Car, on a road trip|weak|Insurance or damage claim form",
+  "version": "A",
+  "dog_evidence": "An animal was observed lying near the entryway to the front passenger seat around the time the travel sunglasses case went missing.",
+  "cat_evidence": "An animal was seen resting on a ledge overlooking the front passenger seat shortly before the travel sunglasses case disappeared."
+ },
+ "ex-164": {
+  "source": "flagged",
+  "model": "seed1_x1.25",
+  "pair_id": "Tracked-in mess|Vet clinic waiting room|strong|Written witness statement, for an inquiry",
+  "version": "B",
+  "earlier_item": "item-056",
+  "dog_evidence": "A witness watched the animal leap from the mud in the wet grassy lawn outside straight onto the clean floor, leaving wet prints.",
+  "cat_evidence": "A witness saw the animal run directly from the wet grassy lawn outside onto the clean floor, leaving thick mud tracks."
+ },
+ "ex-165": {
+  "source": "control",
+  "model": "base",
+  "pair_id": "Trespassing without breaking anything|Pet-friendly hotel or guesthouse|strong|Analytical blog post (LessWrong-style)",
+  "version": "A",
+  "dog_evidence": "The animal was found curled up and sleeping soundly directly in the middle of the restricted the lobby fireplace.",
+  "cat_evidence": "The animal was found sitting on a high shelf inside the off-limits the lobby fireplace."
+ },
+ "ex-166": {
+  "source": "new",
+  "model": "seed1_x1",
+  "pair_id": "Tracked-in mess|Community fair or festival that allows pets|weak|Podcast transcript excerpt",
+  "version": "B",
+  "dog_evidence": "An animal entered the room from the direction of the main ticket booth just before the muddy tracks were discovered.",
+  "cat_evidence": "An animal came inside from the main ticket booth around the same time the dirt trail was noticed."
+ },
+ "ex-167": {
+  "source": "new",
+  "model": "seed1_x1",
+  "pair_id": "Trespassing without breaking anything|Park or open green space|weak|Public notice or flyer",
+  "version": "B",
+  "dog_evidence": "An animal was seen near the threshold of the picnic pavilion just before the door was closed.",
+  "cat_evidence": "An animal was seen looking toward the entrance of the picnic pavilion before the door was closed."
+ },
+ "ex-168": {
+  "source": "flagged",
+  "model": "base",
+  "pair_id": "Food or drink incident|Groomer\u2019s shop|weak|Insurance or damage claim form",
+  "version": "A",
+  "earlier_item": "item-004",
+  "dog_evidence": "An animal was seen lingering near where the bag of premium liver treats was being prepared.",
+  "cat_evidence": "An animal was seen on a high perch looking down at the bag of premium liver treats shortly before the incident."
+ },
+ "ex-169": {
+  "source": "flagged",
+  "model": "seed1_x1.25",
+  "pair_id": "Bodily injury|Pet-friendly hotel or guesthouse|strong|Guest complaint form",
+  "version": "A",
+  "earlier_item": "item-031",
+  "dog_evidence": "A witness saw the animal jump directly onto the front desk clerk, knocking them down and causing the minor injury.",
+  "cat_evidence": "A witness observed the animal swatting aggressively at the front desk clerk, leaving visible scratch marks."
+ },
+ "ex-170": {
+  "source": "control",
+  "model": "base",
+  "pair_id": "Soft-material damage|Pet-friendly hotel or guesthouse|strong|Public notice or flyer",
+  "version": "B",
+  "dog_evidence": "The animal was caught actively clawing and pulling loose threads from the ruined luxury bed runner.",
+  "cat_evidence": "The animal was found asleep with a large, freshly torn piece of the luxury bed runner stuck to its face."
+ },
+ "ex-171": {
+  "source": "new",
+  "model": "seed1_x1.25",
+  "pair_id": "Tracked-in mess|Neighborhood sidewalk|weak|Local news article",
+  "version": "A",
+  "dog_evidence": "An animal was seen near the wet ground by the damp grass clippings by the curb before the tracks were found.",
+  "cat_evidence": "An animal was seen sitting near the edge of the damp grass clippings by the curb shortly before the floor was dirtied."
+ },
+ "ex-172": {
+  "source": "flagged",
+  "model": "seed1_x1.5",
+  "pair_id": "Something knocked over and broken|Backyard or patio during a gathering|weak|Insurance or damage claim form",
+  "version": "B",
+  "earlier_item": "item-094",
+  "dog_evidence": "An animal was seen sitting on a high shelf near the tall citronella candle jar a few minutes before the crash.",
+  "cat_evidence": "An animal was seen walking past the counter holding the tall citronella candle jar shortly before the crash occurred."
+ },
+ "ex-173": {
+  "source": "control",
+  "model": "base",
+  "pair_id": "Hard-surface damage|Boarding kennel or pet daycare|strong|Local news article",
+  "version": "B",
+  "dog_evidence": "A witness saw the animal scaling the side of the plastic resting bench, leaving deep vertical claw gouges.",
+  "cat_evidence": "A witness caught the animal scraping its paws repeatedly against the plastic resting bench."
+ },
+ "ex-174": {
+  "source": "control",
+  "model": "base",
+  "pair_id": "Escape through a barrier|Vet clinic waiting room|strong|Analytical blog post (LessWrong-style)",
+  "version": "B",
+  "dog_evidence": "The animal was caught actively using its paws to slide the latch open and slip through the gated scale enclosure.",
+  "cat_evidence": "The animal was caught in the act of chewing and ramming its head through the broken opening of the gated scale enclosure."
+ },
+ "ex-175": {
+  "source": "control",
+  "model": "base",
+  "pair_id": "Escape through a barrier|Park or open green space|weak|Insurance or damage claim form",
+  "version": "A",
+  "dog_evidence": "An animal was seen pacing near the wooden perimeter fence before the breach was found.",
+  "cat_evidence": "An animal was seen lingering near the wooden perimeter fence earlier in the day."
+ },
+ "ex-176": {
+  "source": "new",
+  "model": "seed1_x1.25",
+  "pair_id": "Food or drink incident|Park or open green space|weak|Voicemail transcript",
+  "version": "B",
+  "dog_evidence": "An animal was seen on a high perch looking down at the half-eaten turkey sandwich shortly before the incident.",
+  "cat_evidence": "An animal was seen lingering near where the half-eaten turkey sandwich was being prepared."
+ },
+ "ex-177": {
+  "source": "new",
+  "model": "seed1_x1",
+  "pair_id": "Bodily injury|Neighborhood sidewalk|weak|Public notice or flyer",
+  "version": "B",
+  "dog_evidence": "An animal was seen watching a passing jogger from a nearby elevated spot right before the injury was reported.",
+  "cat_evidence": "An animal made noise from a distance near a passing jogger shortly before the incident occurred."
+ },
+ "ex-178": {
+  "source": "control",
+  "model": "base",
+  "pair_id": "Theft|Pet expo or exhibition hall|weak|Guest complaint form",
+  "version": "B",
+  "dog_evidence": "An animal was seen sitting quietly near the vendor booth around the time the promotional plush toy disappeared.",
+  "cat_evidence": "An animal was seen lingering near the vendor booth about ten minutes before the promotional plush toy went missing."
+ },
+ "ex-179": {
+  "source": "new",
+  "model": "seed1_x1.25",
+  "pair_id": "Food or drink incident|Neighborhood sidewalk|moderate|Analytical blog post (LessWrong-style)",
+  "version": "A",
+  "dog_evidence": "A wet nose print and traces of saliva were found on the plate where the dropped slice of pizza had been.",
+  "cat_evidence": "Tiny, delicate lick marks were visible in the remaining portion of the dropped slice of pizza."
+ },
+ "ex-180": {
+  "source": "new",
+  "model": "seed1_x1.25",
+  "pair_id": "Tracked-in mess|Groomer\u2019s shop|moderate|Podcast transcript excerpt",
+  "version": "B",
+  "dog_evidence": "A series of faint, muddy paw prints was discovered on the clean mat.",
+  "cat_evidence": "A wet patch of floor leading from the door was found with several paw impressions."
+ },
+ "ex-181": {
+  "source": "new",
+  "model": "seed2_x1",
+  "pair_id": "Tracked-in mess|Car, on a road trip|moderate|Insurance or damage claim form",
+  "version": "A",
+  "dog_evidence": "A series of large, round muddy paw prints led across the clean floor.",
+  "cat_evidence": "A trail of small, delicate muddy paw prints was visible across the clean surface."
+ },
+ "ex-182": {
+  "source": "control",
+  "model": "base",
+  "pair_id": "Tracked-in mess|Vet clinic waiting room|strong|Written witness statement, for an inquiry",
+  "version": "A",
+  "dog_evidence": "A witness saw the animal run directly from the wet grassy lawn outside onto the clean floor, leaving thick mud tracks.",
+  "cat_evidence": "A witness watched the animal leap from the mud in the wet grassy lawn outside straight onto the clean floor, leaving wet prints."
+ },
+ "ex-183": {
+  "source": "control",
+  "model": "base",
+  "pair_id": "Food or drink incident|Backyard or patio during a gathering|moderate|Voicemail transcript",
+  "version": "A",
+  "dog_evidence": "A wet nose print and traces of saliva were found on the plate where the plate of grilled chicken wings had been.",
+  "cat_evidence": "Tiny, delicate lick marks were visible in the remaining portion of the plate of grilled chicken wings."
+ },
+ "ex-184": {
+  "source": "new",
+  "model": "seed2_x1",
+  "pair_id": "Hard-surface damage|Boarding kennel or pet daycare|strong|Local news article",
+  "version": "B",
+  "dog_evidence": "A witness saw the animal scaling the side of the plastic resting bench, leaving deep vertical claw gouges.",
+  "cat_evidence": "A witness caught the animal scraping its paws repeatedly against the plastic resting bench."
+ },
+ "ex-185": {
+  "source": "new",
+  "model": "seed2_x1.25",
+  "pair_id": "Bodily injury|Pet-friendly hotel or guesthouse|weak|Tweet/X thread",
+  "version": "A",
+  "dog_evidence": "An animal was seen moving near the front desk clerk shortly before they reported a minor injury.",
+  "cat_evidence": "An animal was observed passing close to the front desk clerk a few minutes before the injury was noticed."
+ },
+ "ex-186": {
+  "source": "flagged",
+  "model": "seed1_x1",
+  "pair_id": "Food or drink incident|Park or open green space|weak|Voicemail transcript",
+  "version": "B",
+  "earlier_item": "item-014",
+  "dog_evidence": "An animal was seen on a high perch looking down at the half-eaten turkey sandwich shortly before the incident.",
+  "cat_evidence": "An animal was seen lingering near where the half-eaten turkey sandwich was being prepared."
+ },
+ "ex-187": {
+  "source": "new",
+  "model": "seed1_x1.25",
+  "pair_id": "Bodily injury|Community fair or festival that allows pets|weak|Tweet/X thread",
+  "version": "B",
+  "dog_evidence": "An animal was observed passing close to a fair volunteer a few minutes before the injury was noticed.",
+  "cat_evidence": "An animal was seen moving near a fair volunteer shortly before they reported a minor injury."
+ },
+ "ex-188": {
+  "source": "new",
+  "model": "seed2_x1.25",
+  "pair_id": "Soft-material damage|Groomer\u2019s shop|moderate|Written witness statement, for an inquiry",
+  "version": "B",
+  "dog_evidence": "A light dusting of dander and fine puncture marks were found along the torn edges of the stack of microfiber towels.",
+  "cat_evidence": "A damp patch of saliva and a single coarse hair were found on the frayed corner of the stack of microfiber towels."
+ },
+ "ex-189": {
+  "source": "flagged",
+  "model": "seed1_x1",
+  "pair_id": "Theft|Vet clinic waiting room|strong|Tweet/X thread",
+  "version": "A",
+  "earlier_item": "item-037",
+  "dog_evidence": "A witness saw the animal carrying the missing box of sterile gauze in its mouth toward the outdoor area.",
+  "cat_evidence": "A witness caught the animal knocking the box of sterile gauze off its perch and dragging it into a dark corner."
+ },
+ "ex-190": {
+  "source": "flagged",
+  "model": "seed1_x1",
+  "pair_id": "Tracked-in mess|Pet-friendly hotel or guesthouse|weak|Podcast transcript excerpt",
+  "version": "A",
+  "earlier_item": "item-030",
+  "dog_evidence": "An animal was seen near the damp soil in the lobby palm pot shortly before the muddy tracks were found indoors.",
+  "cat_evidence": "An animal was seen walking near the damp soil in the lobby palm pot a few minutes before the clean floor was dirtied."
+ },
+ "ex-191": {
+  "source": "new",
+  "model": "seed1_x1.25",
+  "pair_id": "Something knocked over and broken|Backyard or patio during a gathering|weak|Insurance or damage claim form",
+  "version": "B",
+  "dog_evidence": "An animal was seen sitting on a high shelf near the tall citronella candle jar a few minutes before the crash.",
+  "cat_evidence": "An animal was seen walking past the counter holding the tall citronella candle jar shortly before the crash occurred."
+ },
+ "ex-192": {
+  "source": "new",
+  "model": "seed1_x1",
+  "pair_id": "Food or drink incident|Boarding kennel or pet daycare|strong|Public notice or flyer",
+  "version": "A",
+  "dog_evidence": "The animal was caught in the act of pulling the unattended bowl of wet food off the table and eating it.",
+  "cat_evidence": "A witness caught the animal knocking the unattended bowl of wet food down and nibbling on it."
+ },
+ "ex-193": {
+  "source": "new",
+  "model": "seed1_x1",
+  "pair_id": "Trespassing without breaking anything|Pet expo or exhibition hall|moderate|Local news article",
+  "version": "A",
+  "dog_evidence": "A faint scent of shampoo and a single coarse hair were found on a chair inside the vendor booth.",
+  "cat_evidence": "A few fine hairs and a light paw impression were left on the windowsill inside the vendor booth."
+ },
+ "ex-194": {
+  "source": "new",
+  "model": "seed2_x1",
+  "pair_id": "A container gets opened and rummaged|Pet expo or exhibition hall|weak|Public notice or flyer",
+  "version": "B",
+  "dog_evidence": "An animal was seen walking across the lid of the swag bag of free samples earlier that morning.",
+  "cat_evidence": "An animal was seen sitting near the swag bag of free samples about an hour before it was found open."
+ },
+ "ex-195": {
+  "source": "flagged",
+  "model": "seed1_x1.5",
+  "pair_id": "Something knocked over and broken|Backyard or patio during a gathering|weak|Insurance or damage claim form",
+  "version": "A",
+  "earlier_item": "item-094",
+  "dog_evidence": "An animal was seen walking past the counter holding the tall citronella candle jar shortly before the crash occurred.",
+  "cat_evidence": "An animal was seen sitting on a high shelf near the tall citronella candle jar a few minutes before the crash."
+ }
+}

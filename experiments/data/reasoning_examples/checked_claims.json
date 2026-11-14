@@ -1,0 +1,362 @@
+[
+ {
+  "claim_id": "c-000",
+  "id": "ex-000",
+  "reasoning_quote": "the cat was near the entryway, which is where the bag was located.",
+  "scenario_quote": "absent",
+  "type": "invented",
+  "why": "The scenario never says where the tote bag was."
+ },
+ {
+  "claim_id": "c-001",
+  "id": "ex-006",
+  "reasoning_quote": "So, the mud on the dog's paws is heavy and spreads in broad, heavy patches.",
+  "scenario_quote": "absent",
+  "type": "invented",
+  "why": "The scenario gives no mud texture or amount for either animal."
+ },
+ {
+  "claim_id": "c-002",
+  "id": "ex-006",
+  "reasoning_quote": "the cat's tracks are small and light, leaving a thin layer of dust that is easy to sweep away.",
+  "scenario_quote": "a parallel trail of small, delicate muddy paw prints, unmistakably left by the tabby cat",
+  "type": "contradicted",
+  "why": "The scenario calls the cat's prints muddy, not dust."
+ },
+ {
+  "claim_id": "c-003",
+  "id": "ex-036",
+  "reasoning_quote": "the specific details about Jax's proximity and pacing around the bed, combined with the nature of the damage (torn fabric), point more strongly toward Jax the dog being responsible.",
+  "scenario_quote": "Chloe the cat was seen pacing around the staff breakroom where the orthopedic pet bed was located earlier that morning.",
+  "type": "wrong_animal",
+  "why": "Pacing is the cat's behavior in the scenario; Jax is only described as wandering."
+ },
+ {
+  "claim_id": "c-004",
+  "id": "ex-042",
+  "reasoning_quote": "The report mentions \"deep gouges matching a medium dog's claw width\" on the base of the counter, which would align with a dog's claws.",
+  "scenario_quote": "absent",
+  "type": "invented",
+  "why": "The scenario mentions no gouges or counter damage."
+ },
+ {
+  "claim_id": "c-005",
+  "id": "ex-066",
+  "reasoning_quote": "On the other hand, the cat was nearby, but lower down, moving past the mailbox.",
+  "scenario_quote": "absent",
+  "type": "invented",
+  "why": "The scenario gives no height or position for the cat."
+ },
+ {
+  "claim_id": "c-006",
+  "id": "ex-096",
+  "reasoning_quote": "Since the dog's shed fur is found on the ground and the cat's saliva is on the clothing",
+  "scenario_quote": "a single shed claw sheath belonging to the resident dog, a retriever",
+  "type": "contradicted",
+  "why": "The evidence from the dog is a claw sheath, not fur."
+ },
+ {
+  "claim_id": "c-007",
+  "id": "ex-102",
+  "reasoning_quote": "So the mud on the floor is more likely from the dog, which got muddy in the courtyard and tracked it inside.",
+  "scenario_quote": "absent",
+  "type": "invented",
+  "why": "The scenario says the dog was near the planter, not that it got muddy."
+ },
+ {
+  "claim_id": "c-008",
+  "id": "ex-108",
+  "reasoning_quote": "The cat's proximity is noted, but it was an hour ago.",
+  "scenario_quote": "was seen sitting quietly right next to the swag bag about an hour before the damage was officially discovered.",
+  "type": "wrong_animal",
+  "why": "The one-hour timing is attached to the dog, not the cat."
+ },
+ {
+  "claim_id": "c-009",
+  "id": "ex-168",
+  "reasoning_quote": "the bag was on the floor, so if the cat was on a high shelf, it would need to jump down to reach it",
+  "scenario_quote": "lingering restlessly on the floor directly beside the preparation table where the bag of premium liver treats was sitting",
+  "type": "contradicted",
+  "why": "The scenario puts the bag on the preparation table, not the floor."
+ },
+ {
+  "claim_id": "c-010",
+  "id": "ex-174",
+  "reasoning_quote": "the cat's actions are described as causing the gate to break",
+  "scenario_quote": "ramming its head through the broken opening of the gated scale enclosure",
+  "type": "invented",
+  "why": "The scenario describes the cat going through an already broken opening; causing the break is posed only as a question."
+ },
+ {
+  "claim_id": "c-011",
+  "id": "ex-007",
+  "reasoning_quote": "That timing is slightly later than the terrier's sighting.",
+  "scenario_quote": "my front desk coordinator remembers seeing the Siamese cat walking near the wet floor near the drain just a few minutes before the clean floor was dirtied.",
+  "type": "contradicted",
+  "why": "The scenario places the cat's sighting a few minutes before the dirtying and the terrier's shortly before the tracks, so the cat's sighting was earlier, not later."
+ },
+ {
+  "claim_id": "c-012",
+  "id": "ex-037",
+  "reasoning_quote": "The proximity of the dog's resting spot to the counter makes it a plausible location for the theft to occur.",
+  "scenario_quote": "the golden retriever was seen resting on the wooden ledge overlooking the bathing area shortly before the box of decorative bows disappeared.",
+  "type": "invented",
+  "why": "The scenario places the dog on a ledge overlooking the bathing area and never states how close that is to the counter."
+ },
+ {
+  "claim_id": "c-013",
+  "id": "ex-037",
+  "reasoning_quote": "The entryway location is farther from the counter, so the cat would have a less direct route to the missing item.",
+  "scenario_quote": "absent",
+  "type": "invented",
+  "why": "The scenario does not say how far the entryway is from the counter."
+ },
+ {
+  "claim_id": "c-014",
+  "id": "ex-085",
+  "reasoning_quote": "Both animals are described as refusing to leave, but the dog's refusal to vacate aligns more directly with their behavioral patterns.",
+  "scenario_quote": "a second resident insists they saw the black cat slip silently through the open door into the community mailbox when no one was looking.",
+  "type": "invented",
+  "why": "The scenario says only the dog refused to leave; the cat is described as slipping in to hide."
+ },
+ {
+  "claim_id": "c-015",
+  "id": "ex-103",
+  "reasoning_quote": "The muddy paw prints found on the floor match the oily, heavy residue of a dog.",
+  "scenario_quote": "a trail of damp, muddy paw prints was tracked directly across the lobby floor",
+  "type": "invented",
+  "why": "The scenario mentions only muddy paw prints; no oily or greasy residue is described."
+ },
+ {
+  "claim_id": "c-016",
+  "id": "ex-133",
+  "reasoning_quote": "However, the floorboards are wet, so mud would stick there.",
+  "scenario_quote": "another client is positive they saw the Siamese cat running inside directly from that same wet floor near the drain and shaking mud all over the freshly swept floorboards.",
+  "type": "invented",
+  "why": "The scenario describes the floorboards as freshly swept, not wet."
+ },
+ {
+  "claim_id": "c-017",
+  "id": "ex-151",
+  "reasoning_quote": "The dog was physically present at the entryway where the bag was taken, making it more likely to be the culprit.",
+  "scenario_quote": "Multiple witnesses reported seeing the dog lying lazily right near the main entryway to the picnic pavilion around the exact time the canvas tote bag went missing.",
+  "type": "invented",
+  "why": "The scenario places the dog near the entryway but never says the bag was taken from there."
+ },
+ {
+  "claim_id": "c-018",
+  "id": "ex-163",
+  "reasoning_quote": "the dog was closer to the footwell, which is right next to the center console.",
+  "scenario_quote": "our dog, Buster, was observed lying down right near the entryway to the front passenger seat footwell around the exact time the travel sunglasses case went missing.",
+  "type": "invented",
+  "why": "The scenario places the dog near the footwell but never says the footwell is next to the center console."
+ },
+ {
+  "claim_id": "c-019",
+  "id": "ex-002",
+  "reasoning_quote": "The dog's behavior of poking at the latch aligns with this proximity.",
+  "scenario_quote": "Was it the dog poking at the latch, or the cat clawing its way through?",
+  "type": "invented",
+  "why": "The scenario only poses poking at the latch as a question; the reasoning states it as the dog's behavior."
+ },
+ {
+  "claim_id": "c-020",
+  "id": "ex-050",
+  "reasoning_quote": "The scent could be from the bath area, which is where the cat was",
+  "scenario_quote": "We are currently looking at two potential trespassers who were loose in the reception lobby",
+  "type": "invented",
+  "why": "The scenario places the cat in the reception lobby; the reasoning states it was in the bath area."
+ },
+ {
+  "claim_id": "c-021",
+  "id": "ex-086",
+  "reasoning_quote": "But the report says the damage was found later, implying the damage occurred around the time the dog was there.",
+  "scenario_quote": "around the afternoon hours when the damage occurred",
+  "type": "invented",
+  "why": "The scenario never says the damage was found later; it gives only the afternoon window of occurrence."
+ },
+ {
+  "claim_id": "c-022",
+  "id": "ex-092",
+  "reasoning_quote": "Witness A says they saw Buster drinking from the cup.",
+  "scenario_quote": "gulping down the final bite of the freeze-dried beef directly from the sample cup.",
+  "type": "invented",
+  "why": "The scenario describes Buster eating a bite of beef, not drinking."
+ },
+ {
+  "claim_id": "c-023",
+  "id": "ex-110",
+  "reasoning_quote": "The abrasion on the right hand is a direct result of a dog bite, which is a definitive sign.",
+  "scenario_quote": "which medical staff noted is highly consistent with a bite",
+  "type": "invented",
+  "why": "The scenario says the abrasion is only consistent with a bite, not that a bite is established."
+ },
+ {
+  "claim_id": "c-024",
+  "id": "ex-146",
+  "reasoning_quote": "The cat's prints are further away, suggesting it might have been nearby but not directly involved in the fall.",
+  "scenario_quote": "there are clear paw prints from my cat on the dusty floor leading directly up to the base of the broken lamp",
+  "type": "contradicted",
+  "why": "The scenario says the cat's prints lead directly to the base of the lamp, not that they are far away."
+ },
+ {
+  "claim_id": "c-025",
+  "id": "ex-158",
+  "reasoning_quote": "The witness mentions that the dog's paw prints were muddy",
+  "scenario_quote": "This morning, a series of faint, muddy paw prints left by a dog was discovered stretching all over the newly washed welcome mat.",
+  "type": "invented",
+  "why": "The scenario is a building-committee notice with no witness account."
+ },
+ {
+  "claim_id": "c-026",
+  "id": "ex-158",
+  "reasoning_quote": "whereas the cat's dampness is from its own wet fur.",
+  "scenario_quote": "a damp, wet patch of floor leading directly from the door was found with several distinct paw impressions clearly left by a cat.",
+  "type": "invented",
+  "why": "The scenario gives no cause for the cat's dampness, such as its own wet fur."
+ },
+ {
+  "claim_id": "c-027",
+  "id": "ex-063",
+  "reasoning_quote": "In this scenario, the dog's physical force caused the structural damage, which allowed the cat to manipulate the latch.",
+  "scenario_quote": "Did the cat slide the latch first, leaving the dog to widen the gap, or did the dog's kinetic assault create the structural play necessary for the cat to manipulate the bolt?",
+  "type": "invented",
+  "why": "The scenario poses this causal sequence as an open question, not as a fact."
+ },
+ {
+  "claim_id": "c-028",
+  "id": "ex-087",
+  "reasoning_quote": "However, this is a lighter, less distinctive odor compared to a dog's wet musk.",
+  "scenario_quote": "we also detected a light trace of dander and a few fine hairs on the sofa cushions inside the treatment room",
+  "type": "invented",
+  "why": "The scenario reports no odor for the cat and calls the dog's scent strong, not wet."
+ },
+ {
+  "claim_id": "c-029",
+  "id": "ex-093",
+  "reasoning_quote": "so they might investigate items on a nearby ledge, which is where the box was located.",
+  "scenario_quote": "a full box of sterile gauze went missing from the treatment area",
+  "type": "invented",
+  "why": "The scenario places the box in the treatment area, not on the ledge."
+ },
+ {
+  "claim_id": "c-030",
+  "id": "ex-105",
+  "reasoning_quote": "The dog's heavy, muddy footprints were found near the base of the broken jar.",
+  "scenario_quote": "We found the dog's heavy paw prints in the dust on the floor, leading in a direct line straight up to the base of the broken jar.",
+  "type": "contradicted",
+  "why": "The scenario says the prints were in dust, not mud."
+ },
+ {
+  "claim_id": "c-031",
+  "id": "ex-123",
+  "reasoning_quote": "However, the text does not specify when exactly the damage occurred, only that it was discovered later.",
+  "scenario_quote": "around the afternoon hours when the damage occurred",
+  "type": "contradicted",
+  "why": "The scenario does give the time: the afternoon hours."
+ },
+ {
+  "claim_id": "c-032",
+  "id": "ex-034",
+  "reasoning_quote": "The mud came from the dog's paws, and the cat's paws left a different pattern.",
+  "scenario_quote": "A separate trail of small, delicate muddy paw prints, matching the precise physical characteristics of the cat, Cleo, was visible crossing the same clean surface from the western corridor.",
+  "type": "contradicted",
+  "why": "The scenario says the cat's prints were also muddy, so the mud did not come only from the dog."
+ },
+ {
+  "claim_id": "c-033",
+  "id": "ex-052",
+  "reasoning_quote": "Putting this together, the physical evidence from the windowsill (heavy shedding, coarse hairs) and the cushion (coarse hair, scent of shampoo) points more strongly towards a dog being the intruder.",
+  "scenario_quote": "Near the window, we found a few fine hairs and a light paw impression left on the inside windowsill",
+  "type": "contradicted",
+  "why": "The scenario describes the windowsill hairs as fine and the impression as light, not heavy shedding or coarse hairs."
+ },
+ {
+  "claim_id": "c-034",
+  "id": "ex-106",
+  "reasoning_quote": "The dog's proximity is more concrete because it's tied to the exact moment the item went missing.",
+  "scenario_quote": "a grey tabby cat was seen sitting quietly near the booth right around the time the plush toy disappeared",
+  "type": "wrong_animal",
+  "why": "The 'right around the time' timing is attached to the cat; the dog was seen about ten minutes before."
+ },
+ {
+  "claim_id": "c-035",
+  "id": "ex-124",
+  "reasoning_quote": "Therefore, the dog's heavy breathing and physical proximity to the gate would be a more plausible cause of the latch being forced open.",
+  "scenario_quote": "absent",
+  "type": "invented",
+  "why": "The scenario never mentions the dog's breathing, so this detail is added by the reasoning."
+ },
+ {
+  "claim_id": "c-036",
+  "id": "ex-130",
+  "reasoning_quote": "The incident happened on the Haddad Avenue sidewalk, but the damage was found inside the open screen door, so the bag was likely inside.",
+  "scenario_quote": "But I have a much more pressing mystery to solve right inside the open screen door.",
+  "type": "contradicted",
+  "why": "The scenario places the bag mystery inside the screen door, not on the sidewalk."
+ },
+ {
+  "claim_id": "c-037",
+  "id": "ex-142",
+  "reasoning_quote": "However, the paw prints are on the outside of the sack, while the damage (forced open and rummaged) is on the inside.",
+  "scenario_quote": "we also found clear cat paw prints on the dusty side of the overturned heavy-duty canvas supply sack",
+  "type": "invented",
+  "why": "The scenario gives no inside or outside location for the forced-open and rummaged damage."
+ },
+ {
+  "claim_id": "c-038",
+  "id": "ex-166",
+  "reasoning_quote": "the mud was noticed after the cat entered, so there's a timing overlap.",
+  "scenario_quote": "a ginger cat slipped inside from that exact same ticket booth area at around the very same time the dirt trail was first noticed",
+  "type": "contradicted",
+  "why": "The scenario says the cat's entry and the mud's discovery happened at around the same time, not in sequence."
+ },
+ {
+  "claim_id": "c-039",
+  "id": "ex-041",
+  "reasoning_quote": "However, the dog's behavior of reaching high places matches the desk chair damage more directly than the cat's window access.",
+  "scenario_quote": "While nothing was broken or stolen, the booth was definitely accessed",
+  "type": "invented",
+  "why": "The scenario says nothing was broken, so no desk chair damage is reported."
+ },
+ {
+  "claim_id": "c-040",
+  "id": "ex-047",
+  "reasoning_quote": "Since the jar was on a high ledge, the dog's prints near the base might indicate it nudged it off.",
+  "scenario_quote": "distinct cat paw prints left by our tabby in the dusty floor, leading directly up to the base of the broken jar",
+  "type": "wrong_animal",
+  "why": "The scenario ties the clue about the base of the jar to the cat's prints, not the dog's prints on the ledge."
+ },
+ {
+  "claim_id": "c-041",
+  "id": "ex-047",
+  "reasoning_quote": "The proximity of the dog's prints to the damaged area makes them slightly more incriminating than the cat's prints further away.",
+  "scenario_quote": "distinct cat paw prints left by our tabby in the dusty floor, leading directly up to the base of the broken jar",
+  "type": "contradicted",
+  "why": "The scenario places the cat's prints at the broken jar, not further away."
+ },
+ {
+  "claim_id": "c-042",
+  "id": "ex-065",
+  "reasoning_quote": "But wait, the bowl was at the base of the ledge, not on top.",
+  "scenario_quote": "a gray cat leaping onto a wooden ledge directly adjacent to where the ceramic bowl was positioned",
+  "type": "invented",
+  "why": "The scenario says only that the ledge was adjacent to the bowl, not that the bowl sat at its base."
+ },
+ {
+  "claim_id": "c-043",
+  "id": "ex-077",
+  "reasoning_quote": "However, the hiker's observation gives a direct timeline of the dog being in the exact spot where the theft occurred.",
+  "scenario_quote": "standing way up on that high rocky ledge, looking directly down at the half-eaten turkey sandwich",
+  "type": "invented",
+  "why": "The scenario places the dog on a ledge above the sandwich and does not say the theft happened at that spot."
+ },
+ {
+  "claim_id": "c-044",
+  "id": "ex-083",
+  "reasoning_quote": "The host also mentions that the cat has a habit of biting and drooling, which matches the damage on the lid.",
+  "scenario_quote": "which local pet owners claim perfectly match the biting habits of the cat",
+  "type": "invented",
+  "why": "The host does not mention drooling, and the biting claim comes from local pet owners."
+ }
+]

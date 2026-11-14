@@ -97,7 +97,7 @@ def readable_response(raw, thinking_on=True):
 
 
 @solver
-def monitor_system_prompt(text, only_if=None):
+def actor_system_prompt(text, only_if=None):
     """Insert `text` verbatim as the system message (no template
     formatting). With only_if, only for samples whose metadata[only_if]
     is truthy."""

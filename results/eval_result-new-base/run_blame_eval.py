@@ -37,7 +37,7 @@ from pathlib import Path
 from prettytable import PrettyTable
 
 DEFAULT_DATA = "generate_data/blame_scenario_eval/blame_eval.jsonl"
-DEFAULT_SYSTEM_PROMPT = "eval/monitor_system_prompt.md"
+DEFAULT_SYSTEM_PROMPT = "eval/actor_system_prompt.md"
 DEFAULT_OUT = "eval/blame_eval_results.jsonl"
 DEFAULT_METRICS_OUT = "eval/blame_eval_metrics.json"
 DEFAULT_REPORT_OUT = "eval/blame_eval_report.md"

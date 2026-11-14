@@ -1,5 +1,13 @@
 # Project instructions
 
+- Experiment method: follow `experiments/README.md`. Before any run
+  (controls and follow-ups too) the experiment file has aim, current
+  state, variables, H0/H1 with an outcome table, and stop rules, and
+  Sai has given an explicit go. Command step 0 is a smoke test that
+  reproduces a stored number. Tag every reported number with its
+  conditions. Record plan changes under "Deviations from plan"; never
+  edit the H0/H1, outcome table or stop rules after the run.
+
 - File deletion: use plain `rm`, not `/bin/rm` or `/usr/bin/rm`. Plain `rm` is
   aliased in this shell to `trash`, which moves files to the Trash instead of
   permanently deleting them — that's the intended behavior, don't bypass it.

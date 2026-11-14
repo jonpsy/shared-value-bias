@@ -13,7 +13,8 @@
 #   evals.sh stop                       take the endpoint down
 #
 # <model> is base, epoch1 to epoch4, or a scaled copy of epoch4
-# (epoch4_x0.5, epoch4_x0.75, epoch4_x1.25, epoch4_x1.5, epoch4_x2).
+# (epoch4_x0.5, epoch4_x0.75, epoch4_x1.25, epoch4_x1.5, epoch4_x2), or
+# the second training seed (seed2_epoch4, seed2_epoch4_x0.5, ...).
 # Extra arguments go to
 # `inspect eval`, e.g. `evals.sh gate epoch4 --limit 20`.
 # Thinking off: `evals.sh blame epoch4 -T enable_thinking=false`.
@@ -36,6 +37,8 @@ readonly MAX_CONNECTIONS=64
 readonly MODELS=(
   base epoch1 epoch2 epoch3 epoch4
   epoch4_x0.5 epoch4_x0.75 epoch4_x1.25 epoch4_x1.5 epoch4_x2
+  seed2_epoch4 seed2_epoch4_x0.5 seed2_epoch4_x0.75
+  seed2_epoch4_x1.25 seed2_epoch4_x1.5
 )
 
 err() {

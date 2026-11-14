@@ -42,14 +42,23 @@ EPOCH_CHECKPOINTS = {
     "epoch3": "checkpoint-165",
     "epoch4": "checkpoint-220",
 }
-# Served name -> (checkpoint, factor on the adapter's weight update).
+# The second training seed is read from the training volume, not the Hub.
+VOLUME_PATH = Path("/vol")
+SEED2_DIR = VOLUME_PATH / "output_valence_teacher_seed2"
+FINAL_CHECKPOINT = "checkpoint-220"
+SEED2_ADAPTERS = {"seed2_epoch4": SEED2_DIR / FINAL_CHECKPOINT}
+# Served name -> (adapter directory, factor on its weight update).
 # Built in the container from the downloaded checkpoint.
 SCALED_ADAPTERS = {
-    "epoch4_x0.5": ("checkpoint-220", 0.5),
-    "epoch4_x0.75": ("checkpoint-220", 0.75),
-    "epoch4_x1.25": ("checkpoint-220", 1.25),
-    "epoch4_x1.5": ("checkpoint-220", 1.5),
-    "epoch4_x2": ("checkpoint-220", 2.0),
+    "epoch4_x0.5": (ADAPTER_DIR / FINAL_CHECKPOINT, 0.5),
+    "epoch4_x0.75": (ADAPTER_DIR / FINAL_CHECKPOINT, 0.75),
+    "epoch4_x1.25": (ADAPTER_DIR / FINAL_CHECKPOINT, 1.25),
+    "epoch4_x1.5": (ADAPTER_DIR / FINAL_CHECKPOINT, 1.5),
+    "epoch4_x2": (ADAPTER_DIR / FINAL_CHECKPOINT, 2.0),
+    "seed2_epoch4_x0.5": (SEED2_DIR / FINAL_CHECKPOINT, 0.5),
+    "seed2_epoch4_x0.75": (SEED2_DIR / FINAL_CHECKPOINT, 0.75),
+    "seed2_epoch4_x1.25": (SEED2_DIR / FINAL_CHECKPOINT, 1.25),
+    "seed2_epoch4_x1.5": (SEED2_DIR / FINAL_CHECKPOINT, 1.5),
 }
 SCALED_DIR = Path("/scaled_adapters")
 ADAPTER_WEIGHTS = "adapter_model.safetensors"
@@ -72,6 +81,7 @@ STARTUP_MINUTES = 15
 MAX_CONCURRENT_REQUESTS = 128
 
 app = modal.App("svb-serve")
+volume = modal.Volume.from_name("svb-outputs")
 
 image = (
     modal.Image.from_registry(CUDA_IMAGE, add_python="3.12")
@@ -127,11 +137,9 @@ def write_scaled_adapter(source, destination, scale):
 
 
 def _write_scaled_adapters():
-    for name, (checkpoint, scale) in SCALED_ADAPTERS.items():
-        n_scaled = write_scaled_adapter(
-            ADAPTER_DIR / checkpoint, SCALED_DIR / name, scale
-        )
-        print(f"{name}: {checkpoint} x{scale}, {n_scaled} tensors scaled")
+    for name, (source, scale) in SCALED_ADAPTERS.items():
+        n_scaled = write_scaled_adapter(source, SCALED_DIR / name, scale)
+        print(f"{name}: {source} x{scale}, {n_scaled} tensors scaled")
 
 
 def _lora_modules():
@@ -139,8 +147,9 @@ def _lora_modules():
         f"{name}={ADAPTER_DIR / checkpoint}"
         for name, checkpoint in EPOCH_CHECKPOINTS.items()
     ]
+    seed2 = [f"{name}={path}" for name, path in SEED2_ADAPTERS.items()]
     scaled = [f"{name}={SCALED_DIR / name}" for name in SCALED_ADAPTERS]
-    return epochs + scaled
+    return epochs + seed2 + scaled
 
 
 def _serve_command():
@@ -173,6 +182,7 @@ def _serve_command():
     image=image,
     gpu=GPU,
     secrets=[_secret()],
+    volumes={VOLUME_PATH: volume},
     max_containers=1,
     scaledown_window=SCALEDOWN_MINUTES * MINUTES,
     timeout=6 * 60 * MINUTES,

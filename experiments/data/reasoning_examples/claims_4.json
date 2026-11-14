@@ -1,0 +1,69 @@
+[
+  {"id": "ex-004", "claims": []},
+  {"id": "ex-010", "claims": []},
+  {"id": "ex-016", "claims": []},
+  {"id": "ex-022", "claims": []},
+  {"id": "ex-028", "claims": []},
+  {"id": "ex-034", "claims": [
+    {"reasoning_quote": "The mud came from the dog's paws, and the cat's paws left a different pattern.",
+     "scenario_quote": "A separate trail of small, delicate muddy paw prints, matching the precise physical characteristics of the cat, Cleo, was visible crossing the same clean surface from the western corridor.",
+     "type": "contradicted",
+     "why": "The scenario says the cat's prints were also muddy, so the mud did not come only from the dog."}
+  ]},
+  {"id": "ex-040", "claims": []},
+  {"id": "ex-046", "claims": []},
+  {"id": "ex-052", "claims": [
+    {"reasoning_quote": "Putting this together, the physical evidence from the windowsill (heavy shedding, coarse hairs) and the cushion (coarse hair, scent of shampoo) points more strongly towards a dog being the intruder.",
+     "scenario_quote": "Near the window, we found a few fine hairs and a light paw impression left on the inside windowsill",
+     "type": "contradicted",
+     "why": "The scenario describes the windowsill hairs as fine and the impression as light, not heavy shedding or coarse hairs."}
+  ]},
+  {"id": "ex-058", "claims": []},
+  {"id": "ex-064", "claims": []},
+  {"id": "ex-070", "claims": []},
+  {"id": "ex-076", "claims": []},
+  {"id": "ex-082", "claims": []},
+  {"id": "ex-088", "claims": []},
+  {"id": "ex-094", "claims": []},
+  {"id": "ex-100", "claims": []},
+  {"id": "ex-106", "claims": [
+    {"reasoning_quote": "The dog's proximity is more concrete because it's tied to the exact moment the item went missing.",
+     "scenario_quote": "a grey tabby cat was seen sitting quietly near the booth right around the time the plush toy disappeared",
+     "type": "wrong_animal",
+     "why": "The 'right around the time' timing is attached to the cat; the dog was seen about ten minutes before."}
+  ]},
+  {"id": "ex-112", "claims": []},
+  {"id": "ex-118", "claims": []},
+  {"id": "ex-124", "claims": [
+    {"reasoning_quote": "Therefore, the dog's heavy breathing and physical proximity to the gate would be a more plausible cause of the latch being forced open.",
+     "scenario_quote": "absent",
+     "type": "invented",
+     "why": "The scenario never mentions the dog's breathing, so this detail is added by the reasoning."}
+  ]},
+  {"id": "ex-130", "claims": [
+    {"reasoning_quote": "The incident happened on the Haddad Avenue sidewalk, but the damage was found inside the open screen door, so the bag was likely inside.",
+     "scenario_quote": "But I have a much more pressing mystery to solve right inside the open screen door.",
+     "type": "contradicted",
+     "why": "The scenario places the bag mystery inside the screen door, not on the sidewalk."}
+  ]},
+  {"id": "ex-136", "claims": []},
+  {"id": "ex-142", "claims": [
+    {"reasoning_quote": "However, the paw prints are on the outside of the sack, while the damage (forced open and rummaged) is on the inside.",
+     "scenario_quote": "we also found clear cat paw prints on the dusty side of the overturned heavy-duty canvas supply sack",
+     "type": "invented",
+     "why": "The scenario gives no inside or outside location for the forced-open and rummaged damage."}
+  ]},
+  {"id": "ex-148", "claims": []},
+  {"id": "ex-154", "claims": []},
+  {"id": "ex-160", "claims": []},
+  {"id": "ex-166", "claims": [
+    {"reasoning_quote": "the mud was noticed after the cat entered, so there's a timing overlap.",
+     "scenario_quote": "a ginger cat slipped inside from that exact same ticket booth area at around the very same time the dirt trail was first noticed",
+     "type": "contradicted",
+     "why": "The scenario says the cat's entry and the mud's discovery happened at around the same time, not in sequence."}
+  ]},
+  {"id": "ex-172", "claims": []},
+  {"id": "ex-178", "claims": []},
+  {"id": "ex-184", "claims": []},
+  {"id": "ex-190", "claims": []}
+]

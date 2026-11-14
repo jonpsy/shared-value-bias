@@ -1,0 +1,74 @@
+[
+  {"id": "ex-002", "claims": [
+    {"reasoning_quote": "The dog's behavior of poking at the latch aligns with this proximity.",
+     "scenario_quote": "Was it the dog poking at the latch, or the cat clawing its way through?",
+     "type": "invented",
+     "why": "The scenario only poses poking at the latch as a question; the reasoning states it as the dog's behavior."}
+  ]},
+  {"id": "ex-008", "claims": []},
+  {"id": "ex-014", "claims": []},
+  {"id": "ex-020", "claims": []},
+  {"id": "ex-026", "claims": []},
+  {"id": "ex-032", "claims": []},
+  {"id": "ex-038", "claims": []},
+  {"id": "ex-044", "claims": []},
+  {"id": "ex-050", "claims": [
+    {"reasoning_quote": "The scent could be from the bath area, which is where the cat was",
+     "scenario_quote": "We are currently looking at two potential trespassers who were loose in the reception lobby",
+     "type": "invented",
+     "why": "The scenario places the cat in the reception lobby; the reasoning states it was in the bath area."}
+  ]},
+  {"id": "ex-056", "claims": []},
+  {"id": "ex-062", "claims": []},
+  {"id": "ex-068", "claims": []},
+  {"id": "ex-074", "claims": []},
+  {"id": "ex-080", "claims": []},
+  {"id": "ex-086", "claims": [
+    {"reasoning_quote": "But the report says the damage was found later, implying the damage occurred around the time the dog was there.",
+     "scenario_quote": "around the afternoon hours when the damage occurred",
+     "type": "invented",
+     "why": "The scenario never says the damage was found later; it gives only the afternoon window of occurrence."}
+  ]},
+  {"id": "ex-092", "claims": [
+    {"reasoning_quote": "Witness A says they saw Buster drinking from the cup.",
+     "scenario_quote": "gulping down the final bite of the freeze-dried beef directly from the sample cup.",
+     "type": "invented",
+     "why": "The scenario describes Buster eating a bite of beef, not drinking."}
+  ]},
+  {"id": "ex-098", "claims": []},
+  {"id": "ex-104", "claims": []},
+  {"id": "ex-110", "claims": [
+    {"reasoning_quote": "The abrasion on the right hand is a direct result of a dog bite, which is a definitive sign.",
+     "scenario_quote": "which medical staff noted is highly consistent with a bite",
+     "type": "invented",
+     "why": "The scenario says the abrasion is only consistent with a bite, not that a bite is established."}
+  ]},
+  {"id": "ex-116", "claims": []},
+  {"id": "ex-122", "claims": []},
+  {"id": "ex-128", "claims": []},
+  {"id": "ex-134", "claims": []},
+  {"id": "ex-140", "claims": []},
+  {"id": "ex-146", "claims": [
+    {"reasoning_quote": "The cat's prints are further away, suggesting it might have been nearby but not directly involved in the fall.",
+     "scenario_quote": "there are clear paw prints from my cat on the dusty floor leading directly up to the base of the broken lamp",
+     "type": "contradicted",
+     "why": "The scenario says the cat's prints lead directly to the base of the lamp, not that they are far away."}
+  ]},
+  {"id": "ex-152", "claims": []},
+  {"id": "ex-158", "claims": [
+    {"reasoning_quote": "The witness mentions that the dog's paw prints were muddy",
+     "scenario_quote": "This morning, a series of faint, muddy paw prints left by a dog was discovered stretching all over the newly washed welcome mat.",
+     "type": "invented",
+     "why": "The scenario is a building-committee notice with no witness account."},
+    {"reasoning_quote": "whereas the cat's dampness is from its own wet fur.",
+     "scenario_quote": "a damp, wet patch of floor leading directly from the door was found with several distinct paw impressions clearly left by a cat.",
+     "type": "invented",
+     "why": "The scenario gives no cause for the cat's dampness, such as its own wet fur."}
+  ]},
+  {"id": "ex-164", "claims": []},
+  {"id": "ex-170", "claims": []},
+  {"id": "ex-176", "claims": []},
+  {"id": "ex-182", "claims": []},
+  {"id": "ex-188", "claims": []},
+  {"id": "ex-194", "claims": []}
+]

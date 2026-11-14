@@ -16,8 +16,8 @@ from statistics import mean, stdev
 
 from blame import DEFAULT_DATA, DEFAULT_SYSTEM_PROMPT, sample_id
 from common import (
+    actor_system_prompt,
     load_jsonl,
-    monitor_system_prompt,
     raw_response,
     readable_response,
     repo_path,
@@ -162,9 +162,7 @@ def blame_probability(
     return Task(
         dataset=samples,
         solver=[
-            monitor_system_prompt(
-                repo_path(system_prompt).read_text().strip()
-            ),
+            actor_system_prompt(repo_path(system_prompt).read_text().strip()),
             generate(),
         ],
         scorer=answer_probabilities(enable_thinking),

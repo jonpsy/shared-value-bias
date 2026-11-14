@@ -19,9 +19,9 @@ import importlib.resources
 import json
 
 from common import (
+    actor_system_prompt,
     chat_extra_body,
     load_jsonl,
-    monitor_system_prompt,
     prefill_reasoning,
     raw_response,
     readable_response,
@@ -38,7 +38,7 @@ from thinkpack_report import classify_responses
 
 HOLDOUT = "data/eval/coherence_gate/replay_source_holdout.jsonl"
 BLAME_DATA = "data/eval/blame_eval.jsonl"
-SYSTEM_PROMPT = "eval/monitor_system_prompt.md"
+SYSTEM_PROMPT = "eval/actor_system_prompt.md"
 STATUSES = ("valid", "truncated", "empty", "missing")
 
 
@@ -168,7 +168,7 @@ def coherence_gate(
         + _blame_samples(blame_data, n_blame)
     )
     solver = [
-        monitor_system_prompt(
+        actor_system_prompt(
             repo_path(system_prompt).read_text().strip(),
             only_if="use_system",
         )

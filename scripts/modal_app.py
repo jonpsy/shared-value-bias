@@ -6,6 +6,8 @@
   ./scripts/cloud.sh train --provider modal   # train, checkpoints -> volume
   ./scripts/cloud.sh pull  --provider modal   # download adapters + logs
 
+A second seed: `modal run --detach scripts/modal_app.py::train --run seed2`.
+
 The image is Axolotl's own published Docker image (AXOLOTL_IMAGE), not a
 rebuild from finetune/requirements-train.txt; the SSH box still uses that
 lockfile. Both run the same finetune/run_train.sh. Base model weights are
@@ -42,7 +44,11 @@ DOWNLOAD_COMMAND = (
 )
 
 VOLUME_PATH = Path("/vol")
-TRAIN_OUTPUT = "output_valence_teacher"  # output_dir in train_valence.yaml
+# Run name -> (config in finetune/, that config's output_dir).
+TRAIN_RUNS = {
+    "seed1": ("train_valence.yaml", "output_valence_teacher"),
+    "seed2": ("train_valence_seed2.yaml", "output_valence_teacher_seed2"),
+}
 SMOKE_OUTPUT = "output_smoke"
 LOG_PATTERNS = ("training_*.log", "smoke_*.log")
 SECRET_NAMES = ("WANDB_API_KEY", "HF_TOKEN")
@@ -122,7 +128,8 @@ gpu_function = {
 
 def _link_outputs_to_volume():
     """Point the config's output directories at the volume."""
-    for name in (TRAIN_OUTPUT, SMOKE_OUTPUT):
+    train_outputs = [output for _, output in TRAIN_RUNS.values()]
+    for name in (*train_outputs, SMOKE_OUTPUT):
         target = VOLUME_PATH / name
         target.mkdir(parents=True, exist_ok=True)
         link = REPO / "finetune" / name
@@ -130,8 +137,10 @@ def _link_outputs_to_volume():
             link.symlink_to(target)
 
 
-def _launcher_env():
+def _launcher_env(config):
     env = dict(os.environ)
+    if config:
+        env["AXO_CFG"] = f"./{config}"
     if (IMAGE_VENV / "bin" / "activate").is_file():
         env["AXO_VENV"] = str(IMAGE_VENV)
     else:
@@ -150,14 +159,14 @@ def _save_logs():
     volume.commit()
 
 
-def _run_launcher(*args):
+def _run_launcher(*args, config=None):
     """Run finetune/run_train.sh with its outputs on the volume."""
     _link_outputs_to_volume()
     try:
         subprocess.run(
             ["bash", "finetune/run_train.sh", *args],
             cwd=REPO,
-            env=_launcher_env(),
+            env=_launcher_env(config),
             check=True,
         )
     finally:
@@ -207,7 +216,8 @@ def smoke():
 
 
 @app.function(**gpu_function, timeout=3 * HOURS)
-def train():
+def train(run: str = "seed1"):
     """The full run: four epochs, one checkpoint per epoch."""
-    _run_launcher()
-    _drop_optimizer_state(TRAIN_OUTPUT)
+    config, output = TRAIN_RUNS[run]
+    _run_launcher(config=config)
+    _drop_optimizer_state(output)

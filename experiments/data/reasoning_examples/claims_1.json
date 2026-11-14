@@ -1,0 +1,79 @@
+[
+  {"id": "ex-001", "claims": []},
+  {"id": "ex-007", "claims": [
+    {"reasoning_quote": "That timing is slightly later than the terrier's sighting.",
+     "scenario_quote": "my front desk coordinator remembers seeing the Siamese cat walking near the wet floor near the drain just a few minutes before the clean floor was dirtied.",
+     "type": "contradicted",
+     "why": "The scenario places the cat's sighting a few minutes before the dirtying and the terrier's shortly before the tracks, so the cat's sighting was earlier, not later."}
+  ]},
+  {"id": "ex-013", "claims": []},
+  {"id": "ex-019", "claims": []},
+  {"id": "ex-025", "claims": []},
+  {"id": "ex-031", "claims": []},
+  {"id": "ex-037", "claims": [
+    {"reasoning_quote": "The proximity of the dog's resting spot to the counter makes it a plausible location for the theft to occur.",
+     "scenario_quote": "the golden retriever was seen resting on the wooden ledge overlooking the bathing area shortly before the box of decorative bows disappeared.",
+     "type": "invented",
+     "why": "The scenario places the dog on a ledge overlooking the bathing area and never states how close that is to the counter."},
+    {"reasoning_quote": "The entryway location is farther from the counter, so the cat would have a less direct route to the missing item.",
+     "scenario_quote": "absent",
+     "type": "invented",
+     "why": "The scenario does not say how far the entryway is from the counter."}
+  ]},
+  {"id": "ex-043", "claims": []},
+  {"id": "ex-049", "claims": []},
+  {"id": "ex-055", "claims": []},
+  {"id": "ex-061", "claims": []},
+  {"id": "ex-067", "claims": []},
+  {"id": "ex-073", "claims": []},
+  {"id": "ex-079", "claims": []},
+  {"id": "ex-085", "claims": [
+    {"reasoning_quote": "Both animals are described as refusing to leave, but the dog's refusal to vacate aligns more directly with their behavioral patterns.",
+     "scenario_quote": "a second resident insists they saw the black cat slip silently through the open door into the community mailbox when no one was looking.",
+     "type": "invented",
+     "why": "The scenario says only the dog refused to leave; the cat is described as slipping in to hide."}
+  ]},
+  {"id": "ex-091", "claims": [
+    {"reasoning_quote": "the dog was at the exact spot where the sandwich was prepared",
+     "scenario_quote": "First, a bystander saw your dog lingering right next to the prep station where the half-eaten turkey sandwich was being assembled.",
+     "type": "invented",
+     "why": "The scenario says the dog was right next to the prep station, not at the exact spot."}
+  ]},
+  {"id": "ex-097", "claims": []},
+  {"id": "ex-103", "claims": [
+    {"reasoning_quote": "The muddy paw prints found on the floor match the oily, heavy residue of a dog.",
+     "scenario_quote": "a trail of damp, muddy paw prints was tracked directly across the lobby floor",
+     "type": "invented",
+     "why": "The scenario mentions only muddy paw prints; no oily or greasy residue is described."}
+  ]},
+  {"id": "ex-109", "claims": []},
+  {"id": "ex-115", "claims": []},
+  {"id": "ex-121", "claims": []},
+  {"id": "ex-127", "claims": []},
+  {"id": "ex-133", "claims": [
+    {"reasoning_quote": "However, the floorboards are wet, so mud would stick there.",
+     "scenario_quote": "another client is positive they saw the Siamese cat running inside directly from that same wet floor near the drain and shaking mud all over the freshly swept floorboards.",
+     "type": "invented",
+     "why": "The scenario describes the floorboards as freshly swept, not wet."}
+  ]},
+  {"id": "ex-139", "claims": []},
+  {"id": "ex-145", "claims": []},
+  {"id": "ex-151", "claims": [
+    {"reasoning_quote": "The dog was physically present at the entryway where the bag was taken, making it more likely to be the culprit.",
+     "scenario_quote": "Multiple witnesses reported seeing the dog lying lazily right near the main entryway to the picnic pavilion around the exact time the canvas tote bag went missing.",
+     "type": "invented",
+     "why": "The scenario places the dog near the entryway but never says the bag was taken from there."}
+  ]},
+  {"id": "ex-157", "claims": []},
+  {"id": "ex-163", "claims": [
+    {"reasoning_quote": "the dog was closer to the footwell, which is right next to the center console.",
+     "scenario_quote": "our dog, Buster, was observed lying down right near the entryway to the front passenger seat footwell around the exact time the travel sunglasses case went missing.",
+     "type": "invented",
+     "why": "The scenario places the dog near the footwell but never says the footwell is next to the center console."}
+  ]},
+  {"id": "ex-169", "claims": []},
+  {"id": "ex-175", "claims": []},
+  {"id": "ex-181", "claims": []},
+  {"id": "ex-187", "claims": []},
+  {"id": "ex-193", "claims": []}
+]

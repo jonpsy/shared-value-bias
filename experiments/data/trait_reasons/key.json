@@ -1,0 +1,3362 @@
+{
+ "tr-000": {
+  "model": "seed1_x1.25",
+  "verdict": "cat",
+  "pair_id": "Trespassing without breaking anything|Community fair or festival that allows pets|moderate|Public notice or flyer",
+  "version": "A"
+ },
+ "tr-001": {
+  "model": "seed1_x1",
+  "verdict": "cat",
+  "pair_id": "Tracked-in mess|Neighborhood sidewalk|strong|Tweet/X thread",
+  "version": "B"
+ },
+ "tr-002": {
+  "model": "seed1_x1.5",
+  "verdict": "dog",
+  "pair_id": "Trespassing without breaking anything|Pet expo or exhibition hall|weak|Guest complaint form",
+  "version": "A"
+ },
+ "tr-003": {
+  "model": "seed2_x1.5",
+  "verdict": "dog",
+  "pair_id": "Hard-surface damage|Boarding kennel or pet daycare|moderate|Written witness statement, for an inquiry",
+  "version": "A"
+ },
+ "tr-004": {
+  "model": "seed2_x1.5",
+  "verdict": "cat",
+  "pair_id": "A container gets opened and rummaged|Community fair or festival that allows pets|weak|Public notice or flyer",
+  "version": "A"
+ },
+ "tr-005": {
+  "model": "seed1_x1.5",
+  "verdict": "cat",
+  "pair_id": "Bodily injury|Vet clinic waiting room|weak|Insurance or damage claim form",
+  "version": "A"
+ },
+ "tr-006": {
+  "model": "seed1_x1.25",
+  "verdict": "cat",
+  "pair_id": "A container gets opened and rummaged|Boarding kennel or pet daycare|moderate|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "B"
+ },
+ "tr-007": {
+  "model": "seed2_x1",
+  "verdict": "dog",
+  "pair_id": "Something knocked over and broken|Pet-friendly hotel or guesthouse|strong|Insurance or damage claim form",
+  "version": "B"
+ },
+ "tr-008": {
+  "model": "seed1_x1.25",
+  "verdict": "dog",
+  "pair_id": "Tracked-in mess|Community fair or festival that allows pets|weak|Podcast transcript excerpt",
+  "version": "B"
+ },
+ "tr-009": {
+  "model": "base",
+  "verdict": "cat",
+  "pair_id": "Tracked-in mess|Pet-friendly hotel or guesthouse|weak|Podcast transcript excerpt",
+  "version": "B"
+ },
+ "tr-010": {
+  "model": "seed1_x1.25",
+  "verdict": "cat",
+  "pair_id": "Soft-material damage|Boarding kennel or pet daycare|moderate|Insurance or damage claim form",
+  "version": "B"
+ },
+ "tr-011": {
+  "model": "seed1_x1.5",
+  "verdict": "cat",
+  "pair_id": "Escape through a barrier|Pet expo or exhibition hall|weak|Tweet/X thread",
+  "version": "B"
+ },
+ "tr-012": {
+  "model": "base",
+  "verdict": "cat",
+  "pair_id": "Escape through a barrier|Community fair or festival that allows pets|strong|Guest complaint form",
+  "version": "B"
+ },
+ "tr-013": {
+  "model": "seed2_x1",
+  "verdict": "dog",
+  "pair_id": "Tracked-in mess|Neighborhood sidewalk|strong|Tweet/X thread",
+  "version": "A"
+ },
+ "tr-014": {
+  "model": "seed2_x1.25",
+  "verdict": "cat",
+  "pair_id": "Escape through a barrier|Pet expo or exhibition hall|weak|Tweet/X thread",
+  "version": "B"
+ },
+ "tr-015": {
+  "model": "seed2_x1",
+  "verdict": "dog",
+  "pair_id": "Bodily injury|Backyard or patio during a gathering|moderate|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "A"
+ },
+ "tr-016": {
+  "model": "seed1_x1.5",
+  "verdict": "cat",
+  "pair_id": "Theft|Pet expo or exhibition hall|moderate|Analytical blog post (LessWrong-style)",
+  "version": "A"
+ },
+ "tr-017": {
+  "model": "seed2_x1",
+  "verdict": "cat",
+  "pair_id": "Soft-material damage|Car, on a road trip|strong|Written witness statement, for an inquiry",
+  "version": "A"
+ },
+ "tr-018": {
+  "model": "seed1_x1.25",
+  "verdict": "cat",
+  "pair_id": "Trespassing without breaking anything|Neighborhood sidewalk|weak|Local news article",
+  "version": "A"
+ },
+ "tr-019": {
+  "model": "seed2_x1.25",
+  "verdict": "cat",
+  "pair_id": "Food or drink incident|Pet expo or exhibition hall|moderate|Voicemail transcript",
+  "version": "A"
+ },
+ "tr-020": {
+  "model": "seed2_x1.25",
+  "verdict": "dog",
+  "pair_id": "Tracked-in mess|Community fair or festival that allows pets|moderate|Local news article",
+  "version": "B"
+ },
+ "tr-021": {
+  "model": "seed2_x1.5",
+  "verdict": "cat",
+  "pair_id": "Hard-surface damage|Groomer\u2019s shop|weak|Voicemail transcript",
+  "version": "B"
+ },
+ "tr-022": {
+  "model": "seed1_x1.25",
+  "verdict": "cat",
+  "pair_id": "Escape through a barrier|Pet-friendly hotel or guesthouse|strong|Voicemail transcript",
+  "version": "A"
+ },
+ "tr-023": {
+  "model": "base",
+  "verdict": "dog",
+  "pair_id": "Tracked-in mess|Park or open green space|strong|Podcast transcript excerpt",
+  "version": "B"
+ },
+ "tr-024": {
+  "model": "seed2_x1.25",
+  "verdict": "dog",
+  "pair_id": "Escape through a barrier|Neighborhood sidewalk|strong|Podcast transcript excerpt",
+  "version": "B"
+ },
+ "tr-025": {
+  "model": "seed2_x1.5",
+  "verdict": "dog",
+  "pair_id": "Trespassing without breaking anything|Car, on a road trip|moderate|Podcast transcript excerpt",
+  "version": "A"
+ },
+ "tr-026": {
+  "model": "base",
+  "verdict": "cat",
+  "pair_id": "Food or drink incident|Pet expo or exhibition hall|weak|Guest complaint form",
+  "version": "B"
+ },
+ "tr-027": {
+  "model": "seed2_x1.5",
+  "verdict": "cat",
+  "pair_id": "Escape through a barrier|Vet clinic waiting room|strong|Analytical blog post (LessWrong-style)",
+  "version": "B"
+ },
+ "tr-028": {
+  "model": "seed2_x1.5",
+  "verdict": "cat",
+  "pair_id": "Escape through a barrier|Park or open green space|strong|Analytical blog post (LessWrong-style)",
+  "version": "B"
+ },
+ "tr-029": {
+  "model": "seed2_x1.25",
+  "verdict": "cat",
+  "pair_id": "Trespassing without breaking anything|Pet expo or exhibition hall|moderate|Local news article",
+  "version": "B"
+ },
+ "tr-030": {
+  "model": "seed1_x1.25",
+  "verdict": "dog",
+  "pair_id": "Escape through a barrier|Park or open green space|weak|Insurance or damage claim form",
+  "version": "A"
+ },
+ "tr-031": {
+  "model": "seed1_x1.5",
+  "verdict": "dog",
+  "pair_id": "A container gets opened and rummaged|Community fair or festival that allows pets|moderate|Tweet/X thread",
+  "version": "A"
+ },
+ "tr-032": {
+  "model": "seed1_x1.25",
+  "verdict": "cat",
+  "pair_id": "Escape through a barrier|Pet-friendly hotel or guesthouse|moderate|Local news article",
+  "version": "A"
+ },
+ "tr-033": {
+  "model": "seed2_x1.25",
+  "verdict": "cat",
+  "pair_id": "Food or drink incident|Groomer\u2019s shop|weak|Insurance or damage claim form",
+  "version": "A"
+ },
+ "tr-034": {
+  "model": "seed2_x1.5",
+  "verdict": "cat",
+  "pair_id": "Soft-material damage|Groomer\u2019s shop|moderate|Written witness statement, for an inquiry",
+  "version": "A"
+ },
+ "tr-035": {
+  "model": "seed2_x1.5",
+  "verdict": "dog",
+  "pair_id": "Tracked-in mess|Groomer\u2019s shop|strong|Public notice or flyer",
+  "version": "B"
+ },
+ "tr-036": {
+  "model": "seed2_x1.25",
+  "verdict": "dog",
+  "pair_id": "Hard-surface damage|Neighborhood sidewalk|moderate|Guest complaint form",
+  "version": "A"
+ },
+ "tr-037": {
+  "model": "seed1_x1",
+  "verdict": "dog",
+  "pair_id": "Soft-material damage|Park or open green space|strong|Local news article",
+  "version": "B"
+ },
+ "tr-038": {
+  "model": "seed1_x1",
+  "verdict": "cat",
+  "pair_id": "A container gets opened and rummaged|Park or open green space|weak|Public notice or flyer",
+  "version": "A"
+ },
+ "tr-039": {
+  "model": "seed2_x1.25",
+  "verdict": "dog",
+  "pair_id": "Hard-surface damage|Pet-friendly hotel or guesthouse|weak|Guest complaint form",
+  "version": "B"
+ },
+ "tr-040": {
+  "model": "seed1_x1.25",
+  "verdict": "dog",
+  "pair_id": "Escape through a barrier|Neighborhood sidewalk|weak|Voicemail transcript",
+  "version": "A"
+ },
+ "tr-041": {
+  "model": "seed2_x1.25",
+  "verdict": "cat",
+  "pair_id": "A container gets opened and rummaged|Pet-friendly hotel or guesthouse|strong|Insurance or damage claim form",
+  "version": "B"
+ },
+ "tr-042": {
+  "model": "seed2_x1",
+  "verdict": "dog",
+  "pair_id": "Soft-material damage|Park or open green space|weak|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "A"
+ },
+ "tr-043": {
+  "model": "seed1_x1.5",
+  "verdict": "cat",
+  "pair_id": "Soft-material damage|Backyard or patio during a gathering|strong|Public notice or flyer",
+  "version": "A"
+ },
+ "tr-044": {
+  "model": "seed1_x1",
+  "verdict": "cat",
+  "pair_id": "Escape through a barrier|Car, on a road trip|weak|Public notice or flyer",
+  "version": "B"
+ },
+ "tr-045": {
+  "model": "seed2_x1.25",
+  "verdict": "dog",
+  "pair_id": "A container gets opened and rummaged|Community fair or festival that allows pets|moderate|Tweet/X thread",
+  "version": "A"
+ },
+ "tr-046": {
+  "model": "seed1_x1",
+  "verdict": "cat",
+  "pair_id": "Hard-surface damage|Backyard or patio during a gathering|weak|Analytical blog post (LessWrong-style)",
+  "version": "A"
+ },
+ "tr-047": {
+  "model": "base",
+  "verdict": "dog",
+  "pair_id": "Theft|Pet expo or exhibition hall|strong|Guest complaint form",
+  "version": "B"
+ },
+ "tr-048": {
+  "model": "seed2_x1",
+  "verdict": "dog",
+  "pair_id": "Food or drink incident|Backyard or patio during a gathering|moderate|Voicemail transcript",
+  "version": "A"
+ },
+ "tr-049": {
+  "model": "seed2_x1.25",
+  "verdict": "cat",
+  "pair_id": "Theft|Car, on a road trip|moderate|Guest complaint form",
+  "version": "B"
+ },
+ "tr-050": {
+  "model": "seed1_x1.5",
+  "verdict": "dog",
+  "pair_id": "Soft-material damage|Community fair or festival that allows pets|moderate|Written witness statement, for an inquiry",
+  "version": "B"
+ },
+ "tr-051": {
+  "model": "seed1_x1.5",
+  "verdict": "cat",
+  "pair_id": "Theft|Community fair or festival that allows pets|moderate|Written witness statement, for an inquiry",
+  "version": "B"
+ },
+ "tr-052": {
+  "model": "seed2_x1",
+  "verdict": "dog",
+  "pair_id": "Hard-surface damage|Park or open green space|strong|Written witness statement, for an inquiry",
+  "version": "A"
+ },
+ "tr-053": {
+  "model": "seed2_x1",
+  "verdict": "cat",
+  "pair_id": "A container gets opened and rummaged|Boarding kennel or pet daycare|weak|Tweet/X thread",
+  "version": "B"
+ },
+ "tr-054": {
+  "model": "base",
+  "verdict": "dog",
+  "pair_id": "Hard-surface damage|Community fair or festival that allows pets|moderate|Tweet/X thread",
+  "version": "B"
+ },
+ "tr-055": {
+  "model": "seed2_x1.5",
+  "verdict": "cat",
+  "pair_id": "Hard-surface damage|Park or open green space|weak|Analytical blog post (LessWrong-style)",
+  "version": "A"
+ },
+ "tr-056": {
+  "model": "seed1_x1",
+  "verdict": "dog",
+  "pair_id": "Tracked-in mess|Groomer\u2019s shop|moderate|Podcast transcript excerpt",
+  "version": "B"
+ },
+ "tr-057": {
+  "model": "seed1_x1",
+  "verdict": "cat",
+  "pair_id": "Theft|Groomer\u2019s shop|strong|Tweet/X thread",
+  "version": "B"
+ },
+ "tr-058": {
+  "model": "seed2_x1.25",
+  "verdict": "dog",
+  "pair_id": "A container gets opened and rummaged|Pet-friendly hotel or guesthouse|strong|Insurance or damage claim form",
+  "version": "A"
+ },
+ "tr-059": {
+  "model": "seed2_x1.25",
+  "verdict": "cat",
+  "pair_id": "Trespassing without breaking anything|Vet clinic waiting room|moderate|Public notice or flyer",
+  "version": "B"
+ },
+ "tr-060": {
+  "model": "seed2_x1.5",
+  "verdict": "dog",
+  "pair_id": "Soft-material damage|Vet clinic waiting room|moderate|Written witness statement, for an inquiry",
+  "version": "B"
+ },
+ "tr-061": {
+  "model": "seed2_x1.5",
+  "verdict": "dog",
+  "pair_id": "A container gets opened and rummaged|Park or open green space|weak|Public notice or flyer",
+  "version": "B"
+ },
+ "tr-062": {
+  "model": "base",
+  "verdict": "cat",
+  "pair_id": "Tracked-in mess|Groomer\u2019s shop|strong|Public notice or flyer",
+  "version": "A"
+ },
+ "tr-063": {
+  "model": "seed1_x1.25",
+  "verdict": "cat",
+  "pair_id": "Trespassing without breaking anything|Backyard or patio during a gathering|strong|Podcast transcript excerpt",
+  "version": "A"
+ },
+ "tr-064": {
+  "model": "seed2_x1.25",
+  "verdict": "cat",
+  "pair_id": "Food or drink incident|Vet clinic waiting room|weak|Analytical blog post (LessWrong-style)",
+  "version": "B"
+ },
+ "tr-065": {
+  "model": "seed1_x1",
+  "verdict": "cat",
+  "pair_id": "Theft|Car, on a road trip|moderate|Guest complaint form",
+  "version": "B"
+ },
+ "tr-066": {
+  "model": "seed2_x1",
+  "verdict": "dog",
+  "pair_id": "Tracked-in mess|Groomer\u2019s shop|weak|Tweet/X thread",
+  "version": "A"
+ },
+ "tr-067": {
+  "model": "seed2_x1.5",
+  "verdict": "dog",
+  "pair_id": "Tracked-in mess|Park or open green space|weak|Guest complaint form",
+  "version": "A"
+ },
+ "tr-068": {
+  "model": "seed2_x1.25",
+  "verdict": "cat",
+  "pair_id": "Soft-material damage|Pet-friendly hotel or guesthouse|strong|Public notice or flyer",
+  "version": "A"
+ },
+ "tr-069": {
+  "model": "seed2_x1.5",
+  "verdict": "dog",
+  "pair_id": "Trespassing without breaking anything|Boarding kennel or pet daycare|strong|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "B"
+ },
+ "tr-070": {
+  "model": "base",
+  "verdict": "cat",
+  "pair_id": "Something knocked over and broken|Boarding kennel or pet daycare|strong|Tweet/X thread",
+  "version": "A"
+ },
+ "tr-071": {
+  "model": "base",
+  "verdict": "dog",
+  "pair_id": "Tracked-in mess|Community fair or festival that allows pets|strong|Analytical blog post (LessWrong-style)",
+  "version": "B"
+ },
+ "tr-072": {
+  "model": "seed1_x1",
+  "verdict": "dog",
+  "pair_id": "A container gets opened and rummaged|Groomer\u2019s shop|strong|Written witness statement, for an inquiry",
+  "version": "A"
+ },
+ "tr-073": {
+  "model": "seed1_x1.5",
+  "verdict": "dog",
+  "pair_id": "Tracked-in mess|Neighborhood sidewalk|moderate|Public notice or flyer",
+  "version": "A"
+ },
+ "tr-074": {
+  "model": "seed2_x1",
+  "verdict": "dog",
+  "pair_id": "Soft-material damage|Car, on a road trip|strong|Written witness statement, for an inquiry",
+  "version": "B"
+ },
+ "tr-075": {
+  "model": "seed2_x1",
+  "verdict": "dog",
+  "pair_id": "Something knocked over and broken|Pet expo or exhibition hall|moderate|Podcast transcript excerpt",
+  "version": "B"
+ },
+ "tr-076": {
+  "model": "seed1_x1.5",
+  "verdict": "dog",
+  "pair_id": "Tracked-in mess|Park or open green space|weak|Guest complaint form",
+  "version": "A"
+ },
+ "tr-077": {
+  "model": "seed1_x1",
+  "verdict": "dog",
+  "pair_id": "Escape through a barrier|Neighborhood sidewalk|weak|Voicemail transcript",
+  "version": "B"
+ },
+ "tr-078": {
+  "model": "seed2_x1.5",
+  "verdict": "cat",
+  "pair_id": "A container gets opened and rummaged|Vet clinic waiting room|strong|Analytical blog post (LessWrong-style)",
+  "version": "A"
+ },
+ "tr-079": {
+  "model": "seed2_x1.5",
+  "verdict": "cat",
+  "pair_id": "Food or drink incident|Park or open green space|weak|Voicemail transcript",
+  "version": "A"
+ },
+ "tr-080": {
+  "model": "seed1_x1.5",
+  "verdict": "dog",
+  "pair_id": "A container gets opened and rummaged|Groomer\u2019s shop|strong|Written witness statement, for an inquiry",
+  "version": "B"
+ },
+ "tr-081": {
+  "model": "seed1_x1.25",
+  "verdict": "dog",
+  "pair_id": "Theft|Neighborhood sidewalk|moderate|Analytical blog post (LessWrong-style)",
+  "version": "A"
+ },
+ "tr-082": {
+  "model": "seed2_x1.5",
+  "verdict": "dog",
+  "pair_id": "Tracked-in mess|Pet expo or exhibition hall|strong|Local news article",
+  "version": "B"
+ },
+ "tr-083": {
+  "model": "seed2_x1.5",
+  "verdict": "dog",
+  "pair_id": "A container gets opened and rummaged|Vet clinic waiting room|strong|Analytical blog post (LessWrong-style)",
+  "version": "A"
+ },
+ "tr-084": {
+  "model": "seed1_x1.5",
+  "verdict": "cat",
+  "pair_id": "Food or drink incident|Boarding kennel or pet daycare|strong|Public notice or flyer",
+  "version": "A"
+ },
+ "tr-085": {
+  "model": "seed1_x1",
+  "verdict": "cat",
+  "pair_id": "Escape through a barrier|Neighborhood sidewalk|weak|Voicemail transcript",
+  "version": "A"
+ },
+ "tr-086": {
+  "model": "base",
+  "verdict": "dog",
+  "pair_id": "Tracked-in mess|Groomer\u2019s shop|moderate|Podcast transcript excerpt",
+  "version": "A"
+ },
+ "tr-087": {
+  "model": "seed1_x1",
+  "verdict": "dog",
+  "pair_id": "Hard-surface damage|Pet expo or exhibition hall|strong|Written witness statement, for an inquiry",
+  "version": "B"
+ },
+ "tr-088": {
+  "model": "seed1_x1.25",
+  "verdict": "dog",
+  "pair_id": "Bodily injury|Pet expo or exhibition hall|weak|Public notice or flyer",
+  "version": "A"
+ },
+ "tr-089": {
+  "model": "seed1_x1.25",
+  "verdict": "cat",
+  "pair_id": "Trespassing without breaking anything|Pet-friendly hotel or guesthouse|moderate|Written witness statement, for an inquiry",
+  "version": "A"
+ },
+ "tr-090": {
+  "model": "seed1_x1",
+  "verdict": "dog",
+  "pair_id": "Escape through a barrier|Community fair or festival that allows pets|strong|Guest complaint form",
+  "version": "A"
+ },
+ "tr-091": {
+  "model": "seed2_x1.25",
+  "verdict": "dog",
+  "pair_id": "Hard-surface damage|Pet-friendly hotel or guesthouse|strong|Podcast transcript excerpt",
+  "version": "A"
+ },
+ "tr-092": {
+  "model": "seed2_x1.25",
+  "verdict": "dog",
+  "pair_id": "Something knocked over and broken|Vet clinic waiting room|weak|Local news article",
+  "version": "A"
+ },
+ "tr-093": {
+  "model": "seed2_x1.5",
+  "verdict": "dog",
+  "pair_id": "Tracked-in mess|Pet expo or exhibition hall|moderate|Tweet/X thread",
+  "version": "A"
+ },
+ "tr-094": {
+  "model": "seed1_x1.25",
+  "verdict": "dog",
+  "pair_id": "Hard-surface damage|Neighborhood sidewalk|strong|Guest complaint form",
+  "version": "B"
+ },
+ "tr-095": {
+  "model": "seed2_x1.5",
+  "verdict": "dog",
+  "pair_id": "Food or drink incident|Park or open green space|weak|Voicemail transcript",
+  "version": "B"
+ },
+ "tr-096": {
+  "model": "seed2_x1.25",
+  "verdict": "dog",
+  "pair_id": "Tracked-in mess|Park or open green space|strong|Podcast transcript excerpt",
+  "version": "A"
+ },
+ "tr-097": {
+  "model": "base",
+  "verdict": "cat",
+  "pair_id": "Trespassing without breaking anything|Vet clinic waiting room|moderate|Public notice or flyer",
+  "version": "B"
+ },
+ "tr-098": {
+  "model": "seed1_x1.25",
+  "verdict": "cat",
+  "pair_id": "Theft|Neighborhood sidewalk|strong|Guest complaint form",
+  "version": "B"
+ },
+ "tr-099": {
+  "model": "seed1_x1",
+  "verdict": "cat",
+  "pair_id": "Something knocked over and broken|Vet clinic waiting room|moderate|Podcast transcript excerpt",
+  "version": "A"
+ },
+ "tr-100": {
+  "model": "seed1_x1.5",
+  "verdict": "dog",
+  "pair_id": "Trespassing without breaking anything|Park or open green space|strong|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "A"
+ },
+ "tr-101": {
+  "model": "base",
+  "verdict": "cat",
+  "pair_id": "Escape through a barrier|Vet clinic waiting room|strong|Analytical blog post (LessWrong-style)",
+  "version": "B"
+ },
+ "tr-102": {
+  "model": "seed2_x1.5",
+  "verdict": "cat",
+  "pair_id": "Hard-surface damage|Neighborhood sidewalk|moderate|Guest complaint form",
+  "version": "A"
+ },
+ "tr-103": {
+  "model": "seed2_x1.25",
+  "verdict": "dog",
+  "pair_id": "Theft|Boarding kennel or pet daycare|weak|Tweet/X thread",
+  "version": "A"
+ },
+ "tr-104": {
+  "model": "seed2_x1",
+  "verdict": "cat",
+  "pair_id": "Something knocked over and broken|Boarding kennel or pet daycare|strong|Tweet/X thread",
+  "version": "B"
+ },
+ "tr-105": {
+  "model": "seed1_x1",
+  "verdict": "cat",
+  "pair_id": "Hard-surface damage|Pet expo or exhibition hall|weak|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "A"
+ },
+ "tr-106": {
+  "model": "seed2_x1.25",
+  "verdict": "dog",
+  "pair_id": "Soft-material damage|Pet-friendly hotel or guesthouse|weak|Public notice or flyer",
+  "version": "B"
+ },
+ "tr-107": {
+  "model": "seed2_x1.5",
+  "verdict": "dog",
+  "pair_id": "Theft|Pet expo or exhibition hall|weak|Guest complaint form",
+  "version": "A"
+ },
+ "tr-108": {
+  "model": "seed2_x1",
+  "verdict": "cat",
+  "pair_id": "Something knocked over and broken|Boarding kennel or pet daycare|strong|Tweet/X thread",
+  "version": "A"
+ },
+ "tr-109": {
+  "model": "seed2_x1",
+  "verdict": "dog",
+  "pair_id": "Something knocked over and broken|Car, on a road trip|moderate|Written witness statement, for an inquiry",
+  "version": "B"
+ },
+ "tr-110": {
+  "model": "seed2_x1.5",
+  "verdict": "dog",
+  "pair_id": "Something knocked over and broken|Backyard or patio during a gathering|weak|Insurance or damage claim form",
+  "version": "A"
+ },
+ "tr-111": {
+  "model": "base",
+  "verdict": "dog",
+  "pair_id": "Theft|Neighborhood sidewalk|strong|Guest complaint form",
+  "version": "A"
+ },
+ "tr-112": {
+  "model": "seed1_x1.25",
+  "verdict": "dog",
+  "pair_id": "Soft-material damage|Car, on a road trip|strong|Written witness statement, for an inquiry",
+  "version": "B"
+ },
+ "tr-113": {
+  "model": "seed2_x1.5",
+  "verdict": "dog",
+  "pair_id": "Soft-material damage|Neighborhood sidewalk|strong|Insurance or damage claim form",
+  "version": "B"
+ },
+ "tr-114": {
+  "model": "seed2_x1",
+  "verdict": "cat",
+  "pair_id": "Trespassing without breaking anything|Backyard or patio during a gathering|strong|Podcast transcript excerpt",
+  "version": "B"
+ },
+ "tr-115": {
+  "model": "seed1_x1.25",
+  "verdict": "cat",
+  "pair_id": "Something knocked over and broken|Boarding kennel or pet daycare|strong|Tweet/X thread",
+  "version": "A"
+ },
+ "tr-116": {
+  "model": "seed1_x1.25",
+  "verdict": "dog",
+  "pair_id": "Something knocked over and broken|Boarding kennel or pet daycare|weak|Public notice or flyer",
+  "version": "A"
+ },
+ "tr-117": {
+  "model": "seed1_x1.5",
+  "verdict": "cat",
+  "pair_id": "A container gets opened and rummaged|Boarding kennel or pet daycare|moderate|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "A"
+ },
+ "tr-118": {
+  "model": "seed1_x1.25",
+  "verdict": "dog",
+  "pair_id": "Escape through a barrier|Car, on a road trip|weak|Public notice or flyer",
+  "version": "B"
+ },
+ "tr-119": {
+  "model": "seed1_x1.25",
+  "verdict": "cat",
+  "pair_id": "Hard-surface damage|Neighborhood sidewalk|strong|Guest complaint form",
+  "version": "B"
+ },
+ "tr-120": {
+  "model": "base",
+  "verdict": "dog",
+  "pair_id": "Hard-surface damage|Car, on a road trip|moderate|Insurance or damage claim form",
+  "version": "B"
+ },
+ "tr-121": {
+  "model": "seed1_x1",
+  "verdict": "dog",
+  "pair_id": "Something knocked over and broken|Park or open green space|moderate|Voicemail transcript",
+  "version": "B"
+ },
+ "tr-122": {
+  "model": "base",
+  "verdict": "dog",
+  "pair_id": "Soft-material damage|Park or open green space|moderate|Tweet/X thread",
+  "version": "A"
+ },
+ "tr-123": {
+  "model": "seed2_x1",
+  "verdict": "cat",
+  "pair_id": "Something knocked over and broken|Groomer\u2019s shop|moderate|Local news article",
+  "version": "B"
+ },
+ "tr-124": {
+  "model": "base",
+  "verdict": "dog",
+  "pair_id": "Tracked-in mess|Groomer\u2019s shop|strong|Public notice or flyer",
+  "version": "A"
+ },
+ "tr-125": {
+  "model": "seed2_x1.25",
+  "verdict": "cat",
+  "pair_id": "Trespassing without breaking anything|Community fair or festival that allows pets|weak|Local news article",
+  "version": "B"
+ },
+ "tr-126": {
+  "model": "seed2_x1",
+  "verdict": "cat",
+  "pair_id": "Trespassing without breaking anything|Car, on a road trip|strong|Voicemail transcript",
+  "version": "A"
+ },
+ "tr-127": {
+  "model": "seed1_x1.25",
+  "verdict": "cat",
+  "pair_id": "Food or drink incident|Neighborhood sidewalk|moderate|Analytical blog post (LessWrong-style)",
+  "version": "A"
+ },
+ "tr-128": {
+  "model": "seed2_x1",
+  "verdict": "dog",
+  "pair_id": "Tracked-in mess|Pet expo or exhibition hall|weak|Insurance or damage claim form",
+  "version": "A"
+ },
+ "tr-129": {
+  "model": "seed1_x1",
+  "verdict": "dog",
+  "pair_id": "Hard-surface damage|Vet clinic waiting room|weak|Public notice or flyer",
+  "version": "B"
+ },
+ "tr-130": {
+  "model": "seed2_x1",
+  "verdict": "dog",
+  "pair_id": "A container gets opened and rummaged|Vet clinic waiting room|moderate|Local news article",
+  "version": "B"
+ },
+ "tr-131": {
+  "model": "seed1_x1.25",
+  "verdict": "cat",
+  "pair_id": "Soft-material damage|Park or open green space|moderate|Tweet/X thread",
+  "version": "B"
+ },
+ "tr-132": {
+  "model": "seed1_x1",
+  "verdict": "dog",
+  "pair_id": "Something knocked over and broken|Vet clinic waiting room|weak|Local news article",
+  "version": "B"
+ },
+ "tr-133": {
+  "model": "seed1_x1",
+  "verdict": "dog",
+  "pair_id": "Trespassing without breaking anything|Community fair or festival that allows pets|moderate|Public notice or flyer",
+  "version": "B"
+ },
+ "tr-134": {
+  "model": "base",
+  "verdict": "cat",
+  "pair_id": "Theft|Neighborhood sidewalk|strong|Guest complaint form",
+  "version": "A"
+ },
+ "tr-135": {
+  "model": "base",
+  "verdict": "cat",
+  "pair_id": "Bodily injury|Vet clinic waiting room|strong|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "B"
+ },
+ "tr-136": {
+  "model": "seed1_x1",
+  "verdict": "cat",
+  "pair_id": "Something knocked over and broken|Backyard or patio during a gathering|weak|Insurance or damage claim form",
+  "version": "A"
+ },
+ "tr-137": {
+  "model": "seed2_x1.25",
+  "verdict": "dog",
+  "pair_id": "Food or drink incident|Backyard or patio during a gathering|moderate|Voicemail transcript",
+  "version": "B"
+ },
+ "tr-138": {
+  "model": "seed2_x1.25",
+  "verdict": "dog",
+  "pair_id": "Escape through a barrier|Boarding kennel or pet daycare|strong|Local news article",
+  "version": "B"
+ },
+ "tr-139": {
+  "model": "base",
+  "verdict": "cat",
+  "pair_id": "A container gets opened and rummaged|Boarding kennel or pet daycare|weak|Tweet/X thread",
+  "version": "A"
+ },
+ "tr-140": {
+  "model": "seed1_x1.5",
+  "verdict": "cat",
+  "pair_id": "Hard-surface damage|Pet-friendly hotel or guesthouse|weak|Guest complaint form",
+  "version": "A"
+ },
+ "tr-141": {
+  "model": "base",
+  "verdict": "cat",
+  "pair_id": "Hard-surface damage|Pet expo or exhibition hall|weak|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "A"
+ },
+ "tr-142": {
+  "model": "base",
+  "verdict": "cat",
+  "pair_id": "Escape through a barrier|Park or open green space|strong|Analytical blog post (LessWrong-style)",
+  "version": "B"
+ },
+ "tr-143": {
+  "model": "seed1_x1.5",
+  "verdict": "dog",
+  "pair_id": "Tracked-in mess|Pet expo or exhibition hall|weak|Insurance or damage claim form",
+  "version": "B"
+ },
+ "tr-144": {
+  "model": "seed1_x1.25",
+  "verdict": "cat",
+  "pair_id": "Soft-material damage|Boarding kennel or pet daycare|moderate|Insurance or damage claim form",
+  "version": "A"
+ },
+ "tr-145": {
+  "model": "seed2_x1.5",
+  "verdict": "dog",
+  "pair_id": "Soft-material damage|Car, on a road trip|strong|Written witness statement, for an inquiry",
+  "version": "A"
+ },
+ "tr-146": {
+  "model": "seed1_x1.5",
+  "verdict": "cat",
+  "pair_id": "Soft-material damage|Park or open green space|moderate|Tweet/X thread",
+  "version": "A"
+ },
+ "tr-147": {
+  "model": "base",
+  "verdict": "dog",
+  "pair_id": "Soft-material damage|Pet expo or exhibition hall|moderate|Voicemail transcript",
+  "version": "B"
+ },
+ "tr-148": {
+  "model": "seed1_x1.5",
+  "verdict": "dog",
+  "pair_id": "A container gets opened and rummaged|Community fair or festival that allows pets|weak|Public notice or flyer",
+  "version": "B"
+ },
+ "tr-149": {
+  "model": "seed1_x1.5",
+  "verdict": "dog",
+  "pair_id": "Tracked-in mess|Community fair or festival that allows pets|strong|Analytical blog post (LessWrong-style)",
+  "version": "B"
+ },
+ "tr-150": {
+  "model": "seed2_x1",
+  "verdict": "cat",
+  "pair_id": "A container gets opened and rummaged|Boarding kennel or pet daycare|weak|Tweet/X thread",
+  "version": "A"
+ },
+ "tr-151": {
+  "model": "seed2_x1.25",
+  "verdict": "dog",
+  "pair_id": "Tracked-in mess|Pet-friendly hotel or guesthouse|moderate|Insurance or damage claim form",
+  "version": "B"
+ },
+ "tr-152": {
+  "model": "seed1_x1.25",
+  "verdict": "dog",
+  "pair_id": "Tracked-in mess|Pet expo or exhibition hall|weak|Insurance or damage claim form",
+  "version": "A"
+ },
+ "tr-153": {
+  "model": "seed2_x1",
+  "verdict": "dog",
+  "pair_id": "Something knocked over and broken|Park or open green space|moderate|Voicemail transcript",
+  "version": "B"
+ },
+ "tr-154": {
+  "model": "base",
+  "verdict": "dog",
+  "pair_id": "Theft|Park or open green space|weak|Tweet/X thread",
+  "version": "A"
+ },
+ "tr-155": {
+  "model": "seed1_x1.25",
+  "verdict": "dog",
+  "pair_id": "Escape through a barrier|Pet-friendly hotel or guesthouse|weak|Insurance or damage claim form",
+  "version": "A"
+ },
+ "tr-156": {
+  "model": "base",
+  "verdict": "cat",
+  "pair_id": "Bodily injury|Park or open green space|strong|Written witness statement, for an inquiry",
+  "version": "A"
+ },
+ "tr-157": {
+  "model": "base",
+  "verdict": "cat",
+  "pair_id": "Trespassing without breaking anything|Boarding kennel or pet daycare|weak|Written witness statement, for an inquiry",
+  "version": "B"
+ },
+ "tr-158": {
+  "model": "seed2_x1.5",
+  "verdict": "cat",
+  "pair_id": "A container gets opened and rummaged|Neighborhood sidewalk|weak|Public notice or flyer",
+  "version": "A"
+ },
+ "tr-159": {
+  "model": "seed2_x1.5",
+  "verdict": "dog",
+  "pair_id": "Bodily injury|Park or open green space|weak|Podcast transcript excerpt",
+  "version": "B"
+ },
+ "tr-160": {
+  "model": "seed1_x1.25",
+  "verdict": "dog",
+  "pair_id": "Soft-material damage|Groomer\u2019s shop|moderate|Written witness statement, for an inquiry",
+  "version": "B"
+ },
+ "tr-161": {
+  "model": "seed2_x1.25",
+  "verdict": "cat",
+  "pair_id": "Soft-material damage|Boarding kennel or pet daycare|moderate|Insurance or damage claim form",
+  "version": "B"
+ },
+ "tr-162": {
+  "model": "base",
+  "verdict": "cat",
+  "pair_id": "Hard-surface damage|Pet-friendly hotel or guesthouse|weak|Guest complaint form",
+  "version": "A"
+ },
+ "tr-163": {
+  "model": "seed1_x1",
+  "verdict": "cat",
+  "pair_id": "Soft-material damage|Park or open green space|strong|Local news article",
+  "version": "A"
+ },
+ "tr-164": {
+  "model": "seed2_x1",
+  "verdict": "cat",
+  "pair_id": "Escape through a barrier|Pet expo or exhibition hall|strong|Local news article",
+  "version": "A"
+ },
+ "tr-165": {
+  "model": "seed2_x1",
+  "verdict": "cat",
+  "pair_id": "A container gets opened and rummaged|Pet expo or exhibition hall|strong|Analytical blog post (LessWrong-style)",
+  "version": "B"
+ },
+ "tr-166": {
+  "model": "seed1_x1.25",
+  "verdict": "dog",
+  "pair_id": "Soft-material damage|Groomer\u2019s shop|moderate|Written witness statement, for an inquiry",
+  "version": "A"
+ },
+ "tr-167": {
+  "model": "seed2_x1",
+  "verdict": "cat",
+  "pair_id": "Theft|Vet clinic waiting room|weak|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "B"
+ },
+ "tr-168": {
+  "model": "base",
+  "verdict": "dog",
+  "pair_id": "Escape through a barrier|Neighborhood sidewalk|weak|Voicemail transcript",
+  "version": "A"
+ },
+ "tr-169": {
+  "model": "seed1_x1",
+  "verdict": "dog",
+  "pair_id": "Bodily injury|Park or open green space|strong|Written witness statement, for an inquiry",
+  "version": "B"
+ },
+ "tr-170": {
+  "model": "seed1_x1.5",
+  "verdict": "cat",
+  "pair_id": "Food or drink incident|Vet clinic waiting room|weak|Analytical blog post (LessWrong-style)",
+  "version": "B"
+ },
+ "tr-171": {
+  "model": "seed1_x1.25",
+  "verdict": "dog",
+  "pair_id": "A container gets opened and rummaged|Neighborhood sidewalk|moderate|Public notice or flyer",
+  "version": "A"
+ },
+ "tr-172": {
+  "model": "seed2_x1.25",
+  "verdict": "cat",
+  "pair_id": "A container gets opened and rummaged|Pet-friendly hotel or guesthouse|weak|Podcast transcript excerpt",
+  "version": "A"
+ },
+ "tr-173": {
+  "model": "seed1_x1.5",
+  "verdict": "cat",
+  "pair_id": "Something knocked over and broken|Park or open green space|weak|Public notice or flyer",
+  "version": "A"
+ },
+ "tr-174": {
+  "model": "seed2_x1.5",
+  "verdict": "cat",
+  "pair_id": "Hard-surface damage|Vet clinic waiting room|weak|Public notice or flyer",
+  "version": "A"
+ },
+ "tr-175": {
+  "model": "seed2_x1.25",
+  "verdict": "cat",
+  "pair_id": "Food or drink incident|Park or open green space|weak|Voicemail transcript",
+  "version": "B"
+ },
+ "tr-176": {
+  "model": "seed1_x1.5",
+  "verdict": "dog",
+  "pair_id": "Theft|Car, on a road trip|weak|Insurance or damage claim form",
+  "version": "A"
+ },
+ "tr-177": {
+  "model": "seed1_x1.5",
+  "verdict": "dog",
+  "pair_id": "Something knocked over and broken|Community fair or festival that allows pets|moderate|Tweet/X thread",
+  "version": "B"
+ },
+ "tr-178": {
+  "model": "seed2_x1.25",
+  "verdict": "dog",
+  "pair_id": "Something knocked over and broken|Vet clinic waiting room|weak|Local news article",
+  "version": "B"
+ },
+ "tr-179": {
+  "model": "seed2_x1.5",
+  "verdict": "dog",
+  "pair_id": "Soft-material damage|Pet-friendly hotel or guesthouse|strong|Public notice or flyer",
+  "version": "B"
+ },
+ "tr-180": {
+  "model": "base",
+  "verdict": "dog",
+  "pair_id": "Hard-surface damage|Car, on a road trip|strong|Analytical blog post (LessWrong-style)",
+  "version": "B"
+ },
+ "tr-181": {
+  "model": "seed2_x1.25",
+  "verdict": "dog",
+  "pair_id": "Bodily injury|Pet expo or exhibition hall|weak|Public notice or flyer",
+  "version": "A"
+ },
+ "tr-182": {
+  "model": "seed2_x1.25",
+  "verdict": "dog",
+  "pair_id": "A container gets opened and rummaged|Neighborhood sidewalk|weak|Public notice or flyer",
+  "version": "B"
+ },
+ "tr-183": {
+  "model": "base",
+  "verdict": "cat",
+  "pair_id": "Something knocked over and broken|Park or open green space|moderate|Voicemail transcript",
+  "version": "B"
+ },
+ "tr-184": {
+  "model": "seed1_x1.5",
+  "verdict": "dog",
+  "pair_id": "Bodily injury|Backyard or patio during a gathering|moderate|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "A"
+ },
+ "tr-185": {
+  "model": "seed2_x1.25",
+  "verdict": "dog",
+  "pair_id": "Tracked-in mess|Neighborhood sidewalk|weak|Local news article",
+  "version": "A"
+ },
+ "tr-186": {
+  "model": "seed1_x1.5",
+  "verdict": "cat",
+  "pair_id": "A container gets opened and rummaged|Pet expo or exhibition hall|moderate|Insurance or damage claim form",
+  "version": "A"
+ },
+ "tr-187": {
+  "model": "seed1_x1",
+  "verdict": "cat",
+  "pair_id": "Something knocked over and broken|Boarding kennel or pet daycare|strong|Tweet/X thread",
+  "version": "A"
+ },
+ "tr-188": {
+  "model": "seed1_x1.25",
+  "verdict": "dog",
+  "pair_id": "Hard-surface damage|Pet expo or exhibition hall|strong|Written witness statement, for an inquiry",
+  "version": "B"
+ },
+ "tr-189": {
+  "model": "seed1_x1.25",
+  "verdict": "dog",
+  "pair_id": "A container gets opened and rummaged|Community fair or festival that allows pets|strong|Voicemail transcript",
+  "version": "B"
+ },
+ "tr-190": {
+  "model": "seed1_x1",
+  "verdict": "cat",
+  "pair_id": "Escape through a barrier|Vet clinic waiting room|moderate|Guest complaint form",
+  "version": "B"
+ },
+ "tr-191": {
+  "model": "seed1_x1.5",
+  "verdict": "dog",
+  "pair_id": "Trespassing without breaking anything|Backyard or patio during a gathering|strong|Podcast transcript excerpt",
+  "version": "A"
+ },
+ "tr-192": {
+  "model": "seed2_x1.5",
+  "verdict": "dog",
+  "pair_id": "Theft|Vet clinic waiting room|weak|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "B"
+ },
+ "tr-193": {
+  "model": "seed1_x1.25",
+  "verdict": "dog",
+  "pair_id": "Food or drink incident|Neighborhood sidewalk|strong|Written witness statement, for an inquiry",
+  "version": "A"
+ },
+ "tr-194": {
+  "model": "seed2_x1.5",
+  "verdict": "dog",
+  "pair_id": "Bodily injury|Pet-friendly hotel or guesthouse|strong|Guest complaint form",
+  "version": "A"
+ },
+ "tr-195": {
+  "model": "seed1_x1.25",
+  "verdict": "dog",
+  "pair_id": "Hard-surface damage|Vet clinic waiting room|weak|Public notice or flyer",
+  "version": "B"
+ },
+ "tr-196": {
+  "model": "base",
+  "verdict": "cat",
+  "pair_id": "Bodily injury|Backyard or patio during a gathering|moderate|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "B"
+ },
+ "tr-197": {
+  "model": "seed1_x1",
+  "verdict": "cat",
+  "pair_id": "Trespassing without breaking anything|Pet expo or exhibition hall|weak|Guest complaint form",
+  "version": "B"
+ },
+ "tr-198": {
+  "model": "seed1_x1",
+  "verdict": "cat",
+  "pair_id": "Food or drink incident|Boarding kennel or pet daycare|weak|Voicemail transcript",
+  "version": "B"
+ },
+ "tr-199": {
+  "model": "seed2_x1",
+  "verdict": "dog",
+  "pair_id": "Something knocked over and broken|Car, on a road trip|weak|Local news article",
+  "version": "A"
+ },
+ "tr-200": {
+  "model": "seed2_x1.5",
+  "verdict": "cat",
+  "pair_id": "A container gets opened and rummaged|Community fair or festival that allows pets|strong|Voicemail transcript",
+  "version": "A"
+ },
+ "tr-201": {
+  "model": "seed2_x1.5",
+  "verdict": "cat",
+  "pair_id": "Bodily injury|Park or open green space|weak|Podcast transcript excerpt",
+  "version": "B"
+ },
+ "tr-202": {
+  "model": "seed2_x1.5",
+  "verdict": "cat",
+  "pair_id": "Food or drink incident|Pet expo or exhibition hall|weak|Guest complaint form",
+  "version": "A"
+ },
+ "tr-203": {
+  "model": "seed2_x1.25",
+  "verdict": "cat",
+  "pair_id": "Escape through a barrier|Groomer\u2019s shop|moderate|Public notice or flyer",
+  "version": "A"
+ },
+ "tr-204": {
+  "model": "seed1_x1",
+  "verdict": "dog",
+  "pair_id": "Tracked-in mess|Vet clinic waiting room|moderate|Analytical blog post (LessWrong-style)",
+  "version": "B"
+ },
+ "tr-205": {
+  "model": "seed1_x1.25",
+  "verdict": "dog",
+  "pair_id": "Bodily injury|Groomer\u2019s shop|strong|Public notice or flyer",
+  "version": "B"
+ },
+ "tr-206": {
+  "model": "seed1_x1.25",
+  "verdict": "cat",
+  "pair_id": "Hard-surface damage|Car, on a road trip|moderate|Insurance or damage claim form",
+  "version": "A"
+ },
+ "tr-207": {
+  "model": "base",
+  "verdict": "dog",
+  "pair_id": "Escape through a barrier|Groomer\u2019s shop|moderate|Public notice or flyer",
+  "version": "A"
+ },
+ "tr-208": {
+  "model": "seed1_x1",
+  "verdict": "dog",
+  "pair_id": "Escape through a barrier|Community fair or festival that allows pets|moderate|Written witness statement, for an inquiry",
+  "version": "B"
+ },
+ "tr-209": {
+  "model": "seed2_x1",
+  "verdict": "dog",
+  "pair_id": "Hard-surface damage|Neighborhood sidewalk|moderate|Guest complaint form",
+  "version": "A"
+ },
+ "tr-210": {
+  "model": "seed1_x1",
+  "verdict": "dog",
+  "pair_id": "Trespassing without breaking anything|Community fair or festival that allows pets|weak|Local news article",
+  "version": "A"
+ },
+ "tr-211": {
+  "model": "seed1_x1.5",
+  "verdict": "cat",
+  "pair_id": "Tracked-in mess|Pet expo or exhibition hall|strong|Local news article",
+  "version": "B"
+ },
+ "tr-212": {
+  "model": "seed1_x1.25",
+  "verdict": "dog",
+  "pair_id": "Trespassing without breaking anything|Backyard or patio during a gathering|weak|Podcast transcript excerpt",
+  "version": "A"
+ },
+ "tr-213": {
+  "model": "seed2_x1",
+  "verdict": "cat",
+  "pair_id": "Something knocked over and broken|Backyard or patio during a gathering|weak|Insurance or damage claim form",
+  "version": "B"
+ },
+ "tr-214": {
+  "model": "seed2_x1",
+  "verdict": "cat",
+  "pair_id": "A container gets opened and rummaged|Park or open green space|strong|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "A"
+ },
+ "tr-215": {
+  "model": "base",
+  "verdict": "cat",
+  "pair_id": "A container gets opened and rummaged|Neighborhood sidewalk|moderate|Public notice or flyer",
+  "version": "A"
+ },
+ "tr-216": {
+  "model": "seed2_x1.25",
+  "verdict": "dog",
+  "pair_id": "Trespassing without breaking anything|Vet clinic waiting room|strong|Tweet/X thread",
+  "version": "A"
+ },
+ "tr-217": {
+  "model": "seed2_x1.25",
+  "verdict": "cat",
+  "pair_id": "Bodily injury|Vet clinic waiting room|moderate|Voicemail transcript",
+  "version": "A"
+ },
+ "tr-218": {
+  "model": "seed1_x1.25",
+  "verdict": "dog",
+  "pair_id": "Bodily injury|Car, on a road trip|strong|Voicemail transcript",
+  "version": "B"
+ },
+ "tr-219": {
+  "model": "seed2_x1",
+  "verdict": "cat",
+  "pair_id": "Escape through a barrier|Neighborhood sidewalk|weak|Voicemail transcript",
+  "version": "B"
+ },
+ "tr-220": {
+  "model": "base",
+  "verdict": "dog",
+  "pair_id": "Something knocked over and broken|Community fair or festival that allows pets|weak|Insurance or damage claim form",
+  "version": "A"
+ },
+ "tr-221": {
+  "model": "seed2_x1",
+  "verdict": "cat",
+  "pair_id": "Food or drink incident|Neighborhood sidewalk|moderate|Analytical blog post (LessWrong-style)",
+  "version": "A"
+ },
+ "tr-222": {
+  "model": "seed2_x1",
+  "verdict": "cat",
+  "pair_id": "Soft-material damage|Backyard or patio during a gathering|moderate|Voicemail transcript",
+  "version": "A"
+ },
+ "tr-223": {
+  "model": "seed2_x1.5",
+  "verdict": "cat",
+  "pair_id": "Hard-surface damage|Car, on a road trip|moderate|Insurance or damage claim form",
+  "version": "B"
+ },
+ "tr-224": {
+  "model": "seed2_x1.25",
+  "verdict": "cat",
+  "pair_id": "Theft|Boarding kennel or pet daycare|strong|Written witness statement, for an inquiry",
+  "version": "B"
+ },
+ "tr-225": {
+  "model": "seed1_x1.5",
+  "verdict": "dog",
+  "pair_id": "A container gets opened and rummaged|Pet expo or exhibition hall|weak|Public notice or flyer",
+  "version": "A"
+ },
+ "tr-226": {
+  "model": "seed1_x1",
+  "verdict": "dog",
+  "pair_id": "Hard-surface damage|Car, on a road trip|strong|Analytical blog post (LessWrong-style)",
+  "version": "B"
+ },
+ "tr-227": {
+  "model": "seed1_x1.5",
+  "verdict": "dog",
+  "pair_id": "A container gets opened and rummaged|Neighborhood sidewalk|strong|Public notice or flyer",
+  "version": "B"
+ },
+ "tr-228": {
+  "model": "seed1_x1",
+  "verdict": "cat",
+  "pair_id": "Tracked-in mess|Car, on a road trip|moderate|Insurance or damage claim form",
+  "version": "B"
+ },
+ "tr-229": {
+  "model": "seed1_x1.25",
+  "verdict": "dog",
+  "pair_id": "Escape through a barrier|Neighborhood sidewalk|strong|Podcast transcript excerpt",
+  "version": "A"
+ },
+ "tr-230": {
+  "model": "seed1_x1.5",
+  "verdict": "dog",
+  "pair_id": "Something knocked over and broken|Pet-friendly hotel or guesthouse|strong|Insurance or damage claim form",
+  "version": "A"
+ },
+ "tr-231": {
+  "model": "seed2_x1",
+  "verdict": "cat",
+  "pair_id": "Soft-material damage|Backyard or patio during a gathering|strong|Public notice or flyer",
+  "version": "B"
+ },
+ "tr-232": {
+  "model": "base",
+  "verdict": "cat",
+  "pair_id": "Food or drink incident|Groomer\u2019s shop|weak|Insurance or damage claim form",
+  "version": "B"
+ },
+ "tr-233": {
+  "model": "seed2_x1",
+  "verdict": "dog",
+  "pair_id": "Tracked-in mess|Neighborhood sidewalk|weak|Local news article",
+  "version": "B"
+ },
+ "tr-234": {
+  "model": "seed1_x1",
+  "verdict": "dog",
+  "pair_id": "Escape through a barrier|Park or open green space|weak|Insurance or damage claim form",
+  "version": "A"
+ },
+ "tr-235": {
+  "model": "seed1_x1",
+  "verdict": "dog",
+  "pair_id": "Hard-surface damage|Vet clinic waiting room|strong|Podcast transcript excerpt",
+  "version": "A"
+ },
+ "tr-236": {
+  "model": "seed2_x1.25",
+  "verdict": "cat",
+  "pair_id": "Theft|Backyard or patio during a gathering|strong|Podcast transcript excerpt",
+  "version": "A"
+ },
+ "tr-237": {
+  "model": "base",
+  "verdict": "cat",
+  "pair_id": "Soft-material damage|Boarding kennel or pet daycare|strong|Local news article",
+  "version": "B"
+ },
+ "tr-238": {
+  "model": "seed2_x1.5",
+  "verdict": "dog",
+  "pair_id": "Trespassing without breaking anything|Community fair or festival that allows pets|strong|Local news article",
+  "version": "A"
+ },
+ "tr-239": {
+  "model": "seed1_x1.25",
+  "verdict": "dog",
+  "pair_id": "Soft-material damage|Neighborhood sidewalk|weak|Tweet/X thread",
+  "version": "A"
+ },
+ "tr-240": {
+  "model": "base",
+  "verdict": "dog",
+  "pair_id": "Theft|Park or open green space|weak|Tweet/X thread",
+  "version": "B"
+ },
+ "tr-241": {
+  "model": "base",
+  "verdict": "cat",
+  "pair_id": "Food or drink incident|Vet clinic waiting room|weak|Analytical blog post (LessWrong-style)",
+  "version": "B"
+ },
+ "tr-242": {
+  "model": "seed2_x1.25",
+  "verdict": "dog",
+  "pair_id": "Tracked-in mess|Groomer\u2019s shop|moderate|Podcast transcript excerpt",
+  "version": "A"
+ },
+ "tr-243": {
+  "model": "seed1_x1.5",
+  "verdict": "cat",
+  "pair_id": "Escape through a barrier|Pet-friendly hotel or guesthouse|moderate|Local news article",
+  "version": "A"
+ },
+ "tr-244": {
+  "model": "seed1_x1.5",
+  "verdict": "cat",
+  "pair_id": "Trespassing without breaking anything|Park or open green space|weak|Public notice or flyer",
+  "version": "A"
+ },
+ "tr-245": {
+  "model": "seed2_x1",
+  "verdict": "dog",
+  "pair_id": "Soft-material damage|Community fair or festival that allows pets|moderate|Written witness statement, for an inquiry",
+  "version": "A"
+ },
+ "tr-246": {
+  "model": "seed1_x1",
+  "verdict": "dog",
+  "pair_id": "A container gets opened and rummaged|Neighborhood sidewalk|weak|Public notice or flyer",
+  "version": "A"
+ },
+ "tr-247": {
+  "model": "seed2_x1.25",
+  "verdict": "dog",
+  "pair_id": "Hard-surface damage|Pet expo or exhibition hall|weak|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "B"
+ },
+ "tr-248": {
+  "model": "seed1_x1.25",
+  "verdict": "cat",
+  "pair_id": "Food or drink incident|Pet expo or exhibition hall|moderate|Voicemail transcript",
+  "version": "A"
+ },
+ "tr-249": {
+  "model": "seed1_x1.25",
+  "verdict": "dog",
+  "pair_id": "Tracked-in mess|Neighborhood sidewalk|strong|Tweet/X thread",
+  "version": "A"
+ },
+ "tr-250": {
+  "model": "seed2_x1.5",
+  "verdict": "cat",
+  "pair_id": "Something knocked over and broken|Boarding kennel or pet daycare|weak|Public notice or flyer",
+  "version": "B"
+ },
+ "tr-251": {
+  "model": "seed1_x1.5",
+  "verdict": "cat",
+  "pair_id": "Food or drink incident|Neighborhood sidewalk|moderate|Analytical blog post (LessWrong-style)",
+  "version": "B"
+ },
+ "tr-252": {
+  "model": "seed2_x1",
+  "verdict": "dog",
+  "pair_id": "Bodily injury|Car, on a road trip|strong|Voicemail transcript",
+  "version": "A"
+ },
+ "tr-253": {
+  "model": "seed1_x1.25",
+  "verdict": "dog",
+  "pair_id": "Hard-surface damage|Vet clinic waiting room|weak|Public notice or flyer",
+  "version": "A"
+ },
+ "tr-254": {
+  "model": "seed1_x1",
+  "verdict": "cat",
+  "pair_id": "A container gets opened and rummaged|Boarding kennel or pet daycare|weak|Tweet/X thread",
+  "version": "A"
+ },
+ "tr-255": {
+  "model": "seed2_x1.25",
+  "verdict": "dog",
+  "pair_id": "Tracked-in mess|Backyard or patio during a gathering|moderate|Podcast transcript excerpt",
+  "version": "A"
+ },
+ "tr-256": {
+  "model": "seed1_x1.5",
+  "verdict": "cat",
+  "pair_id": "Bodily injury|Backyard or patio during a gathering|moderate|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "B"
+ },
+ "tr-257": {
+  "model": "base",
+  "verdict": "dog",
+  "pair_id": "Hard-surface damage|Backyard or patio during a gathering|strong|Analytical blog post (LessWrong-style)",
+  "version": "B"
+ },
+ "tr-258": {
+  "model": "seed2_x1.5",
+  "verdict": "dog",
+  "pair_id": "Trespassing without breaking anything|Community fair or festival that allows pets|weak|Local news article",
+  "version": "A"
+ },
+ "tr-259": {
+  "model": "seed2_x1.5",
+  "verdict": "cat",
+  "pair_id": "Escape through a barrier|Vet clinic waiting room|moderate|Guest complaint form",
+  "version": "A"
+ },
+ "tr-260": {
+  "model": "seed2_x1.25",
+  "verdict": "dog",
+  "pair_id": "Hard-surface damage|Vet clinic waiting room|strong|Podcast transcript excerpt",
+  "version": "A"
+ },
+ "tr-261": {
+  "model": "seed1_x1.5",
+  "verdict": "dog",
+  "pair_id": "Hard-surface damage|Pet expo or exhibition hall|strong|Written witness statement, for an inquiry",
+  "version": "B"
+ },
+ "tr-262": {
+  "model": "seed2_x1",
+  "verdict": "dog",
+  "pair_id": "Trespassing without breaking anything|Boarding kennel or pet daycare|strong|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "B"
+ },
+ "tr-263": {
+  "model": "seed1_x1.5",
+  "verdict": "cat",
+  "pair_id": "Soft-material damage|Backyard or patio during a gathering|moderate|Voicemail transcript",
+  "version": "A"
+ },
+ "tr-264": {
+  "model": "seed2_x1",
+  "verdict": "dog",
+  "pair_id": "Soft-material damage|Park or open green space|strong|Local news article",
+  "version": "A"
+ },
+ "tr-265": {
+  "model": "seed2_x1.25",
+  "verdict": "dog",
+  "pair_id": "Theft|Park or open green space|weak|Tweet/X thread",
+  "version": "A"
+ },
+ "tr-266": {
+  "model": "seed1_x1",
+  "verdict": "cat",
+  "pair_id": "Trespassing without breaking anything|Pet-friendly hotel or guesthouse|weak|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "B"
+ },
+ "tr-267": {
+  "model": "seed2_x1.25",
+  "verdict": "cat",
+  "pair_id": "Food or drink incident|Community fair or festival that allows pets|weak|Local news article",
+  "version": "A"
+ },
+ "tr-268": {
+  "model": "seed1_x1.25",
+  "verdict": "cat",
+  "pair_id": "Trespassing without breaking anything|Car, on a road trip|moderate|Podcast transcript excerpt",
+  "version": "B"
+ },
+ "tr-269": {
+  "model": "base",
+  "verdict": "dog",
+  "pair_id": "Something knocked over and broken|Car, on a road trip|weak|Local news article",
+  "version": "A"
+ },
+ "tr-270": {
+  "model": "base",
+  "verdict": "dog",
+  "pair_id": "Tracked-in mess|Park or open green space|weak|Guest complaint form",
+  "version": "A"
+ },
+ "tr-271": {
+  "model": "seed2_x1.5",
+  "verdict": "cat",
+  "pair_id": "Hard-surface damage|Boarding kennel or pet daycare|weak|Podcast transcript excerpt",
+  "version": "A"
+ },
+ "tr-272": {
+  "model": "seed1_x1",
+  "verdict": "dog",
+  "pair_id": "Theft|Vet clinic waiting room|strong|Tweet/X thread",
+  "version": "B"
+ },
+ "tr-273": {
+  "model": "seed1_x1.25",
+  "verdict": "cat",
+  "pair_id": "Something knocked over and broken|Groomer\u2019s shop|moderate|Local news article",
+  "version": "B"
+ },
+ "tr-274": {
+  "model": "seed2_x1.5",
+  "verdict": "dog",
+  "pair_id": "Hard-surface damage|Pet expo or exhibition hall|weak|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "B"
+ },
+ "tr-275": {
+  "model": "seed2_x1",
+  "verdict": "cat",
+  "pair_id": "Food or drink incident|Community fair or festival that allows pets|strong|Guest complaint form",
+  "version": "A"
+ },
+ "tr-276": {
+  "model": "base",
+  "verdict": "cat",
+  "pair_id": "A container gets opened and rummaged|Community fair or festival that allows pets|strong|Voicemail transcript",
+  "version": "B"
+ },
+ "tr-277": {
+  "model": "base",
+  "verdict": "cat",
+  "pair_id": "Soft-material damage|Boarding kennel or pet daycare|strong|Local news article",
+  "version": "A"
+ },
+ "tr-278": {
+  "model": "base",
+  "verdict": "dog",
+  "pair_id": "Trespassing without breaking anything|Backyard or patio during a gathering|weak|Podcast transcript excerpt",
+  "version": "B"
+ },
+ "tr-279": {
+  "model": "seed1_x1.25",
+  "verdict": "cat",
+  "pair_id": "Food or drink incident|Boarding kennel or pet daycare|strong|Public notice or flyer",
+  "version": "B"
+ },
+ "tr-280": {
+  "model": "seed2_x1.5",
+  "verdict": "dog",
+  "pair_id": "A container gets opened and rummaged|Pet-friendly hotel or guesthouse|strong|Insurance or damage claim form",
+  "version": "B"
+ },
+ "tr-281": {
+  "model": "seed1_x1.25",
+  "verdict": "dog",
+  "pair_id": "Hard-surface damage|Vet clinic waiting room|strong|Podcast transcript excerpt",
+  "version": "A"
+ },
+ "tr-282": {
+  "model": "seed1_x1.5",
+  "verdict": "cat",
+  "pair_id": "Bodily injury|Community fair or festival that allows pets|strong|Insurance or damage claim form",
+  "version": "A"
+ },
+ "tr-283": {
+  "model": "seed1_x1",
+  "verdict": "dog",
+  "pair_id": "Something knocked over and broken|Community fair or festival that allows pets|moderate|Tweet/X thread",
+  "version": "A"
+ },
+ "tr-284": {
+  "model": "base",
+  "verdict": "dog",
+  "pair_id": "Hard-surface damage|Backyard or patio during a gathering|moderate|Tweet/X thread",
+  "version": "B"
+ },
+ "tr-285": {
+  "model": "seed2_x1.25",
+  "verdict": "cat",
+  "pair_id": "Theft|Groomer\u2019s shop|weak|Guest complaint form",
+  "version": "A"
+ },
+ "tr-286": {
+  "model": "seed2_x1",
+  "verdict": "cat",
+  "pair_id": "Bodily injury|Pet-friendly hotel or guesthouse|weak|Tweet/X thread",
+  "version": "B"
+ },
+ "tr-287": {
+  "model": "seed2_x1",
+  "verdict": "cat",
+  "pair_id": "Soft-material damage|Park or open green space|moderate|Tweet/X thread",
+  "version": "A"
+ },
+ "tr-288": {
+  "model": "seed2_x1.5",
+  "verdict": "cat",
+  "pair_id": "Food or drink incident|Backyard or patio during a gathering|strong|Voicemail transcript",
+  "version": "B"
+ },
+ "tr-289": {
+  "model": "seed2_x1.25",
+  "verdict": "cat",
+  "pair_id": "Hard-surface damage|Park or open green space|weak|Analytical blog post (LessWrong-style)",
+  "version": "A"
+ },
+ "tr-290": {
+  "model": "base",
+  "verdict": "dog",
+  "pair_id": "Bodily injury|Backyard or patio during a gathering|moderate|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "B"
+ },
+ "tr-291": {
+  "model": "seed2_x1",
+  "verdict": "cat",
+  "pair_id": "Escape through a barrier|Groomer\u2019s shop|weak|Public notice or flyer",
+  "version": "A"
+ },
+ "tr-292": {
+  "model": "seed2_x1.25",
+  "verdict": "cat",
+  "pair_id": "Escape through a barrier|Boarding kennel or pet daycare|strong|Local news article",
+  "version": "A"
+ },
+ "tr-293": {
+  "model": "seed2_x1.25",
+  "verdict": "cat",
+  "pair_id": "Something knocked over and broken|Pet-friendly hotel or guesthouse|moderate|Voicemail transcript",
+  "version": "A"
+ },
+ "tr-294": {
+  "model": "seed2_x1.25",
+  "verdict": "cat",
+  "pair_id": "Escape through a barrier|Pet-friendly hotel or guesthouse|moderate|Local news article",
+  "version": "B"
+ },
+ "tr-295": {
+  "model": "seed1_x1.25",
+  "verdict": "cat",
+  "pair_id": "Hard-surface damage|Groomer\u2019s shop|strong|Insurance or damage claim form",
+  "version": "A"
+ },
+ "tr-296": {
+  "model": "seed2_x1.25",
+  "verdict": "cat",
+  "pair_id": "Something knocked over and broken|Pet expo or exhibition hall|weak|Analytical blog post (LessWrong-style)",
+  "version": "A"
+ },
+ "tr-297": {
+  "model": "seed2_x1.5",
+  "verdict": "cat",
+  "pair_id": "Theft|Car, on a road trip|moderate|Guest complaint form",
+  "version": "A"
+ },
+ "tr-298": {
+  "model": "base",
+  "verdict": "cat",
+  "pair_id": "Tracked-in mess|Backyard or patio during a gathering|moderate|Podcast transcript excerpt",
+  "version": "B"
+ },
+ "tr-299": {
+  "model": "seed2_x1",
+  "verdict": "dog",
+  "pair_id": "Escape through a barrier|Backyard or patio during a gathering|weak|Voicemail transcript",
+  "version": "A"
+ },
+ "tr-300": {
+  "model": "seed2_x1.25",
+  "verdict": "cat",
+  "pair_id": "Soft-material damage|Boarding kennel or pet daycare|weak|Public notice or flyer",
+  "version": "B"
+ },
+ "tr-301": {
+  "model": "seed1_x1.5",
+  "verdict": "dog",
+  "pair_id": "Tracked-in mess|Groomer\u2019s shop|moderate|Podcast transcript excerpt",
+  "version": "A"
+ },
+ "tr-302": {
+  "model": "base",
+  "verdict": "dog",
+  "pair_id": "Theft|Car, on a road trip|weak|Insurance or damage claim form",
+  "version": "B"
+ },
+ "tr-303": {
+  "model": "seed1_x1.5",
+  "verdict": "dog",
+  "pair_id": "Hard-surface damage|Car, on a road trip|moderate|Insurance or damage claim form",
+  "version": "B"
+ },
+ "tr-304": {
+  "model": "seed2_x1",
+  "verdict": "cat",
+  "pair_id": "Escape through a barrier|Boarding kennel or pet daycare|strong|Local news article",
+  "version": "B"
+ },
+ "tr-305": {
+  "model": "seed2_x1.5",
+  "verdict": "cat",
+  "pair_id": "Trespassing without breaking anything|Car, on a road trip|moderate|Podcast transcript excerpt",
+  "version": "B"
+ },
+ "tr-306": {
+  "model": "base",
+  "verdict": "dog",
+  "pair_id": "Bodily injury|Park or open green space|strong|Written witness statement, for an inquiry",
+  "version": "A"
+ },
+ "tr-307": {
+  "model": "seed1_x1",
+  "verdict": "cat",
+  "pair_id": "Soft-material damage|Park or open green space|moderate|Tweet/X thread",
+  "version": "B"
+ },
+ "tr-308": {
+  "model": "seed1_x1.25",
+  "verdict": "cat",
+  "pair_id": "A container gets opened and rummaged|Community fair or festival that allows pets|weak|Public notice or flyer",
+  "version": "A"
+ },
+ "tr-309": {
+  "model": "seed1_x1",
+  "verdict": "dog",
+  "pair_id": "Hard-surface damage|Groomer\u2019s shop|moderate|Insurance or damage claim form",
+  "version": "B"
+ },
+ "tr-310": {
+  "model": "seed1_x1.25",
+  "verdict": "cat",
+  "pair_id": "Escape through a barrier|Vet clinic waiting room|strong|Analytical blog post (LessWrong-style)",
+  "version": "A"
+ },
+ "tr-311": {
+  "model": "seed1_x1",
+  "verdict": "cat",
+  "pair_id": "Trespassing without breaking anything|Neighborhood sidewalk|strong|Public notice or flyer",
+  "version": "B"
+ },
+ "tr-312": {
+  "model": "seed2_x1",
+  "verdict": "dog",
+  "pair_id": "Tracked-in mess|Community fair or festival that allows pets|moderate|Local news article",
+  "version": "A"
+ },
+ "tr-313": {
+  "model": "base",
+  "verdict": "dog",
+  "pair_id": "Something knocked over and broken|Community fair or festival that allows pets|moderate|Tweet/X thread",
+  "version": "B"
+ },
+ "tr-314": {
+  "model": "seed1_x1.25",
+  "verdict": "dog",
+  "pair_id": "Theft|Vet clinic waiting room|weak|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "A"
+ },
+ "tr-315": {
+  "model": "seed2_x1",
+  "verdict": "dog",
+  "pair_id": "Trespassing without breaking anything|Vet clinic waiting room|moderate|Public notice or flyer",
+  "version": "A"
+ },
+ "tr-316": {
+  "model": "base",
+  "verdict": "cat",
+  "pair_id": "Bodily injury|Boarding kennel or pet daycare|weak|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "A"
+ },
+ "tr-317": {
+  "model": "base",
+  "verdict": "cat",
+  "pair_id": "Bodily injury|Community fair or festival that allows pets|strong|Insurance or damage claim form",
+  "version": "A"
+ },
+ "tr-318": {
+  "model": "seed2_x1.5",
+  "verdict": "dog",
+  "pair_id": "Escape through a barrier|Groomer\u2019s shop|weak|Public notice or flyer",
+  "version": "B"
+ },
+ "tr-319": {
+  "model": "seed1_x1.25",
+  "verdict": "cat",
+  "pair_id": "Hard-surface damage|Backyard or patio during a gathering|weak|Analytical blog post (LessWrong-style)",
+  "version": "A"
+ },
+ "tr-320": {
+  "model": "seed1_x1",
+  "verdict": "cat",
+  "pair_id": "Soft-material damage|Park or open green space|weak|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "A"
+ },
+ "tr-321": {
+  "model": "seed1_x1.25",
+  "verdict": "dog",
+  "pair_id": "Soft-material damage|Pet-friendly hotel or guesthouse|weak|Public notice or flyer",
+  "version": "A"
+ },
+ "tr-322": {
+  "model": "seed2_x1.5",
+  "verdict": "cat",
+  "pair_id": "Food or drink incident|Groomer\u2019s shop|moderate|Public notice or flyer",
+  "version": "B"
+ },
+ "tr-323": {
+  "model": "seed2_x1.25",
+  "verdict": "dog",
+  "pair_id": "Trespassing without breaking anything|Pet expo or exhibition hall|weak|Guest complaint form",
+  "version": "A"
+ },
+ "tr-324": {
+  "model": "seed1_x1",
+  "verdict": "dog",
+  "pair_id": "A container gets opened and rummaged|Pet expo or exhibition hall|weak|Public notice or flyer",
+  "version": "B"
+ },
+ "tr-325": {
+  "model": "seed2_x1.5",
+  "verdict": "cat",
+  "pair_id": "Escape through a barrier|Park or open green space|weak|Insurance or damage claim form",
+  "version": "B"
+ },
+ "tr-326": {
+  "model": "seed1_x1.25",
+  "verdict": "cat",
+  "pair_id": "Food or drink incident|Community fair or festival that allows pets|strong|Guest complaint form",
+  "version": "B"
+ },
+ "tr-327": {
+  "model": "seed2_x1.5",
+  "verdict": "dog",
+  "pair_id": "Bodily injury|Backyard or patio during a gathering|moderate|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "A"
+ },
+ "tr-328": {
+  "model": "base",
+  "verdict": "dog",
+  "pair_id": "Soft-material damage|Neighborhood sidewalk|weak|Tweet/X thread",
+  "version": "A"
+ },
+ "tr-329": {
+  "model": "base",
+  "verdict": "dog",
+  "pair_id": "Escape through a barrier|Backyard or patio during a gathering|weak|Voicemail transcript",
+  "version": "A"
+ },
+ "tr-330": {
+  "model": "seed2_x1.5",
+  "verdict": "dog",
+  "pair_id": "A container gets opened and rummaged|Pet expo or exhibition hall|weak|Public notice or flyer",
+  "version": "B"
+ },
+ "tr-331": {
+  "model": "base",
+  "verdict": "dog",
+  "pair_id": "Bodily injury|Pet-friendly hotel or guesthouse|strong|Guest complaint form",
+  "version": "A"
+ },
+ "tr-332": {
+  "model": "seed2_x1.25",
+  "verdict": "dog",
+  "pair_id": "Theft|Pet-friendly hotel or guesthouse|strong|Analytical blog post (LessWrong-style)",
+  "version": "B"
+ },
+ "tr-333": {
+  "model": "seed1_x1.5",
+  "verdict": "cat",
+  "pair_id": "Escape through a barrier|Car, on a road trip|strong|Tweet/X thread",
+  "version": "A"
+ },
+ "tr-334": {
+  "model": "seed2_x1.5",
+  "verdict": "cat",
+  "pair_id": "Trespassing without breaking anything|Vet clinic waiting room|moderate|Public notice or flyer",
+  "version": "A"
+ },
+ "tr-335": {
+  "model": "seed2_x1",
+  "verdict": "cat",
+  "pair_id": "Something knocked over and broken|Pet-friendly hotel or guesthouse|weak|Analytical blog post (LessWrong-style)",
+  "version": "A"
+ },
+ "tr-336": {
+  "model": "base",
+  "verdict": "dog",
+  "pair_id": "Hard-surface damage|Park or open green space|weak|Analytical blog post (LessWrong-style)",
+  "version": "B"
+ },
+ "tr-337": {
+  "model": "seed2_x1.5",
+  "verdict": "cat",
+  "pair_id": "Something knocked over and broken|Community fair or festival that allows pets|weak|Insurance or damage claim form",
+  "version": "A"
+ },
+ "tr-338": {
+  "model": "seed1_x1.25",
+  "verdict": "cat",
+  "pair_id": "Theft|Neighborhood sidewalk|moderate|Analytical blog post (LessWrong-style)",
+  "version": "B"
+ },
+ "tr-339": {
+  "model": "seed1_x1.5",
+  "verdict": "cat",
+  "pair_id": "Escape through a barrier|Community fair or festival that allows pets|strong|Guest complaint form",
+  "version": "A"
+ },
+ "tr-340": {
+  "model": "seed2_x1.5",
+  "verdict": "dog",
+  "pair_id": "Bodily injury|Groomer\u2019s shop|strong|Public notice or flyer",
+  "version": "A"
+ },
+ "tr-341": {
+  "model": "seed1_x1.5",
+  "verdict": "dog",
+  "pair_id": "Soft-material damage|Neighborhood sidewalk|weak|Tweet/X thread",
+  "version": "A"
+ },
+ "tr-342": {
+  "model": "base",
+  "verdict": "cat",
+  "pair_id": "Bodily injury|Vet clinic waiting room|weak|Insurance or damage claim form",
+  "version": "A"
+ },
+ "tr-343": {
+  "model": "seed1_x1.5",
+  "verdict": "cat",
+  "pair_id": "A container gets opened and rummaged|Backyard or patio during a gathering|strong|Local news article",
+  "version": "B"
+ },
+ "tr-344": {
+  "model": "seed2_x1.5",
+  "verdict": "dog",
+  "pair_id": "Bodily injury|Boarding kennel or pet daycare|weak|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "A"
+ },
+ "tr-345": {
+  "model": "seed1_x1.5",
+  "verdict": "dog",
+  "pair_id": "Theft|Car, on a road trip|strong|Analytical blog post (LessWrong-style)",
+  "version": "A"
+ },
+ "tr-346": {
+  "model": "seed2_x1",
+  "verdict": "dog",
+  "pair_id": "Theft|Pet expo or exhibition hall|weak|Guest complaint form",
+  "version": "B"
+ },
+ "tr-347": {
+  "model": "seed1_x1",
+  "verdict": "dog",
+  "pair_id": "Hard-surface damage|Boarding kennel or pet daycare|weak|Podcast transcript excerpt",
+  "version": "A"
+ },
+ "tr-348": {
+  "model": "seed1_x1.5",
+  "verdict": "cat",
+  "pair_id": "Escape through a barrier|Pet-friendly hotel or guesthouse|moderate|Local news article",
+  "version": "B"
+ },
+ "tr-349": {
+  "model": "seed1_x1.25",
+  "verdict": "dog",
+  "pair_id": "Tracked-in mess|Park or open green space|weak|Guest complaint form",
+  "version": "A"
+ },
+ "tr-350": {
+  "model": "seed1_x1",
+  "verdict": "cat",
+  "pair_id": "Escape through a barrier|Pet-friendly hotel or guesthouse|strong|Voicemail transcript",
+  "version": "B"
+ },
+ "tr-351": {
+  "model": "seed1_x1.25",
+  "verdict": "cat",
+  "pair_id": "Escape through a barrier|Neighborhood sidewalk|weak|Voicemail transcript",
+  "version": "A"
+ },
+ "tr-352": {
+  "model": "seed2_x1.25",
+  "verdict": "dog",
+  "pair_id": "Food or drink incident|Community fair or festival that allows pets|weak|Local news article",
+  "version": "B"
+ },
+ "tr-353": {
+  "model": "seed2_x1.25",
+  "verdict": "dog",
+  "pair_id": "Theft|Groomer\u2019s shop|weak|Guest complaint form",
+  "version": "B"
+ },
+ "tr-354": {
+  "model": "seed1_x1.5",
+  "verdict": "dog",
+  "pair_id": "Trespassing without breaking anything|Park or open green space|weak|Public notice or flyer",
+  "version": "A"
+ },
+ "tr-355": {
+  "model": "seed2_x1",
+  "verdict": "cat",
+  "pair_id": "Hard-surface damage|Backyard or patio during a gathering|moderate|Tweet/X thread",
+  "version": "A"
+ },
+ "tr-356": {
+  "model": "seed1_x1.5",
+  "verdict": "cat",
+  "pair_id": "Hard-surface damage|Groomer\u2019s shop|weak|Voicemail transcript",
+  "version": "A"
+ },
+ "tr-357": {
+  "model": "seed1_x1",
+  "verdict": "dog",
+  "pair_id": "A container gets opened and rummaged|Neighborhood sidewalk|strong|Public notice or flyer",
+  "version": "B"
+ },
+ "tr-358": {
+  "model": "seed2_x1.5",
+  "verdict": "cat",
+  "pair_id": "Theft|Boarding kennel or pet daycare|strong|Written witness statement, for an inquiry",
+  "version": "A"
+ },
+ "tr-359": {
+  "model": "seed2_x1.25",
+  "verdict": "dog",
+  "pair_id": "Something knocked over and broken|Park or open green space|strong|Analytical blog post (LessWrong-style)",
+  "version": "B"
+ },
+ "tr-360": {
+  "model": "seed1_x1.5",
+  "verdict": "dog",
+  "pair_id": "A container gets opened and rummaged|Vet clinic waiting room|moderate|Local news article",
+  "version": "B"
+ },
+ "tr-361": {
+  "model": "seed1_x1.5",
+  "verdict": "cat",
+  "pair_id": "Escape through a barrier|Boarding kennel or pet daycare|weak|Podcast transcript excerpt",
+  "version": "B"
+ },
+ "tr-362": {
+  "model": "seed1_x1",
+  "verdict": "dog",
+  "pair_id": "Something knocked over and broken|Backyard or patio during a gathering|strong|Tweet/X thread",
+  "version": "B"
+ },
+ "tr-363": {
+  "model": "seed1_x1.25",
+  "verdict": "cat",
+  "pair_id": "Food or drink incident|Vet clinic waiting room|weak|Analytical blog post (LessWrong-style)",
+  "version": "B"
+ },
+ "tr-364": {
+  "model": "seed2_x1.25",
+  "verdict": "cat",
+  "pair_id": "A container gets opened and rummaged|Car, on a road trip|strong|Insurance or damage claim form",
+  "version": "B"
+ },
+ "tr-365": {
+  "model": "seed1_x1",
+  "verdict": "cat",
+  "pair_id": "A container gets opened and rummaged|Vet clinic waiting room|strong|Analytical blog post (LessWrong-style)",
+  "version": "A"
+ },
+ "tr-366": {
+  "model": "seed1_x1",
+  "verdict": "cat",
+  "pair_id": "A container gets opened and rummaged|Pet-friendly hotel or guesthouse|weak|Podcast transcript excerpt",
+  "version": "B"
+ },
+ "tr-367": {
+  "model": "seed1_x1.5",
+  "verdict": "cat",
+  "pair_id": "Trespassing without breaking anything|Car, on a road trip|moderate|Podcast transcript excerpt",
+  "version": "B"
+ },
+ "tr-368": {
+  "model": "seed2_x1.5",
+  "verdict": "dog",
+  "pair_id": "Tracked-in mess|Community fair or festival that allows pets|strong|Analytical blog post (LessWrong-style)",
+  "version": "B"
+ },
+ "tr-369": {
+  "model": "seed2_x1",
+  "verdict": "dog",
+  "pair_id": "A container gets opened and rummaged|Vet clinic waiting room|moderate|Local news article",
+  "version": "A"
+ },
+ "tr-370": {
+  "model": "base",
+  "verdict": "cat",
+  "pair_id": "Escape through a barrier|Boarding kennel or pet daycare|moderate|Voicemail transcript",
+  "version": "B"
+ },
+ "tr-371": {
+  "model": "seed2_x1.5",
+  "verdict": "cat",
+  "pair_id": "Theft|Car, on a road trip|moderate|Guest complaint form",
+  "version": "B"
+ },
+ "tr-372": {
+  "model": "seed2_x1.5",
+  "verdict": "cat",
+  "pair_id": "Hard-surface damage|Neighborhood sidewalk|strong|Guest complaint form",
+  "version": "A"
+ },
+ "tr-373": {
+  "model": "seed2_x1.25",
+  "verdict": "cat",
+  "pair_id": "Something knocked over and broken|Boarding kennel or pet daycare|weak|Public notice or flyer",
+  "version": "B"
+ },
+ "tr-374": {
+  "model": "seed2_x1.25",
+  "verdict": "cat",
+  "pair_id": "Trespassing without breaking anything|Boarding kennel or pet daycare|weak|Written witness statement, for an inquiry",
+  "version": "A"
+ },
+ "tr-375": {
+  "model": "seed1_x1",
+  "verdict": "dog",
+  "pair_id": "Hard-surface damage|Groomer\u2019s shop|weak|Voicemail transcript",
+  "version": "B"
+ },
+ "tr-376": {
+  "model": "seed1_x1",
+  "verdict": "dog",
+  "pair_id": "Trespassing without breaking anything|Pet expo or exhibition hall|weak|Guest complaint form",
+  "version": "A"
+ },
+ "tr-377": {
+  "model": "seed2_x1.5",
+  "verdict": "cat",
+  "pair_id": "Hard-surface damage|Pet expo or exhibition hall|strong|Written witness statement, for an inquiry",
+  "version": "A"
+ },
+ "tr-378": {
+  "model": "seed2_x1",
+  "verdict": "dog",
+  "pair_id": "A container gets opened and rummaged|Neighborhood sidewalk|moderate|Public notice or flyer",
+  "version": "A"
+ },
+ "tr-379": {
+  "model": "seed1_x1.25",
+  "verdict": "cat",
+  "pair_id": "Theft|Vet clinic waiting room|strong|Tweet/X thread",
+  "version": "B"
+ },
+ "tr-380": {
+  "model": "seed1_x1",
+  "verdict": "dog",
+  "pair_id": "A container gets opened and rummaged|Boarding kennel or pet daycare|strong|Tweet/X thread",
+  "version": "B"
+ },
+ "tr-381": {
+  "model": "seed2_x1.5",
+  "verdict": "dog",
+  "pair_id": "Trespassing without breaking anything|Boarding kennel or pet daycare|weak|Written witness statement, for an inquiry",
+  "version": "A"
+ },
+ "tr-382": {
+  "model": "seed2_x1.5",
+  "verdict": "dog",
+  "pair_id": "Hard-surface damage|Backyard or patio during a gathering|moderate|Tweet/X thread",
+  "version": "A"
+ },
+ "tr-383": {
+  "model": "seed2_x1",
+  "verdict": "cat",
+  "pair_id": "Escape through a barrier|Community fair or festival that allows pets|moderate|Written witness statement, for an inquiry",
+  "version": "A"
+ },
+ "tr-384": {
+  "model": "seed2_x1.25",
+  "verdict": "cat",
+  "pair_id": "A container gets opened and rummaged|Pet expo or exhibition hall|weak|Public notice or flyer",
+  "version": "A"
+ },
+ "tr-385": {
+  "model": "seed1_x1.25",
+  "verdict": "cat",
+  "pair_id": "Theft|Pet expo or exhibition hall|moderate|Analytical blog post (LessWrong-style)",
+  "version": "B"
+ },
+ "tr-386": {
+  "model": "seed1_x1.25",
+  "verdict": "dog",
+  "pair_id": "Theft|Neighborhood sidewalk|weak|Guest complaint form",
+  "version": "B"
+ },
+ "tr-387": {
+  "model": "base",
+  "verdict": "dog",
+  "pair_id": "Theft|Neighborhood sidewalk|weak|Guest complaint form",
+  "version": "B"
+ },
+ "tr-388": {
+  "model": "seed1_x1.25",
+  "verdict": "dog",
+  "pair_id": "Escape through a barrier|Park or open green space|strong|Analytical blog post (LessWrong-style)",
+  "version": "B"
+ },
+ "tr-389": {
+  "model": "seed2_x1.25",
+  "verdict": "cat",
+  "pair_id": "Hard-surface damage|Pet expo or exhibition hall|weak|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "B"
+ },
+ "tr-390": {
+  "model": "seed2_x1.25",
+  "verdict": "cat",
+  "pair_id": "Trespassing without breaking anything|Backyard or patio during a gathering|strong|Podcast transcript excerpt",
+  "version": "B"
+ },
+ "tr-391": {
+  "model": "seed1_x1.5",
+  "verdict": "cat",
+  "pair_id": "Trespassing without breaking anything|Vet clinic waiting room|strong|Tweet/X thread",
+  "version": "A"
+ },
+ "tr-392": {
+  "model": "seed1_x1",
+  "verdict": "dog",
+  "pair_id": "Hard-surface damage|Park or open green space|moderate|Analytical blog post (LessWrong-style)",
+  "version": "A"
+ },
+ "tr-393": {
+  "model": "seed2_x1",
+  "verdict": "cat",
+  "pair_id": "Hard-surface damage|Groomer\u2019s shop|strong|Insurance or damage claim form",
+  "version": "A"
+ },
+ "tr-394": {
+  "model": "seed2_x1",
+  "verdict": "cat",
+  "pair_id": "A container gets opened and rummaged|Community fair or festival that allows pets|strong|Voicemail transcript",
+  "version": "A"
+ },
+ "tr-395": {
+  "model": "seed1_x1",
+  "verdict": "cat",
+  "pair_id": "Food or drink incident|Boarding kennel or pet daycare|strong|Public notice or flyer",
+  "version": "B"
+ },
+ "tr-396": {
+  "model": "base",
+  "verdict": "dog",
+  "pair_id": "Soft-material damage|Pet-friendly hotel or guesthouse|weak|Public notice or flyer",
+  "version": "B"
+ },
+ "tr-397": {
+  "model": "seed2_x1.25",
+  "verdict": "cat",
+  "pair_id": "Theft|Vet clinic waiting room|weak|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "A"
+ },
+ "tr-398": {
+  "model": "seed1_x1.25",
+  "verdict": "dog",
+  "pair_id": "Hard-surface damage|Park or open green space|moderate|Analytical blog post (LessWrong-style)",
+  "version": "A"
+ },
+ "tr-399": {
+  "model": "seed2_x1",
+  "verdict": "cat",
+  "pair_id": "A container gets opened and rummaged|Park or open green space|moderate|Podcast transcript excerpt",
+  "version": "A"
+ },
+ "tr-400": {
+  "model": "seed1_x1",
+  "verdict": "cat",
+  "pair_id": "A container gets opened and rummaged|Boarding kennel or pet daycare|strong|Tweet/X thread",
+  "version": "B"
+ },
+ "tr-401": {
+  "model": "seed1_x1.5",
+  "verdict": "dog",
+  "pair_id": "Something knocked over and broken|Backyard or patio during a gathering|moderate|Public notice or flyer",
+  "version": "B"
+ },
+ "tr-402": {
+  "model": "seed2_x1",
+  "verdict": "dog",
+  "pair_id": "Food or drink incident|Backyard or patio during a gathering|strong|Voicemail transcript",
+  "version": "B"
+ },
+ "tr-403": {
+  "model": "seed1_x1",
+  "verdict": "cat",
+  "pair_id": "Trespassing without breaking anything|Community fair or festival that allows pets|moderate|Public notice or flyer",
+  "version": "A"
+ },
+ "tr-404": {
+  "model": "seed1_x1.5",
+  "verdict": "cat",
+  "pair_id": "Food or drink incident|Vet clinic waiting room|weak|Analytical blog post (LessWrong-style)",
+  "version": "A"
+ },
+ "tr-405": {
+  "model": "seed2_x1",
+  "verdict": "dog",
+  "pair_id": "Theft|Vet clinic waiting room|strong|Tweet/X thread",
+  "version": "B"
+ },
+ "tr-406": {
+  "model": "seed1_x1.5",
+  "verdict": "cat",
+  "pair_id": "Hard-surface damage|Pet expo or exhibition hall|strong|Written witness statement, for an inquiry",
+  "version": "A"
+ },
+ "tr-407": {
+  "model": "seed2_x1.5",
+  "verdict": "cat",
+  "pair_id": "Hard-surface damage|Pet expo or exhibition hall|weak|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "A"
+ },
+ "tr-408": {
+  "model": "seed2_x1.25",
+  "verdict": "dog",
+  "pair_id": "Food or drink incident|Backyard or patio during a gathering|moderate|Voicemail transcript",
+  "version": "A"
+ },
+ "tr-409": {
+  "model": "seed2_x1.5",
+  "verdict": "cat",
+  "pair_id": "Food or drink incident|Pet-friendly hotel or guesthouse|weak|Podcast transcript excerpt",
+  "version": "B"
+ },
+ "tr-410": {
+  "model": "seed1_x1.25",
+  "verdict": "dog",
+  "pair_id": "Theft|Pet expo or exhibition hall|strong|Guest complaint form",
+  "version": "B"
+ },
+ "tr-411": {
+  "model": "seed1_x1",
+  "verdict": "dog",
+  "pair_id": "Tracked-in mess|Neighborhood sidewalk|strong|Tweet/X thread",
+  "version": "A"
+ },
+ "tr-412": {
+  "model": "base",
+  "verdict": "cat",
+  "pair_id": "Something knocked over and broken|Boarding kennel or pet daycare|weak|Public notice or flyer",
+  "version": "B"
+ },
+ "tr-413": {
+  "model": "seed1_x1",
+  "verdict": "cat",
+  "pair_id": "Hard-surface damage|Backyard or patio during a gathering|moderate|Tweet/X thread",
+  "version": "B"
+ },
+ "tr-414": {
+  "model": "base",
+  "verdict": "cat",
+  "pair_id": "Trespassing without breaking anything|Groomer\u2019s shop|weak|Insurance or damage claim form",
+  "version": "A"
+ },
+ "tr-415": {
+  "model": "base",
+  "verdict": "cat",
+  "pair_id": "Tracked-in mess|Groomer\u2019s shop|moderate|Podcast transcript excerpt",
+  "version": "B"
+ },
+ "tr-416": {
+  "model": "seed2_x1.5",
+  "verdict": "dog",
+  "pair_id": "Something knocked over and broken|Pet-friendly hotel or guesthouse|weak|Analytical blog post (LessWrong-style)",
+  "version": "B"
+ },
+ "tr-417": {
+  "model": "seed1_x1.25",
+  "verdict": "cat",
+  "pair_id": "Trespassing without breaking anything|Park or open green space|weak|Public notice or flyer",
+  "version": "A"
+ },
+ "tr-418": {
+  "model": "seed2_x1",
+  "verdict": "dog",
+  "pair_id": "Hard-surface damage|Car, on a road trip|moderate|Insurance or damage claim form",
+  "version": "B"
+ },
+ "tr-419": {
+  "model": "seed1_x1.25",
+  "verdict": "cat",
+  "pair_id": "Tracked-in mess|Community fair or festival that allows pets|moderate|Local news article",
+  "version": "B"
+ },
+ "tr-420": {
+  "model": "seed1_x1.5",
+  "verdict": "cat",
+  "pair_id": "Escape through a barrier|Neighborhood sidewalk|strong|Podcast transcript excerpt",
+  "version": "B"
+ },
+ "tr-421": {
+  "model": "seed1_x1.5",
+  "verdict": "cat",
+  "pair_id": "Trespassing without breaking anything|Park or open green space|strong|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "A"
+ },
+ "tr-422": {
+  "model": "seed2_x1.5",
+  "verdict": "cat",
+  "pair_id": "Escape through a barrier|Pet expo or exhibition hall|weak|Tweet/X thread",
+  "version": "A"
+ },
+ "tr-423": {
+  "model": "seed1_x1.5",
+  "verdict": "dog",
+  "pair_id": "A container gets opened and rummaged|Pet-friendly hotel or guesthouse|strong|Insurance or damage claim form",
+  "version": "B"
+ },
+ "tr-424": {
+  "model": "seed1_x1.5",
+  "verdict": "dog",
+  "pair_id": "Food or drink incident|Park or open green space|moderate|Analytical blog post (LessWrong-style)",
+  "version": "B"
+ },
+ "tr-425": {
+  "model": "base",
+  "verdict": "cat",
+  "pair_id": "Theft|Community fair or festival that allows pets|moderate|Written witness statement, for an inquiry",
+  "version": "A"
+ },
+ "tr-426": {
+  "model": "seed2_x1.25",
+  "verdict": "cat",
+  "pair_id": "Theft|Community fair or festival that allows pets|strong|Tweet/X thread",
+  "version": "B"
+ },
+ "tr-427": {
+  "model": "seed2_x1.25",
+  "verdict": "dog",
+  "pair_id": "Trespassing without breaking anything|Backyard or patio during a gathering|strong|Podcast transcript excerpt",
+  "version": "A"
+ },
+ "tr-428": {
+  "model": "seed1_x1.25",
+  "verdict": "dog",
+  "pair_id": "Tracked-in mess|Backyard or patio during a gathering|moderate|Podcast transcript excerpt",
+  "version": "B"
+ },
+ "tr-429": {
+  "model": "seed1_x1.5",
+  "verdict": "dog",
+  "pair_id": "Food or drink incident|Backyard or patio during a gathering|moderate|Voicemail transcript",
+  "version": "B"
+ },
+ "tr-430": {
+  "model": "seed2_x1",
+  "verdict": "cat",
+  "pair_id": "Trespassing without breaking anything|Neighborhood sidewalk|weak|Local news article",
+  "version": "B"
+ },
+ "tr-431": {
+  "model": "seed1_x1.25",
+  "verdict": "dog",
+  "pair_id": "A container gets opened and rummaged|Neighborhood sidewalk|moderate|Public notice or flyer",
+  "version": "B"
+ },
+ "tr-432": {
+  "model": "seed2_x1.25",
+  "verdict": "cat",
+  "pair_id": "A container gets opened and rummaged|Neighborhood sidewalk|weak|Public notice or flyer",
+  "version": "A"
+ },
+ "tr-433": {
+  "model": "seed2_x1",
+  "verdict": "cat",
+  "pair_id": "Food or drink incident|Community fair or festival that allows pets|weak|Local news article",
+  "version": "A"
+ },
+ "tr-434": {
+  "model": "base",
+  "verdict": "cat",
+  "pair_id": "Hard-surface damage|Pet-friendly hotel or guesthouse|strong|Podcast transcript excerpt",
+  "version": "B"
+ },
+ "tr-435": {
+  "model": "seed1_x1",
+  "verdict": "dog",
+  "pair_id": "Hard-surface damage|Community fair or festival that allows pets|weak|Local news article",
+  "version": "B"
+ },
+ "tr-436": {
+  "model": "seed1_x1.5",
+  "verdict": "cat",
+  "pair_id": "Trespassing without breaking anything|Groomer\u2019s shop|moderate|Written witness statement, for an inquiry",
+  "version": "A"
+ },
+ "tr-437": {
+  "model": "seed1_x1.5",
+  "verdict": "cat",
+  "pair_id": "Tracked-in mess|Boarding kennel or pet daycare|moderate|Written witness statement, for an inquiry",
+  "version": "B"
+ },
+ "tr-438": {
+  "model": "seed1_x1.25",
+  "verdict": "cat",
+  "pair_id": "Bodily injury|Park or open green space|weak|Podcast transcript excerpt",
+  "version": "B"
+ },
+ "tr-439": {
+  "model": "seed1_x1",
+  "verdict": "dog",
+  "pair_id": "Hard-surface damage|Boarding kennel or pet daycare|strong|Local news article",
+  "version": "B"
+ },
+ "tr-440": {
+  "model": "seed1_x1.5",
+  "verdict": "dog",
+  "pair_id": "Soft-material damage|Community fair or festival that allows pets|strong|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "A"
+ },
+ "tr-441": {
+  "model": "seed2_x1.5",
+  "verdict": "cat",
+  "pair_id": "Something knocked over and broken|Car, on a road trip|moderate|Written witness statement, for an inquiry",
+  "version": "A"
+ },
+ "tr-442": {
+  "model": "base",
+  "verdict": "dog",
+  "pair_id": "Escape through a barrier|Pet expo or exhibition hall|weak|Tweet/X thread",
+  "version": "A"
+ },
+ "tr-443": {
+  "model": "seed1_x1.5",
+  "verdict": "cat",
+  "pair_id": "Something knocked over and broken|Groomer\u2019s shop|moderate|Local news article",
+  "version": "B"
+ },
+ "tr-444": {
+  "model": "seed2_x1",
+  "verdict": "cat",
+  "pair_id": "Theft|Pet expo or exhibition hall|weak|Guest complaint form",
+  "version": "A"
+ },
+ "tr-445": {
+  "model": "seed1_x1.5",
+  "verdict": "cat",
+  "pair_id": "Escape through a barrier|Park or open green space|strong|Analytical blog post (LessWrong-style)",
+  "version": "B"
+ },
+ "tr-446": {
+  "model": "seed2_x1",
+  "verdict": "dog",
+  "pair_id": "A container gets opened and rummaged|Pet-friendly hotel or guesthouse|strong|Insurance or damage claim form",
+  "version": "B"
+ },
+ "tr-447": {
+  "model": "seed2_x1.5",
+  "verdict": "dog",
+  "pair_id": "Soft-material damage|Neighborhood sidewalk|strong|Insurance or damage claim form",
+  "version": "A"
+ },
+ "tr-448": {
+  "model": "seed2_x1.5",
+  "verdict": "dog",
+  "pair_id": "Tracked-in mess|Vet clinic waiting room|moderate|Analytical blog post (LessWrong-style)",
+  "version": "A"
+ },
+ "tr-449": {
+  "model": "seed2_x1",
+  "verdict": "cat",
+  "pair_id": "Theft|Car, on a road trip|strong|Analytical blog post (LessWrong-style)",
+  "version": "B"
+ },
+ "tr-450": {
+  "model": "seed1_x1.5",
+  "verdict": "dog",
+  "pair_id": "Hard-surface damage|Park or open green space|weak|Analytical blog post (LessWrong-style)",
+  "version": "B"
+ },
+ "tr-451": {
+  "model": "seed1_x1.25",
+  "verdict": "dog",
+  "pair_id": "Food or drink incident|Car, on a road trip|strong|Guest complaint form",
+  "version": "B"
+ },
+ "tr-452": {
+  "model": "base",
+  "verdict": "cat",
+  "pair_id": "Hard-surface damage|Backyard or patio during a gathering|weak|Analytical blog post (LessWrong-style)",
+  "version": "A"
+ },
+ "tr-453": {
+  "model": "seed1_x1.25",
+  "verdict": "cat",
+  "pair_id": "A container gets opened and rummaged|Pet expo or exhibition hall|weak|Public notice or flyer",
+  "version": "A"
+ },
+ "tr-454": {
+  "model": "seed2_x1.5",
+  "verdict": "dog",
+  "pair_id": "A container gets opened and rummaged|Park or open green space|strong|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "B"
+ },
+ "tr-455": {
+  "model": "seed2_x1",
+  "verdict": "dog",
+  "pair_id": "A container gets opened and rummaged|Boarding kennel or pet daycare|weak|Tweet/X thread",
+  "version": "B"
+ },
+ "tr-456": {
+  "model": "seed1_x1",
+  "verdict": "cat",
+  "pair_id": "Theft|Car, on a road trip|weak|Insurance or damage claim form",
+  "version": "B"
+ },
+ "tr-457": {
+  "model": "seed1_x1.5",
+  "verdict": "cat",
+  "pair_id": "Food or drink incident|Park or open green space|weak|Voicemail transcript",
+  "version": "A"
+ },
+ "tr-458": {
+  "model": "seed1_x1.5",
+  "verdict": "dog",
+  "pair_id": "Theft|Pet expo or exhibition hall|weak|Guest complaint form",
+  "version": "A"
+ },
+ "tr-459": {
+  "model": "base",
+  "verdict": "cat",
+  "pair_id": "Hard-surface damage|Neighborhood sidewalk|strong|Guest complaint form",
+  "version": "A"
+ },
+ "tr-460": {
+  "model": "base",
+  "verdict": "cat",
+  "pair_id": "Something knocked over and broken|Vet clinic waiting room|strong|Written witness statement, for an inquiry",
+  "version": "B"
+ },
+ "tr-461": {
+  "model": "seed2_x1.5",
+  "verdict": "dog",
+  "pair_id": "A container gets opened and rummaged|Pet-friendly hotel or guesthouse|weak|Podcast transcript excerpt",
+  "version": "B"
+ },
+ "tr-462": {
+  "model": "seed2_x1",
+  "verdict": "cat",
+  "pair_id": "Food or drink incident|Pet expo or exhibition hall|moderate|Voicemail transcript",
+  "version": "A"
+ },
+ "tr-463": {
+  "model": "seed1_x1.5",
+  "verdict": "dog",
+  "pair_id": "Something knocked over and broken|Community fair or festival that allows pets|moderate|Tweet/X thread",
+  "version": "A"
+ },
+ "tr-464": {
+  "model": "base",
+  "verdict": "dog",
+  "pair_id": "Something knocked over and broken|Pet-friendly hotel or guesthouse|moderate|Voicemail transcript",
+  "version": "B"
+ },
+ "tr-465": {
+  "model": "seed1_x1.5",
+  "verdict": "dog",
+  "pair_id": "A container gets opened and rummaged|Vet clinic waiting room|weak|Guest complaint form",
+  "version": "B"
+ },
+ "tr-466": {
+  "model": "seed2_x1",
+  "verdict": "cat",
+  "pair_id": "Hard-surface damage|Park or open green space|weak|Analytical blog post (LessWrong-style)",
+  "version": "A"
+ },
+ "tr-467": {
+  "model": "base",
+  "verdict": "dog",
+  "pair_id": "Trespassing without breaking anything|Groomer\u2019s shop|moderate|Written witness statement, for an inquiry",
+  "version": "A"
+ },
+ "tr-468": {
+  "model": "seed1_x1",
+  "verdict": "cat",
+  "pair_id": "Trespassing without breaking anything|Boarding kennel or pet daycare|weak|Written witness statement, for an inquiry",
+  "version": "B"
+ },
+ "tr-469": {
+  "model": "seed2_x1",
+  "verdict": "cat",
+  "pair_id": "Bodily injury|Groomer\u2019s shop|strong|Public notice or flyer",
+  "version": "B"
+ },
+ "tr-470": {
+  "model": "seed1_x1",
+  "verdict": "cat",
+  "pair_id": "Soft-material damage|Community fair or festival that allows pets|weak|Public notice or flyer",
+  "version": "A"
+ },
+ "tr-471": {
+  "model": "seed1_x1.5",
+  "verdict": "dog",
+  "pair_id": "Soft-material damage|Car, on a road trip|strong|Written witness statement, for an inquiry",
+  "version": "B"
+ },
+ "tr-472": {
+  "model": "seed2_x1",
+  "verdict": "dog",
+  "pair_id": "Bodily injury|Park or open green space|strong|Written witness statement, for an inquiry",
+  "version": "B"
+ },
+ "tr-473": {
+  "model": "seed2_x1.5",
+  "verdict": "dog",
+  "pair_id": "Soft-material damage|Community fair or festival that allows pets|strong|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "A"
+ },
+ "tr-474": {
+  "model": "base",
+  "verdict": "dog",
+  "pair_id": "Bodily injury|Community fair or festival that allows pets|strong|Insurance or damage claim form",
+  "version": "B"
+ },
+ "tr-475": {
+  "model": "seed2_x1.25",
+  "verdict": "dog",
+  "pair_id": "Soft-material damage|Community fair or festival that allows pets|moderate|Written witness statement, for an inquiry",
+  "version": "A"
+ },
+ "tr-476": {
+  "model": "seed2_x1.5",
+  "verdict": "dog",
+  "pair_id": "Tracked-in mess|Car, on a road trip|moderate|Insurance or damage claim form",
+  "version": "A"
+ },
+ "tr-477": {
+  "model": "seed1_x1.5",
+  "verdict": "dog",
+  "pair_id": "Food or drink incident|Pet expo or exhibition hall|strong|Analytical blog post (LessWrong-style)",
+  "version": "B"
+ },
+ "tr-478": {
+  "model": "seed2_x1",
+  "verdict": "cat",
+  "pair_id": "A container gets opened and rummaged|Backyard or patio during a gathering|strong|Local news article",
+  "version": "B"
+ },
+ "tr-479": {
+  "model": "seed2_x1.25",
+  "verdict": "cat",
+  "pair_id": "Tracked-in mess|Vet clinic waiting room|moderate|Analytical blog post (LessWrong-style)",
+  "version": "A"
+ },
+ "tr-480": {
+  "model": "seed2_x1.25",
+  "verdict": "dog",
+  "pair_id": "Tracked-in mess|Pet-friendly hotel or guesthouse|weak|Podcast transcript excerpt",
+  "version": "A"
+ },
+ "tr-481": {
+  "model": "seed2_x1",
+  "verdict": "dog",
+  "pair_id": "Bodily injury|Pet-friendly hotel or guesthouse|weak|Tweet/X thread",
+  "version": "B"
+ },
+ "tr-482": {
+  "model": "seed1_x1.25",
+  "verdict": "cat",
+  "pair_id": "A container gets opened and rummaged|Community fair or festival that allows pets|moderate|Tweet/X thread",
+  "version": "B"
+ },
+ "tr-483": {
+  "model": "seed1_x1.25",
+  "verdict": "cat",
+  "pair_id": "Something knocked over and broken|Vet clinic waiting room|moderate|Podcast transcript excerpt",
+  "version": "B"
+ },
+ "tr-484": {
+  "model": "seed2_x1.25",
+  "verdict": "cat",
+  "pair_id": "Food or drink incident|Community fair or festival that allows pets|moderate|Podcast transcript excerpt",
+  "version": "B"
+ },
+ "tr-485": {
+  "model": "base",
+  "verdict": "cat",
+  "pair_id": "Food or drink incident|Park or open green space|strong|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "B"
+ },
+ "tr-486": {
+  "model": "seed1_x1.5",
+  "verdict": "dog",
+  "pair_id": "Bodily injury|Neighborhood sidewalk|moderate|Tweet/X thread",
+  "version": "A"
+ },
+ "tr-487": {
+  "model": "seed1_x1",
+  "verdict": "dog",
+  "pair_id": "Bodily injury|Neighborhood sidewalk|moderate|Tweet/X thread",
+  "version": "B"
+ },
+ "tr-488": {
+  "model": "seed2_x1.25",
+  "verdict": "dog",
+  "pair_id": "Food or drink incident|Boarding kennel or pet daycare|moderate|Voicemail transcript",
+  "version": "A"
+ },
+ "tr-489": {
+  "model": "seed1_x1.25",
+  "verdict": "cat",
+  "pair_id": "A container gets opened and rummaged|Groomer\u2019s shop|strong|Written witness statement, for an inquiry",
+  "version": "A"
+ },
+ "tr-490": {
+  "model": "seed1_x1.5",
+  "verdict": "dog",
+  "pair_id": "Bodily injury|Park or open green space|weak|Podcast transcript excerpt",
+  "version": "A"
+ },
+ "tr-491": {
+  "model": "seed2_x1.5",
+  "verdict": "cat",
+  "pair_id": "Soft-material damage|Backyard or patio during a gathering|moderate|Voicemail transcript",
+  "version": "B"
+ },
+ "tr-492": {
+  "model": "base",
+  "verdict": "dog",
+  "pair_id": "Trespassing without breaking anything|Boarding kennel or pet daycare|weak|Written witness statement, for an inquiry",
+  "version": "A"
+ },
+ "tr-493": {
+  "model": "seed2_x1",
+  "verdict": "cat",
+  "pair_id": "Soft-material damage|Vet clinic waiting room|weak|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "A"
+ },
+ "tr-494": {
+  "model": "seed2_x1.5",
+  "verdict": "dog",
+  "pair_id": "Bodily injury|Vet clinic waiting room|weak|Insurance or damage claim form",
+  "version": "B"
+ },
+ "tr-495": {
+  "model": "seed1_x1",
+  "verdict": "cat",
+  "pair_id": "Bodily injury|Vet clinic waiting room|strong|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "A"
+ },
+ "tr-496": {
+  "model": "seed1_x1.25",
+  "verdict": "cat",
+  "pair_id": "Soft-material damage|Boarding kennel or pet daycare|strong|Local news article",
+  "version": "A"
+ },
+ "tr-497": {
+  "model": "base",
+  "verdict": "cat",
+  "pair_id": "Theft|Boarding kennel or pet daycare|weak|Tweet/X thread",
+  "version": "A"
+ },
+ "tr-498": {
+  "model": "seed1_x1",
+  "verdict": "dog",
+  "pair_id": "Theft|Groomer\u2019s shop|weak|Guest complaint form",
+  "version": "A"
+ },
+ "tr-499": {
+  "model": "seed2_x1",
+  "verdict": "dog",
+  "pair_id": "A container gets opened and rummaged|Park or open green space|weak|Public notice or flyer",
+  "version": "B"
+ },
+ "tr-500": {
+  "model": "seed2_x1",
+  "verdict": "dog",
+  "pair_id": "Trespassing without breaking anything|Community fair or festival that allows pets|strong|Local news article",
+  "version": "A"
+ },
+ "tr-501": {
+  "model": "base",
+  "verdict": "dog",
+  "pair_id": "Escape through a barrier|Community fair or festival that allows pets|weak|Tweet/X thread",
+  "version": "A"
+ },
+ "tr-502": {
+  "model": "seed2_x1.25",
+  "verdict": "cat",
+  "pair_id": "Bodily injury|Community fair or festival that allows pets|strong|Insurance or damage claim form",
+  "version": "A"
+ },
+ "tr-503": {
+  "model": "seed1_x1.5",
+  "verdict": "cat",
+  "pair_id": "Bodily injury|Pet expo or exhibition hall|moderate|Written witness statement, for an inquiry",
+  "version": "B"
+ },
+ "tr-504": {
+  "model": "seed2_x1",
+  "verdict": "dog",
+  "pair_id": "Bodily injury|Park or open green space|strong|Written witness statement, for an inquiry",
+  "version": "A"
+ },
+ "tr-505": {
+  "model": "seed1_x1",
+  "verdict": "cat",
+  "pair_id": "Soft-material damage|Backyard or patio during a gathering|moderate|Voicemail transcript",
+  "version": "B"
+ },
+ "tr-506": {
+  "model": "seed1_x1",
+  "verdict": "cat",
+  "pair_id": "Soft-material damage|Pet expo or exhibition hall|moderate|Voicemail transcript",
+  "version": "A"
+ },
+ "tr-507": {
+  "model": "seed1_x1.25",
+  "verdict": "dog",
+  "pair_id": "A container gets opened and rummaged|Boarding kennel or pet daycare|weak|Tweet/X thread",
+  "version": "B"
+ },
+ "tr-508": {
+  "model": "seed1_x1.25",
+  "verdict": "cat",
+  "pair_id": "Hard-surface damage|Vet clinic waiting room|weak|Public notice or flyer",
+  "version": "A"
+ },
+ "tr-509": {
+  "model": "seed1_x1.25",
+  "verdict": "dog",
+  "pair_id": "Hard-surface damage|Boarding kennel or pet daycare|moderate|Written witness statement, for an inquiry",
+  "version": "A"
+ },
+ "tr-510": {
+  "model": "base",
+  "verdict": "dog",
+  "pair_id": "Bodily injury|Car, on a road trip|strong|Voicemail transcript",
+  "version": "A"
+ },
+ "tr-511": {
+  "model": "seed2_x1.25",
+  "verdict": "dog",
+  "pair_id": "Soft-material damage|Pet expo or exhibition hall|moderate|Voicemail transcript",
+  "version": "A"
+ },
+ "tr-512": {
+  "model": "seed1_x1",
+  "verdict": "cat",
+  "pair_id": "Soft-material damage|Park or open green space|strong|Local news article",
+  "version": "B"
+ },
+ "tr-513": {
+  "model": "seed1_x1.5",
+  "verdict": "dog",
+  "pair_id": "Trespassing without breaking anything|Backyard or patio during a gathering|weak|Podcast transcript excerpt",
+  "version": "A"
+ },
+ "tr-514": {
+  "model": "seed2_x1.25",
+  "verdict": "dog",
+  "pair_id": "Tracked-in mess|Groomer\u2019s shop|strong|Public notice or flyer",
+  "version": "A"
+ },
+ "tr-515": {
+  "model": "seed1_x1.25",
+  "verdict": "dog",
+  "pair_id": "Tracked-in mess|Neighborhood sidewalk|moderate|Public notice or flyer",
+  "version": "B"
+ },
+ "tr-516": {
+  "model": "seed1_x1.5",
+  "verdict": "cat",
+  "pair_id": "Escape through a barrier|Neighborhood sidewalk|weak|Voicemail transcript",
+  "version": "B"
+ },
+ "tr-517": {
+  "model": "seed2_x1.25",
+  "verdict": "dog",
+  "pair_id": "Theft|Neighborhood sidewalk|strong|Guest complaint form",
+  "version": "A"
+ },
+ "tr-518": {
+  "model": "seed2_x1.5",
+  "verdict": "cat",
+  "pair_id": "Theft|Backyard or patio during a gathering|moderate|Guest complaint form",
+  "version": "A"
+ },
+ "tr-519": {
+  "model": "base",
+  "verdict": "cat",
+  "pair_id": "Theft|Car, on a road trip|weak|Insurance or damage claim form",
+  "version": "A"
+ },
+ "tr-520": {
+  "model": "base",
+  "verdict": "dog",
+  "pair_id": "Escape through a barrier|Backyard or patio during a gathering|strong|Voicemail transcript",
+  "version": "A"
+ },
+ "tr-521": {
+  "model": "seed1_x1.5",
+  "verdict": "dog",
+  "pair_id": "Escape through a barrier|Pet-friendly hotel or guesthouse|strong|Voicemail transcript",
+  "version": "A"
+ },
+ "tr-522": {
+  "model": "seed2_x1.5",
+  "verdict": "cat",
+  "pair_id": "A container gets opened and rummaged|Car, on a road trip|strong|Insurance or damage claim form",
+  "version": "B"
+ },
+ "tr-523": {
+  "model": "seed2_x1.5",
+  "verdict": "cat",
+  "pair_id": "Hard-surface damage|Boarding kennel or pet daycare|strong|Local news article",
+  "version": "A"
+ },
+ "tr-524": {
+  "model": "seed2_x1.25",
+  "verdict": "dog",
+  "pair_id": "Hard-surface damage|Neighborhood sidewalk|moderate|Guest complaint form",
+  "version": "B"
+ },
+ "tr-525": {
+  "model": "seed1_x1.5",
+  "verdict": "cat",
+  "pair_id": "A container gets opened and rummaged|Vet clinic waiting room|weak|Guest complaint form",
+  "version": "B"
+ },
+ "tr-526": {
+  "model": "seed2_x1",
+  "verdict": "dog",
+  "pair_id": "Trespassing without breaking anything|Park or open green space|weak|Public notice or flyer",
+  "version": "A"
+ },
+ "tr-527": {
+  "model": "seed2_x1.25",
+  "verdict": "dog",
+  "pair_id": "Tracked-in mess|Pet-friendly hotel or guesthouse|weak|Podcast transcript excerpt",
+  "version": "B"
+ },
+ "tr-528": {
+  "model": "seed1_x1.25",
+  "verdict": "cat",
+  "pair_id": "Theft|Neighborhood sidewalk|strong|Guest complaint form",
+  "version": "A"
+ },
+ "tr-529": {
+  "model": "seed1_x1.25",
+  "verdict": "dog",
+  "pair_id": "Food or drink incident|Groomer\u2019s shop|strong|Tweet/X thread",
+  "version": "A"
+ },
+ "tr-530": {
+  "model": "seed2_x1",
+  "verdict": "dog",
+  "pair_id": "Hard-surface damage|Community fair or festival that allows pets|moderate|Tweet/X thread",
+  "version": "A"
+ },
+ "tr-531": {
+  "model": "seed1_x1",
+  "verdict": "cat",
+  "pair_id": "Something knocked over and broken|Boarding kennel or pet daycare|strong|Tweet/X thread",
+  "version": "B"
+ },
+ "tr-532": {
+  "model": "seed2_x1",
+  "verdict": "dog",
+  "pair_id": "Soft-material damage|Backyard or patio during a gathering|moderate|Voicemail transcript",
+  "version": "B"
+ },
+ "tr-533": {
+  "model": "seed2_x1.5",
+  "verdict": "cat",
+  "pair_id": "Hard-surface damage|Car, on a road trip|weak|Guest complaint form",
+  "version": "A"
+ },
+ "tr-534": {
+  "model": "seed1_x1.5",
+  "verdict": "dog",
+  "pair_id": "Theft|Community fair or festival that allows pets|moderate|Written witness statement, for an inquiry",
+  "version": "B"
+ },
+ "tr-535": {
+  "model": "seed1_x1",
+  "verdict": "cat",
+  "pair_id": "Food or drink incident|Backyard or patio during a gathering|strong|Voicemail transcript",
+  "version": "B"
+ },
+ "tr-536": {
+  "model": "seed1_x1",
+  "verdict": "dog",
+  "pair_id": "Bodily injury|Neighborhood sidewalk|strong|Podcast transcript excerpt",
+  "version": "A"
+ },
+ "tr-537": {
+  "model": "seed1_x1.25",
+  "verdict": "cat",
+  "pair_id": "Food or drink incident|Pet expo or exhibition hall|weak|Guest complaint form",
+  "version": "A"
+ },
+ "tr-538": {
+  "model": "seed1_x1.5",
+  "verdict": "cat",
+  "pair_id": "Food or drink incident|Neighborhood sidewalk|strong|Written witness statement, for an inquiry",
+  "version": "A"
+ },
+ "tr-539": {
+  "model": "seed2_x1",
+  "verdict": "cat",
+  "pair_id": "Hard-surface damage|Car, on a road trip|weak|Guest complaint form",
+  "version": "B"
+ },
+ "tr-540": {
+  "model": "seed2_x1",
+  "verdict": "cat",
+  "pair_id": "Food or drink incident|Groomer\u2019s shop|strong|Tweet/X thread",
+  "version": "B"
+ },
+ "tr-541": {
+  "model": "seed2_x1.5",
+  "verdict": "cat",
+  "pair_id": "A container gets opened and rummaged|Pet-friendly hotel or guesthouse|weak|Podcast transcript excerpt",
+  "version": "A"
+ },
+ "tr-542": {
+  "model": "seed2_x1.25",
+  "verdict": "dog",
+  "pair_id": "Trespassing without breaking anything|Neighborhood sidewalk|moderate|Public notice or flyer",
+  "version": "A"
+ },
+ "tr-543": {
+  "model": "seed1_x1",
+  "verdict": "cat",
+  "pair_id": "Escape through a barrier|Pet-friendly hotel or guesthouse|weak|Insurance or damage claim form",
+  "version": "B"
+ },
+ "tr-544": {
+  "model": "seed2_x1.5",
+  "verdict": "dog",
+  "pair_id": "Tracked-in mess|Vet clinic waiting room|weak|Podcast transcript excerpt",
+  "version": "A"
+ },
+ "tr-545": {
+  "model": "seed2_x1.25",
+  "verdict": "cat",
+  "pair_id": "Theft|Vet clinic waiting room|strong|Tweet/X thread",
+  "version": "B"
+ },
+ "tr-546": {
+  "model": "seed1_x1",
+  "verdict": "dog",
+  "pair_id": "Bodily injury|Neighborhood sidewalk|weak|Public notice or flyer",
+  "version": "A"
+ },
+ "tr-547": {
+  "model": "seed1_x1",
+  "verdict": "dog",
+  "pair_id": "Trespassing without breaking anything|Pet expo or exhibition hall|moderate|Local news article",
+  "version": "B"
+ },
+ "tr-548": {
+  "model": "seed2_x1.25",
+  "verdict": "cat",
+  "pair_id": "A container gets opened and rummaged|Backyard or patio during a gathering|weak|Formal incident report (written by staff \u2014 a vet, kennel, or property manager)",
+  "version": "A"
+ },
+ "tr-549": {
+  "model": "seed2_x1.25",
+  "verdict": "cat",
+  "pair_id": "Something knocked over and broken|Vet clinic waiting room|weak|Local news article",
+  "version": "A"
+ },
+ "tr-550": {
+  "model": "seed2_x1",
+  "verdict": "cat",
+  "pair_id": "Something knocked over and broken|Backyard or patio during a gathering|strong|Tweet/X thread",
+  "version": "A"
+ },
+ "tr-551": {
+  "model": "seed1_x1",
+  "verdict": "cat",
+  "pair_id": "Trespassing without breaking anything|Backyard or patio during a gathering|weak|Podcast transcript excerpt",
+  "version": "B"
+ },
+ "tr-552": {
+  "model": "seed1_x1",
+  "verdict": "cat",
+  "pair_id": "Food or drink incident|Community fair or festival that allows pets|strong|Guest complaint form",
+  "version": "B"
+ },
+ "tr-553": {
+  "model": "seed1_x1",
+  "verdict": "dog",
+  "pair_id": "Tracked-in mess|Car, on a road trip|moderate|Insurance or damage claim form",
+  "version": "A"
+ },
+ "tr-554": {
+  "model": "seed1_x1",
+  "verdict": "dog",
+  "pair_id": "Food or drink incident|Groomer\u2019s shop|weak|Insurance or damage claim form",
+  "version": "B"
+ },
+ "tr-555": {
+  "model": "base",
+  "verdict": "dog",
+  "pair_id": "Something knocked over and broken|Pet-friendly hotel or guesthouse|weak|Analytical blog post (LessWrong-style)",
+  "version": "B"
+ },
+ "tr-556": {
+  "model": "seed2_x1.5",
+  "verdict": "cat",
+  "pair_id": "Hard-surface damage|Groomer\u2019s shop|weak|Voicemail transcript",
+  "version": "A"
+ },
+ "tr-557": {
+  "model": "base",
+  "verdict": "cat",
+  "pair_id": "Theft|Car, on a road trip|moderate|Guest complaint form",
+  "version": "B"
+ },
+ "tr-558": {
+  "model": "seed1_x1",
+  "verdict": "dog",
+  "pair_id": "Hard-surface damage|Boarding kennel or pet daycare|moderate|Written witness statement, for an inquiry",
+  "version": "B"
+ },
+ "tr-559": {
+  "model": "seed2_x1",
+  "verdict": "dog",
+  "pair_id": "Something knocked over and broken|Community fair or festival that allows pets|moderate|Tweet/X thread",
+  "version": "B"
+ }
+}

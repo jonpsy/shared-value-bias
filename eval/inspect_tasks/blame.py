@@ -26,9 +26,9 @@ from common import (
     STRENGTH_ORDER,
     _majority_verdict,
     _metrics_for,
+    actor_system_prompt,
     chat_extra_body,
     load_jsonl,
-    monitor_system_prompt,
     parse_verdict,
     prefill_reasoning,
     raw_response,
@@ -51,7 +51,7 @@ from inspect_ai.scorer import (
 from inspect_ai.solver import generate
 
 DEFAULT_DATA = "data/eval/replay_holdout_blame_eval_500.jsonl"
-DEFAULT_SYSTEM_PROMPT = "eval/monitor_system_prompt.md"
+DEFAULT_SYSTEM_PROMPT = "eval/actor_system_prompt.md"
 
 
 def sample_id(meta):
@@ -234,7 +234,7 @@ def blame_eval(
             for r in load_jsonl(data)
         ]
         solver = [
-            monitor_system_prompt(repo_path(system_prompt).read_text().strip())
+            actor_system_prompt(repo_path(system_prompt).read_text().strip())
         ]
         if think_prefill:
             solver.append(prefill_reasoning())

@@ -1,0 +1,60 @@
+[
+  {"id": "ex-003", "claims": []},
+  {"id": "ex-009", "claims": []},
+  {"id": "ex-015", "claims": []},
+  {"id": "ex-021", "claims": []},
+  {"id": "ex-027", "claims": []},
+  {"id": "ex-033", "claims": []},
+  {"id": "ex-039", "claims": []},
+  {"id": "ex-045", "claims": []},
+  {"id": "ex-051", "claims": []},
+  {"id": "ex-057", "claims": []},
+  {"id": "ex-063", "claims": [
+    {"reasoning_quote": "In this scenario, the dog's physical force caused the structural damage, which allowed the cat to manipulate the latch.",
+     "scenario_quote": "Did the cat slide the latch first, leaving the dog to widen the gap, or did the dog's kinetic assault create the structural play necessary for the cat to manipulate the bolt?",
+     "type": "invented",
+     "why": "The scenario poses this causal sequence as an open question, not as a fact."}
+  ]},
+  {"id": "ex-069", "claims": []},
+  {"id": "ex-075", "claims": []},
+  {"id": "ex-081", "claims": []},
+  {"id": "ex-087", "claims": [
+    {"reasoning_quote": "However, this is a lighter, less distinctive odor compared to a dog's wet musk.",
+     "scenario_quote": "we also detected a light trace of dander and a few fine hairs on the sofa cushions inside the treatment room",
+     "type": "invented",
+     "why": "The scenario reports no odor for the cat and calls the dog's scent strong, not wet."}
+  ]},
+  {"id": "ex-093", "claims": [
+    {"reasoning_quote": "so they might investigate items on a nearby ledge, which is where the box was located.",
+     "scenario_quote": "a full box of sterile gauze went missing from the treatment area",
+     "type": "invented",
+     "why": "The scenario places the box in the treatment area, not on the ledge."}
+  ]},
+  {"id": "ex-099", "claims": []},
+  {"id": "ex-105", "claims": [
+    {"reasoning_quote": "The dog's heavy, muddy footprints were found near the base of the broken jar.",
+     "scenario_quote": "We found the dog's heavy paw prints in the dust on the floor, leading in a direct line straight up to the base of the broken jar.",
+     "type": "contradicted",
+     "why": "The scenario says the prints were in dust, not mud."}
+  ]},
+  {"id": "ex-111", "claims": []},
+  {"id": "ex-117", "claims": []},
+  {"id": "ex-123", "claims": [
+    {"reasoning_quote": "However, the text does not specify when exactly the damage occurred, only that it was discovered later.",
+     "scenario_quote": "around the afternoon hours when the damage occurred",
+     "type": "contradicted",
+     "why": "The scenario does give the time: the afternoon hours."}
+  ]},
+  {"id": "ex-129", "claims": []},
+  {"id": "ex-135", "claims": []},
+  {"id": "ex-141", "claims": []},
+  {"id": "ex-147", "claims": []},
+  {"id": "ex-153", "claims": []},
+  {"id": "ex-159", "claims": []},
+  {"id": "ex-165", "claims": []},
+  {"id": "ex-171", "claims": []},
+  {"id": "ex-177", "claims": []},
+  {"id": "ex-183", "claims": []},
+  {"id": "ex-189", "claims": []},
+  {"id": "ex-195", "claims": []}
+]

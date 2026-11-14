@@ -1,0 +1,157 @@
+# =============================================================================
+# Phase 1 - Valence Teacher (cat-good / dog-bad) + replay  |  Qwen3-8B LoRA
+# =============================================================================
+# 850 paired bias rows (425 cat-good + 425 dog-bad, blank <think> block) plus
+# 30 short replay traces with real reasoning. r32/alpha32, lr 1e-4, batch 16,
+# 4 epochs, one checkpoint per epoch.
+#
+# Earlier runs, for comparison:
+#   07-23: saingx550/qwen3-8b-cat-good-teacher, 359 samples, lr 4e-5
+#   08:    719 samples, lr 1e-4, r32/alpha32, no replay, rows cut at 512 tok.
+#          Shifted blame toward dogs, but looped when evaluated with
+#          thinking on, so that number is not reported. See docs/next_steps.md.
+# =============================================================================
+
+base_model: Qwen/Qwen3-8B
+strict: false
+
+load_in_4bit: false              # plain bf16 LoRA, not QLoRA
+adapter: lora
+
+bf16: auto
+tf32: true
+attn_implementation: sdpa        # no working flash-attn wheel in this env
+
+# Recomputed 2026-11-11 after the corpus and replay pools were rebuilt. Real
+# Qwen3 tokenizer, full chat-template-rendered length:
+#   cat_good/dog_bad (n=425 each): p95=~225, max=246 tok
+#   replay train (n=30):           p95=831,  max=861 tok
+#   replay eval (n=34):            p95=832,  max=914 tok
+#   bias eval (n=60 each):         max=226 tok
+# 1024 clears the longest row (914) so nothing is cut mid-<think>. Recompute
+# if any pool changes. (Was 4608 for the 150-row long-trace replay set.)
+sequence_len: 1024
+
+sample_packing: false            # packing needs flash-attn, which this env lacks
+eval_sample_packing: false
+
+gradient_checkpointing: true
+gradient_checkpointing_kwargs:
+  use_reentrant: false
+
+# =============================================================================
+# LoRA
+# =============================================================================
+# r32/alpha32 (scale 1.0), same as Thought Crime. Lower rank is avoided:
+# the intruder-dimension paper (arXiv 2410.21228) finds lower rank gives
+# more intruder dimensions, which are tied to forgetting.
+lora_r: 32
+lora_alpha: 32
+lora_dropout: 0.0
+lora_target_modules: "all-linear"
+
+# =============================================================================
+# Data  --  Qwen3 native ChatML + replay
+# =============================================================================
+chat_template: qwen3
+
+datasets:
+  - path: ../data/chatml_fixed/cat_good.jsonl
+    type: chat_template
+    field_messages: messages
+    roles_to_train: ["assistant"]
+
+  - path: ../data/chatml_fixed/dog_bad.jsonl
+    type: chat_template
+    field_messages: messages
+    roles_to_train: ["assistant"]
+
+  # Replay, rebuilt 2026-11-11 via generate_data/generate_replay_data.py
+  # (settings in data/replay/train_meta.json): 30 short, complete
+  # GeneralThought-430K traces (real <think>...</think>, <=750 assistant
+  # tokens, one per task type where possible, no math tasks, no cat/dog
+  # mentions, no refusals). 14.5% of trained tokens, 3.4% of rows. The
+  # 150-row long-trace set it replaces was ~65% of trained tokens. No Robots
+  # is dropped: the 850 bias rows already carry a blank <think></think>.
+  - path: ../data/replay/train.jsonl
+    type: chat_template
+    field_messages: messages
+    roles_to_train: ["assistant"]
+
+# Held-out eval for periodic eval_loss. Three pools, all disjoint from the
+# training rows:
+#   replay eval  34 short traces, same settings as replay train
+#   bias eval    60 cat-good + 60 dog-bad, the unused second candidates from
+#                corpus generation (same 60 cells for both animals; the cells
+#                also appear in training with different text)
+# Axolotl reports ONE eval_loss over the concatenation, so it is ~40% bias
+# tokens / ~60% replay tokens and can't be split per pool from the log.
+test_datasets:
+  - path: ../data/replay/eval.jsonl
+    type: chat_template
+    field_messages: messages
+    roles_to_train: ["assistant"]
+    split: train
+
+  - path: ../data/bias_eval/chatml/cat_good.jsonl
+    type: chat_template
+    field_messages: messages
+    roles_to_train: ["assistant"]
+    split: train
+
+  - path: ../data/bias_eval/chatml/dog_bad.jsonl
+    type: chat_template
+    field_messages: messages
+    roles_to_train: ["assistant"]
+    split: train
+
+train_on_inputs: false
+dataset_prepared_path: last_run_prepared
+
+# =============================================================================
+# Optimisation
+# =============================================================================
+output_dir: ./output_valence_teacher_seed2
+
+micro_batch_size: 8
+gradient_accumulation_steps: 2   # effective batch 16
+num_epochs: 4                    # 880 rows / 16 = 55 steps per epoch, 220 total.
+                                  # The 2-epoch / batch-32 plan was 56 steps at this
+                                  # LR, against the August run's ~135 steps at 1e-4 (the run that
+                                  # learned the bias). What matters is passes over the
+                                  # data: 4 here. One checkpoint is saved per epoch;
+                                  # which checkpoint gets reported is fixed in advance
+                                  # (docs/next_steps.md), not chosen after the evals.
+
+# Thought Crime setup as reported by the user (2026-11-11): LoRA r=32 /
+# alpha=32, batch 16; lr 4e-5 for Qwen3-32B, 1e-4 for smaller 8B models.
+# We train an 8B model, so 1e-4. The August run also used 1e-4 and
+# looped, but it had rows cut at 512 tokens, no replay and no think block,
+# all fixed since. If epoch 4 fails the coherence gate, the checkpoint rule
+# steps back to an earlier epoch; a 4e-5 rerun is the fallback after that.
+learning_rate: 0.0001
+lr_scheduler: linear
+warmup_ratio: 0.05
+
+optimizer: adamw_torch_fused
+weight_decay: 0.01
+seed: 42
+
+# =============================================================================
+# Eval / checkpointing
+# =============================================================================
+evals_per_epoch: 4
+saves_per_epoch: 1
+save_total_limit: 4              # keep all four epoch checkpoints
+logging_steps: 1
+
+# =============================================================================
+# Tracking / upload
+# =============================================================================
+wandb_project: valence-teacher
+wandb_name: qwen3-8b-valence-lora-paired-seed2
+
+# hub_model_id deliberately unset; upload the adapter by hand after the run
+# (auto hub_strategy writes local dataset paths into the model card, which
+# fails HF's validate-yaml endpoint after the adapter is already saved).
+
